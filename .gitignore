@@ -24,6 +24,7 @@ logs/
 jobs/*
 !jobs/sweep_array.sh
 checkpoints/
+docs/
 
 # 4. Python Cache/Build Files
 __pycache__/
