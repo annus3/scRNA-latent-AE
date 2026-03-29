@@ -2,13 +2,13 @@
 
 This repository contains a research-grade, highly modular, and HPC-ready Python pipeline designed to systematically evaluate how the optimal latent dimensionality ($d$) of an autoencoder scales with the biological complexity ($K$ cell classes) in single-cell RNA-seq datasets.
 
-The ultimate goal of this pipeline is to train hundreds of models across different datasets to generate empirical data, from which we can derive a mathematical formula $d = f(K)$.
+The pipeline parallelizes the training of models across multiple datasets to generate empirical data, enabling the derivation of the mathematical formula $d = f(K)$.
 
 ---
 
 ## Project Architecture
 
-Unlike exploratory Jupyter notebooks, this project is structured as a robust standard Python package. 
+The project is structured as a standard, modular Python package to support distributed execution: 
 
 ```text
 sc_autoencoder_project/
@@ -33,8 +33,8 @@ sc_autoencoder_project/
 
 ## Quick Start & Installation
 
-### 1. Environment Setup (FAU NHR Cluster)
-We recommend setting up a virtual environment (or conda environment) in your `$HOME` directory since it is small but backed up. 
+### 1. Environment Setup
+I recommend setting up a virtual environment or conda environment: 
 ```bash
 python -m venv ~/envs/sc_ae_env
 source ~/envs/sc_ae_env/bin/activate
@@ -89,8 +89,8 @@ python scripts/train.py \
   --device cuda
 ```
 
-### 3. The Grand Sweep (`scripts/run_experiment.py`)
-The main experiment orchestrator. It sweeps across all specified datasets, neural network architectures (`ae`, `vae`, `scvi`), loss functions (`mse`, `nb`, `zinb`), random seeds, and latent dimensions.
+### 3. Grid Sweep (`scripts/run_experiment.py`)
+The primary experiment orchestrator. It sweeps across specified datasets, neural network architectures (`ae`, `vae`, `scvi`), loss functions (`mse`, `nb`, `zinb`), random seeds, and latent dimensions.
 ```bash
 python scripts/run_experiment.py \
   --config config/default.yaml \
@@ -119,17 +119,13 @@ Run `tensorboard --logdir logs/tensorboard` to monitor training loops live. The 
 
 ---
 
-## FAU NHR Cluster Instructions
+## HPC & SLURM Usage
 
-Because you are running on **TinyGPU** and **Alex**, here is how the file system should be utilized according to cluster policies:
+For users running on High-Performance Computing (HPC) clusters, the pipeline is designed to be storage-aware:
 
-1.  **Code (`$HOME`)**: This repository should live in `/home/hpc/...`. It is backed up.
-2.  **Data & Results (`$WORK`)**: Very large `.h5ad` datasets and massive uncompressed CSV results should technically be symlinked or saved to your `$WORK` directory (e.g., `/home/woody/...`), as you have 500GB+ space there, but no backups. Update `config/default.yaml` to point `paths.data_dir` to `$WORK` if hitting quota issues.
-3.  **Job Scripts (`jobs/`)**: Use the provided SLURM scripts to submit jobs to the GPU partition.
-    ```bash
-    sbatch.tinygpu jobs/tinygpu_single.sh
-    sbatch.alex jobs/sweep_array.sh
-    ```
+1. **Codebase**: Clone the repository into your `$HOME` directory.
+2. **Data & Results**: Large `.h5ad` datasets and uncompressed CSV results can quickly exceed `$HOME` storage quotas. I recommend updating `config/default.yaml` to point `paths.data_dir` to your `$WORK` or scratch directory.
+3. **Array Jobs**: The `jobs/` directory contains template SLURM scripts for submitting batch operations to GPU partitions (e.g., `sbatch jobs/sweep_array.sh`).
 
 ---
 
