@@ -1,18 +1,16 @@
-# ==========================================
-# sc_autoencoder_project .gitignore
-# ==========================================
+# .gitignore
 
-# 1. Datasets & Processed Data
+# Datasets & Processed Data
 data/*
 !data/.gitkeep
 
-# 2. Experiment Outputs
+# Experiment Outputs
 results/*
 !results/.gitkeep
 checkpoints/*
 !checkpoints/.gitkeep
 
-# 3. Jobs, Logs & TensorBoard
+# Jobs, Logs & TensorBoard
 logs/*
 !logs/.gitkeep
 *.log
@@ -22,11 +20,11 @@ slurm-*.out
 slurm-*.err
 logs/
 jobs/*
-!jobs/sweep_array.sh
+!jobs/slurm_sweep_generic.sh 
 checkpoints/
 docs/
 
-# 4. Python Cache/Build Files
+# Python Cache/Build Files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -47,7 +45,7 @@ wheels/
 .installed.cfg
 *.egg
 
-# 5. Environments
+# Environments
 .env
 .venv
 env/
@@ -56,10 +54,10 @@ ENV/
 env.bak/
 venv.bak/
 
-# 6. Jupyter Notebook
+# Jupyter Notebook
 .ipynb_checkpoints
 
-# 7. IDEs & OS Files
+# IDEs & OS Files
 .vscode/
 .idea/
 *.swp
@@ -67,7 +65,7 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# 8. Type Hinting & Testing
+# Type Hinting & Testing
 .mypy_cache/
 .pytest_cache/
 .coverage
