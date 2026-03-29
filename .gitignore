@@ -12,7 +12,7 @@ results/*
 checkpoints/*
 !checkpoints/.gitkeep
 
-# 3. Logs & TensorBoard
+# 3. Jobs, Logs & TensorBoard
 logs/*
 !logs/.gitkeep
 *.log
@@ -21,6 +21,7 @@ logs/*
 slurm-*.out
 slurm-*.err
 logs/
+jobs/*
 
 # 4. Python Cache/Build Files
 __pycache__/
