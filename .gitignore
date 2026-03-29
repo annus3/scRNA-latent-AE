@@ -1,0 +1,70 @@
+# ==========================================
+# sc_autoencoder_project .gitignore
+# ==========================================
+
+# 1. Datasets & Processed Data
+data/*
+!data/.gitkeep
+
+# 2. Experiment Outputs
+results/*
+!results/.gitkeep
+checkpoints/*
+!checkpoints/.gitkeep
+
+# 3. Logs & TensorBoard
+logs/*
+!logs/.gitkeep
+*.log
+*.out
+*.err
+slurm-*.out
+slurm-*.err
+
+# 4. Python Cache/Build Files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 5. Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# 6. Jupyter Notebook
+.ipynb_checkpoints
+
+# 7. IDEs & OS Files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# 8. Type Hinting & Testing
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
