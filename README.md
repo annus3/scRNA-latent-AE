@@ -125,7 +125,7 @@ For users running on High-Performance Computing (HPC) clusters, the pipeline is 
 
 1. **Codebase**: Clone the repository into your `$HOME` directory.
 2. **Data & Results**: Large `.h5ad` datasets and uncompressed CSV results can quickly exceed `$HOME` storage quotas. I recommend updating `config/default.yaml` to point `paths.data_dir` to your `$WORK` or scratch directory.
-3. **Array Jobs**: The `jobs/` directory contains template SLURM scripts for submitting batch operations to GPU partitions (e.g., `sbatch jobs/sweep_array.sh`).
+3. **Array Jobs**: The `jobs/` directory contains a template SLURM script for submitting parallel batch operations to GPU partitions (e.g., `sbatch jobs/slurm_sweep_generic.sh`). Users should modify this file to fit their cluster's partition architecture and python module/conda systems.
 
 ---
 
