@@ -22,6 +22,8 @@ slurm-*.out
 slurm-*.err
 logs/
 jobs/*
+!jobs/sweep_array.sh
+checkpoints/
 
 # 4. Python Cache/Build Files
 __pycache__/
