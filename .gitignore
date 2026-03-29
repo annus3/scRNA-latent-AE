@@ -20,6 +20,7 @@ logs/*
 *.err
 slurm-*.out
 slurm-*.err
+logs/
 
 # 4. Python Cache/Build Files
 __pycache__/
