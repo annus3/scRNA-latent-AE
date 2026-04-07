@@ -7,11 +7,11 @@ data/*
 # Experiment Outputs
 #results/*
 !results/.gitkeep
-checkpoints/*
+checkpoints/* 
 !checkpoints/.gitkeep
 
 # Jobs, Logs & TensorBoard
-logs/*
+#logs/*
 !logs/.gitkeep
 *.log
 *.out
