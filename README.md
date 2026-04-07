@@ -98,7 +98,7 @@ sc_autoencoder_project/
 python -m venv ~/envs/scae
 source ~/envs/scae/bin/activate
 
-cd /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+cd /home/hpc/user/sc_autoencoder_project
 pip install -e .
 pip install -r requirements.txt
 ```
