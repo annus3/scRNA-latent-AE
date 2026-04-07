@@ -1,137 +1,182 @@
-# Latent Dimension Space in Single-Cell RNA Auto-Encoders
+# scRNA Autoencoder Latent-Dimension Study
 
-This repository contains a research-grade, highly modular, and HPC-ready Python pipeline designed to systematically evaluate how the optimal latent dimensionality ($d$) of an autoencoder scales with the biological complexity ($K$ cell classes) in single-cell RNA-seq datasets.
+This project asks one main question:
 
-The pipeline parallelizes the training of models across multiple datasets to generate empirical data, enabling the derivation of the mathematical formula $d = f(K)$.
+**How should latent size (`d`) change as class complexity (`K`) changes in single-cell RNA-seq?**
 
----
+Here, `K` means the number of label classes used for evaluation in a dataset.
 
-## Project Architecture
+The pipeline runs AE, VAE, and scVI experiments, records metrics, and builds candidate `d = f(K)` summaries.
 
-The project is structured as a standard, modular Python package to support distributed execution: 
+## What This Project Is
+
+This is a **fixed-config benchmark study**.
+
+It is not a full hyperparameter search per dataset.  
+So results should be read as controlled comparisons under one protocol.
+
+## Scientific Policy (Current)
+
+We keep a strict split:
+
+- **PRIMARY evidence** = trusted real datasets with ground-truth label provenance
+- **EXPLORATORY evidence** = inferred-label or synthetic datasets
+
+Trust is enforced in code during experiment/report generation.  
+PRIMARY tables only include rows that pass the trust gate.
+
+## Repository Layout
 
 ```text
 sc_autoencoder_project/
-├── config/                  # YAML configurations (hyperparameters, grid sweep)
-├── data/                    # Datasets (raw & processed .h5ad)
-├── jobs/                    # SLURM scripts for FAU NHR clusters
-├── logs/                    # TensorBoard and script execution logs
-├── results/                 # Metrics CSVs, recommendation tables, and figures
-├── scripts/                 # CLI entry points (train, sweep, preprocess)
-├── src/                     # Core Python modules
-│   ├── config.py            # Dataclass config loader
-│   ├── data/                # Scanpy preprocessing & PyTorch DataLoaders
-│   ├── evaluation/          # Metrics (ARI, Silhouette, Centrality Variance)
-│   ├── models/              # AE, VAE, scVI wrapper, and specialized losses
-│   ├── training/            # PyTorch training loop, Early Stopping, Memory profiling
-│   └── utils/               # Loggers and helper functions
-├── requirements.txt         # Deep learning & downstream analysis dependencies
-└── README.md                # This file
+├── config/        # YAML configs (default + phase configs)
+├── data/          # raw + processed datasets
+├── docs/          # plans, audits, status reports
+├── jobs/          # SLURM scripts for HPC
+├── logs/          # runtime logs + TensorBoard events
+├── code_analysis/ # additional script-based analysis modules
+├── results/       # experiment tables, reports, analysis outputs
+├── scripts/       # CLI entry points
+└── src/           # package code (data, models, training, evaluation)
 ```
 
----
+## Quick Setup
 
-## Quick Start & Installation
-
-### 1. Environment Setup
-I recommend setting up a virtual environment or conda environment: 
 ```bash
-python -m venv ~/envs/sc_ae_env
-source ~/envs/sc_ae_env/bin/activate
-cd sc_autoencoder_project
+python -m venv ~/envs/scae
+source ~/envs/scae/bin/activate
 
-# Install the repository as an editable package
+cd /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
 pip install -e .
-
-# Install all dependencies (including analysis tools like Jupyter/UMAP)
 pip install -r requirements.txt
 ```
 
-### 2. Verify the Pipeline (Smoke Test)
-Before running massive sweeps on the GPU nodes, verify the pipeline integrity locally on the CPU using a tiny, generated synthetic dataset:
+## Core Commands
+
+### 1) Smoke test
+
 ```bash
 python scripts/smoke_test.py --with_scvi
 ```
 
----
+### 2) Preprocess one dataset
 
-## Dataset Tier Strategy
-
-To structurally manage computational load across the HPC clusters, the pipeline groups datasets into tiers. You can run sweeps on specific tiers using `--dataset_tier`.
-
-- **Tier A (Smoke Test)**: `pbmc3k` (Small, local, excellent for verifying code correctness before submitting to GPU nodes).
-- **Tier B (Core Analysis)**: `pbmc3k`, `paul15` (Medium size, standard benchmarks for validating scRNA-seq embedding quality).
-- **Tier C (Phase-2 Scale)**: Curated massive `cellxgene` datasets. These represent the ultimate goal of the project for large-scale, final validation runs taking advantage of the multi-GPU clusters.
-
-*Note: Avoid using Scanpy's built-in `pbmc68k_reduced` for `nb` or `zinb` likelihood testing, as it comes preprocessed without raw counts.*
-
----
-
-## CLI Scripts & Workflows
-
-Instead of running notebooks sequentially, interact with the pipeline via the highly configurable CLI scripts. All scripts are driven by `config/default.yaml`.
-
-### 1. Preprocessing (`scripts/preprocess.py`)
-Downloads (if necessary) and runs the standard Scanpy pipeline (normalization, log1p, highly variable genes). Importantly, it **keeps raw counts intact** for count-based likelihood models (`nb` and `zinb`).
 ```bash
 python scripts/preprocess.py --config config/default.yaml --dataset pbmc3k
 ```
 
-### 2. Single Model Training (`scripts/train.py`)
-Trains a single model specification. Great for debugging a specific architectural choice or loss function.
-```bash
-python scripts/train.py \
-  --config config/default.yaml \
-  --dataset pbmc3k \
-  --model ae \
-  --latent_dim 16 \
-  --loss_type mse \
-  --device cuda
-```
+### 3) Run a sweep
 
-### 3. Grid Sweep (`scripts/run_experiment.py`)
-The primary experiment orchestrator. It sweeps across specified datasets, neural network architectures (`ae`, `vae`, `scvi`), loss functions (`mse`, `nb`, `zinb`), random seeds, and latent dimensions.
 ```bash
 python scripts/run_experiment.py \
   --config config/default.yaml \
-  --datasets pbmc3k,paul15 \
-  --latent_dims 2,4,8,16,32,64 \
+  --datasets pbmc3k,paul15
+```
+
+### 4) Generate reports from an existing CSV (report-only mode)
+
+```bash
+python scripts/run_experiment.py \
+  --config config/default.yaml \
+  --report_only_csv results/global/tables/combined_curated_real_plus_phase4_enriched.csv \
   --auto_d_report
 ```
 
+### 5) Audit PRIMARY inclusion from a CSV
+
+```bash
+python scripts/audit_primary_pool.py \
+  --config config/default.yaml \
+  --csv results/global/tables/combined_curated_real_plus_phase4_enriched.csv
+```
+
+## HPC Run Pattern
+
+For large jobs on FAU TinyGPU/A100, use job scripts in `jobs/`.
+
+Example:
+
+```bash
+cd /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+sbatch.tinygpu jobs/tinygpu_large.sh
+```
+
+`jobs/tinygpu_large.sh` handles path staging with:
+
+- `$WORK` for persistent run outputs
+- `$TMPDIR` for local staged data
+- `SCAE_*` environment variables for phase configs that use `${SCAE_DATA_DIR}` style paths
+
+If you run those phase configs directly (outside job scripts), set the required `SCAE_*` env vars first.
+
+## Analysis Workflow (Script-First on HPC)
+
+On HPC, use script mode instead of interactive notebooks:
+
+```bash
+cd /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+bash notebooks/analysis.sh
+```
+
+Each analysis run creates a new timestamped folder:
+
+`results/analysis_runs/<YYYYmmddTHHMMSS>/`
+
+So old analysis outputs are preserved.
+
+## Main Output Tables
+
+Global merged evidence:
+
+- `results/global/tables/combined_curated_real_plus_phase4_enriched.csv`
+
+PRIMARY reports:
+
+- `results/global/tables/recommended_d_by_K_primary.csv`
+- `results/global/tables/formula_fit_summary_primary.csv`
+- `results/global/tables/formula_fit_loo_primary.csv`
+
+Exploratory reports (if enabled):
+
+- `results/global/tables/recommended_d_by_K_exploratory.csv`
+- `results/global/tables/formula_fit_summary_exploratory.csv`
+
+## Notes on Loss Scale
+
+NB/ZINB loss values can look large (hundreds or thousands).  
+That is normal because they are count-likelihood losses, not MSE.
+
+What to watch instead:
+
+- stable train/val trend
+- no NaN/inf
+- downstream metrics and report outputs
+
+The analysis scripts also export per-gene normalized NB/ZINB loss summaries for fairer comparison across datasets.
+
+## Useful Phase Configs
+
+- `config/phase1_pbmc3k_quick.yaml`
+- `config/phase2_scvi_pbmc12k.yaml`
+- `config/phase3_splatter_k_sweep.yaml`
+- `config/phase4_ts1_stageA_tiny.yaml`
+- `config/phase4_ts1_stageB_reduced.yaml`
+- `config/phase4_aifi_scvi_nb_reduced.yaml`
+- `config/phase4_ts2_lung_scvi_nb_reduced.yaml`
+
+## Quick Troubleshooting
+
+1. Schema checks:  
+   `python scripts/inspect_dataset_schema.py --help`
+2. PRIMARY trust/status checks:  
+   `python scripts/audit_primary_pool.py --help`
+3. Run-level errors:  
+   `logs/slurm_*.out`, `logs/slurm_*.err`
+4. Run manifests:  
+   `results/runs/run_*/manifest.json`
+5. Analysis inventories:  
+   `results/analysis_runs/<timestamp>/00_inventory/`
+
 ---
 
-## Outputs & Logging
-
-The pipeline saves highly structured outputs to the `results/` directory, preventing data overwrites.
-
-### Tables & Recommendations
-*   **`experiment_results_all.csv`**: Massive table containing every metric (ARI, Silhouette, Reconstruction Loss, Peak GPU memory, Runtime) for every individual model run.
-*   **`recommended_d_by_K.csv`**: Generated when running sweeps with `--auto_d_report`. It automatically strips out the noise and ranks the absolute "best" latent dimension for each dataset size.
-*   **`formula_fit_summary.csv`**: Attempts to fit equations (Linear, Power Law, Sqrt, Log) mapping $K \rightarrow d$.
-
-### TensorBoard Monitoring
-Run `tensorboard --logdir logs/tensorboard` to monitor training loops live. The pipeline tracks:
-*   Train and Validation Losses (Reconstruction, KL-Divergence).
-*   Learning Rate scheduling.
-*   Gradient Norm tracking (to debug exploding gradients in ZINB loss).
-*   Peak Memory profiling (CPU & GPU).
-
----
-
-## HPC & SLURM Usage
-
-For users running on High-Performance Computing (HPC) clusters, the pipeline is designed to be storage-aware:
-
-1. **Codebase**: Clone the repository into your `$HOME` directory.
-2. **Data & Results**: Large `.h5ad` datasets and uncompressed CSV results can quickly exceed `$HOME` storage quotas. I recommend updating `config/default.yaml` to point `paths.data_dir` to your `$WORK` or scratch directory.
-3. **Array Jobs**: The `jobs/` directory contains a template SLURM script for submitting parallel batch operations to GPU partitions (e.g., `sbatch jobs/slurm_sweep_generic.sh`). Users should modify this file to fit their cluster's partition architecture and python module/conda systems.
-
----
-
-## References & Literature
-
-- **`scvi-tools` framework**: [Documentation](https://docs.scvi-tools.org/en/1.3.3/index.html)
-- **Scanpy guidelines**: [Documentation](https://scanpy.readthedocs.io/en/stable/)
-- **scRNA-seq best practices**: [sc-best-practices.org](https://www.sc-best-practices.org/introduction/scrna_seq.html)
-- **Datasets**: [CELLxGENE Census](https://cellxgene.cziscience.com/)
+If you are new to the project: run smoke test first, then one small sweep, then `notebooks/analysis.sh`.
