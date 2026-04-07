@@ -1,0 +1,7 @@
+{
+  "dataset": "splatter_k12",
+  "latent_dim": 2,
+  "loss_type": "zinb",
+  "model_type": "ae",
+  "seed": 42
+}

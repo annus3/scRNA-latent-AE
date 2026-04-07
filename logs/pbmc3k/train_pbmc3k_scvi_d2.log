@@ -1,0 +1,21 @@
+2026-03-29 16:41:36 | train | INFO | === Training: scvi | d=2 | pbmc3k | device=cpu | loss=nb | seed=42 ===
+2026-03-29 16:41:47 | train | INFO | === scVI training complete ===
+2026-03-29 16:41:47 | train | INFO | === Training complete ===
+2026-03-29 16:55:26 | train | INFO | === Training: scvi | d=2 | pbmc3k | device=cpu | loss=nb | seed=42 ===
+2026-03-29 16:55:37 | train | INFO | === scVI training complete ===
+2026-03-29 16:55:37 | train | INFO | === Training complete ===
+2026-03-29 16:56:39 | train | INFO | === Training: scvi | d=2 | pbmc3k | device=cpu | loss=nb | seed=42 ===
+2026-03-29 16:56:39 | src.data.preprocessor | INFO |   Loaded processed data (in_memory): 2700 × 2000
+2026-03-29 16:56:45 | lightning.fabric.utilities.seed | INFO | Seed set to 42
+2026-03-29 16:56:45 | src.models.scvi_wrapper | INFO |   scVI setup: d=2, likelihood=nb, hidden=128, layers=2, batch_key=None
+2026-03-29 16:56:46 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: logs/tensorboard/train_20260329T145639Z/pbmc3k_scvi_nb_d2
+2026-03-29 16:56:46 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: False, used: False
+2026-03-29 16:56:46 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-29 16:56:46 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+2026-03-29 16:56:56 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/3: train=1154.658569, val=1227.066895
+2026-03-29 16:57:06 | src.models.scvi_wrapper | INFO |     scVI Epoch   2/3: train=865.671326, val=1146.462891
+2026-03-29 16:57:15 | src.models.scvi_wrapper | INFO |     scVI Epoch   3/3: train=750.269836, val=1033.964111
+2026-03-29 16:57:15 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=3` reached.
+2026-03-29 16:57:15 | src.models.scvi_wrapper | INFO |   scVI training complete: 3 epochs in 28.4s
+2026-03-29 16:57:15 | train | INFO | === scVI training complete ===
+2026-03-29 16:57:15 | train | INFO | === Training complete ===

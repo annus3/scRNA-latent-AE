@@ -1,0 +1,189 @@
+### Starting TaskPrologue of job 1561954 on tg093 at Tue Mar 31 11:24:52 AM CEST 2026
+Running on cores 0-31 with governor ondemand
+Tue Mar 31 11:24:52 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:01:00.0 Off |                    0 |
+| N/A   43C    P0             62W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+Wrote config/tmp/phase3_recovery_base.yaml
+Wrote config/tmp/phase3_seed43_n1.yaml
+2026-03-31 11:25:12 | experiment | WARNING | SLURM array task detected but 'results_dir' does not appear task-isolated: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results. Prefer per-task directories (e.g., .../task_4/...).
+2026-03-31 11:25:12 | experiment | WARNING | SLURM array task detected but 'log_dir' does not appear task-isolated: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs. Prefer per-task directories (e.g., .../task_4/...).
+2026-03-31 11:25:12 | experiment | WARNING | SLURM array task detected but 'checkpoint_dir' does not appear task-isolated: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/checkpoints. Prefer per-task directories (e.g., .../task_4/...).
+2026-03-31 11:25:12 | experiment | WARNING | SLURM array task detected but output path may be shared across tasks: results/global/tables/recovery/phase3_missing_k12_scvi_zinb_d12_seed43.csv. Prefer task-local output paths to avoid concurrent write collisions.
+2026-03-31 11:25:12 | experiment | WARNING | Detected SLURM array task without large_run_mode enabled. Ensure results_dir/checkpoint_dir/log_dir are task-isolated to avoid collisions.
+2026-03-31 11:25:12 | experiment | INFO |   TensorBoard: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260331T092512Z_j1561954_a4_p499634
+2026-03-31 11:25:12 | experiment | INFO |   View live:   tensorboard --logdir /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard
+2026-03-31 11:25:12 | experiment | INFO | ======================================================================
+2026-03-31 11:25:12 | experiment | INFO | EXPERIMENT: Latent Dimension Sweep
+2026-03-31 11:25:12 | experiment | INFO |   Datasets:       ['splatter_k12']
+2026-03-31 11:25:12 | experiment | INFO |   Model/losses:   [('scvi', 'zinb')]
+2026-03-31 11:25:12 | experiment | INFO |   Latent dims:    [12]
+2026-03-31 11:25:12 | experiment | INFO |   Seeds:          1
+2026-03-31 11:25:12 | experiment | INFO |   Device:         cuda
+2026-03-31 11:25:12 | experiment | INFO |   Git commit:     10d3fdb
+2026-03-31 11:25:12 | experiment | INFO |   Run ID:         run_20260331T092512Z_j1561954_a4_p499634
+2026-03-31 11:25:12 | experiment | INFO |   Large run mode: False
+2026-03-31 11:25:12 | experiment | INFO | ======================================================================
+2026-03-31 11:25:13 | src.data.preprocessor | INFO |   Loaded processed data (in_memory): 4800 × 2000
+2026-03-31 11:25:13 | experiment | WARNING | Processed cache check for splatter_k12: missing fingerprint in cached file (expected=5029721aeb692bf5). This likely came from an older preprocessing run.. Continuing with cached file /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/data/processed/splatter_k12.h5ad; rerun preprocess to refresh.
+2026-03-31 11:25:13 | experiment | INFO | 
+Dataset: splatter_k12 (4800 cells, K=12, requested_mode=in_memory, effective_mode=in_memory, label_source=provided:cell_type)
+2026-03-31 11:25:13 | experiment | INFO | 
+--- splatter_k12 | scvi:zinb | d=12 | seed=43 ---
+2026-03-31 11:25:13 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-31 11:25:18 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 43
+2026-03-31 11:25:18 | src.models.scvi_wrapper | INFO |   scVI setup: d=12, likelihood=zinb, hidden=128, layers=2, batch_key=batch
+2026-03-31 11:25:19 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260331T092512Z_j1561954_a4_p499634/splatter_k12/scvi/zinb/d_12/seed_43
+2026-03-31 11:25:19 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-31 11:25:19 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-31 11:25:19 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+2026-03-31 11:25:19 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-31 11:25:20 | lightning.pytorch.trainer.connectors.signal_connector | INFO | SLURM auto-requeueing enabled. Setting signal handlers.
+2026-03-31 11:25:21 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=6708.886719, val=6819.687988
+2026-03-31 11:25:22 | src.models.scvi_wrapper | INFO |     scVI Epoch   2/80: train=5838.956055, val=5856.605469
+2026-03-31 11:25:22 | src.models.scvi_wrapper | INFO |     scVI Epoch   3/80: train=5629.302246, val=5705.179688
+2026-03-31 11:25:22 | src.models.scvi_wrapper | INFO |     scVI Epoch   4/80: train=5551.211914, val=5666.021484
+2026-03-31 11:25:23 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=5516.022461, val=5547.001465
+2026-03-31 11:25:23 | src.models.scvi_wrapper | INFO |     scVI Epoch   6/80: train=5494.215820, val=5557.117188
+2026-03-31 11:25:23 | src.models.scvi_wrapper | INFO |     scVI Epoch   7/80: train=5475.062988, val=5537.735840
+2026-03-31 11:25:24 | src.models.scvi_wrapper | INFO |     scVI Epoch   8/80: train=5460.312500, val=5505.361816
+2026-03-31 11:25:24 | src.models.scvi_wrapper | INFO |     scVI Epoch   9/80: train=5446.155762, val=5499.191406
+2026-03-31 11:25:24 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=5431.856934, val=5443.357422
+2026-03-31 11:25:25 | src.models.scvi_wrapper | INFO |     scVI Epoch  11/80: train=5418.607422, val=5426.567871
+2026-03-31 11:25:25 | src.models.scvi_wrapper | INFO |     scVI Epoch  12/80: train=5406.290039, val=5419.395508
+2026-03-31 11:25:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  13/80: train=5392.356445, val=5392.671387
+2026-03-31 11:25:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  14/80: train=5381.002441, val=5383.433594
+2026-03-31 11:25:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=5368.404297, val=5378.677734
+2026-03-31 11:25:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  16/80: train=5355.994141, val=5372.105469
+2026-03-31 11:25:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  17/80: train=5344.699219, val=5375.452148
+2026-03-31 11:25:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  18/80: train=5333.418457, val=5371.153320
+2026-03-31 11:25:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  19/80: train=5322.034180, val=5342.283203
+2026-03-31 11:25:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=5310.235352, val=5329.005371
+2026-03-31 11:25:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  21/80: train=5299.364746, val=5318.980957
+2026-03-31 11:25:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  22/80: train=5288.000000, val=5307.617188
+2026-03-31 11:25:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  23/80: train=5276.443848, val=5294.263184
+2026-03-31 11:25:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  24/80: train=5265.486816, val=5275.649902
+2026-03-31 11:25:30 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=5254.809570, val=5261.655762
+2026-03-31 11:25:30 | src.models.scvi_wrapper | INFO |     scVI Epoch  26/80: train=5246.738770, val=5262.407227
+2026-03-31 11:25:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  27/80: train=5235.821289, val=5245.197754
+2026-03-31 11:25:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  28/80: train=5224.997070, val=5249.673340
+2026-03-31 11:25:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  29/80: train=5214.516113, val=5257.837891
+2026-03-31 11:25:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=5204.787598, val=5232.650879
+2026-03-31 11:25:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  31/80: train=5194.822266, val=5225.278809
+2026-03-31 11:25:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  32/80: train=5184.761230, val=5218.177734
+2026-03-31 11:25:33 | src.models.scvi_wrapper | INFO |     scVI Epoch  33/80: train=5176.178711, val=5202.133301
+2026-03-31 11:25:33 | src.models.scvi_wrapper | INFO |     scVI Epoch  34/80: train=5166.652344, val=5210.356934
+2026-03-31 11:25:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=5158.272461, val=5177.622559
+2026-03-31 11:25:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  36/80: train=5150.012207, val=5176.700684
+2026-03-31 11:25:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  37/80: train=5142.125000, val=5156.594238
+2026-03-31 11:25:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  38/80: train=5134.656250, val=5152.566895
+2026-03-31 11:25:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  39/80: train=5127.637207, val=5151.393066
+2026-03-31 11:25:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=5120.121094, val=5139.942871
+2026-03-31 11:25:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  41/80: train=5113.133301, val=5127.759277
+2026-03-31 11:25:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  42/80: train=5105.440918, val=5120.607910
+2026-03-31 11:25:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  43/80: train=5099.580566, val=5117.816895
+2026-03-31 11:25:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  44/80: train=5092.519043, val=5111.776367
+2026-03-31 11:25:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=5086.005371, val=5096.547363
+2026-03-31 11:25:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  46/80: train=5080.373047, val=5102.617188
+2026-03-31 11:25:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  47/80: train=5073.946289, val=5100.121094
+2026-03-31 11:25:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  48/80: train=5067.584961, val=5080.451660
+2026-03-31 11:25:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  49/80: train=5061.518066, val=5084.706543
+2026-03-31 11:25:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=5055.763672, val=5073.054199
+2026-03-31 11:25:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  51/80: train=5049.896973, val=5064.950195
+2026-03-31 11:25:40 | src.models.scvi_wrapper | INFO |     scVI Epoch  52/80: train=5044.674316, val=5056.939453
+2026-03-31 11:25:40 | src.models.scvi_wrapper | INFO |     scVI Epoch  53/80: train=5038.707520, val=5057.202148
+2026-03-31 11:25:40 | src.models.scvi_wrapper | INFO |     scVI Epoch  54/80: train=5034.841309, val=5054.474609
+2026-03-31 11:25:41 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=5029.119629, val=5043.526855
+2026-03-31 11:25:41 | src.models.scvi_wrapper | INFO |     scVI Epoch  56/80: train=5023.794922, val=5047.885254
+2026-03-31 11:25:41 | src.models.scvi_wrapper | INFO |     scVI Epoch  57/80: train=5018.118652, val=5044.077637
+2026-03-31 11:25:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  58/80: train=5013.250000, val=5031.495605
+2026-03-31 11:25:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  59/80: train=5008.607422, val=5031.894043
+2026-03-31 11:25:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=5003.463379, val=5019.038574
+2026-03-31 11:25:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  61/80: train=4999.893555, val=5028.538574
+2026-03-31 11:25:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  62/80: train=4995.963379, val=5042.253418
+2026-03-31 11:25:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  63/80: train=4990.335449, val=5017.513672
+2026-03-31 11:25:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  64/80: train=4985.440430, val=4994.541504
+2026-03-31 11:25:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=4981.042480, val=5002.696777
+2026-03-31 11:25:45 | src.models.scvi_wrapper | INFO |     scVI Epoch  66/80: train=4977.480957, val=4998.551270
+2026-03-31 11:25:45 | src.models.scvi_wrapper | INFO |     scVI Epoch  67/80: train=4972.688477, val=4985.623535
+2026-03-31 11:25:46 | src.models.scvi_wrapper | INFO |     scVI Epoch  68/80: train=4968.421875, val=4979.724121
+2026-03-31 11:25:46 | src.models.scvi_wrapper | INFO |     scVI Epoch  69/80: train=4964.429199, val=4978.052246
+2026-03-31 11:25:46 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=4960.559570, val=4977.737793
+2026-03-31 11:25:47 | src.models.scvi_wrapper | INFO |     scVI Epoch  71/80: train=4957.996094, val=4982.920410
+2026-03-31 11:25:47 | src.models.scvi_wrapper | INFO |     scVI Epoch  72/80: train=4953.430176, val=4978.576660
+2026-03-31 11:25:47 | src.models.scvi_wrapper | INFO |     scVI Epoch  73/80: train=4949.477539, val=4960.730957
+2026-03-31 11:25:48 | src.models.scvi_wrapper | INFO |     scVI Epoch  74/80: train=4945.638672, val=4967.512207
+2026-03-31 11:25:48 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=4942.486816, val=4974.737305
+2026-03-31 11:25:48 | src.models.scvi_wrapper | INFO |     scVI Epoch  76/80: train=4938.855469, val=4968.976562
+2026-03-31 11:25:49 | src.models.scvi_wrapper | INFO |     scVI Epoch  77/80: train=4936.021484, val=4956.496582
+2026-03-31 11:25:49 | src.models.scvi_wrapper | INFO |     scVI Epoch  78/80: train=4932.808105, val=4960.639160
+2026-03-31 11:25:50 | src.models.scvi_wrapper | INFO |     scVI Epoch  79/80: train=4928.777344, val=4953.813965
+2026-03-31 11:25:50 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=4925.771484, val=4952.177246
+2026-03-31 11:25:50 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-03-31 11:25:50 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 31.0s
+[34mINFO    [0m Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-03-31 11:25:50 | src.evaluation.metrics | INFO |   Metrics: ARI=1.0000, AMI=1.0000, Sil(kmeans)=0.5737, Sil(labels)=0.5737 [n_used=480/480]
+2026-03-31 11:26:00 | src.evaluation.metrics | WARNING | Centrality computation failed (mode=full, n_obs=480, n_neighbors=15): `eigenvector_centrality_numpy` does not give consistent results for disconnected graphs
+2026-03-31 11:26:00 | experiment | INFO |   -> ARI=1.0000, AMI=1.0000, Sil=0.5737, Recon=4962.666016, CentralityMode=failed, CPUmem=nanMB, Time=47.4s
+2026-03-31 11:26:00 | experiment | INFO |   Dataset results saved: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/datasets/splatter_k12/tables/experiment_results.csv (1 rows)
+2026-03-31 11:26:00 | experiment | INFO | Skipping fit for scvi:zinb (unique K=1 < min_k_for_fit=3)
+2026-03-31 11:26:00 | experiment | INFO | Auto-d reports saved: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/datasets/splatter_k12/tables/recommended_d_by_K.csv, /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/datasets/splatter_k12/tables/formula_fit_summary.csv
+2026-03-31 11:26:00 | experiment | INFO | 
+======================================================================
+2026-03-31 11:26:00 | experiment | INFO | EXPERIMENT COMPLETE — run_20260331T092512Z_j1561954_a4_p499634
+2026-03-31 11:26:00 | experiment | INFO | ======================================================================
+2026-03-31 11:26:00 | experiment | INFO |   Total runs:    1
+2026-03-31 11:26:00 | experiment | INFO |   Successful:    1
+2026-03-31 11:26:00 | experiment | INFO |   Failed:        0
+2026-03-31 11:26:00 | experiment | INFO |   Completed:     2026-03-31T09:26:00.973667Z
+2026-03-31 11:26:00 | experiment | INFO | 
+2026-03-31 11:26:00 | experiment | INFO |   Output files:
+2026-03-31 11:26:00 | experiment | INFO |     Global CSV:  results/global/tables/recovery/phase3_missing_k12_scvi_zinb_d12_seed43.csv
+2026-03-31 11:26:00 | experiment | INFO |     Run dir:     /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/runs/run_20260331T092512Z_j1561954_a4_p499634/
+2026-03-31 11:26:00 | experiment | INFO |     TensorBoard: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260331T092512Z_j1561954_a4_p499634/ (1 event files)
+2026-03-31 11:26:00 | experiment | INFO |     View TB:     tensorboard --logdir /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard
+2026-03-31 11:26:00 | experiment | INFO | ======================================================================
+2026-03-31 11:26:00 | experiment | INFO | Skipping fit for scvi:zinb (unique K=1 < min_k_for_fit=3)
+2026-03-31 11:26:00 | experiment | INFO | Auto-d reports saved: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/global/tables/recommended_d_by_K.csv, /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/global/tables/formula_fit_summary.csv
+=== JOB_STATISTICS ===
+=== current date     : Tue Mar 31 11:26:03 AM CEST 2026
+= Job-ID             : 1561954 on tinygpu
+= Job-Name           : phase3_recover_k12
+= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/phase3_recover_missing_k12.sh
+= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+= Queue/Partition    : a100
+= Slurm account      : iwbn with QOS=normal
+= Requested resources:  for 04:00:00
+= Elapsed runtime    : 00:01:12
+= Total RAM usage    : 5.9 GiB of requested  GiB (%)   
+= Node list          : tg093
+= Subm/Elig/Start/End: 2026-03-31T11:06:47 / 2026-03-31T11:06:47 / 2026-03-31T11:24:51 / 2026-03-31T11:26:03
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              46.4G   104.9G   209.7G        N/A      98K     500K   1,000K        N/A    
+    /home/woody            12.7G  1000.0G  1500.0G        N/A      93K   5,000K   7,500K        N/A    
+    /home/vault             0.0K  1048.6G  2097.2G        N/A       1      200K     400K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+NVIDIA A100-SXM4-40GB, 00000000:01:00.0, 499634, 7 %, 0 %, 570 MiB, 50812 ms

@@ -1,0 +1,3 @@
+2026-03-15 16:58:06 | train | INFO | === Training: ae | d=4 | pbmc3k | device=cpu | loss=mse | seed=42 ===
+2026-03-15 16:58:10 | train | INFO |   Saved history to results/datasets/pbmc3k/tables/history_pbmc3k_ae_d4_mse.json
+2026-03-15 16:58:10 | train | INFO | === Training complete ===

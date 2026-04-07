@@ -1,0 +1,8 @@
+2026-03-15 17:14:41 | preprocess | INFO | === Preprocessing: paul15 ===
+2026-03-15 17:14:55 | preprocess | INFO | === Done. 1434 cells, 2000 genes, K=5, label_key=paul15_clusters, batch_key=None ===
+2026-03-15 17:15:00 | preprocess | INFO | === Preprocessing: paul15 ===
+2026-03-15 17:15:13 | preprocess | INFO | === Done. 1954 cells, 2000 genes, K=8, label_key=paul15_clusters, batch_key=None ===
+2026-03-15 17:15:19 | preprocess | INFO | === Preprocessing: paul15 ===
+2026-03-15 17:15:31 | preprocess | INFO | === Done. 2464 cells, 2000 genes, K=12, label_key=paul15_clusters, batch_key=None ===
+2026-03-15 17:15:37 | preprocess | INFO | === Preprocessing: paul15 ===
+2026-03-15 17:15:50 | preprocess | INFO | === Done. 2638 cells, 2000 genes, K=15, label_key=paul15_clusters, batch_key=None ===

@@ -1,0 +1,7 @@
+{
+  "dataset": "pbmc3k",
+  "latent_dim": 8,
+  "loss_type": "nb",
+  "model_type": "vae",
+  "seed": 44
+}

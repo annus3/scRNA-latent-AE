@@ -1,0 +1,64 @@
+### Starting TaskPrologue of job 1562583 on tg091 at Wed Apr  1 04:52:13 PM CEST 2026
+Running on cores 32-63 with governor ondemand
+Wed Apr  1 16:52:13 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:41:00.0 Off |                    0 |
+| N/A   41C    P0             58W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+WARN: conda env scvi_env not found, using user packages
+=== AIFI LIGHTWEIGHT ONBOARD START ===
+Job ID:        1562583
+Source file:   /home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/raw/aifi_immune_full_source.h5ad
+Ready file:    /home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/aifi_immune_full.h5ad
+Staged output: /tmp/1562583.tinygpu/iwbn129h/scae_aifi_onboard_1562583/aifi_immune_full.h5ad
+Start:         Wed Apr  1 04:52:15 PM CEST 2026
+OK
+shape= (1821725, 1236)
+label_source= provided:AIFI_L2
+batch_source= provided:batch_id
+ready_file_ok shape= (1821725, 1236)
+cell_type_source= provided:AIFI_L2
+batch_source= provided:batch_id
+Ready file written: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/aifi_immune_full.h5ad
+-rw-r--r-- 1 iwbn129h iwbn 3.0G Apr  1 16:54 /home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/aifi_immune_full.h5ad
+End: Wed Apr  1 04:55:43 PM CEST 2026
+=== AIFI LIGHTWEIGHT ONBOARD DONE ===
+=== JOB_STATISTICS ===
+=== current date     : Wed Apr  1 04:55:43 PM CEST 2026
+= Job-ID             : 1562583 on tinygpu
+= Job-Name           : aifi_onboard
+= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/phase4_aifi_onboard_light.sh
+= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+= Queue/Partition    : a100
+= Slurm account      : iwbn with QOS=normal
+= Requested resources:  for 12:00:00
+= Elapsed runtime    : 00:03:51
+= Total RAM usage    : 39.3 GiB of requested  GiB (%)   
+= Node list          : tg091
+= Subm/Elig/Start/End: 2026-04-01T16:51:25 / 2026-04-01T16:51:25 / 2026-04-01T16:51:52 / 2026-04-01T16:55:43
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              47.3G   104.9G   209.7G        N/A      98K     500K   1,000K        N/A    
+    /home/woody            68.0G  1000.0G  1500.0G        N/A      93K   5,000K   7,500K        N/A    
+    /home/vault             0.0K  1048.6G  2097.2G        N/A       1      200K     400K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]

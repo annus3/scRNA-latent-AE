@@ -1,0 +1,15 @@
+2026-03-30 15:05:19 | preprocess | INFO | === Preprocessing: scvi_pbmc12k ===
+2026-03-30 15:05:19 | src.data.loader | INFO | Loading dataset 'scvi_pbmc12k': scvi-tools PBMC benchmark (12,039 cells) with labels and batch metadata
+2026-03-30 15:05:40 | src.data.loader | INFO |   Shape: 11990 cells × 3346 genes
+2026-03-30 15:05:40 | src.data.preprocessor | INFO | Starting preprocessing pipeline...
+2026-03-30 15:05:40 | src.data.preprocessor | INFO |   QC: removed 1 cells, 0 genes. Remaining: 11989 cells × 3346 genes
+2026-03-30 15:05:47 | src.data.preprocessor | INFO |   Normalized to 10000 counts per cell
+2026-03-30 15:05:47 | src.data.preprocessor | INFO |   Applied log1p transformation
+2026-03-30 15:05:48 | src.data.preprocessor | INFO |   Selected 2000 highly variable genes (seurat_v3)
+2026-03-30 15:05:49 | src.data.preprocessor | INFO |   Subsetted to HVGs: 11989 × 2000
+2026-03-30 15:06:08 | src.data.preprocessor | INFO |   Computed PCA (50 components)
+2026-03-30 15:07:13 | src.data.preprocessor | INFO |   Using labels from 'labels': K=9
+2026-03-30 15:07:13 | src.data.preprocessor | INFO |   Preserved batch metadata from 'batch'
+2026-03-30 15:07:13 | src.data.preprocessor | INFO | Preprocessing complete: 11989 cells × 2000 genes, K=9, label_source=provided:labels
+2026-03-30 15:07:14 | src.data.preprocessor | INFO |   Saved processed data to /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/data/processed/scvi_pbmc12k.h5ad
+2026-03-30 15:07:14 | preprocess | INFO | === Done. 11989 cells, 2000 genes, K=9, label_key=labels, batch_key=batch ===

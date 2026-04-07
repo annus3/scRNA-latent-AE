@@ -1,0 +1,7 @@
+{
+  "dataset": "paul15",
+  "latent_dim": 20,
+  "loss_type": "nb",
+  "model_type": "ae",
+  "seed": 44
+}

@@ -1,0 +1,7 @@
+{
+  "dataset": "scvi_pbmc12k",
+  "latent_dim": 2,
+  "loss_type": "nb",
+  "model_type": "vae",
+  "seed": 43
+}

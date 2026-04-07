@@ -1,0 +1,1218 @@
+### Starting TaskPrologue of job 1561803 on tg092 at Mon Mar 30 22:51:00 CEST 2026
+Running on cores 96-127 with governor ondemand
+Mon Mar 30 22:51:00 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   33C    P0             52W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+=== PHASE3 K12 SANITY START ===
+Job ID:    1561803
+Node:      tg092
+Partition: a100
+Start:     Mon Mar 30 22:51:00 CEST 2026
+2026-03-30 22:51:28 | experiment | INFO |   TensorBoard: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392
+2026-03-30 22:51:28 | experiment | INFO |   View live:   tensorboard --logdir /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard
+2026-03-30 22:51:28 | experiment | INFO | ======================================================================
+2026-03-30 22:51:28 | experiment | INFO | EXPERIMENT: Latent Dimension Sweep
+2026-03-30 22:51:28 | experiment | INFO |   Datasets:       ['splatter_k12']
+2026-03-30 22:51:28 | experiment | INFO |   Model/losses:   [('ae', 'nb'), ('vae', 'nb'), ('scvi', 'nb')]
+2026-03-30 22:51:28 | experiment | INFO |   Latent dims:    [2, 16]
+2026-03-30 22:51:28 | experiment | INFO |   Seeds:          2
+2026-03-30 22:51:28 | experiment | INFO |   Device:         cuda
+2026-03-30 22:51:28 | experiment | INFO |   Git commit:     10d3fdb
+2026-03-30 22:51:28 | experiment | INFO |   Run ID:         run_20260330T205128Z_j1561803_p1249392
+2026-03-30 22:51:28 | experiment | INFO |   Large run mode: False
+2026-03-30 22:51:28 | experiment | INFO | ======================================================================
+2026-03-30 22:51:29 | src.data.preprocessor | INFO |   Loaded processed data (in_memory): 4800 × 2000
+2026-03-30 22:51:29 | experiment | WARNING | Processed cache check for splatter_k12: missing fingerprint in cached file (expected=5029721aeb692bf5). This likely came from an older preprocessing run.. Continuing with cached file /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/data/processed/splatter_k12.h5ad; rerun preprocess to refresh.
+2026-03-30 22:51:29 | experiment | INFO | 
+Dataset: splatter_k12 (4800 cells, K=12, requested_mode=in_memory, effective_mode=in_memory, label_source=provided:cell_type)
+2026-03-30 22:51:29 | experiment | INFO | 
+--- splatter_k12 | ae:nb | d=2 | seed=42 ---
+2026-03-30 22:51:29 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:51:29 | src.data.dataset | INFO |   DataLoaders: train=3840, val=480, test=480, batch_size=256, layer=counts, num_workers=0, pin_memory=True, preload=True
+2026-03-30 22:51:44 | src.training.trainer | INFO |   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/ae/nb/d_2/seed_42
+2026-03-30 22:51:44 | src.training.trainer | INFO |   Training AE (d=2, loss=nb) on cuda for up to 80 epochs
+2026-03-30 22:51:46 | src.training.trainer | INFO |     Epoch   1: train=14112.558301, val=7123.599609
+2026-03-30 22:51:46 | src.training.trainer | INFO |     Epoch   2: train=6083.783236, val=5707.777734
+2026-03-30 22:51:46 | src.training.trainer | INFO |     Epoch   3: train=5662.340299, val=5612.138574
+2026-03-30 22:51:46 | src.training.trainer | INFO |     Epoch   4: train=5615.131803, val=5588.199414
+2026-03-30 22:51:46 | src.training.trainer | INFO |     Epoch   5: train=5598.249414, val=5575.159440
+2026-03-30 22:51:46 | src.training.trainer | INFO |     Epoch   6: train=5587.231217, val=5565.230924
+2026-03-30 22:51:46 | src.training.trainer | INFO |     Epoch   7: train=5577.732194, val=5556.348242
+2026-03-30 22:51:46 | src.training.trainer | INFO |     Epoch   8: train=5569.185026, val=5548.730892
+2026-03-30 22:51:47 | src.training.trainer | INFO |     Epoch   9: train=5561.490918, val=5540.741016
+2026-03-30 22:51:47 | src.training.trainer | INFO |     Epoch  10: train=5554.208952, val=5534.422493
+2026-03-30 22:51:47 | src.training.trainer | INFO |     Epoch  11: train=5547.037174, val=5526.436491
+2026-03-30 22:51:47 | src.training.trainer | INFO |     Epoch  12: train=5539.588672, val=5519.458561
+2026-03-30 22:51:47 | src.training.trainer | INFO |     Epoch  13: train=5532.453809, val=5511.821257
+2026-03-30 22:51:47 | src.training.trainer | INFO |     Epoch  14: train=5525.133464, val=5505.164095
+2026-03-30 22:51:47 | src.training.trainer | INFO |     Epoch  15: train=5517.769727, val=5498.341764
+2026-03-30 22:51:48 | src.training.trainer | INFO |     Epoch  16: train=5510.409408, val=5490.701335
+2026-03-30 22:51:48 | src.training.trainer | INFO |     Epoch  17: train=5503.188672, val=5483.132910
+2026-03-30 22:51:48 | src.training.trainer | INFO |     Epoch  18: train=5495.971908, val=5476.488574
+2026-03-30 22:51:48 | src.training.trainer | INFO |     Epoch  19: train=5489.076628, val=5469.568457
+2026-03-30 22:51:48 | src.training.trainer | INFO |     Epoch  20: train=5482.603418, val=5463.803516
+2026-03-30 22:51:48 | src.training.trainer | INFO |     Epoch  21: train=5476.136263, val=5456.585547
+2026-03-30 22:51:48 | src.training.trainer | INFO |     Epoch  22: train=5469.615723, val=5450.670736
+2026-03-30 22:51:48 | src.training.trainer | INFO |     Epoch  23: train=5463.197786, val=5443.745931
+2026-03-30 22:51:49 | src.training.trainer | INFO |     Epoch  24: train=5457.000977, val=5438.426790
+2026-03-30 22:51:49 | src.training.trainer | INFO |     Epoch  25: train=5450.942871, val=5432.298763
+2026-03-30 22:51:49 | src.training.trainer | INFO |     Epoch  26: train=5445.673437, val=5426.739746
+2026-03-30 22:51:49 | src.training.trainer | INFO |     Epoch  27: train=5440.054395, val=5422.675781
+2026-03-30 22:51:49 | src.training.trainer | INFO |     Epoch  28: train=5435.008919, val=5416.049902
+2026-03-30 22:51:49 | src.training.trainer | INFO |     Epoch  29: train=5429.853255, val=5411.734896
+2026-03-30 22:51:49 | src.training.trainer | INFO |     Epoch  30: train=5425.422884, val=5407.177604
+2026-03-30 22:51:49 | src.training.trainer | INFO |     Epoch  31: train=5419.813965, val=5401.516341
+2026-03-30 22:51:50 | src.training.trainer | INFO |     Epoch  32: train=5414.861328, val=5396.257227
+2026-03-30 22:51:50 | src.training.trainer | INFO |     Epoch  33: train=5409.531283, val=5393.177148
+2026-03-30 22:51:50 | src.training.trainer | INFO |     Epoch  34: train=5405.900260, val=5388.280306
+2026-03-30 22:51:50 | src.training.trainer | INFO |     Epoch  35: train=5401.646452, val=5383.533659
+2026-03-30 22:51:50 | src.training.trainer | INFO |     Epoch  36: train=5397.193945, val=5379.435775
+2026-03-30 22:51:50 | src.training.trainer | INFO |     Epoch  37: train=5392.647428, val=5374.725163
+2026-03-30 22:51:50 | src.training.trainer | INFO |     Epoch  38: train=5388.150944, val=5371.263607
+2026-03-30 22:51:50 | src.training.trainer | INFO |     Epoch  39: train=5383.748535, val=5366.211849
+2026-03-30 22:51:51 | src.training.trainer | INFO |     Epoch  40: train=5378.962956, val=5361.400130
+2026-03-30 22:51:51 | src.training.trainer | INFO |     Epoch  41: train=5374.220215, val=5356.735547
+2026-03-30 22:51:51 | src.training.trainer | INFO |     Epoch  42: train=5370.279492, val=5353.587109
+2026-03-30 22:51:51 | src.training.trainer | INFO |     Epoch  43: train=5367.006673, val=5349.978223
+2026-03-30 22:51:51 | src.training.trainer | INFO |     Epoch  44: train=5363.714779, val=5346.912663
+2026-03-30 22:51:51 | src.training.trainer | INFO |     Epoch  45: train=5360.355111, val=5343.339583
+2026-03-30 22:51:51 | src.training.trainer | INFO |     Epoch  46: train=5356.916895, val=5339.607878
+2026-03-30 22:51:52 | src.training.trainer | INFO |     Epoch  47: train=5353.441048, val=5335.896484
+2026-03-30 22:51:52 | src.training.trainer | INFO |     Epoch  48: train=5349.450260, val=5332.886914
+2026-03-30 22:51:52 | src.training.trainer | INFO |     Epoch  49: train=5345.287630, val=5328.579264
+2026-03-30 22:51:52 | src.training.trainer | INFO |     Epoch  50: train=5341.035547, val=5323.568685
+2026-03-30 22:51:52 | src.training.trainer | INFO |     Epoch  51: train=5336.381087, val=5318.570085
+2026-03-30 22:51:52 | src.training.trainer | INFO |     Epoch  52: train=5331.085124, val=5313.699284
+2026-03-30 22:51:52 | src.training.trainer | INFO |     Epoch  53: train=5326.143457, val=5309.040560
+2026-03-30 22:51:52 | src.training.trainer | INFO |     Epoch  54: train=5322.264453, val=5305.853418
+2026-03-30 22:51:53 | src.training.trainer | INFO |     Epoch  55: train=5318.952148, val=5302.261849
+2026-03-30 22:51:53 | src.training.trainer | INFO |     Epoch  56: train=5315.716895, val=5299.031315
+2026-03-30 22:51:53 | src.training.trainer | INFO |     Epoch  57: train=5312.774772, val=5295.464616
+2026-03-30 22:51:53 | src.training.trainer | INFO |     Epoch  58: train=5308.829362, val=5292.664258
+2026-03-30 22:51:53 | src.training.trainer | INFO |     Epoch  59: train=5305.802441, val=5289.740137
+2026-03-30 22:51:53 | src.training.trainer | INFO |     Epoch  60: train=5302.578451, val=5286.626107
+2026-03-30 22:51:53 | src.training.trainer | INFO |     Epoch  61: train=5299.566862, val=5283.696973
+2026-03-30 22:51:53 | src.training.trainer | INFO |     Epoch  62: train=5296.534831, val=5280.826172
+2026-03-30 22:51:54 | src.training.trainer | INFO |     Epoch  63: train=5293.455241, val=5277.662956
+2026-03-30 22:51:54 | src.training.trainer | INFO |     Epoch  64: train=5290.352474, val=5274.433529
+2026-03-30 22:51:54 | src.training.trainer | INFO |     Epoch  65: train=5287.528646, val=5271.133757
+2026-03-30 22:51:54 | src.training.trainer | INFO |     Epoch  66: train=5284.387793, val=5268.453190
+2026-03-30 22:51:54 | src.training.trainer | INFO |     Epoch  67: train=5281.321094, val=5265.073861
+2026-03-30 22:51:54 | src.training.trainer | INFO |     Epoch  68: train=5278.199284, val=5262.446289
+2026-03-30 22:51:54 | src.training.trainer | INFO |     Epoch  69: train=5275.675879, val=5259.216960
+2026-03-30 22:51:55 | src.training.trainer | INFO |     Epoch  70: train=5271.945573, val=5256.264095
+2026-03-30 22:51:55 | src.training.trainer | INFO |     Epoch  71: train=5268.581055, val=5252.621191
+2026-03-30 22:51:55 | src.training.trainer | INFO |     Epoch  72: train=5265.216374, val=5250.177702
+2026-03-30 22:51:55 | src.training.trainer | INFO |     Epoch  73: train=5261.851823, val=5246.318392
+2026-03-30 22:51:55 | src.training.trainer | INFO |     Epoch  74: train=5258.959277, val=5244.100781
+2026-03-30 22:51:55 | src.training.trainer | INFO |     Epoch  75: train=5256.395833, val=5241.177083
+2026-03-30 22:51:55 | src.training.trainer | INFO |     Epoch  76: train=5253.700228, val=5238.826921
+2026-03-30 22:51:56 | src.training.trainer | INFO |     Epoch  77: train=5251.128483, val=5236.131543
+2026-03-30 22:51:56 | src.training.trainer | INFO |     Epoch  78: train=5248.216960, val=5232.954753
+2026-03-30 22:51:56 | src.training.trainer | INFO |     Epoch  79: train=5245.562793, val=5230.455111
+2026-03-30 22:51:56 | src.training.trainer | INFO |     Epoch  80: train=5241.732910, val=5227.743034
+2026-03-30 22:51:56 | src.training.trainer | INFO |   Training complete in 12.0s. Best val loss: 5227.743034 (epoch 80)
+2026-03-30 22:51:56 | src.evaluation.metrics | INFO |   Reconstruction loss (nb): 2.628611
+2026-03-30 22:51:56 | src.evaluation.metrics | INFO |   Metrics: ARI=0.1980, AMI=0.4040, Sil(kmeans)=0.3973, Sil(labels)=-0.0193 [n_used=480/480]
+2026-03-30 22:52:12 | src.evaluation.metrics | INFO |   Centrality variance: 0.001779 [mode=full, n_used=480/480]
+2026-03-30 22:52:12 | experiment | INFO |   -> ARI=0.1980, AMI=0.4040, Sil=0.3973, Recon=2.628611, CentralityMode=full, CPUmem=2.2MB, Time=43.0s
+2026-03-30 22:52:12 | experiment | INFO | 
+--- splatter_k12 | ae:nb | d=2 | seed=43 ---
+2026-03-30 22:52:12 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:52:12 | src.data.dataset | INFO |   DataLoaders: train=3840, val=480, test=480, batch_size=256, layer=counts, num_workers=0, pin_memory=True, preload=True
+2026-03-30 22:52:12 | src.training.trainer | INFO |   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/ae/nb/d_2/seed_43
+2026-03-30 22:52:12 | src.training.trainer | INFO |   Training AE (d=2, loss=nb) on cuda for up to 80 epochs
+2026-03-30 22:52:12 | src.training.trainer | INFO |     Epoch   1: train=13196.263216, val=6494.624935
+2026-03-30 22:52:12 | src.training.trainer | INFO |     Epoch   2: train=5936.142480, val=5701.695703
+2026-03-30 22:52:13 | src.training.trainer | INFO |     Epoch   3: train=5645.348047, val=5634.138509
+2026-03-30 22:52:13 | src.training.trainer | INFO |     Epoch   4: train=5608.472754, val=5614.410905
+2026-03-30 22:52:13 | src.training.trainer | INFO |     Epoch   5: train=5593.684570, val=5603.502669
+2026-03-30 22:52:13 | src.training.trainer | INFO |     Epoch   6: train=5583.815267, val=5594.656478
+2026-03-30 22:52:13 | src.training.trainer | INFO |     Epoch   7: train=5575.311589, val=5587.557617
+2026-03-30 22:52:13 | src.training.trainer | INFO |     Epoch   8: train=5567.401172, val=5578.828158
+2026-03-30 22:52:13 | src.training.trainer | INFO |     Epoch   9: train=5559.824577, val=5571.526107
+2026-03-30 22:52:13 | src.training.trainer | INFO |     Epoch  10: train=5552.418132, val=5564.785840
+2026-03-30 22:52:14 | src.training.trainer | INFO |     Epoch  11: train=5545.373665, val=5556.531283
+2026-03-30 22:52:14 | src.training.trainer | INFO |     Epoch  12: train=5538.025977, val=5549.659180
+2026-03-30 22:52:14 | src.training.trainer | INFO |     Epoch  13: train=5530.809831, val=5543.141862
+2026-03-30 22:52:14 | src.training.trainer | INFO |     Epoch  14: train=5524.134082, val=5535.810091
+2026-03-30 22:52:14 | src.training.trainer | INFO |     Epoch  15: train=5517.103125, val=5529.026270
+2026-03-30 22:52:14 | src.training.trainer | INFO |     Epoch  16: train=5510.468262, val=5522.949902
+2026-03-30 22:52:14 | src.training.trainer | INFO |     Epoch  17: train=5504.380078, val=5515.793424
+2026-03-30 22:52:14 | src.training.trainer | INFO |     Epoch  18: train=5497.746712, val=5509.991699
+2026-03-30 22:52:15 | src.training.trainer | INFO |     Epoch  19: train=5492.311849, val=5505.581413
+2026-03-30 22:52:15 | src.training.trainer | INFO |     Epoch  20: train=5487.212858, val=5499.766309
+2026-03-30 22:52:15 | src.training.trainer | INFO |     Epoch  21: train=5481.590039, val=5493.675391
+2026-03-30 22:52:15 | src.training.trainer | INFO |     Epoch  22: train=5475.318229, val=5487.700846
+2026-03-30 22:52:15 | src.training.trainer | INFO |     Epoch  23: train=5468.821159, val=5481.010970
+2026-03-30 22:52:15 | src.training.trainer | INFO |     Epoch  24: train=5461.787305, val=5473.638607
+2026-03-30 22:52:15 | src.training.trainer | INFO |     Epoch  25: train=5454.698600, val=5466.636133
+2026-03-30 22:52:16 | src.training.trainer | INFO |     Epoch  26: train=5447.894010, val=5460.350618
+2026-03-30 22:52:16 | src.training.trainer | INFO |     Epoch  27: train=5442.351595, val=5454.865853
+2026-03-30 22:52:16 | src.training.trainer | INFO |     Epoch  28: train=5436.507324, val=5450.382975
+2026-03-30 22:52:16 | src.training.trainer | INFO |     Epoch  29: train=5432.011654, val=5446.258529
+2026-03-30 22:52:16 | src.training.trainer | INFO |     Epoch  30: train=5427.580013, val=5440.863704
+2026-03-30 22:52:16 | src.training.trainer | INFO |     Epoch  31: train=5422.646159, val=5435.614746
+2026-03-30 22:52:16 | src.training.trainer | INFO |     Epoch  32: train=5418.093522, val=5430.798926
+2026-03-30 22:52:16 | src.training.trainer | INFO |     Epoch  33: train=5413.130371, val=5425.758724
+2026-03-30 22:52:17 | src.training.trainer | INFO |     Epoch  34: train=5407.283984, val=5419.717285
+2026-03-30 22:52:17 | src.training.trainer | INFO |     Epoch  35: train=5402.103353, val=5415.023893
+2026-03-30 22:52:17 | src.training.trainer | INFO |     Epoch  36: train=5396.942676, val=5409.248047
+2026-03-30 22:52:17 | src.training.trainer | INFO |     Epoch  37: train=5391.778060, val=5404.988118
+2026-03-30 22:52:17 | src.training.trainer | INFO |     Epoch  38: train=5385.918197, val=5398.597526
+2026-03-30 22:52:17 | src.training.trainer | INFO |     Epoch  39: train=5379.816146, val=5392.505632
+2026-03-30 22:52:17 | src.training.trainer | INFO |     Epoch  40: train=5374.744141, val=5388.196517
+2026-03-30 22:52:17 | src.training.trainer | INFO |     Epoch  41: train=5370.772917, val=5383.852930
+2026-03-30 22:52:18 | src.training.trainer | INFO |     Epoch  42: train=5366.861003, val=5380.324056
+2026-03-30 22:52:18 | src.training.trainer | INFO |     Epoch  43: train=5363.029069, val=5377.402214
+2026-03-30 22:52:18 | src.training.trainer | INFO |     Epoch  44: train=5359.736849, val=5373.336621
+2026-03-30 22:52:18 | src.training.trainer | INFO |     Epoch  45: train=5355.803516, val=5369.965104
+2026-03-30 22:52:18 | src.training.trainer | INFO |     Epoch  46: train=5352.477799, val=5366.453125
+2026-03-30 22:52:18 | src.training.trainer | INFO |     Epoch  47: train=5348.627539, val=5362.261621
+2026-03-30 22:52:18 | src.training.trainer | INFO |     Epoch  48: train=5343.809766, val=5356.557682
+2026-03-30 22:52:18 | src.training.trainer | INFO |     Epoch  49: train=5338.157324, val=5351.121484
+2026-03-30 22:52:19 | src.training.trainer | INFO |     Epoch  50: train=5332.536621, val=5344.963607
+2026-03-30 22:52:19 | src.training.trainer | INFO |     Epoch  51: train=5326.887695, val=5340.126758
+2026-03-30 22:52:19 | src.training.trainer | INFO |     Epoch  52: train=5322.531576, val=5335.718880
+2026-03-30 22:52:19 | src.training.trainer | INFO |     Epoch  53: train=5318.057878, val=5331.521419
+2026-03-30 22:52:19 | src.training.trainer | INFO |     Epoch  54: train=5313.759603, val=5327.948340
+2026-03-30 22:52:19 | src.training.trainer | INFO |     Epoch  55: train=5310.479264, val=5324.662012
+2026-03-30 22:52:19 | src.training.trainer | INFO |     Epoch  56: train=5307.523796, val=5321.829036
+2026-03-30 22:52:19 | src.training.trainer | INFO |     Epoch  57: train=5304.814779, val=5319.489876
+2026-03-30 22:52:20 | src.training.trainer | INFO |     Epoch  58: train=5302.051400, val=5316.269303
+2026-03-30 22:52:20 | src.training.trainer | INFO |     Epoch  59: train=5299.224967, val=5313.653646
+2026-03-30 22:52:20 | src.training.trainer | INFO |     Epoch  60: train=5296.040885, val=5310.365820
+2026-03-30 22:52:20 | src.training.trainer | INFO |     Epoch  61: train=5293.216797, val=5307.784408
+2026-03-30 22:52:20 | src.training.trainer | INFO |     Epoch  62: train=5289.878451, val=5304.411100
+2026-03-30 22:52:20 | src.training.trainer | INFO |     Epoch  63: train=5286.258789, val=5300.431868
+2026-03-30 22:52:20 | src.training.trainer | INFO |     Epoch  64: train=5282.832715, val=5296.006868
+2026-03-30 22:52:21 | src.training.trainer | INFO |     Epoch  65: train=5278.158594, val=5291.517285
+2026-03-30 22:52:21 | src.training.trainer | INFO |     Epoch  66: train=5273.715430, val=5287.379167
+2026-03-30 22:52:21 | src.training.trainer | INFO |     Epoch  67: train=5269.935872, val=5284.089941
+2026-03-30 22:52:21 | src.training.trainer | INFO |     Epoch  68: train=5265.854655, val=5280.962760
+2026-03-30 22:52:21 | src.training.trainer | INFO |     Epoch  69: train=5262.289616, val=5276.249609
+2026-03-30 22:52:21 | src.training.trainer | INFO |     Epoch  70: train=5258.795833, val=5273.497493
+2026-03-30 22:52:21 | src.training.trainer | INFO |     Epoch  71: train=5256.204883, val=5270.923210
+2026-03-30 22:52:21 | src.training.trainer | INFO |     Epoch  72: train=5253.975130, val=5268.920475
+2026-03-30 22:52:22 | src.training.trainer | INFO |     Epoch  73: train=5251.843978, val=5266.653809
+2026-03-30 22:52:22 | src.training.trainer | INFO |     Epoch  74: train=5249.595345, val=5264.731348
+2026-03-30 22:52:22 | src.training.trainer | INFO |     Epoch  75: train=5247.385612, val=5262.312077
+2026-03-30 22:52:22 | src.training.trainer | INFO |     Epoch  76: train=5245.128809, val=5260.036458
+2026-03-30 22:52:22 | src.training.trainer | INFO |     Epoch  77: train=5242.794043, val=5257.769661
+2026-03-30 22:52:22 | src.training.trainer | INFO |     Epoch  78: train=5240.450130, val=5255.644043
+2026-03-30 22:52:22 | src.training.trainer | INFO |     Epoch  79: train=5237.976595, val=5253.070964
+2026-03-30 22:52:22 | src.training.trainer | INFO |     Epoch  80: train=5235.897526, val=5251.044043
+2026-03-30 22:52:22 | src.training.trainer | INFO |   Training complete in 10.3s. Best val loss: 5251.044043 (epoch 80)
+2026-03-30 22:52:22 | src.evaluation.metrics | INFO |   Reconstruction loss (nb): 2.623875
+2026-03-30 22:52:22 | src.evaluation.metrics | INFO |   Metrics: ARI=0.1790, AMI=0.3763, Sil(kmeans)=0.4343, Sil(labels)=-0.0181 [n_used=480/480]
+2026-03-30 22:52:23 | src.evaluation.metrics | INFO |   Centrality variance: 0.001648 [mode=full, n_used=480/480]
+2026-03-30 22:52:23 | experiment | INFO |   -> ARI=0.1790, AMI=0.3763, Sil=0.4343, Recon=2.623875, CentralityMode=full, CPUmem=2.2MB, Time=10.6s
+2026-03-30 22:52:23 | experiment | INFO | 
+--- splatter_k12 | ae:nb | d=16 | seed=42 ---
+2026-03-30 22:52:23 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:52:23 | src.data.dataset | INFO |   DataLoaders: train=3840, val=480, test=480, batch_size=256, layer=counts, num_workers=0, pin_memory=True, preload=True
+2026-03-30 22:52:23 | src.training.trainer | INFO |   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/ae/nb/d_16/seed_42
+2026-03-30 22:52:23 | src.training.trainer | INFO |   Training AE (d=16, loss=nb) on cuda for up to 80 epochs
+2026-03-30 22:52:23 | src.training.trainer | INFO |     Epoch   1: train=13572.033138, val=7021.115788
+2026-03-30 22:52:23 | src.training.trainer | INFO |     Epoch   2: train=6068.168555, val=5696.491374
+2026-03-30 22:52:23 | src.training.trainer | INFO |     Epoch   3: train=5657.670052, val=5610.054622
+2026-03-30 22:52:23 | src.training.trainer | INFO |     Epoch   4: train=5614.485189, val=5588.110091
+2026-03-30 22:52:23 | src.training.trainer | INFO |     Epoch   5: train=5598.727865, val=5576.666992
+2026-03-30 22:52:24 | src.training.trainer | INFO |     Epoch   6: train=5588.185645, val=5567.493848
+2026-03-30 22:52:24 | src.training.trainer | INFO |     Epoch   7: train=5579.247103, val=5558.397559
+2026-03-30 22:52:24 | src.training.trainer | INFO |     Epoch   8: train=5571.128190, val=5551.025553
+2026-03-30 22:52:24 | src.training.trainer | INFO |     Epoch   9: train=5563.636068, val=5543.436589
+2026-03-30 22:52:24 | src.training.trainer | INFO |     Epoch  10: train=5556.781283, val=5536.449935
+2026-03-30 22:52:24 | src.training.trainer | INFO |     Epoch  11: train=5549.707227, val=5529.929329
+2026-03-30 22:52:24 | src.training.trainer | INFO |     Epoch  12: train=5542.437174, val=5522.556706
+2026-03-30 22:52:25 | src.training.trainer | INFO |     Epoch  13: train=5535.186230, val=5515.303158
+2026-03-30 22:52:25 | src.training.trainer | INFO |     Epoch  14: train=5527.978092, val=5508.649512
+2026-03-30 22:52:25 | src.training.trainer | INFO |     Epoch  15: train=5521.449121, val=5501.711165
+2026-03-30 22:52:25 | src.training.trainer | INFO |     Epoch  16: train=5514.461882, val=5494.777702
+2026-03-30 22:52:25 | src.training.trainer | INFO |     Epoch  17: train=5508.105404, val=5489.578223
+2026-03-30 22:52:25 | src.training.trainer | INFO |     Epoch  18: train=5501.699805, val=5481.459538
+2026-03-30 22:52:25 | src.training.trainer | INFO |     Epoch  19: train=5494.906771, val=5475.646745
+2026-03-30 22:52:26 | src.training.trainer | INFO |     Epoch  20: train=5488.200977, val=5468.640820
+2026-03-30 22:52:26 | src.training.trainer | INFO |     Epoch  21: train=5481.222852, val=5461.884082
+2026-03-30 22:52:26 | src.training.trainer | INFO |     Epoch  22: train=5475.305990, val=5455.885384
+2026-03-30 22:52:26 | src.training.trainer | INFO |     Epoch  23: train=5469.276758, val=5450.393978
+2026-03-30 22:52:26 | src.training.trainer | INFO |     Epoch  24: train=5463.654850, val=5445.198047
+2026-03-30 22:52:26 | src.training.trainer | INFO |     Epoch  25: train=5457.687337, val=5439.103353
+2026-03-30 22:52:26 | src.training.trainer | INFO |     Epoch  26: train=5451.986165, val=5433.102507
+2026-03-30 22:52:27 | src.training.trainer | INFO |     Epoch  27: train=5445.897982, val=5427.271452
+2026-03-30 22:52:27 | src.training.trainer | INFO |     Epoch  28: train=5439.926628, val=5421.660970
+2026-03-30 22:52:27 | src.training.trainer | INFO |     Epoch  29: train=5433.933268, val=5415.383496
+2026-03-30 22:52:27 | src.training.trainer | INFO |     Epoch  30: train=5427.674577, val=5409.353646
+2026-03-30 22:52:27 | src.training.trainer | INFO |     Epoch  31: train=5421.621517, val=5403.594792
+2026-03-30 22:52:27 | src.training.trainer | INFO |     Epoch  32: train=5415.410254, val=5397.480762
+2026-03-30 22:52:27 | src.training.trainer | INFO |     Epoch  33: train=5409.777246, val=5391.543490
+2026-03-30 22:52:27 | src.training.trainer | INFO |     Epoch  34: train=5404.184961, val=5387.544434
+2026-03-30 22:52:28 | src.training.trainer | INFO |     Epoch  35: train=5399.691081, val=5381.650521
+2026-03-30 22:52:28 | src.training.trainer | INFO |     Epoch  36: train=5394.781999, val=5378.673568
+2026-03-30 22:52:28 | src.training.trainer | INFO |     Epoch  37: train=5390.753776, val=5374.119889
+2026-03-30 22:52:28 | src.training.trainer | INFO |     Epoch  38: train=5386.448340, val=5369.138997
+2026-03-30 22:52:28 | src.training.trainer | INFO |     Epoch  39: train=5381.747949, val=5364.645215
+2026-03-30 22:52:28 | src.training.trainer | INFO |     Epoch  40: train=5377.410677, val=5360.474349
+2026-03-30 22:52:28 | src.training.trainer | INFO |     Epoch  41: train=5373.291211, val=5356.498438
+2026-03-30 22:52:28 | src.training.trainer | INFO |     Epoch  42: train=5368.739258, val=5351.829687
+2026-03-30 22:52:29 | src.training.trainer | INFO |     Epoch  43: train=5364.165365, val=5347.307813
+2026-03-30 22:52:29 | src.training.trainer | INFO |     Epoch  44: train=5359.382487, val=5343.186556
+2026-03-30 22:52:29 | src.training.trainer | INFO |     Epoch  45: train=5354.392546, val=5338.705339
+2026-03-30 22:52:29 | src.training.trainer | INFO |     Epoch  46: train=5350.423307, val=5335.165007
+2026-03-30 22:52:29 | src.training.trainer | INFO |     Epoch  47: train=5346.380762, val=5329.526237
+2026-03-30 22:52:29 | src.training.trainer | INFO |     Epoch  48: train=5342.148405, val=5326.209505
+2026-03-30 22:52:29 | src.training.trainer | INFO |     Epoch  49: train=5337.342839, val=5321.661003
+2026-03-30 22:52:29 | src.training.trainer | INFO |     Epoch  50: train=5332.730013, val=5317.672005
+2026-03-30 22:52:30 | src.training.trainer | INFO |     Epoch  51: train=5329.503125, val=5313.419661
+2026-03-30 22:52:30 | src.training.trainer | INFO |     Epoch  52: train=5325.462760, val=5310.927018
+2026-03-30 22:52:30 | src.training.trainer | INFO |     Epoch  53: train=5322.228743, val=5306.572331
+2026-03-30 22:52:30 | src.training.trainer | INFO |     Epoch  54: train=5318.526953, val=5303.262109
+2026-03-30 22:52:30 | src.training.trainer | INFO |     Epoch  55: train=5315.262109, val=5300.156022
+2026-03-30 22:52:30 | src.training.trainer | INFO |     Epoch  56: train=5312.153548, val=5296.703483
+2026-03-30 22:52:30 | src.training.trainer | INFO |     Epoch  57: train=5308.201302, val=5294.140202
+2026-03-30 22:52:31 | src.training.trainer | INFO |     Epoch  58: train=5304.824772, val=5289.223275
+2026-03-30 22:52:31 | src.training.trainer | INFO |     Epoch  59: train=5300.804720, val=5285.566732
+2026-03-30 22:52:31 | src.training.trainer | INFO |     Epoch  60: train=5296.798405, val=5282.355859
+2026-03-30 22:52:31 | src.training.trainer | INFO |     Epoch  61: train=5293.473893, val=5279.351562
+2026-03-30 22:52:31 | src.training.trainer | INFO |     Epoch  62: train=5289.825293, val=5275.366797
+2026-03-30 22:52:31 | src.training.trainer | INFO |     Epoch  63: train=5285.754883, val=5270.875163
+2026-03-30 22:52:31 | src.training.trainer | INFO |     Epoch  64: train=5281.675553, val=5266.518815
+2026-03-30 22:52:31 | src.training.trainer | INFO |     Epoch  65: train=5277.584147, val=5263.546029
+2026-03-30 22:52:32 | src.training.trainer | INFO |     Epoch  66: train=5273.626432, val=5259.497461
+2026-03-30 22:52:32 | src.training.trainer | INFO |     Epoch  67: train=5270.009115, val=5256.193685
+2026-03-30 22:52:32 | src.training.trainer | INFO |     Epoch  68: train=5266.147754, val=5251.733008
+2026-03-30 22:52:32 | src.training.trainer | INFO |     Epoch  69: train=5262.577767, val=5249.435059
+2026-03-30 22:52:32 | src.training.trainer | INFO |     Epoch  70: train=5258.336621, val=5244.179167
+2026-03-30 22:52:32 | src.training.trainer | INFO |     Epoch  71: train=5254.868229, val=5241.350684
+2026-03-30 22:52:32 | src.training.trainer | INFO |     Epoch  72: train=5251.563770, val=5238.094043
+2026-03-30 22:52:32 | src.training.trainer | INFO |     Epoch  73: train=5247.920964, val=5234.490234
+2026-03-30 22:52:33 | src.training.trainer | INFO |     Epoch  74: train=5244.081510, val=5230.421517
+2026-03-30 22:52:33 | src.training.trainer | INFO |     Epoch  75: train=5240.827181, val=5226.239648
+2026-03-30 22:52:33 | src.training.trainer | INFO |     Epoch  76: train=5236.739779, val=5223.587923
+2026-03-30 22:52:33 | src.training.trainer | INFO |     Epoch  77: train=5232.968880, val=5219.749479
+2026-03-30 22:52:33 | src.training.trainer | INFO |     Epoch  78: train=5229.130599, val=5216.903288
+2026-03-30 22:52:33 | src.training.trainer | INFO |     Epoch  79: train=5225.861556, val=5213.782454
+2026-03-30 22:52:33 | src.training.trainer | INFO |     Epoch  80: train=5223.055143, val=5210.404590
+2026-03-30 22:52:33 | src.training.trainer | INFO |   Training complete in 10.6s. Best val loss: 5210.404590 (epoch 80)
+2026-03-30 22:52:33 | src.evaluation.metrics | INFO |   Reconstruction loss (nb): 2.619997
+2026-03-30 22:52:33 | src.evaluation.metrics | INFO |   Metrics: ARI=0.1929, AMI=0.4120, Sil(kmeans)=0.2689, Sil(labels)=0.1462 [n_used=480/480]
+2026-03-30 22:52:34 | src.evaluation.metrics | INFO |   Centrality variance: 0.001128 [mode=full, n_used=480/480]
+2026-03-30 22:52:34 | experiment | INFO |   -> ARI=0.1929, AMI=0.4120, Sil=0.2689, Recon=2.619997, CentralityMode=full, CPUmem=2.1MB, Time=11.0s
+2026-03-30 22:52:34 | experiment | INFO | 
+--- splatter_k12 | ae:nb | d=16 | seed=43 ---
+2026-03-30 22:52:34 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:52:34 | src.data.dataset | INFO |   DataLoaders: train=3840, val=480, test=480, batch_size=256, layer=counts, num_workers=0, pin_memory=True, preload=True
+2026-03-30 22:52:34 | src.training.trainer | INFO |   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/ae/nb/d_16/seed_43
+2026-03-30 22:52:34 | src.training.trainer | INFO |   Training AE (d=16, loss=nb) on cuda for up to 80 epochs
+2026-03-30 22:52:34 | src.training.trainer | INFO |     Epoch   1: train=13084.415234, val=6633.250391
+2026-03-30 22:52:34 | src.training.trainer | INFO |     Epoch   2: train=5967.603385, val=5706.304460
+2026-03-30 22:52:34 | src.training.trainer | INFO |     Epoch   3: train=5646.760775, val=5635.490397
+2026-03-30 22:52:34 | src.training.trainer | INFO |     Epoch   4: train=5608.984701, val=5615.247070
+2026-03-30 22:52:34 | src.training.trainer | INFO |     Epoch   5: train=5593.939811, val=5604.812695
+2026-03-30 22:52:35 | src.training.trainer | INFO |     Epoch   6: train=5584.077474, val=5594.785384
+2026-03-30 22:52:35 | src.training.trainer | INFO |     Epoch   7: train=5575.385482, val=5587.164030
+2026-03-30 22:52:35 | src.training.trainer | INFO |     Epoch   8: train=5567.484798, val=5578.768132
+2026-03-30 22:52:35 | src.training.trainer | INFO |     Epoch   9: train=5559.719954, val=5572.082389
+2026-03-30 22:52:35 | src.training.trainer | INFO |     Epoch  10: train=5552.524154, val=5564.724447
+2026-03-30 22:52:35 | src.training.trainer | INFO |     Epoch  11: train=5545.772135, val=5558.576530
+2026-03-30 22:52:35 | src.training.trainer | INFO |     Epoch  12: train=5538.696908, val=5550.637077
+2026-03-30 22:52:35 | src.training.trainer | INFO |     Epoch  13: train=5531.539030, val=5543.392904
+2026-03-30 22:52:36 | src.training.trainer | INFO |     Epoch  14: train=5524.303158, val=5536.194596
+2026-03-30 22:52:36 | src.training.trainer | INFO |     Epoch  15: train=5517.198503, val=5529.232617
+2026-03-30 22:52:36 | src.training.trainer | INFO |     Epoch  16: train=5510.046322, val=5521.918652
+2026-03-30 22:52:36 | src.training.trainer | INFO |     Epoch  17: train=5503.350456, val=5515.359766
+2026-03-30 22:52:36 | src.training.trainer | INFO |     Epoch  18: train=5496.726432, val=5508.726237
+2026-03-30 22:52:36 | src.training.trainer | INFO |     Epoch  19: train=5490.352832, val=5502.428971
+2026-03-30 22:52:36 | src.training.trainer | INFO |     Epoch  20: train=5483.672135, val=5496.456934
+2026-03-30 22:52:37 | src.training.trainer | INFO |     Epoch  21: train=5477.965658, val=5490.657389
+2026-03-30 22:52:37 | src.training.trainer | INFO |     Epoch  22: train=5472.022396, val=5484.580924
+2026-03-30 22:52:37 | src.training.trainer | INFO |     Epoch  23: train=5465.834017, val=5479.090234
+2026-03-30 22:52:37 | src.training.trainer | INFO |     Epoch  24: train=5459.913379, val=5472.444336
+2026-03-30 22:52:37 | src.training.trainer | INFO |     Epoch  25: train=5453.558822, val=5466.080924
+2026-03-30 22:52:37 | src.training.trainer | INFO |     Epoch  26: train=5447.302507, val=5460.309180
+2026-03-30 22:52:37 | src.training.trainer | INFO |     Epoch  27: train=5441.030892, val=5453.404557
+2026-03-30 22:52:37 | src.training.trainer | INFO |     Epoch  28: train=5434.742480, val=5447.189974
+2026-03-30 22:52:38 | src.training.trainer | INFO |     Epoch  29: train=5429.773079, val=5442.840658
+2026-03-30 22:52:38 | src.training.trainer | INFO |     Epoch  30: train=5424.047070, val=5437.244889
+2026-03-30 22:52:38 | src.training.trainer | INFO |     Epoch  31: train=5419.103613, val=5432.704720
+2026-03-30 22:52:38 | src.training.trainer | INFO |     Epoch  32: train=5414.557324, val=5427.590397
+2026-03-30 22:52:38 | src.training.trainer | INFO |     Epoch  33: train=5409.083691, val=5422.035807
+2026-03-30 22:52:38 | src.training.trainer | INFO |     Epoch  34: train=5403.598177, val=5417.451953
+2026-03-30 22:52:38 | src.training.trainer | INFO |     Epoch  35: train=5398.081999, val=5411.634831
+2026-03-30 22:52:39 | src.training.trainer | INFO |     Epoch  36: train=5393.046680, val=5406.851335
+2026-03-30 22:52:39 | src.training.trainer | INFO |     Epoch  37: train=5387.658171, val=5400.575391
+2026-03-30 22:52:39 | src.training.trainer | INFO |     Epoch  38: train=5382.256641, val=5395.918132
+2026-03-30 22:52:39 | src.training.trainer | INFO |     Epoch  39: train=5377.436784, val=5391.374935
+2026-03-30 22:52:39 | src.training.trainer | INFO |     Epoch  40: train=5372.377734, val=5386.355469
+2026-03-30 22:52:39 | src.training.trainer | INFO |     Epoch  41: train=5367.256055, val=5381.841569
+2026-03-30 22:52:39 | src.training.trainer | INFO |     Epoch  42: train=5361.998828, val=5376.211230
+2026-03-30 22:52:40 | src.training.trainer | INFO |     Epoch  43: train=5357.418001, val=5372.601921
+2026-03-30 22:52:40 | src.training.trainer | INFO |     Epoch  44: train=5353.118164, val=5367.814355
+2026-03-30 22:52:40 | src.training.trainer | INFO |     Epoch  45: train=5348.554297, val=5363.344108
+2026-03-30 22:52:40 | src.training.trainer | INFO |     Epoch  46: train=5344.293717, val=5359.050000
+2026-03-30 22:52:40 | src.training.trainer | INFO |     Epoch  47: train=5340.223340, val=5355.967285
+2026-03-30 22:52:40 | src.training.trainer | INFO |     Epoch  48: train=5336.233659, val=5352.526204
+2026-03-30 22:52:40 | src.training.trainer | INFO |     Epoch  49: train=5332.064648, val=5347.271354
+2026-03-30 22:52:41 | src.training.trainer | INFO |     Epoch  50: train=5328.370052, val=5343.696517
+2026-03-30 22:52:41 | src.training.trainer | INFO |     Epoch  51: train=5324.421322, val=5340.671354
+2026-03-30 22:52:41 | src.training.trainer | INFO |     Epoch  52: train=5319.943262, val=5335.090234
+2026-03-30 22:52:41 | src.training.trainer | INFO |     Epoch  53: train=5315.295573, val=5330.008268
+2026-03-30 22:52:41 | src.training.trainer | INFO |     Epoch  54: train=5310.085677, val=5325.300163
+2026-03-30 22:52:41 | src.training.trainer | INFO |     Epoch  55: train=5305.246289, val=5320.171875
+2026-03-30 22:52:41 | src.training.trainer | INFO |     Epoch  56: train=5300.338704, val=5316.722493
+2026-03-30 22:52:41 | src.training.trainer | INFO |     Epoch  57: train=5296.199284, val=5311.260482
+2026-03-30 22:52:42 | src.training.trainer | INFO |     Epoch  58: train=5291.186035, val=5307.234538
+2026-03-30 22:52:42 | src.training.trainer | INFO |     Epoch  59: train=5287.043099, val=5303.266243
+2026-03-30 22:52:42 | src.training.trainer | INFO |     Epoch  60: train=5282.595443, val=5298.254232
+2026-03-30 22:52:42 | src.training.trainer | INFO |     Epoch  61: train=5277.544401, val=5293.911523
+2026-03-30 22:52:42 | src.training.trainer | INFO |     Epoch  62: train=5273.148600, val=5288.987630
+2026-03-30 22:52:42 | src.training.trainer | INFO |     Epoch  63: train=5268.740885, val=5284.806576
+2026-03-30 22:52:42 | src.training.trainer | INFO |     Epoch  64: train=5264.308073, val=5281.662826
+2026-03-30 22:52:43 | src.training.trainer | INFO |     Epoch  65: train=5260.676335, val=5278.449382
+2026-03-30 22:52:43 | src.training.trainer | INFO |     Epoch  66: train=5256.886686, val=5274.585482
+2026-03-30 22:52:43 | src.training.trainer | INFO |     Epoch  67: train=5253.765885, val=5270.846354
+2026-03-30 22:52:43 | src.training.trainer | INFO |     Epoch  68: train=5250.943164, val=5267.756966
+2026-03-30 22:52:43 | src.training.trainer | INFO |     Epoch  69: train=5247.867480, val=5266.177539
+2026-03-30 22:52:43 | src.training.trainer | INFO |     Epoch  70: train=5244.315788, val=5261.038086
+2026-03-30 22:52:43 | src.training.trainer | INFO |     Epoch  71: train=5240.539453, val=5257.589779
+2026-03-30 22:52:43 | src.training.trainer | INFO |     Epoch  72: train=5237.117936, val=5254.208431
+2026-03-30 22:52:44 | src.training.trainer | INFO |     Epoch  73: train=5233.011133, val=5250.824609
+2026-03-30 22:52:44 | src.training.trainer | INFO |     Epoch  74: train=5230.085254, val=5247.741341
+2026-03-30 22:52:44 | src.training.trainer | INFO |     Epoch  75: train=5226.723307, val=5243.649642
+2026-03-30 22:52:44 | src.training.trainer | INFO |     Epoch  76: train=5223.249935, val=5241.036589
+2026-03-30 22:52:44 | src.training.trainer | INFO |     Epoch  77: train=5220.543945, val=5239.109831
+2026-03-30 22:52:44 | src.training.trainer | INFO |     Epoch  78: train=5217.896322, val=5237.261198
+2026-03-30 22:52:44 | src.training.trainer | INFO |     Epoch  79: train=5215.312044, val=5233.455339
+2026-03-30 22:52:44 | src.training.trainer | INFO |     Epoch  80: train=5212.518685, val=5230.271940
+2026-03-30 22:52:44 | src.training.trainer | INFO |   Training complete in 10.7s. Best val loss: 5230.271940 (epoch 80)
+2026-03-30 22:52:45 | src.evaluation.metrics | INFO |   Reconstruction loss (nb): 2.614156
+2026-03-30 22:52:45 | src.evaluation.metrics | INFO |   Metrics: ARI=0.4282, AMI=0.6402, Sil(kmeans)=0.2977, Sil(labels)=0.2797 [n_used=480/480]
+2026-03-30 22:52:45 | src.evaluation.metrics | INFO |   Centrality variance: 0.001889 [mode=full, n_used=480/480]
+2026-03-30 22:52:45 | experiment | INFO |   -> ARI=0.4282, AMI=0.6402, Sil=0.2977, Recon=2.614156, CentralityMode=full, CPUmem=2.1MB, Time=11.1s
+2026-03-30 22:52:45 | experiment | INFO | 
+--- splatter_k12 | vae:nb | d=2 | seed=42 ---
+2026-03-30 22:52:45 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:52:45 | src.data.dataset | INFO |   DataLoaders: train=3840, val=480, test=480, batch_size=256, layer=counts, num_workers=0, pin_memory=True, preload=True
+2026-03-30 22:52:45 | src.training.trainer | INFO |   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/vae/nb/d_2/seed_42
+2026-03-30 22:52:45 | src.training.trainer | INFO |   Training VAE (d=2, loss=nb) on cuda for up to 80 epochs
+2026-03-30 22:52:45 | src.training.trainer | INFO |     Epoch   1: train=14457.199284, val=8450.666276 (recon=14038.2487, kl=418.9505)
+2026-03-30 22:52:45 | src.training.trainer | INFO |     Epoch   2: train=7012.746745, val=6166.819499 (recon=6454.3638, kl=558.3829)
+2026-03-30 22:52:46 | src.training.trainer | INFO |     Epoch   3: train=5976.582943, val=5806.390332 (recon=5791.3141, kl=185.2688)
+2026-03-30 22:52:46 | src.training.trainer | INFO |     Epoch   4: train=5766.463932, val=5701.498568 (recon=5674.8055, kl=91.6584)
+2026-03-30 22:52:46 | src.training.trainer | INFO |     Epoch   5: train=5694.476335, val=5653.228743 (recon=5635.1908, kl=59.2855)
+2026-03-30 22:52:46 | src.training.trainer | INFO |     Epoch   6: train=5658.481478, val=5634.402995 (recon=5615.6490, kl=42.8325)
+2026-03-30 22:52:46 | src.training.trainer | INFO |     Epoch   7: train=5638.797201, val=5612.033040 (recon=5608.2652, kl=30.5320)
+2026-03-30 22:52:46 | src.training.trainer | INFO |     Epoch   8: train=5622.021582, val=5593.363151 (recon=5593.6219, kl=28.3997)
+2026-03-30 22:52:47 | src.training.trainer | INFO |     Epoch   9: train=5605.661882, val=5583.534342 (recon=5584.8815, kl=20.7804)
+2026-03-30 22:52:47 | src.training.trainer | INFO |     Epoch  10: train=5593.280632, val=5570.968555 (recon=5575.6248, kl=17.6559)
+2026-03-30 22:52:47 | src.training.trainer | INFO |     Epoch  11: train=5582.660059, val=5561.200326 (recon=5566.0533, kl=16.6069)
+2026-03-30 22:52:47 | src.training.trainer | INFO |     Epoch  12: train=5575.622201, val=5553.997819 (recon=5559.6817, kl=15.9405)
+2026-03-30 22:52:47 | src.training.trainer | INFO |     Epoch  13: train=5569.725228, val=5548.550944 (recon=5555.1230, kl=14.6021)
+2026-03-30 22:52:47 | src.training.trainer | INFO |     Epoch  14: train=5563.702214, val=5546.634277 (recon=5549.9437, kl=13.7585)
+2026-03-30 22:52:47 | src.training.trainer | INFO |     Epoch  15: train=5558.328385, val=5535.666960 (recon=5545.3396, kl=12.9888)
+2026-03-30 22:52:47 | src.training.trainer | INFO |     Epoch  16: train=5552.205208, val=5531.232129 (recon=5539.6438, kl=12.5614)
+2026-03-30 22:52:48 | src.training.trainer | INFO |     Epoch  17: train=5547.012207, val=5527.082650 (recon=5534.9884, kl=12.0238)
+2026-03-30 22:52:48 | src.training.trainer | INFO |     Epoch  18: train=5544.549902, val=5526.694531 (recon=5533.0553, kl=11.4946)
+2026-03-30 22:52:48 | src.training.trainer | INFO |     Epoch  19: train=5538.483105, val=5516.306120 (recon=5527.6960, kl=10.7871)
+2026-03-30 22:52:48 | src.training.trainer | INFO |     Epoch  20: train=5531.574674, val=5513.057780 (recon=5521.5178, kl=10.0570)
+2026-03-30 22:52:48 | src.training.trainer | INFO |     Epoch  21: train=5527.378190, val=5506.957552 (recon=5517.5017, kl=9.8765)
+2026-03-30 22:52:48 | src.training.trainer | INFO |     Epoch  22: train=5524.791862, val=5507.515820 (recon=5514.6706, kl=10.1213)
+2026-03-30 22:52:48 | src.training.trainer | INFO |     Epoch  23: train=5519.348242, val=5498.936719 (recon=5510.0550, kl=9.2933)
+2026-03-30 22:52:49 | src.training.trainer | INFO |     Epoch  24: train=5514.340267, val=5496.997819 (recon=5504.9717, kl=9.3685)
+2026-03-30 22:52:49 | src.training.trainer | INFO |     Epoch  25: train=5510.033105, val=5489.169792 (recon=5500.9496, kl=9.0835)
+2026-03-30 22:52:49 | src.training.trainer | INFO |     Epoch  26: train=5505.079818, val=5486.148730 (recon=5496.1582, kl=8.9217)
+2026-03-30 22:52:49 | src.training.trainer | INFO |     Epoch  27: train=5500.997331, val=5481.386849 (recon=5492.4224, kl=8.5749)
+2026-03-30 22:52:49 | src.training.trainer | INFO |     Epoch  28: train=5496.631120, val=5477.832943 (recon=5488.0108, kl=8.6204)
+2026-03-30 22:52:49 | src.training.trainer | INFO |     Epoch  29: train=5492.828255, val=5473.591439 (recon=5484.2870, kl=8.5413)
+2026-03-30 22:52:49 | src.training.trainer | INFO |     Epoch  30: train=5489.338607, val=5470.150456 (recon=5480.9092, kl=8.4294)
+2026-03-30 22:52:50 | src.training.trainer | INFO |     Epoch  31: train=5485.686491, val=5467.615104 (recon=5477.4501, kl=8.2364)
+2026-03-30 22:52:50 | src.training.trainer | INFO |     Epoch  32: train=5482.213216, val=5464.274805 (recon=5473.9440, kl=8.2692)
+2026-03-30 22:52:50 | src.training.trainer | INFO |     Epoch  33: train=5480.123600, val=5464.157878 (recon=5472.0780, kl=8.0456)
+2026-03-30 22:52:50 | src.training.trainer | INFO |     Epoch  34: train=5478.678581, val=5462.089323 (recon=5470.7247, kl=7.9539)
+2026-03-30 22:52:50 | src.training.trainer | INFO |     Epoch  35: train=5474.671777, val=5457.242676 (recon=5466.6549, kl=8.0168)
+2026-03-30 22:52:50 | src.training.trainer | INFO |     Epoch  36: train=5470.309017, val=5452.161784 (recon=5462.8436, kl=7.4654)
+2026-03-30 22:52:50 | src.training.trainer | INFO |     Epoch  37: train=5467.035124, val=5448.671549 (recon=5459.4279, kl=7.6073)
+2026-03-30 22:52:50 | src.training.trainer | INFO |     Epoch  38: train=5464.870052, val=5449.647917 (recon=5457.1378, kl=7.7323)
+2026-03-30 22:52:51 | src.training.trainer | INFO |     Epoch  39: train=5463.466471, val=5445.209766 (recon=5455.8008, kl=7.6656)
+2026-03-30 22:52:51 | src.training.trainer | INFO |     Epoch  40: train=5459.443620, val=5440.586751 (recon=5452.0576, kl=7.3860)
+2026-03-30 22:52:51 | src.training.trainer | INFO |     Epoch  41: train=5457.790527, val=5438.526530 (recon=5450.5093, kl=7.2812)
+2026-03-30 22:52:51 | src.training.trainer | INFO |     Epoch  42: train=5454.988021, val=5437.515918 (recon=5447.3415, kl=7.6465)
+2026-03-30 22:52:51 | src.training.trainer | INFO |     Epoch  43: train=5451.185612, val=5430.652018 (recon=5444.0573, kl=7.1283)
+2026-03-30 22:52:51 | src.training.trainer | INFO |     Epoch  44: train=5453.596940, val=5432.462207 (recon=5446.6335, kl=6.9635)
+2026-03-30 22:52:51 | src.training.trainer | INFO |     Epoch  45: train=5447.975977, val=5426.806803 (recon=5441.3307, kl=6.6453)
+2026-03-30 22:52:52 | src.training.trainer | INFO |     Epoch  46: train=5440.210449, val=5424.613216 (recon=5433.6414, kl=6.5690)
+2026-03-30 22:52:52 | src.training.trainer | INFO |     Epoch  47: train=5437.972689, val=5418.907520 (recon=5431.4355, kl=6.5372)
+2026-03-30 22:52:52 | src.training.trainer | INFO |     Epoch  48: train=5436.217025, val=5417.124121 (recon=5429.4780, kl=6.7390)
+2026-03-30 22:52:52 | src.training.trainer | INFO |     Epoch  49: train=5434.336263, val=5421.887174 (recon=5427.4302, kl=6.9061)
+2026-03-30 22:52:52 | src.training.trainer | INFO |     Epoch  50: train=5432.658464, val=5414.644857 (recon=5425.8558, kl=6.8027)
+2026-03-30 22:52:52 | src.training.trainer | INFO |     Epoch  51: train=5429.062240, val=5409.433594 (recon=5422.2675, kl=6.7947)
+2026-03-30 22:52:52 | src.training.trainer | INFO |     Epoch  52: train=5425.108236, val=5406.658919 (recon=5418.4778, kl=6.6305)
+2026-03-30 22:52:52 | src.training.trainer | INFO |     Epoch  53: train=5422.422786, val=5403.967708 (recon=5415.6954, kl=6.7274)
+2026-03-30 22:52:53 | src.training.trainer | INFO |     Epoch  54: train=5419.885352, val=5402.698405 (recon=5413.2791, kl=6.6062)
+2026-03-30 22:52:53 | src.training.trainer | INFO |     Epoch  55: train=5417.683724, val=5400.127767 (recon=5410.9232, kl=6.7606)
+2026-03-30 22:52:53 | src.training.trainer | INFO |     Epoch  56: train=5415.553646, val=5396.976465 (recon=5408.9312, kl=6.6224)
+2026-03-30 22:52:53 | src.training.trainer | INFO |     Epoch  57: train=5412.053027, val=5394.108008 (recon=5405.3235, kl=6.7295)
+2026-03-30 22:52:53 | src.training.trainer | INFO |     Epoch  58: train=5409.409017, val=5391.424772 (recon=5402.9625, kl=6.4465)
+2026-03-30 22:52:53 | src.training.trainer | INFO |     Epoch  59: train=5406.962044, val=5388.833073 (recon=5400.4382, kl=6.5239)
+2026-03-30 22:52:53 | src.training.trainer | INFO |     Epoch  60: train=5404.519010, val=5387.407422 (recon=5397.9636, kl=6.5554)
+2026-03-30 22:52:54 | src.training.trainer | INFO |     Epoch  61: train=5402.484961, val=5385.926497 (recon=5395.9604, kl=6.5245)
+2026-03-30 22:52:54 | src.training.trainer | INFO |     Epoch  62: train=5400.409310, val=5381.259115 (recon=5394.0101, kl=6.3992)
+2026-03-30 22:52:54 | src.training.trainer | INFO |     Epoch  63: train=5396.224512, val=5378.225911 (recon=5389.8706, kl=6.3539)
+2026-03-30 22:52:54 | src.training.trainer | INFO |     Epoch  64: train=5393.641146, val=5376.176302 (recon=5387.3374, kl=6.3036)
+2026-03-30 22:52:54 | src.training.trainer | INFO |     Epoch  65: train=5391.151855, val=5373.178874 (recon=5384.9198, kl=6.2320)
+2026-03-30 22:52:54 | src.training.trainer | INFO |     Epoch  66: train=5388.684635, val=5371.232422 (recon=5382.5332, kl=6.1514)
+2026-03-30 22:52:55 | src.training.trainer | INFO |     Epoch  67: train=5386.320410, val=5368.489030 (recon=5380.0805, kl=6.2399)
+2026-03-30 22:52:55 | src.training.trainer | INFO |     Epoch  68: train=5383.978060, val=5366.919694 (recon=5377.8796, kl=6.0985)
+2026-03-30 22:52:55 | src.training.trainer | INFO |     Epoch  69: train=5383.163997, val=5365.004753 (recon=5376.8717, kl=6.2923)
+2026-03-30 22:52:55 | src.training.trainer | INFO |     Epoch  70: train=5379.408561, val=5361.779688 (recon=5373.3099, kl=6.0987)
+2026-03-30 22:52:55 | src.training.trainer | INFO |     Epoch  71: train=5376.376855, val=5358.623926 (recon=5370.3888, kl=5.9881)
+2026-03-30 22:52:55 | src.training.trainer | INFO |     Epoch  72: train=5374.100586, val=5356.874349 (recon=5368.2551, kl=5.8455)
+2026-03-30 22:52:56 | src.training.trainer | INFO |     Epoch  73: train=5371.786849, val=5354.515560 (recon=5365.8619, kl=5.9249)
+2026-03-30 22:52:56 | src.training.trainer | INFO |     Epoch  74: train=5369.531445, val=5352.549056 (recon=5363.5617, kl=5.9697)
+2026-03-30 22:52:56 | src.training.trainer | INFO |     Epoch  75: train=5367.453548, val=5350.007129 (recon=5361.6040, kl=5.8496)
+2026-03-30 22:52:56 | src.training.trainer | INFO |     Epoch  76: train=5365.269434, val=5347.428809 (recon=5359.4498, kl=5.8196)
+2026-03-30 22:52:56 | src.training.trainer | INFO |     Epoch  77: train=5362.171940, val=5345.047428 (recon=5356.2339, kl=5.9381)
+2026-03-30 22:52:56 | src.training.trainer | INFO |     Epoch  78: train=5359.557259, val=5342.332682 (recon=5353.9074, kl=5.6498)
+2026-03-30 22:52:57 | src.training.trainer | INFO |     Epoch  79: train=5357.200977, val=5339.006738 (recon=5351.5453, kl=5.6557)
+2026-03-30 22:52:57 | src.training.trainer | INFO |     Epoch  80: train=5355.272917, val=5338.278190 (recon=5349.6503, kl=5.6226)
+2026-03-30 22:52:57 | src.training.trainer | INFO |   Training complete in 11.8s. Best val loss: 5338.278190 (epoch 80)
+2026-03-30 22:52:57 | src.evaluation.metrics | INFO |   Reconstruction loss (nb): 2.681332
+2026-03-30 22:52:57 | src.evaluation.metrics | INFO |   VAE ELBO (nb): -5368.780208
+2026-03-30 22:52:57 | src.evaluation.metrics | INFO |   Metrics: ARI=0.0162, AMI=0.0569, Sil(kmeans)=0.3749, Sil(labels)=-0.1231 [n_used=480/480]
+2026-03-30 22:52:57 | src.evaluation.metrics | INFO |   Centrality variance: 0.001854 [mode=full, n_used=480/480]
+2026-03-30 22:52:57 | experiment | INFO |   -> ARI=0.0162, AMI=0.0569, Sil=0.3749, Recon=2.681332, CentralityMode=full, CPUmem=2.1MB, Time=12.1s
+2026-03-30 22:52:57 | experiment | INFO | 
+--- splatter_k12 | vae:nb | d=2 | seed=43 ---
+2026-03-30 22:52:57 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:52:57 | src.data.dataset | INFO |   DataLoaders: train=3840, val=480, test=480, batch_size=256, layer=counts, num_workers=0, pin_memory=True, preload=True
+2026-03-30 22:52:57 | src.training.trainer | INFO |   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/vae/nb/d_2/seed_43
+2026-03-30 22:52:57 | src.training.trainer | INFO |   Training VAE (d=2, loss=nb) on cuda for up to 80 epochs
+2026-03-30 22:52:57 | src.training.trainer | INFO |     Epoch   1: train=14082.868685, val=8049.007389 (recon=13742.0961, kl=340.7726)
+2026-03-30 22:52:57 | src.training.trainer | INFO |     Epoch   2: train=6777.203288, val=6114.575977 (recon=6283.8686, kl=493.3346)
+2026-03-30 22:52:57 | src.training.trainer | INFO |     Epoch   3: train=5937.722428, val=5842.439648 (recon=5767.7667, kl=169.9557)
+2026-03-30 22:52:58 | src.training.trainer | INFO |     Epoch   4: train=5788.001888, val=5768.493294 (recon=5684.5698, kl=103.4321)
+2026-03-30 22:52:58 | src.training.trainer | INFO |     Epoch   5: train=5733.581738, val=5729.003451 (recon=5651.9781, kl=81.6036)
+2026-03-30 22:52:58 | src.training.trainer | INFO |     Epoch   6: train=5701.717904, val=5697.603841 (recon=5635.9745, kl=65.7434)
+2026-03-30 22:52:58 | src.training.trainer | INFO |     Epoch   7: train=5680.991016, val=5687.989779 (recon=5628.9135, kl=52.0775)
+2026-03-30 22:52:58 | src.training.trainer | INFO |     Epoch   8: train=5663.240430, val=5657.005273 (recon=5610.9091, kl=52.3313)
+2026-03-30 22:52:58 | src.training.trainer | INFO |     Epoch   9: train=5633.166862, val=5633.897266 (recon=5594.7845, kl=38.3823)
+2026-03-30 22:52:58 | src.training.trainer | INFO |     Epoch  10: train=5611.552474, val=5616.046322 (recon=5582.5064, kl=29.0460)
+2026-03-30 22:52:58 | src.training.trainer | INFO |     Epoch  11: train=5592.157324, val=5599.559733 (recon=5569.1965, kl=22.9609)
+2026-03-30 22:52:59 | src.training.trainer | INFO |     Epoch  12: train=5580.847038, val=5591.051595 (recon=5558.5147, kl=22.3324)
+2026-03-30 22:52:59 | src.training.trainer | INFO |     Epoch  13: train=5571.986100, val=5583.310840 (recon=5551.8401, kl=20.1460)
+2026-03-30 22:52:59 | src.training.trainer | INFO |     Epoch  14: train=5565.013411, val=5581.233268 (recon=5546.2931, kl=18.7203)
+2026-03-30 22:52:59 | src.training.trainer | INFO |     Epoch  15: train=5560.190983, val=5569.104069 (recon=5543.0860, kl=17.1049)
+2026-03-30 22:52:59 | src.training.trainer | INFO |     Epoch  16: train=5550.880176, val=5563.116016 (recon=5534.9703, kl=15.9099)
+2026-03-30 22:52:59 | src.training.trainer | INFO |     Epoch  17: train=5544.056283, val=5556.433952 (recon=5528.7069, kl=15.3494)
+2026-03-30 22:53:00 | src.training.trainer | INFO |     Epoch  18: train=5539.278255, val=5551.755339 (recon=5524.2934, kl=14.9848)
+2026-03-30 22:53:00 | src.training.trainer | INFO |     Epoch  19: train=5532.555827, val=5543.343327 (recon=5518.8539, kl=13.7018)
+2026-03-30 22:53:00 | src.training.trainer | INFO |     Epoch  20: train=5528.732487, val=5538.749772 (recon=5515.6122, kl=13.1203)
+2026-03-30 22:53:00 | src.training.trainer | INFO |     Epoch  21: train=5521.642611, val=5533.970052 (recon=5509.0421, kl=12.6005)
+2026-03-30 22:53:00 | src.training.trainer | INFO |     Epoch  22: train=5518.269434, val=5530.256120 (recon=5506.1875, kl=12.0818)
+2026-03-30 22:53:00 | src.training.trainer | INFO |     Epoch  23: train=5517.401237, val=5528.368099 (recon=5506.0333, kl=11.3679)
+2026-03-30 22:53:00 | src.training.trainer | INFO |     Epoch  24: train=5509.710677, val=5520.293066 (recon=5498.8096, kl=10.9010)
+2026-03-30 22:53:00 | src.training.trainer | INFO |     Epoch  25: train=5507.267806, val=5519.458105 (recon=5496.3031, kl=10.9647)
+2026-03-30 22:53:01 | src.training.trainer | INFO |     Epoch  26: train=5501.330664, val=5513.327962 (recon=5490.7035, kl=10.6271)
+2026-03-30 22:53:01 | src.training.trainer | INFO |     Epoch  27: train=5498.488346, val=5512.151009 (recon=5488.1719, kl=10.3164)
+2026-03-30 22:53:01 | src.training.trainer | INFO |     Epoch  28: train=5495.769141, val=5507.140527 (recon=5485.7551, kl=10.0141)
+2026-03-30 22:53:01 | src.training.trainer | INFO |     Epoch  29: train=5489.998730, val=5501.598568 (recon=5480.3362, kl=9.6625)
+2026-03-30 22:53:01 | src.training.trainer | INFO |     Epoch  30: train=5486.600163, val=5509.951074 (recon=5477.1715, kl=9.4287)
+2026-03-30 22:53:01 | src.training.trainer | INFO |     Epoch  31: train=5487.309635, val=5495.157194 (recon=5478.2946, kl=9.0151)
+2026-03-30 22:53:01 | src.training.trainer | INFO |     Epoch  32: train=5476.237663, val=5488.323796 (recon=5467.7226, kl=8.5151)
+2026-03-30 22:53:02 | src.training.trainer | INFO |     Epoch  33: train=5473.648633, val=5481.041699 (recon=5464.8204, kl=8.8282)
+2026-03-30 22:53:02 | src.training.trainer | INFO |     Epoch  34: train=5465.131445, val=5479.591602 (recon=5457.1699, kl=7.9615)
+2026-03-30 22:53:02 | src.training.trainer | INFO |     Epoch  35: train=5469.718490, val=5490.902376 (recon=5461.6241, kl=8.0945)
+2026-03-30 22:53:02 | src.training.trainer | INFO |     Epoch  36: train=5471.186133, val=5473.864290 (recon=5463.1058, kl=8.0804)
+2026-03-30 22:53:02 | src.training.trainer | INFO |     Epoch  37: train=5456.661589, val=5468.546354 (recon=5448.7642, kl=7.8974)
+2026-03-30 22:53:02 | src.training.trainer | INFO |     Epoch  38: train=5453.357650, val=5467.902018 (recon=5445.4902, kl=7.8674)
+2026-03-30 22:53:02 | src.training.trainer | INFO |     Epoch  39: train=5450.855859, val=5463.415723 (recon=5442.9340, kl=7.9219)
+2026-03-30 22:53:03 | src.training.trainer | INFO |     Epoch  40: train=5446.971354, val=5459.635254 (recon=5439.1417, kl=7.8297)
+2026-03-30 22:53:03 | src.training.trainer | INFO |     Epoch  41: train=5444.128743, val=5456.723893 (recon=5436.3160, kl=7.8127)
+2026-03-30 22:53:03 | src.training.trainer | INFO |     Epoch  42: train=5441.101888, val=5455.822331 (recon=5433.4954, kl=7.6065)
+2026-03-30 22:53:03 | src.training.trainer | INFO |     Epoch  43: train=5438.988867, val=5450.505339 (recon=5431.5468, kl=7.4420)
+2026-03-30 22:53:03 | src.training.trainer | INFO |     Epoch  44: train=5434.582422, val=5447.116113 (recon=5427.0171, kl=7.5653)
+2026-03-30 22:53:03 | src.training.trainer | INFO |     Epoch  45: train=5431.491406, val=5444.354818 (recon=5424.1588, kl=7.3327)
+2026-03-30 22:53:03 | src.training.trainer | INFO |     Epoch  46: train=5428.674642, val=5441.927279 (recon=5421.4714, kl=7.2033)
+2026-03-30 22:53:03 | src.training.trainer | INFO |     Epoch  47: train=5426.123112, val=5439.914616 (recon=5418.9282, kl=7.1950)
+2026-03-30 22:53:04 | src.training.trainer | INFO |     Epoch  48: train=5423.210319, val=5435.489746 (recon=5416.3249, kl=6.8855)
+2026-03-30 22:53:04 | src.training.trainer | INFO |     Epoch  49: train=5419.971680, val=5432.545898 (recon=5412.9557, kl=7.0160)
+2026-03-30 22:53:04 | src.training.trainer | INFO |     Epoch  50: train=5416.779329, val=5429.818327 (recon=5409.9732, kl=6.8062)
+2026-03-30 22:53:04 | src.training.trainer | INFO |     Epoch  51: train=5413.730143, val=5427.339453 (recon=5407.1687, kl=6.5614)
+2026-03-30 22:53:04 | src.training.trainer | INFO |     Epoch  52: train=5410.995052, val=5423.635156 (recon=5404.4829, kl=6.5122)
+2026-03-30 22:53:04 | src.training.trainer | INFO |     Epoch  53: train=5407.570671, val=5420.584375 (recon=5401.3225, kl=6.2482)
+2026-03-30 22:53:05 | src.training.trainer | INFO |     Epoch  54: train=5405.021777, val=5417.957812 (recon=5398.9594, kl=6.0624)
+2026-03-30 22:53:05 | src.training.trainer | INFO |     Epoch  55: train=5401.155664, val=5414.174837 (recon=5395.3522, kl=5.8034)
+2026-03-30 22:53:05 | src.training.trainer | INFO |     Epoch  56: train=5398.307552, val=5411.161100 (recon=5392.5926, kl=5.7149)
+2026-03-30 22:53:05 | src.training.trainer | INFO |     Epoch  57: train=5395.954232, val=5408.524740 (recon=5390.2901, kl=5.6642)
+2026-03-30 22:53:05 | src.training.trainer | INFO |     Epoch  58: train=5392.741992, val=5406.159538 (recon=5387.2389, kl=5.5031)
+2026-03-30 22:53:05 | src.training.trainer | INFO |     Epoch  59: train=5390.087956, val=5403.932259 (recon=5384.5800, kl=5.5080)
+2026-03-30 22:53:05 | src.training.trainer | INFO |     Epoch  60: train=5387.870768, val=5401.200488 (recon=5382.3574, kl=5.5133)
+2026-03-30 22:53:05 | src.training.trainer | INFO |     Epoch  61: train=5385.447331, val=5398.150358 (recon=5380.0450, kl=5.4023)
+2026-03-30 22:53:06 | src.training.trainer | INFO |     Epoch  62: train=5382.400326, val=5395.959863 (recon=5376.9945, kl=5.4058)
+2026-03-30 22:53:06 | src.training.trainer | INFO |     Epoch  63: train=5379.742773, val=5393.125586 (recon=5374.4957, kl=5.2471)
+2026-03-30 22:53:06 | src.training.trainer | INFO |     Epoch  64: train=5377.307031, val=5390.582943 (recon=5372.0475, kl=5.2596)
+2026-03-30 22:53:06 | src.training.trainer | INFO |     Epoch  65: train=5375.240755, val=5389.441243 (recon=5369.8944, kl=5.3464)
+2026-03-30 22:53:06 | src.training.trainer | INFO |     Epoch  66: train=5373.371354, val=5386.611621 (recon=5368.0648, kl=5.3065)
+2026-03-30 22:53:06 | src.training.trainer | INFO |     Epoch  67: train=5370.127897, val=5383.867904 (recon=5364.9135, kl=5.2144)
+2026-03-30 22:53:06 | src.training.trainer | INFO |     Epoch  68: train=5367.683984, val=5380.847266 (recon=5362.5076, kl=5.1764)
+2026-03-30 22:53:07 | src.training.trainer | INFO |     Epoch  69: train=5374.408529, val=5379.495671 (recon=5369.3970, kl=5.0116)
+2026-03-30 22:53:07 | src.training.trainer | INFO |     Epoch  70: train=5363.764095, val=5377.223210 (recon=5358.6253, kl=5.1388)
+2026-03-30 22:53:07 | src.training.trainer | INFO |     Epoch  71: train=5361.494564, val=5375.096029 (recon=5356.3609, kl=5.1336)
+2026-03-30 22:53:07 | src.training.trainer | INFO |     Epoch  72: train=5359.383008, val=5372.684310 (recon=5354.2695, kl=5.1135)
+2026-03-30 22:53:07 | src.training.trainer | INFO |     Epoch  73: train=5357.075033, val=5370.205143 (recon=5351.9582, kl=5.1168)
+2026-03-30 22:53:07 | src.training.trainer | INFO |     Epoch  74: train=5354.844629, val=5368.574805 (recon=5349.7729, kl=5.0717)
+2026-03-30 22:53:07 | src.training.trainer | INFO |     Epoch  75: train=5352.628027, val=5366.615104 (recon=5347.5723, kl=5.0558)
+2026-03-30 22:53:08 | src.training.trainer | INFO |     Epoch  76: train=5353.464030, val=5371.713151 (recon=5348.5034, kl=4.9607)
+2026-03-30 22:53:08 | src.training.trainer | INFO |     Epoch  77: train=5353.892839, val=5366.198926 (recon=5348.9169, kl=4.9759)
+2026-03-30 22:53:08 | src.training.trainer | INFO |     Epoch  78: train=5374.564323, val=5374.790527 (recon=5369.7802, kl=4.7841)
+2026-03-30 22:53:08 | src.training.trainer | INFO |     Epoch  79: train=5371.264193, val=5380.322526 (recon=5366.0297, kl=5.2344)
+2026-03-30 22:53:08 | src.training.trainer | INFO |     Epoch  80: train=5355.327344, val=5369.222363 (recon=5350.6859, kl=4.6414)
+2026-03-30 22:53:08 | src.training.trainer | INFO |   Training complete in 11.0s. Best val loss: 5366.198926 (epoch 77)
+2026-03-30 22:53:08 | src.evaluation.metrics | INFO |   Reconstruction loss (nb): 2.678891
+2026-03-30 22:53:08 | src.evaluation.metrics | INFO |   VAE ELBO (nb): -5363.347689
+2026-03-30 22:53:08 | src.evaluation.metrics | INFO |   Metrics: ARI=-0.0006, AMI=-0.0067, Sil(kmeans)=0.3797, Sil(labels)=-0.1054 [n_used=480/480]
+2026-03-30 22:53:08 | src.evaluation.metrics | INFO |   Centrality variance: 0.001772 [mode=full, n_used=480/480]
+2026-03-30 22:53:08 | experiment | INFO |   -> ARI=-0.0006, AMI=-0.0067, Sil=0.3797, Recon=2.678891, CentralityMode=full, CPUmem=2.1MB, Time=11.3s
+2026-03-30 22:53:08 | experiment | INFO | 
+--- splatter_k12 | vae:nb | d=16 | seed=42 ---
+2026-03-30 22:53:08 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:53:08 | src.data.dataset | INFO |   DataLoaders: train=3840, val=480, test=480, batch_size=256, layer=counts, num_workers=0, pin_memory=True, preload=True
+2026-03-30 22:53:08 | src.training.trainer | INFO |   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/vae/nb/d_16/seed_42
+2026-03-30 22:53:08 | src.training.trainer | INFO |   Training VAE (d=16, loss=nb) on cuda for up to 80 epochs
+2026-03-30 22:53:09 | src.training.trainer | INFO |     Epoch   1: train=14783.529492, val=8726.041406 (recon=14032.4081, kl=751.1214)
+2026-03-30 22:53:09 | src.training.trainer | INFO |     Epoch   2: train=7089.241536, val=6138.063509 (recon=6490.7805, kl=598.4610)
+2026-03-30 22:53:09 | src.training.trainer | INFO |     Epoch   3: train=5942.789779, val=5781.171680 (recon=5777.5139, kl=165.2759)
+2026-03-30 22:53:09 | src.training.trainer | INFO |     Epoch   4: train=5753.495540, val=5695.782357 (recon=5673.6486, kl=79.8469)
+2026-03-30 22:53:09 | src.training.trainer | INFO |     Epoch   5: train=5696.918848, val=5659.358659 (recon=5644.7554, kl=52.1634)
+2026-03-30 22:53:09 | src.training.trainer | INFO |     Epoch   6: train=5664.417415, val=5631.676400 (recon=5625.5362, kl=38.8812)
+2026-03-30 22:53:10 | src.training.trainer | INFO |     Epoch   7: train=5643.095964, val=5608.530990 (recon=5610.3808, kl=32.7152)
+2026-03-30 22:53:10 | src.training.trainer | INFO |     Epoch   8: train=5635.270866, val=5614.534440 (recon=5608.0329, kl=27.2380)
+2026-03-30 22:53:10 | src.training.trainer | INFO |     Epoch   9: train=5632.491667, val=5591.482520 (recon=5610.1666, kl=22.3251)
+2026-03-30 22:53:10 | src.training.trainer | INFO |     Epoch  10: train=5612.211686, val=5578.692578 (recon=5588.2040, kl=24.0076)
+2026-03-30 22:53:10 | src.training.trainer | INFO |     Epoch  11: train=5598.964876, val=5567.789681 (recon=5579.5213, kl=19.4436)
+2026-03-30 22:53:10 | src.training.trainer | INFO |     Epoch  12: train=5587.433236, val=5560.553190 (recon=5569.9271, kl=17.5062)
+2026-03-30 22:53:10 | src.training.trainer | INFO |     Epoch  13: train=5577.169434, val=5551.837956 (recon=5560.7554, kl=16.4140)
+2026-03-30 22:53:10 | src.training.trainer | INFO |     Epoch  14: train=5575.300488, val=5557.116113 (recon=5560.0962, kl=15.2044)
+2026-03-30 22:53:11 | src.training.trainer | INFO |     Epoch  15: train=5566.127181, val=5537.532975 (recon=5551.5199, kl=14.6073)
+2026-03-30 22:53:11 | src.training.trainer | INFO |     Epoch  16: train=5560.237630, val=5530.993555 (recon=5545.2285, kl=15.0092)
+2026-03-30 22:53:11 | src.training.trainer | INFO |     Epoch  17: train=5555.289453, val=5528.335807 (recon=5540.0805, kl=15.2089)
+2026-03-30 22:53:11 | src.training.trainer | INFO |     Epoch  18: train=5553.253906, val=5531.943294 (recon=5538.4027, kl=14.8512)
+2026-03-30 22:53:11 | src.training.trainer | INFO |     Epoch  19: train=5550.759603, val=5522.291211 (recon=5536.7047, kl=14.0549)
+2026-03-30 22:53:11 | src.training.trainer | INFO |     Epoch  20: train=5544.602897, val=5517.588346 (recon=5530.7105, kl=13.8923)
+2026-03-30 22:53:11 | src.training.trainer | INFO |     Epoch  21: train=5541.425326, val=5513.122721 (recon=5527.6561, kl=13.7692)
+2026-03-30 22:53:11 | src.training.trainer | INFO |     Epoch  22: train=5539.239290, val=5514.362467 (recon=5526.3675, kl=12.8719)
+2026-03-30 22:53:12 | src.training.trainer | INFO |     Epoch  23: train=5527.691243, val=5499.032064 (recon=5515.3553, kl=12.3359)
+2026-03-30 22:53:12 | src.training.trainer | INFO |     Epoch  24: train=5515.653385, val=5490.284538 (recon=5503.6845, kl=11.9689)
+2026-03-30 22:53:12 | src.training.trainer | INFO |     Epoch  25: train=5513.433659, val=5487.011426 (recon=5501.4363, kl=11.9973)
+2026-03-30 22:53:12 | src.training.trainer | INFO |     Epoch  26: train=5502.500781, val=5485.266276 (recon=5491.2313, kl=11.2695)
+2026-03-30 22:53:12 | src.training.trainer | INFO |     Epoch  27: train=5498.087337, val=5470.940885 (recon=5486.9313, kl=11.1560)
+2026-03-30 22:53:12 | src.training.trainer | INFO |     Epoch  28: train=5486.027767, val=5460.706738 (recon=5474.9020, kl=11.1258)
+2026-03-30 22:53:12 | src.training.trainer | INFO |     Epoch  29: train=5479.329655, val=5452.174023 (recon=5468.5962, kl=10.7334)
+2026-03-30 22:53:13 | src.training.trainer | INFO |     Epoch  30: train=5473.324870, val=5448.634505 (recon=5462.7938, kl=10.5310)
+2026-03-30 22:53:13 | src.training.trainer | INFO |     Epoch  31: train=5466.963477, val=5442.270508 (recon=5456.3770, kl=10.5865)
+2026-03-30 22:53:13 | src.training.trainer | INFO |     Epoch  32: train=5462.468913, val=5443.556185 (recon=5451.8498, kl=10.6191)
+2026-03-30 22:53:13 | src.training.trainer | INFO |     Epoch  33: train=5456.065788, val=5434.041081 (recon=5445.9458, kl=10.1201)
+2026-03-30 22:53:13 | src.training.trainer | INFO |     Epoch  34: train=5449.934505, val=5430.483268 (recon=5440.3473, kl=9.5873)
+2026-03-30 22:53:13 | src.training.trainer | INFO |     Epoch  35: train=5446.976465, val=5426.613053 (recon=5437.4307, kl=9.5458)
+2026-03-30 22:53:13 | src.training.trainer | INFO |     Epoch  36: train=5444.619987, val=5425.017318 (recon=5434.9751, kl=9.6450)
+2026-03-30 22:53:14 | src.training.trainer | INFO |     Epoch  37: train=5443.791276, val=5419.811816 (recon=5433.9739, kl=9.8173)
+2026-03-30 22:53:14 | src.training.trainer | INFO |     Epoch  38: train=5438.433203, val=5421.720801 (recon=5428.9643, kl=9.4689)
+2026-03-30 22:53:14 | src.training.trainer | INFO |     Epoch  39: train=5433.002148, val=5413.812988 (recon=5423.9079, kl=9.0943)
+2026-03-30 22:53:14 | src.training.trainer | INFO |     Epoch  40: train=5431.778711, val=5408.058301 (recon=5422.3955, kl=9.3832)
+2026-03-30 22:53:14 | src.training.trainer | INFO |     Epoch  41: train=5423.781771, val=5402.872428 (recon=5414.9279, kl=8.8540)
+2026-03-30 22:53:14 | src.training.trainer | INFO |     Epoch  42: train=5419.112760, val=5399.411979 (recon=5411.0082, kl=8.1046)
+2026-03-30 22:53:14 | src.training.trainer | INFO |     Epoch  43: train=5415.854460, val=5397.487793 (recon=5407.5503, kl=8.3041)
+2026-03-30 22:53:14 | src.training.trainer | INFO |     Epoch  44: train=5413.541341, val=5395.339876 (recon=5405.3301, kl=8.2112)
+2026-03-30 22:53:15 | src.training.trainer | INFO |     Epoch  45: train=5411.289290, val=5393.238965 (recon=5403.0038, kl=8.2855)
+2026-03-30 22:53:15 | src.training.trainer | INFO |     Epoch  46: train=5409.109212, val=5391.107650 (recon=5400.8808, kl=8.2284)
+2026-03-30 22:53:15 | src.training.trainer | INFO |     Epoch  47: train=5406.718587, val=5389.210221 (recon=5398.6200, kl=8.0986)
+2026-03-30 22:53:15 | src.training.trainer | INFO |     Epoch  48: train=5404.411491, val=5386.850846 (recon=5396.6146, kl=7.7969)
+2026-03-30 22:53:15 | src.training.trainer | INFO |     Epoch  49: train=5402.419206, val=5384.322917 (recon=5394.4040, kl=8.0152)
+2026-03-30 22:53:15 | src.training.trainer | INFO |     Epoch  50: train=5399.944010, val=5382.426628 (recon=5391.9692, kl=7.9748)
+2026-03-30 22:53:15 | src.training.trainer | INFO |     Epoch  51: train=5397.883301, val=5380.255143 (recon=5389.9174, kl=7.9658)
+2026-03-30 22:53:16 | src.training.trainer | INFO |     Epoch  52: train=5395.255404, val=5377.027832 (recon=5387.4058, kl=7.8496)
+2026-03-30 22:53:16 | src.training.trainer | INFO |     Epoch  53: train=5393.078092, val=5375.402116 (recon=5385.2421, kl=7.8360)
+2026-03-30 22:53:16 | src.training.trainer | INFO |     Epoch  54: train=5391.350553, val=5373.856673 (recon=5383.4574, kl=7.8932)
+2026-03-30 22:53:16 | src.training.trainer | INFO |     Epoch  55: train=5389.400781, val=5371.121191 (recon=5381.5035, kl=7.8972)
+2026-03-30 22:53:16 | src.training.trainer | INFO |     Epoch  56: train=5388.085352, val=5368.773893 (recon=5380.1245, kl=7.9609)
+2026-03-30 22:53:16 | src.training.trainer | INFO |     Epoch  57: train=5384.350814, val=5366.906576 (recon=5376.6790, kl=7.6718)
+2026-03-30 22:53:16 | src.training.trainer | INFO |     Epoch  58: train=5381.893132, val=5364.195866 (recon=5374.1925, kl=7.7007)
+2026-03-30 22:53:16 | src.training.trainer | INFO |     Epoch  59: train=5379.841113, val=5361.925391 (recon=5371.9846, kl=7.8565)
+2026-03-30 22:53:17 | src.training.trainer | INFO |     Epoch  60: train=5377.759505, val=5359.759635 (recon=5370.0788, kl=7.6806)
+2026-03-30 22:53:17 | src.training.trainer | INFO |     Epoch  61: train=5375.314193, val=5357.822884 (recon=5367.6833, kl=7.6309)
+2026-03-30 22:53:17 | src.training.trainer | INFO |     Epoch  62: train=5373.220378, val=5355.393066 (recon=5365.6600, kl=7.5604)
+2026-03-30 22:53:17 | src.training.trainer | INFO |     Epoch  63: train=5370.975293, val=5353.903353 (recon=5363.2428, kl=7.7325)
+2026-03-30 22:53:17 | src.training.trainer | INFO |     Epoch  64: train=5369.072754, val=5351.208105 (recon=5361.3613, kl=7.7115)
+2026-03-30 22:53:17 | src.training.trainer | INFO |     Epoch  65: train=5366.871680, val=5349.581152 (recon=5359.2200, kl=7.6516)
+2026-03-30 22:53:17 | src.training.trainer | INFO |     Epoch  66: train=5364.925553, val=5347.100228 (recon=5357.3975, kl=7.5281)
+2026-03-30 22:53:18 | src.training.trainer | INFO |     Epoch  67: train=5362.817383, val=5345.472591 (recon=5355.2961, kl=7.5213)
+2026-03-30 22:53:18 | src.training.trainer | INFO |     Epoch  68: train=5360.824251, val=5343.115885 (recon=5353.3684, kl=7.4559)
+2026-03-30 22:53:18 | src.training.trainer | INFO |     Epoch  69: train=5358.863867, val=5341.158105 (recon=5351.2686, kl=7.5953)
+2026-03-30 22:53:18 | src.training.trainer | INFO |     Epoch  70: train=5357.364909, val=5339.847884 (recon=5349.9221, kl=7.4428)
+2026-03-30 22:53:18 | src.training.trainer | INFO |     Epoch  71: train=5355.018001, val=5337.697396 (recon=5347.5969, kl=7.4211)
+2026-03-30 22:53:18 | src.training.trainer | INFO |     Epoch  72: train=5352.869564, val=5335.397038 (recon=5345.4534, kl=7.4161)
+2026-03-30 22:53:18 | src.training.trainer | INFO |     Epoch  73: train=5351.124382, val=5333.568490 (recon=5343.6355, kl=7.4889)
+2026-03-30 22:53:19 | src.training.trainer | INFO |     Epoch  74: train=5348.619727, val=5330.910156 (recon=5341.3642, kl=7.2556)
+2026-03-30 22:53:19 | src.training.trainer | INFO |     Epoch  75: train=5346.934245, val=5329.426986 (recon=5339.7394, kl=7.1948)
+2026-03-30 22:53:19 | src.training.trainer | INFO |     Epoch  76: train=5344.874707, val=5327.380534 (recon=5337.7513, kl=7.1234)
+2026-03-30 22:53:19 | src.training.trainer | INFO |     Epoch  77: train=5342.962240, val=5325.621582 (recon=5335.8448, kl=7.1174)
+2026-03-30 22:53:19 | src.training.trainer | INFO |     Epoch  78: train=5340.720117, val=5323.161621 (recon=5333.6695, kl=7.0506)
+2026-03-30 22:53:19 | src.training.trainer | INFO |     Epoch  79: train=5338.893359, val=5322.148600 (recon=5331.9475, kl=6.9459)
+2026-03-30 22:53:19 | src.training.trainer | INFO |     Epoch  80: train=5337.081217, val=5319.638802 (recon=5329.9769, kl=7.1043)
+2026-03-30 22:53:19 | src.training.trainer | INFO |   Training complete in 10.9s. Best val loss: 5319.638802 (epoch 80)
+2026-03-30 22:53:19 | src.evaluation.metrics | INFO |   Reconstruction loss (nb): 2.671272
+2026-03-30 22:53:19 | src.evaluation.metrics | INFO |   VAE ELBO (nb): -5349.920996
+2026-03-30 22:53:19 | src.evaluation.metrics | INFO |   Metrics: ARI=0.0059, AMI=0.0162, Sil(kmeans)=0.1626, Sil(labels)=-0.0889 [n_used=480/480]
+2026-03-30 22:53:20 | src.evaluation.metrics | INFO |   Centrality variance: 0.000725 [mode=full, n_used=480/480]
+2026-03-30 22:53:20 | experiment | INFO |   -> ARI=0.0059, AMI=0.0162, Sil=0.1626, Recon=2.671272, CentralityMode=full, CPUmem=2.1MB, Time=11.4s
+2026-03-30 22:53:20 | experiment | INFO | 
+--- splatter_k12 | vae:nb | d=16 | seed=43 ---
+2026-03-30 22:53:20 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:53:20 | src.data.dataset | INFO |   DataLoaders: train=3840, val=480, test=480, batch_size=256, layer=counts, num_workers=0, pin_memory=True, preload=True
+2026-03-30 22:53:20 | src.training.trainer | INFO |   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/vae/nb/d_16/seed_43
+2026-03-30 22:53:20 | src.training.trainer | INFO |   Training VAE (d=16, loss=nb) on cuda for up to 80 epochs
+2026-03-30 22:53:20 | src.training.trainer | INFO |     Epoch   1: train=15096.825521, val=9317.717773 (recon=14416.6630, kl=680.1625)
+2026-03-30 22:53:20 | src.training.trainer | INFO |     Epoch   2: train=7303.330469, val=6253.876074 (recon=6601.1382, kl=702.1924)
+2026-03-30 22:53:20 | src.training.trainer | INFO |     Epoch   3: train=5977.261426, val=5828.994922 (recon=5793.7577, kl=183.5037)
+2026-03-30 22:53:20 | src.training.trainer | INFO |     Epoch   4: train=5758.931641, val=5728.318001 (recon=5671.3977, kl=87.5340)
+2026-03-30 22:53:20 | src.training.trainer | INFO |     Epoch   5: train=5696.357259, val=5689.530924 (recon=5640.4677, kl=55.8895)
+2026-03-30 22:53:21 | src.training.trainer | INFO |     Epoch   6: train=5662.566764, val=5661.549414 (recon=5621.2934, kl=41.2735)
+2026-03-30 22:53:21 | src.training.trainer | INFO |     Epoch   7: train=5640.573535, val=5648.395345 (recon=5606.5605, kl=34.0130)
+2026-03-30 22:53:21 | src.training.trainer | INFO |     Epoch   8: train=5626.564193, val=5627.861328 (recon=5599.2252, kl=27.3391)
+2026-03-30 22:53:21 | src.training.trainer | INFO |     Epoch   9: train=5610.892513, val=5622.881673 (recon=5587.8857, kl=23.0068)
+2026-03-30 22:53:21 | src.training.trainer | INFO |     Epoch  10: train=5603.774902, val=5610.854883 (recon=5582.4722, kl=21.3028)
+2026-03-30 22:53:21 | src.training.trainer | INFO |     Epoch  11: train=5592.131934, val=5599.134017 (recon=5573.7049, kl=18.4271)
+2026-03-30 22:53:21 | src.training.trainer | INFO |     Epoch  12: train=5583.442448, val=5588.805534 (recon=5565.1405, kl=18.3020)
+2026-03-30 22:53:22 | src.training.trainer | INFO |     Epoch  13: train=5576.369206, val=5584.546094 (recon=5559.1027, kl=17.2665)
+2026-03-30 22:53:22 | src.training.trainer | INFO |     Epoch  14: train=5569.874089, val=5575.828548 (recon=5552.7723, kl=17.1018)
+2026-03-30 22:53:22 | src.training.trainer | INFO |     Epoch  15: train=5563.840462, val=5570.384440 (recon=5547.9544, kl=15.8861)
+2026-03-30 22:53:22 | src.training.trainer | INFO |     Epoch  16: train=5555.512467, val=5560.527441 (recon=5540.5117, kl=15.0007)
+2026-03-30 22:53:22 | src.training.trainer | INFO |     Epoch  17: train=5549.199577, val=5559.788997 (recon=5534.6543, kl=14.5453)
+2026-03-30 22:53:22 | src.training.trainer | INFO |     Epoch  18: train=5543.078483, val=5550.067285 (recon=5529.0125, kl=14.0661)
+2026-03-30 22:53:23 | src.training.trainer | INFO |     Epoch  19: train=5533.811751, val=5542.069108 (recon=5520.0390, kl=13.7728)
+2026-03-30 22:53:23 | src.training.trainer | INFO |     Epoch  20: train=5529.685417, val=5533.582682 (recon=5516.0620, kl=13.6235)
+2026-03-30 22:53:23 | src.training.trainer | INFO |     Epoch  21: train=5519.004264, val=5533.234408 (recon=5505.5493, kl=13.4550)
+2026-03-30 22:53:23 | src.training.trainer | INFO |     Epoch  22: train=5514.256641, val=5519.363672 (recon=5500.8901, kl=13.3665)
+2026-03-30 22:53:23 | src.training.trainer | INFO |     Epoch  23: train=5506.614095, val=5517.004460 (recon=5494.4285, kl=12.1857)
+2026-03-30 22:53:23 | src.training.trainer | INFO |     Epoch  24: train=5499.814518, val=5508.314453 (recon=5488.1193, kl=11.6952)
+2026-03-30 22:53:24 | src.training.trainer | INFO |     Epoch  25: train=5490.215853, val=5497.111165 (recon=5479.0388, kl=11.1771)
+2026-03-30 22:53:24 | src.training.trainer | INFO |     Epoch  26: train=5480.252637, val=5487.456348 (recon=5469.6140, kl=10.6386)
+2026-03-30 22:53:24 | src.training.trainer | INFO |     Epoch  27: train=5472.119629, val=5480.585286 (recon=5461.5521, kl=10.5676)
+2026-03-30 22:53:24 | src.training.trainer | INFO |     Epoch  28: train=5465.584440, val=5475.190365 (recon=5455.3064, kl=10.2781)
+2026-03-30 22:53:24 | src.training.trainer | INFO |     Epoch  29: train=5460.188053, val=5472.779655 (recon=5450.1958, kl=9.9922)
+2026-03-30 22:53:24 | src.training.trainer | INFO |     Epoch  30: train=5457.593652, val=5464.286458 (recon=5446.9399, kl=10.6537)
+2026-03-30 22:53:24 | src.training.trainer | INFO |     Epoch  31: train=5449.470117, val=5463.069108 (recon=5439.0849, kl=10.3853)
+2026-03-30 22:53:24 | src.training.trainer | INFO |     Epoch  32: train=5444.054622, val=5455.974251 (recon=5433.9766, kl=10.0780)
+2026-03-30 22:53:25 | src.training.trainer | INFO |     Epoch  33: train=5439.905404, val=5449.613932 (recon=5429.9401, kl=9.9653)
+2026-03-30 22:53:25 | src.training.trainer | INFO |     Epoch  34: train=5439.700163, val=5449.765495 (recon=5429.2229, kl=10.4773)
+2026-03-30 22:53:25 | src.training.trainer | INFO |     Epoch  35: train=5432.883236, val=5444.867220 (recon=5423.5075, kl=9.3757)
+2026-03-30 22:53:25 | src.training.trainer | INFO |     Epoch  36: train=5429.173405, val=5440.391276 (recon=5419.8205, kl=9.3529)
+2026-03-30 22:53:25 | src.training.trainer | INFO |     Epoch  37: train=5425.668327, val=5436.058529 (recon=5416.6925, kl=8.9759)
+2026-03-30 22:53:25 | src.training.trainer | INFO |     Epoch  38: train=5421.513509, val=5432.916406 (recon=5412.5508, kl=8.9626)
+2026-03-30 22:53:25 | src.training.trainer | INFO |     Epoch  39: train=5418.889486, val=5430.706087 (recon=5409.8535, kl=9.0359)
+2026-03-30 22:53:26 | src.training.trainer | INFO |     Epoch  40: train=5416.861589, val=5428.971875 (recon=5407.9843, kl=8.8773)
+2026-03-30 22:53:26 | src.training.trainer | INFO |     Epoch  41: train=5416.253483, val=5428.864453 (recon=5407.4996, kl=8.7539)
+2026-03-30 22:53:26 | src.training.trainer | INFO |     Epoch  42: train=5413.259505, val=5425.438737 (recon=5404.6638, kl=8.5957)
+2026-03-30 22:53:26 | src.training.trainer | INFO |     Epoch  43: train=5408.012663, val=5416.975781 (recon=5399.8225, kl=8.1901)
+2026-03-30 22:53:26 | src.training.trainer | INFO |     Epoch  44: train=5402.735286, val=5415.606706 (recon=5394.5327, kl=8.2026)
+2026-03-30 22:53:26 | src.training.trainer | INFO |     Epoch  45: train=5400.372591, val=5411.981673 (recon=5392.4069, kl=7.9657)
+2026-03-30 22:53:26 | src.training.trainer | INFO |     Epoch  46: train=5397.752018, val=5410.490202 (recon=5389.6157, kl=8.1364)
+2026-03-30 22:53:27 | src.training.trainer | INFO |     Epoch  47: train=5395.793815, val=5408.332715 (recon=5387.8795, kl=7.9143)
+2026-03-30 22:53:27 | src.training.trainer | INFO |     Epoch  48: train=5394.214746, val=5406.772038 (recon=5386.1187, kl=8.0960)
+2026-03-30 22:53:27 | src.training.trainer | INFO |     Epoch  49: train=5392.422266, val=5404.771517 (recon=5384.5218, kl=7.9005)
+2026-03-30 22:53:27 | src.training.trainer | INFO |     Epoch  50: train=5390.904329, val=5403.590625 (recon=5382.8381, kl=8.0663)
+2026-03-30 22:53:27 | src.training.trainer | INFO |     Epoch  51: train=5389.126367, val=5401.723503 (recon=5381.1483, kl=7.9781)
+2026-03-30 22:53:27 | src.training.trainer | INFO |     Epoch  52: train=5387.637337, val=5399.579427 (recon=5379.5558, kl=8.0815)
+2026-03-30 22:53:27 | src.training.trainer | INFO |     Epoch  53: train=5385.697721, val=5398.806706 (recon=5377.6571, kl=8.0407)
+2026-03-30 22:53:28 | src.training.trainer | INFO |     Epoch  54: train=5383.985449, val=5396.434049 (recon=5375.9100, kl=8.0755)
+2026-03-30 22:53:28 | src.training.trainer | INFO |     Epoch  55: train=5382.063639, val=5395.164941 (recon=5374.2464, kl=7.8172)
+2026-03-30 22:53:28 | src.training.trainer | INFO |     Epoch  56: train=5380.825944, val=5392.787467 (recon=5372.7937, kl=8.0321)
+2026-03-30 22:53:28 | src.training.trainer | INFO |     Epoch  57: train=5378.864779, val=5392.005143 (recon=5370.9417, kl=7.9231)
+2026-03-30 22:53:28 | src.training.trainer | INFO |     Epoch  58: train=5377.049609, val=5388.855729 (recon=5368.9945, kl=8.0551)
+2026-03-30 22:53:28 | src.training.trainer | INFO |     Epoch  59: train=5374.689193, val=5387.611784 (recon=5366.8226, kl=7.8666)
+2026-03-30 22:53:28 | src.training.trainer | INFO |     Epoch  60: train=5372.795085, val=5385.030924 (recon=5364.8161, kl=7.9790)
+2026-03-30 22:53:29 | src.training.trainer | INFO |     Epoch  61: train=5370.719141, val=5383.300228 (recon=5362.9266, kl=7.7926)
+2026-03-30 22:53:29 | src.training.trainer | INFO |     Epoch  62: train=5368.873633, val=5381.132943 (recon=5361.0601, kl=7.8135)
+2026-03-30 22:53:29 | src.training.trainer | INFO |     Epoch  63: train=5367.492741, val=5380.494043 (recon=5359.7672, kl=7.7255)
+2026-03-30 22:53:29 | src.training.trainer | INFO |     Epoch  64: train=5365.497526, val=5378.063704 (recon=5357.7075, kl=7.7899)
+2026-03-30 22:53:29 | src.training.trainer | INFO |     Epoch  65: train=5363.527279, val=5375.929134 (recon=5355.8694, kl=7.6579)
+2026-03-30 22:53:29 | src.training.trainer | INFO |     Epoch  66: train=5361.769076, val=5374.159831 (recon=5353.8887, kl=7.8804)
+2026-03-30 22:53:29 | src.training.trainer | INFO |     Epoch  67: train=5359.935091, val=5372.179362 (recon=5352.2136, kl=7.7214)
+2026-03-30 22:53:30 | src.training.trainer | INFO |     Epoch  68: train=5359.808333, val=5370.337044 (recon=5352.2750, kl=7.5333)
+2026-03-30 22:53:30 | src.training.trainer | INFO |     Epoch  69: train=5356.035612, val=5369.181348 (recon=5348.4112, kl=7.6245)
+2026-03-30 22:53:30 | src.training.trainer | INFO |     Epoch  70: train=5353.824772, val=5367.059017 (recon=5346.2702, kl=7.5545)
+2026-03-30 22:53:30 | src.training.trainer | INFO |     Epoch  71: train=5352.313151, val=5365.322266 (recon=5344.6466, kl=7.6666)
+2026-03-30 22:53:30 | src.training.trainer | INFO |     Epoch  72: train=5350.448014, val=5364.110710 (recon=5342.9643, kl=7.4837)
+2026-03-30 22:53:30 | src.training.trainer | INFO |     Epoch  73: train=5350.578060, val=5362.982943 (recon=5343.2859, kl=7.2922)
+2026-03-30 22:53:30 | src.training.trainer | INFO |     Epoch  74: train=5347.086458, val=5359.782650 (recon=5339.8945, kl=7.1920)
+2026-03-30 22:53:31 | src.training.trainer | INFO |     Epoch  75: train=5345.086361, val=5358.217773 (recon=5337.7346, kl=7.3518)
+2026-03-30 22:53:31 | src.training.trainer | INFO |     Epoch  76: train=5343.141732, val=5356.434082 (recon=5335.7643, kl=7.3774)
+2026-03-30 22:53:31 | src.training.trainer | INFO |     Epoch  77: train=5341.424479, val=5354.418522 (recon=5334.0745, kl=7.3500)
+2026-03-30 22:53:31 | src.training.trainer | INFO |     Epoch  78: train=5339.631087, val=5353.236816 (recon=5332.3332, kl=7.2979)
+2026-03-30 22:53:31 | src.training.trainer | INFO |     Epoch  79: train=5338.100911, val=5351.069303 (recon=5330.8035, kl=7.2974)
+2026-03-30 22:53:31 | src.training.trainer | INFO |     Epoch  80: train=5335.947884, val=5349.294759 (recon=5328.7973, kl=7.1505)
+2026-03-30 22:53:31 | src.training.trainer | INFO |   Training complete in 11.5s. Best val loss: 5349.294759 (epoch 80)
+2026-03-30 22:53:31 | src.evaluation.metrics | INFO |   Reconstruction loss (nb): 2.669480
+2026-03-30 22:53:31 | src.evaluation.metrics | INFO |   VAE ELBO (nb): -5346.675846
+2026-03-30 22:53:31 | src.evaluation.metrics | INFO |   Metrics: ARI=0.0016, AMI=-0.0002, Sil(kmeans)=0.1870, Sil(labels)=-0.0836 [n_used=480/480]
+2026-03-30 22:53:31 | src.evaluation.metrics | INFO |   Centrality variance: 0.001478 [mode=full, n_used=480/480]
+2026-03-30 22:53:31 | experiment | INFO |   -> ARI=0.0016, AMI=-0.0002, Sil=0.1870, Recon=2.669480, CentralityMode=full, CPUmem=2.2MB, Time=11.9s
+2026-03-30 22:53:31 | experiment | INFO | 
+--- splatter_k12 | scvi:nb | d=2 | seed=42 ---
+2026-03-30 22:53:31 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:53:44 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 42
+2026-03-30 22:53:44 | src.models.scvi_wrapper | INFO |   scVI setup: d=2, likelihood=nb, hidden=128, layers=2, batch_key=batch
+2026-03-30 22:53:46 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/scvi/nb/d_2/seed_42
+2026-03-30 22:53:46 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-30 22:53:46 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-30 22:53:46 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+2026-03-30 22:53:46 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-30 22:53:46 | lightning.pytorch.trainer.connectors.signal_connector | INFO | SLURM auto-requeueing enabled. Setting signal handlers.
+2026-03-30 22:53:46 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=6531.646484, val=6430.160645
+2026-03-30 22:53:47 | src.models.scvi_wrapper | INFO |     scVI Epoch   2/80: train=5691.987305, val=6088.402344
+2026-03-30 22:53:47 | src.models.scvi_wrapper | INFO |     scVI Epoch   3/80: train=5555.346680, val=5967.282715
+2026-03-30 22:53:47 | src.models.scvi_wrapper | INFO |     scVI Epoch   4/80: train=5521.903809, val=5926.320312
+2026-03-30 22:53:48 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=5503.237793, val=5809.123535
+2026-03-30 22:53:48 | src.models.scvi_wrapper | INFO |     scVI Epoch   6/80: train=5488.742676, val=5714.032715
+2026-03-30 22:53:48 | src.models.scvi_wrapper | INFO |     scVI Epoch   7/80: train=5475.047363, val=5625.527832
+2026-03-30 22:53:49 | src.models.scvi_wrapper | INFO |     scVI Epoch   8/80: train=5462.902344, val=5585.161621
+2026-03-30 22:53:49 | src.models.scvi_wrapper | INFO |     scVI Epoch   9/80: train=5450.900391, val=5543.279297
+2026-03-30 22:53:50 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=5438.205566, val=5493.955078
+2026-03-30 22:53:50 | src.models.scvi_wrapper | INFO |     scVI Epoch  11/80: train=5426.343262, val=5467.740723
+2026-03-30 22:53:50 | src.models.scvi_wrapper | INFO |     scVI Epoch  12/80: train=5414.586914, val=5451.037109
+2026-03-30 22:53:51 | src.models.scvi_wrapper | INFO |     scVI Epoch  13/80: train=5402.934570, val=5445.091797
+2026-03-30 22:53:51 | src.models.scvi_wrapper | INFO |     scVI Epoch  14/80: train=5390.631836, val=5442.847168
+2026-03-30 22:53:52 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=5379.437500, val=5512.513672
+2026-03-30 22:53:52 | src.models.scvi_wrapper | INFO |     scVI Epoch  16/80: train=5366.367676, val=5442.563965
+2026-03-30 22:53:52 | src.models.scvi_wrapper | INFO |     scVI Epoch  17/80: train=5354.137207, val=5403.502930
+2026-03-30 22:53:53 | src.models.scvi_wrapper | INFO |     scVI Epoch  18/80: train=5343.341797, val=5414.924316
+2026-03-30 22:53:53 | src.models.scvi_wrapper | INFO |     scVI Epoch  19/80: train=5331.060547, val=5365.948730
+2026-03-30 22:53:53 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=5318.918457, val=5362.432617
+2026-03-30 22:53:54 | src.models.scvi_wrapper | INFO |     scVI Epoch  21/80: train=5308.171875, val=5343.257812
+2026-03-30 22:53:54 | src.models.scvi_wrapper | INFO |     scVI Epoch  22/80: train=5296.153809, val=5336.573730
+2026-03-30 22:53:54 | src.models.scvi_wrapper | INFO |     scVI Epoch  23/80: train=5285.293457, val=5325.439453
+2026-03-30 22:53:55 | src.models.scvi_wrapper | INFO |     scVI Epoch  24/80: train=5275.496582, val=5304.479004
+2026-03-30 22:53:55 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=5264.756348, val=5302.069336
+2026-03-30 22:53:55 | src.models.scvi_wrapper | INFO |     scVI Epoch  26/80: train=5255.751953, val=5289.050781
+2026-03-30 22:53:56 | src.models.scvi_wrapper | INFO |     scVI Epoch  27/80: train=5245.366699, val=5279.344238
+2026-03-30 22:53:56 | src.models.scvi_wrapper | INFO |     scVI Epoch  28/80: train=5237.239746, val=5257.695801
+2026-03-30 22:53:57 | src.models.scvi_wrapper | INFO |     scVI Epoch  29/80: train=5228.451172, val=5258.089355
+2026-03-30 22:53:57 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=5218.354004, val=5254.111816
+2026-03-30 22:53:57 | src.models.scvi_wrapper | INFO |     scVI Epoch  31/80: train=5209.015137, val=5239.118652
+2026-03-30 22:53:58 | src.models.scvi_wrapper | INFO |     scVI Epoch  32/80: train=5200.131836, val=5225.643066
+2026-03-30 22:53:58 | src.models.scvi_wrapper | INFO |     scVI Epoch  33/80: train=5191.779297, val=5222.516113
+2026-03-30 22:53:58 | src.models.scvi_wrapper | INFO |     scVI Epoch  34/80: train=5182.803711, val=5214.424805
+2026-03-30 22:53:59 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=5174.097656, val=5211.086426
+2026-03-30 22:53:59 | src.models.scvi_wrapper | INFO |     scVI Epoch  36/80: train=5165.193848, val=5203.845215
+2026-03-30 22:53:59 | src.models.scvi_wrapper | INFO |     scVI Epoch  37/80: train=5156.398926, val=5201.212891
+2026-03-30 22:54:00 | src.models.scvi_wrapper | INFO |     scVI Epoch  38/80: train=5148.282227, val=5175.125488
+2026-03-30 22:54:00 | src.models.scvi_wrapper | INFO |     scVI Epoch  39/80: train=5140.291504, val=5168.632324
+2026-03-30 22:54:00 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=5133.262207, val=5163.207031
+2026-03-30 22:54:01 | src.models.scvi_wrapper | INFO |     scVI Epoch  41/80: train=5125.924316, val=5164.622070
+2026-03-30 22:54:01 | src.models.scvi_wrapper | INFO |     scVI Epoch  42/80: train=5118.562500, val=5164.279785
+2026-03-30 22:54:02 | src.models.scvi_wrapper | INFO |     scVI Epoch  43/80: train=5110.515137, val=5138.100098
+2026-03-30 22:54:02 | src.models.scvi_wrapper | INFO |     scVI Epoch  44/80: train=5104.174805, val=5141.021973
+2026-03-30 22:54:02 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=5097.845703, val=5140.341797
+2026-03-30 22:54:03 | src.models.scvi_wrapper | INFO |     scVI Epoch  46/80: train=5091.774902, val=5152.845703
+2026-03-30 22:54:03 | src.models.scvi_wrapper | INFO |     scVI Epoch  47/80: train=5084.490234, val=5145.648926
+2026-03-30 22:54:04 | src.models.scvi_wrapper | INFO |     scVI Epoch  48/80: train=5078.148926, val=5117.639160
+2026-03-30 22:54:04 | src.models.scvi_wrapper | INFO |     scVI Epoch  49/80: train=5072.697266, val=5110.400879
+2026-03-30 22:54:04 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=5066.827148, val=5127.453613
+2026-03-30 22:54:05 | src.models.scvi_wrapper | INFO |     scVI Epoch  51/80: train=5060.638672, val=5102.023438
+2026-03-30 22:54:05 | src.models.scvi_wrapper | INFO |     scVI Epoch  52/80: train=5054.927246, val=5118.464844
+2026-03-30 22:54:05 | src.models.scvi_wrapper | INFO |     scVI Epoch  53/80: train=5048.891602, val=5107.079590
+2026-03-30 22:54:06 | src.models.scvi_wrapper | INFO |     scVI Epoch  54/80: train=5043.374512, val=5075.588867
+2026-03-30 22:54:06 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=5038.050781, val=5086.977539
+2026-03-30 22:54:07 | src.models.scvi_wrapper | INFO |     scVI Epoch  56/80: train=5033.652344, val=5093.335938
+2026-03-30 22:54:07 | src.models.scvi_wrapper | INFO |     scVI Epoch  57/80: train=5027.690918, val=5065.654297
+2026-03-30 22:54:07 | src.models.scvi_wrapper | INFO |     scVI Epoch  58/80: train=5023.462891, val=5068.480957
+2026-03-30 22:54:08 | src.models.scvi_wrapper | INFO |     scVI Epoch  59/80: train=5017.435059, val=5064.588379
+2026-03-30 22:54:08 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=5013.499512, val=5079.276855
+2026-03-30 22:54:08 | src.models.scvi_wrapper | INFO |     scVI Epoch  61/80: train=5008.449707, val=5062.966309
+2026-03-30 22:54:09 | src.models.scvi_wrapper | INFO |     scVI Epoch  62/80: train=5004.247070, val=5062.433105
+2026-03-30 22:54:09 | src.models.scvi_wrapper | INFO |     scVI Epoch  63/80: train=4999.166504, val=5047.154297
+2026-03-30 22:54:09 | src.models.scvi_wrapper | INFO |     scVI Epoch  64/80: train=4994.008301, val=5065.673340
+2026-03-30 22:54:10 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=4989.990723, val=5071.565918
+2026-03-30 22:54:10 | src.models.scvi_wrapper | INFO |     scVI Epoch  66/80: train=4986.321289, val=5057.360840
+2026-03-30 22:54:10 | src.models.scvi_wrapper | INFO |     scVI Epoch  67/80: train=4982.378418, val=5038.507324
+2026-03-30 22:54:11 | src.models.scvi_wrapper | INFO |     scVI Epoch  68/80: train=4978.294922, val=5042.656738
+2026-03-30 22:54:11 | src.models.scvi_wrapper | INFO |     scVI Epoch  69/80: train=4973.980469, val=5026.965820
+2026-03-30 22:54:11 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=4970.586426, val=5047.039062
+2026-03-30 22:54:12 | src.models.scvi_wrapper | INFO |     scVI Epoch  71/80: train=4965.732422, val=5017.082031
+2026-03-30 22:54:12 | src.models.scvi_wrapper | INFO |     scVI Epoch  72/80: train=4962.860352, val=5007.377441
+2026-03-30 22:54:12 | src.models.scvi_wrapper | INFO |     scVI Epoch  73/80: train=4958.241699, val=5017.612793
+2026-03-30 22:54:13 | src.models.scvi_wrapper | INFO |     scVI Epoch  74/80: train=4954.543457, val=5013.605957
+2026-03-30 22:54:13 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=4951.238281, val=5035.328613
+2026-03-30 22:54:13 | src.models.scvi_wrapper | INFO |     scVI Epoch  76/80: train=4948.166016, val=5007.639160
+2026-03-30 22:54:14 | src.models.scvi_wrapper | INFO |     scVI Epoch  77/80: train=4944.743652, val=5027.663086
+2026-03-30 22:54:14 | src.models.scvi_wrapper | INFO |     scVI Epoch  78/80: train=4941.296875, val=5020.147949
+2026-03-30 22:54:15 | src.models.scvi_wrapper | INFO |     scVI Epoch  79/80: train=4936.866699, val=5014.267090
+2026-03-30 22:54:15 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=4935.689453, val=5027.958496
+2026-03-30 22:54:15 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-03-30 22:54:15 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 29.4s
+INFO     Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-03-30 22:54:15 | src.evaluation.metrics | INFO |   Metrics: ARI=0.9253, AMI=0.9442, Sil(kmeans)=0.5833, Sil(labels)=0.5628 [n_used=480/480]
+2026-03-30 22:54:15 | src.evaluation.metrics | INFO |   Centrality variance: 0.001933 [mode=full, n_used=480/480]
+2026-03-30 22:54:15 | experiment | INFO |   -> ARI=0.9253, AMI=0.9442, Sil=0.5833, Recon=5023.057617, CentralityMode=full, CPUmem=nanMB, Time=43.6s
+2026-03-30 22:54:15 | experiment | INFO | 
+--- splatter_k12 | scvi:nb | d=2 | seed=43 ---
+2026-03-30 22:54:15 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:54:15 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 43
+2026-03-30 22:54:15 | src.models.scvi_wrapper | INFO |   scVI setup: d=2, likelihood=nb, hidden=128, layers=2, batch_key=batch
+2026-03-30 22:54:15 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/scvi/nb/d_2/seed_43
+2026-03-30 22:54:15 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-30 22:54:15 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-30 22:54:15 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+2026-03-30 22:54:15 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-30 22:54:15 | lightning.pytorch.trainer.connectors.signal_connector | INFO | SLURM auto-requeueing enabled. Setting signal handlers.
+2026-03-30 22:54:16 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=6603.516602, val=6326.191406
+2026-03-30 22:54:16 | src.models.scvi_wrapper | INFO |     scVI Epoch   2/80: train=5714.827148, val=6014.024902
+2026-03-30 22:54:17 | src.models.scvi_wrapper | INFO |     scVI Epoch   3/80: train=5555.859863, val=5892.486816
+2026-03-30 22:54:17 | src.models.scvi_wrapper | INFO |     scVI Epoch   4/80: train=5521.215332, val=5814.773438
+2026-03-30 22:54:17 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=5501.537598, val=5750.818848
+2026-03-30 22:54:18 | src.models.scvi_wrapper | INFO |     scVI Epoch   6/80: train=5486.589355, val=5686.810059
+2026-03-30 22:54:18 | src.models.scvi_wrapper | INFO |     scVI Epoch   7/80: train=5473.058594, val=5606.519531
+2026-03-30 22:54:18 | src.models.scvi_wrapper | INFO |     scVI Epoch   8/80: train=5459.137695, val=5547.848145
+2026-03-30 22:54:19 | src.models.scvi_wrapper | INFO |     scVI Epoch   9/80: train=5446.640137, val=5501.071777
+2026-03-30 22:54:19 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=5433.593750, val=5454.759277
+2026-03-30 22:54:19 | src.models.scvi_wrapper | INFO |     scVI Epoch  11/80: train=5422.254395, val=5428.463867
+2026-03-30 22:54:20 | src.models.scvi_wrapper | INFO |     scVI Epoch  12/80: train=5409.955078, val=5416.072754
+2026-03-30 22:54:20 | src.models.scvi_wrapper | INFO |     scVI Epoch  13/80: train=5398.481445, val=5402.403320
+2026-03-30 22:54:21 | src.models.scvi_wrapper | INFO |     scVI Epoch  14/80: train=5386.683105, val=5385.722168
+2026-03-30 22:54:21 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=5375.413086, val=5380.040039
+2026-03-30 22:54:21 | src.models.scvi_wrapper | INFO |     scVI Epoch  16/80: train=5363.055176, val=5416.279297
+2026-03-30 22:54:22 | src.models.scvi_wrapper | INFO |     scVI Epoch  17/80: train=5351.198730, val=5373.731934
+2026-03-30 22:54:22 | src.models.scvi_wrapper | INFO |     scVI Epoch  18/80: train=5338.162598, val=5351.861816
+2026-03-30 22:54:22 | src.models.scvi_wrapper | INFO |     scVI Epoch  19/80: train=5326.584961, val=5343.479980
+2026-03-30 22:54:23 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=5315.183594, val=5341.189453
+2026-03-30 22:54:23 | src.models.scvi_wrapper | INFO |     scVI Epoch  21/80: train=5304.552734, val=5323.834473
+2026-03-30 22:54:23 | src.models.scvi_wrapper | INFO |     scVI Epoch  22/80: train=5294.687012, val=5307.958984
+2026-03-30 22:54:24 | src.models.scvi_wrapper | INFO |     scVI Epoch  23/80: train=5283.686523, val=5292.794434
+2026-03-30 22:54:24 | src.models.scvi_wrapper | INFO |     scVI Epoch  24/80: train=5272.749512, val=5285.367188
+2026-03-30 22:54:24 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=5263.076172, val=5270.530273
+2026-03-30 22:54:25 | src.models.scvi_wrapper | INFO |     scVI Epoch  26/80: train=5253.081055, val=5250.580566
+2026-03-30 22:54:25 | src.models.scvi_wrapper | INFO |     scVI Epoch  27/80: train=5243.487793, val=5248.458496
+2026-03-30 22:54:25 | src.models.scvi_wrapper | INFO |     scVI Epoch  28/80: train=5233.473145, val=5237.533203
+2026-03-30 22:54:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  29/80: train=5223.912109, val=5224.573730
+2026-03-30 22:54:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=5215.011719, val=5225.532227
+2026-03-30 22:54:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  31/80: train=5206.442871, val=5211.419434
+2026-03-30 22:54:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  32/80: train=5197.244141, val=5204.726074
+2026-03-30 22:54:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  33/80: train=5188.236816, val=5192.458496
+2026-03-30 22:54:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  34/80: train=5179.577148, val=5186.251465
+2026-03-30 22:54:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=5171.975586, val=5183.504883
+2026-03-30 22:54:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  36/80: train=5163.389648, val=5172.782715
+2026-03-30 22:54:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  37/80: train=5155.363281, val=5178.300293
+2026-03-30 22:54:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  38/80: train=5148.094727, val=5169.475586
+2026-03-30 22:54:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  39/80: train=5139.516602, val=5142.177734
+2026-03-30 22:54:30 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=5131.988770, val=5142.191406
+2026-03-30 22:54:30 | src.models.scvi_wrapper | INFO |     scVI Epoch  41/80: train=5124.620605, val=5139.875977
+2026-03-30 22:54:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  42/80: train=5116.916504, val=5127.081543
+2026-03-30 22:54:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  43/80: train=5110.486328, val=5135.642578
+2026-03-30 22:54:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  44/80: train=5102.875488, val=5123.440430
+2026-03-30 22:54:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=5096.307129, val=5120.980957
+2026-03-30 22:54:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  46/80: train=5089.582031, val=5124.779297
+2026-03-30 22:54:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  47/80: train=5083.868164, val=5110.836426
+2026-03-30 22:54:33 | src.models.scvi_wrapper | INFO |     scVI Epoch  48/80: train=5076.679199, val=5114.898926
+2026-03-30 22:54:33 | src.models.scvi_wrapper | INFO |     scVI Epoch  49/80: train=5070.219238, val=5078.890137
+2026-03-30 22:54:33 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=5064.272949, val=5085.535156
+2026-03-30 22:54:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  51/80: train=5058.790527, val=5070.797363
+2026-03-30 22:54:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  52/80: train=5053.042969, val=5075.207520
+2026-03-30 22:54:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  53/80: train=5046.761230, val=5065.412109
+2026-03-30 22:54:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  54/80: train=5041.600586, val=5078.425781
+2026-03-30 22:54:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=5036.008789, val=5063.662109
+2026-03-30 22:54:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  56/80: train=5031.859375, val=5062.217285
+2026-03-30 22:54:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  57/80: train=5025.876953, val=5080.725586
+2026-03-30 22:54:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  58/80: train=5020.373047, val=5085.748535
+2026-03-30 22:54:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  59/80: train=5016.078125, val=5070.860352
+2026-03-30 22:54:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=5011.810547, val=5071.033691
+2026-03-30 22:54:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  61/80: train=5007.409180, val=5058.956055
+2026-03-30 22:54:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  62/80: train=5002.190918, val=5057.661621
+2026-03-30 22:54:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  63/80: train=4997.059570, val=5039.828125
+2026-03-30 22:54:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  64/80: train=4993.320801, val=5029.704590
+2026-03-30 22:54:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=4988.987305, val=5061.862793
+2026-03-30 22:54:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  66/80: train=4984.066406, val=5038.141113
+2026-03-30 22:54:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  67/80: train=4979.808105, val=5035.657715
+2026-03-30 22:54:40 | src.models.scvi_wrapper | INFO |     scVI Epoch  68/80: train=4975.450195, val=5027.022949
+2026-03-30 22:54:40 | src.models.scvi_wrapper | INFO |     scVI Epoch  69/80: train=4972.709473, val=5007.454590
+2026-03-30 22:54:41 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=4967.795898, val=4992.026855
+2026-03-30 22:54:41 | src.models.scvi_wrapper | INFO |     scVI Epoch  71/80: train=4964.074219, val=4990.818848
+2026-03-30 22:54:41 | src.models.scvi_wrapper | INFO |     scVI Epoch  72/80: train=4960.412598, val=4988.872070
+2026-03-30 22:54:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  73/80: train=4956.903320, val=4999.211914
+2026-03-30 22:54:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  74/80: train=4953.136719, val=4997.203125
+2026-03-30 22:54:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=4950.386230, val=5011.694824
+2026-03-30 22:54:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  76/80: train=4946.078613, val=4989.972656
+2026-03-30 22:54:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  77/80: train=4943.229004, val=4982.093750
+2026-03-30 22:54:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  78/80: train=4940.038086, val=4965.635254
+2026-03-30 22:54:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  79/80: train=4936.087891, val=5014.025391
+2026-03-30 22:54:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=4933.698730, val=5002.331055
+2026-03-30 22:54:44 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-03-30 22:54:44 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 29.2s
+INFO     Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-03-30 22:54:45 | src.evaluation.metrics | INFO |   Metrics: ARI=0.9820, AMI=0.9845, Sil(kmeans)=0.6081, Sil(labels)=0.6072 [n_used=480/480]
+2026-03-30 22:54:45 | src.evaluation.metrics | WARNING | Centrality computation failed (mode=full, n_obs=480, n_neighbors=15): `eigenvector_centrality_numpy` does not give consistent results for disconnected graphs
+2026-03-30 22:54:45 | experiment | INFO |   -> ARI=0.9820, AMI=0.9845, Sil=0.6081, Recon=5016.895020, CentralityMode=failed, CPUmem=nanMB, Time=29.5s
+2026-03-30 22:54:45 | experiment | INFO | 
+--- splatter_k12 | scvi:nb | d=16 | seed=42 ---
+2026-03-30 22:54:45 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:54:45 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 42
+2026-03-30 22:54:45 | src.models.scvi_wrapper | INFO |   scVI setup: d=16, likelihood=nb, hidden=128, layers=2, batch_key=batch
+2026-03-30 22:54:45 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/scvi/nb/d_16/seed_42
+2026-03-30 22:54:45 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-30 22:54:45 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-30 22:54:45 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+2026-03-30 22:54:45 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-30 22:54:45 | lightning.pytorch.trainer.connectors.signal_connector | INFO | SLURM auto-requeueing enabled. Setting signal handlers.
+2026-03-30 22:54:45 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=6564.596680, val=6826.789062
+2026-03-30 22:54:46 | src.models.scvi_wrapper | INFO |     scVI Epoch   2/80: train=5753.953125, val=5779.900391
+2026-03-30 22:54:46 | src.models.scvi_wrapper | INFO |     scVI Epoch   3/80: train=5583.281250, val=5700.683105
+2026-03-30 22:54:46 | src.models.scvi_wrapper | INFO |     scVI Epoch   4/80: train=5532.553223, val=5664.887207
+2026-03-30 22:54:47 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=5507.692871, val=5586.622559
+2026-03-30 22:54:47 | src.models.scvi_wrapper | INFO |     scVI Epoch   6/80: train=5492.895020, val=5547.373535
+2026-03-30 22:54:47 | src.models.scvi_wrapper | INFO |     scVI Epoch   7/80: train=5477.322754, val=5564.230957
+2026-03-30 22:54:48 | src.models.scvi_wrapper | INFO |     scVI Epoch   8/80: train=5463.743164, val=5500.451172
+2026-03-30 22:54:48 | src.models.scvi_wrapper | INFO |     scVI Epoch   9/80: train=5450.749023, val=5514.847656
+2026-03-30 22:54:48 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=5436.900879, val=5489.688965
+2026-03-30 22:54:49 | src.models.scvi_wrapper | INFO |     scVI Epoch  11/80: train=5424.380371, val=5455.611816
+2026-03-30 22:54:49 | src.models.scvi_wrapper | INFO |     scVI Epoch  12/80: train=5410.946289, val=5441.432129
+2026-03-30 22:54:49 | src.models.scvi_wrapper | INFO |     scVI Epoch  13/80: train=5398.337402, val=5437.671387
+2026-03-30 22:54:50 | src.models.scvi_wrapper | INFO |     scVI Epoch  14/80: train=5385.937012, val=5413.114746
+2026-03-30 22:54:50 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=5372.417480, val=5408.454590
+2026-03-30 22:54:50 | src.models.scvi_wrapper | INFO |     scVI Epoch  16/80: train=5358.933105, val=5395.180176
+2026-03-30 22:54:51 | src.models.scvi_wrapper | INFO |     scVI Epoch  17/80: train=5346.315430, val=5381.632812
+2026-03-30 22:54:51 | src.models.scvi_wrapper | INFO |     scVI Epoch  18/80: train=5333.712891, val=5394.744141
+2026-03-30 22:54:51 | src.models.scvi_wrapper | INFO |     scVI Epoch  19/80: train=5320.862305, val=5395.346680
+2026-03-30 22:54:52 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=5309.399414, val=5418.013184
+2026-03-30 22:54:52 | src.models.scvi_wrapper | INFO |     scVI Epoch  21/80: train=5296.384277, val=5353.838379
+2026-03-30 22:54:53 | src.models.scvi_wrapper | INFO |     scVI Epoch  22/80: train=5284.446777, val=5366.126465
+2026-03-30 22:54:53 | src.models.scvi_wrapper | INFO |     scVI Epoch  23/80: train=5272.564941, val=5336.483887
+2026-03-30 22:54:53 | src.models.scvi_wrapper | INFO |     scVI Epoch  24/80: train=5260.826172, val=5312.891602
+2026-03-30 22:54:54 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=5251.437500, val=5310.639160
+2026-03-30 22:54:54 | src.models.scvi_wrapper | INFO |     scVI Epoch  26/80: train=5240.883301, val=5292.020996
+2026-03-30 22:54:54 | src.models.scvi_wrapper | INFO |     scVI Epoch  27/80: train=5231.951172, val=5283.828613
+2026-03-30 22:54:55 | src.models.scvi_wrapper | INFO |     scVI Epoch  28/80: train=5221.518066, val=5270.284180
+2026-03-30 22:54:55 | src.models.scvi_wrapper | INFO |     scVI Epoch  29/80: train=5212.193359, val=5258.770020
+2026-03-30 22:54:55 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=5203.702148, val=5243.535645
+2026-03-30 22:54:56 | src.models.scvi_wrapper | INFO |     scVI Epoch  31/80: train=5194.728027, val=5227.720215
+2026-03-30 22:54:56 | src.models.scvi_wrapper | INFO |     scVI Epoch  32/80: train=5186.555176, val=5221.432129
+2026-03-30 22:54:56 | src.models.scvi_wrapper | INFO |     scVI Epoch  33/80: train=5178.087891, val=5219.791992
+2026-03-30 22:54:57 | src.models.scvi_wrapper | INFO |     scVI Epoch  34/80: train=5171.265137, val=5206.667480
+2026-03-30 22:54:58 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=5162.991211, val=5192.612793
+2026-03-30 22:54:58 | src.models.scvi_wrapper | INFO |     scVI Epoch  36/80: train=5155.531250, val=5180.379883
+2026-03-30 22:54:59 | src.models.scvi_wrapper | INFO |     scVI Epoch  37/80: train=5148.355469, val=5186.451172
+2026-03-30 22:54:59 | src.models.scvi_wrapper | INFO |     scVI Epoch  38/80: train=5141.534668, val=5185.930176
+2026-03-30 22:55:00 | src.models.scvi_wrapper | INFO |     scVI Epoch  39/80: train=5133.597168, val=5177.646484
+2026-03-30 22:55:00 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=5126.022461, val=5157.277832
+2026-03-30 22:55:00 | src.models.scvi_wrapper | INFO |     scVI Epoch  41/80: train=5120.333496, val=5166.886719
+2026-03-30 22:55:01 | src.models.scvi_wrapper | INFO |     scVI Epoch  42/80: train=5112.921875, val=5146.070312
+2026-03-30 22:55:01 | src.models.scvi_wrapper | INFO |     scVI Epoch  43/80: train=5106.896484, val=5154.964355
+2026-03-30 22:55:01 | src.models.scvi_wrapper | INFO |     scVI Epoch  44/80: train=5099.877441, val=5136.514160
+2026-03-30 22:55:02 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=5093.228027, val=5123.535156
+2026-03-30 22:55:02 | src.models.scvi_wrapper | INFO |     scVI Epoch  46/80: train=5086.855469, val=5115.576172
+2026-03-30 22:55:02 | src.models.scvi_wrapper | INFO |     scVI Epoch  47/80: train=5079.959473, val=5108.687012
+2026-03-30 22:55:03 | src.models.scvi_wrapper | INFO |     scVI Epoch  48/80: train=5074.718262, val=5110.932129
+2026-03-30 22:55:03 | src.models.scvi_wrapper | INFO |     scVI Epoch  49/80: train=5068.950195, val=5107.540527
+2026-03-30 22:55:03 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=5062.243652, val=5094.226562
+2026-03-30 22:55:04 | src.models.scvi_wrapper | INFO |     scVI Epoch  51/80: train=5057.800293, val=5093.781738
+2026-03-30 22:55:04 | src.models.scvi_wrapper | INFO |     scVI Epoch  52/80: train=5051.929199, val=5099.366699
+2026-03-30 22:55:04 | src.models.scvi_wrapper | INFO |     scVI Epoch  53/80: train=5046.216797, val=5078.469238
+2026-03-30 22:55:05 | src.models.scvi_wrapper | INFO |     scVI Epoch  54/80: train=5041.554199, val=5088.533691
+2026-03-30 22:55:05 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=5035.959473, val=5093.583984
+2026-03-30 22:55:05 | src.models.scvi_wrapper | INFO |     scVI Epoch  56/80: train=5030.470703, val=5079.556641
+2026-03-30 22:55:06 | src.models.scvi_wrapper | INFO |     scVI Epoch  57/80: train=5024.992676, val=5056.169434
+2026-03-30 22:55:06 | src.models.scvi_wrapper | INFO |     scVI Epoch  58/80: train=5020.239746, val=5065.228027
+2026-03-30 22:55:07 | src.models.scvi_wrapper | INFO |     scVI Epoch  59/80: train=5015.521973, val=5059.831055
+2026-03-30 22:55:07 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=5010.397949, val=5051.144531
+2026-03-30 22:55:07 | src.models.scvi_wrapper | INFO |     scVI Epoch  61/80: train=5006.222656, val=5068.444824
+2026-03-30 22:55:08 | src.models.scvi_wrapper | INFO |     scVI Epoch  62/80: train=5000.978027, val=5032.252930
+2026-03-30 22:55:08 | src.models.scvi_wrapper | INFO |     scVI Epoch  63/80: train=4996.633301, val=5049.843750
+2026-03-30 22:55:08 | src.models.scvi_wrapper | INFO |     scVI Epoch  64/80: train=4992.008301, val=5034.554688
+2026-03-30 22:55:09 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=4988.319824, val=5032.399902
+2026-03-30 22:55:09 | src.models.scvi_wrapper | INFO |     scVI Epoch  66/80: train=4983.309570, val=5027.737305
+2026-03-30 22:55:09 | src.models.scvi_wrapper | INFO |     scVI Epoch  67/80: train=4978.957520, val=5032.236816
+2026-03-30 22:55:10 | src.models.scvi_wrapper | INFO |     scVI Epoch  68/80: train=4975.542480, val=5019.020020
+2026-03-30 22:55:10 | src.models.scvi_wrapper | INFO |     scVI Epoch  69/80: train=4971.162109, val=5022.226562
+2026-03-30 22:55:10 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=4967.541016, val=5005.448730
+2026-03-30 22:55:11 | src.models.scvi_wrapper | INFO |     scVI Epoch  71/80: train=4963.020020, val=5005.851074
+2026-03-30 22:55:11 | src.models.scvi_wrapper | INFO |     scVI Epoch  72/80: train=4959.219727, val=4999.724609
+2026-03-30 22:55:12 | src.models.scvi_wrapper | INFO |     scVI Epoch  73/80: train=4955.229980, val=4996.938965
+2026-03-30 22:55:12 | src.models.scvi_wrapper | INFO |     scVI Epoch  74/80: train=4951.411621, val=4996.895508
+2026-03-30 22:55:12 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=4948.234375, val=4988.199707
+2026-03-30 22:55:13 | src.models.scvi_wrapper | INFO |     scVI Epoch  76/80: train=4944.861816, val=4990.337402
+2026-03-30 22:55:13 | src.models.scvi_wrapper | INFO |     scVI Epoch  77/80: train=4940.899414, val=4985.003418
+2026-03-30 22:55:14 | src.models.scvi_wrapper | INFO |     scVI Epoch  78/80: train=4938.192871, val=4992.041992
+2026-03-30 22:55:14 | src.models.scvi_wrapper | INFO |     scVI Epoch  79/80: train=4934.674316, val=4979.184082
+2026-03-30 22:55:14 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=4931.626953, val=4981.132324
+2026-03-30 22:55:14 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-03-30 22:55:14 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 29.5s
+INFO     Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-03-30 22:55:14 | src.evaluation.metrics | INFO |   Metrics: ARI=1.0000, AMI=1.0000, Sil(kmeans)=0.5762, Sil(labels)=0.5762 [n_used=480/480]
+2026-03-30 22:55:14 | src.evaluation.metrics | WARNING | Centrality computation failed (mode=full, n_obs=480, n_neighbors=15): `eigenvector_centrality_numpy` does not give consistent results for disconnected graphs
+2026-03-30 22:55:14 | experiment | INFO |   -> ARI=1.0000, AMI=1.0000, Sil=0.5762, Recon=4981.833984, CentralityMode=failed, CPUmem=nanMB, Time=29.9s
+2026-03-30 22:55:14 | experiment | INFO | 
+--- splatter_k12 | scvi:nb | d=16 | seed=43 ---
+2026-03-30 22:55:14 | src.data.dataset | INFO |   Split: train=3840, val=480, test=480
+2026-03-30 22:55:15 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 43
+2026-03-30 22:55:15 | src.models.scvi_wrapper | INFO |   scVI setup: d=16, likelihood=nb, hidden=128, layers=2, batch_key=batch
+2026-03-30 22:55:15 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/splatter_k12/scvi/nb/d_16/seed_43
+2026-03-30 22:55:15 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-30 22:55:15 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-30 22:55:15 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+2026-03-30 22:55:15 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-30 22:55:15 | lightning.pytorch.trainer.connectors.signal_connector | INFO | SLURM auto-requeueing enabled. Setting signal handlers.
+2026-03-30 22:55:15 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=6592.533691, val=6773.292969
+2026-03-30 22:55:15 | src.models.scvi_wrapper | INFO |     scVI Epoch   2/80: train=5761.212891, val=5891.464844
+2026-03-30 22:55:16 | src.models.scvi_wrapper | INFO |     scVI Epoch   3/80: train=5584.144043, val=5626.747559
+2026-03-30 22:55:16 | src.models.scvi_wrapper | INFO |     scVI Epoch   4/80: train=5532.397461, val=5609.899902
+2026-03-30 22:55:16 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=5507.464355, val=5636.790527
+2026-03-30 22:55:17 | src.models.scvi_wrapper | INFO |     scVI Epoch   6/80: train=5493.009766, val=5710.753906
+2026-03-30 22:55:17 | src.models.scvi_wrapper | INFO |     scVI Epoch   7/80: train=5474.993652, val=5543.960938
+2026-03-30 22:55:18 | src.models.scvi_wrapper | INFO |     scVI Epoch   8/80: train=5461.168457, val=5548.644531
+2026-03-30 22:55:18 | src.models.scvi_wrapper | INFO |     scVI Epoch   9/80: train=5447.630859, val=5506.269043
+2026-03-30 22:55:18 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=5434.913574, val=5458.337891
+2026-03-30 22:55:19 | src.models.scvi_wrapper | INFO |     scVI Epoch  11/80: train=5421.084961, val=5436.890137
+2026-03-30 22:55:19 | src.models.scvi_wrapper | INFO |     scVI Epoch  12/80: train=5406.886230, val=5421.453613
+2026-03-30 22:55:19 | src.models.scvi_wrapper | INFO |     scVI Epoch  13/80: train=5393.397949, val=5419.474609
+2026-03-30 22:55:20 | src.models.scvi_wrapper | INFO |     scVI Epoch  14/80: train=5379.481934, val=5423.770996
+2026-03-30 22:55:20 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=5365.299316, val=5384.032715
+2026-03-30 22:55:20 | src.models.scvi_wrapper | INFO |     scVI Epoch  16/80: train=5352.545898, val=5394.631348
+2026-03-30 22:55:21 | src.models.scvi_wrapper | INFO |     scVI Epoch  17/80: train=5338.475098, val=5362.822754
+2026-03-30 22:55:21 | src.models.scvi_wrapper | INFO |     scVI Epoch  18/80: train=5325.445801, val=5355.935059
+2026-03-30 22:55:21 | src.models.scvi_wrapper | INFO |     scVI Epoch  19/80: train=5313.453613, val=5393.281738
+2026-03-30 22:55:22 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=5303.655762, val=5364.671875
+2026-03-30 22:55:22 | src.models.scvi_wrapper | INFO |     scVI Epoch  21/80: train=5288.087891, val=5340.260254
+2026-03-30 22:55:22 | src.models.scvi_wrapper | INFO |     scVI Epoch  22/80: train=5277.472168, val=5315.720215
+2026-03-30 22:55:23 | src.models.scvi_wrapper | INFO |     scVI Epoch  23/80: train=5265.860352, val=5274.108887
+2026-03-30 22:55:23 | src.models.scvi_wrapper | INFO |     scVI Epoch  24/80: train=5254.824219, val=5275.623047
+2026-03-30 22:55:23 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=5246.160156, val=5264.249512
+2026-03-30 22:55:24 | src.models.scvi_wrapper | INFO |     scVI Epoch  26/80: train=5235.724609, val=5254.538574
+2026-03-30 22:55:24 | src.models.scvi_wrapper | INFO |     scVI Epoch  27/80: train=5226.155762, val=5235.086426
+2026-03-30 22:55:25 | src.models.scvi_wrapper | INFO |     scVI Epoch  28/80: train=5217.268555, val=5235.794922
+2026-03-30 22:55:25 | src.models.scvi_wrapper | INFO |     scVI Epoch  29/80: train=5210.584961, val=5228.855957
+2026-03-30 22:55:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=5199.639648, val=5207.552246
+2026-03-30 22:55:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  31/80: train=5191.318359, val=5198.203125
+2026-03-30 22:55:26 | src.models.scvi_wrapper | INFO |     scVI Epoch  32/80: train=5183.243652, val=5195.549316
+2026-03-30 22:55:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  33/80: train=5174.961914, val=5193.228516
+2026-03-30 22:55:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  34/80: train=5167.353516, val=5183.707520
+2026-03-30 22:55:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=5158.787598, val=5163.844238
+2026-03-30 22:55:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  36/80: train=5151.408203, val=5164.190918
+2026-03-30 22:55:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  37/80: train=5144.230469, val=5161.695312
+2026-03-30 22:55:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  38/80: train=5137.109863, val=5148.175293
+2026-03-30 22:55:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  39/80: train=5129.997559, val=5135.453613
+2026-03-30 22:55:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=5122.798828, val=5141.258301
+2026-03-30 22:55:30 | src.models.scvi_wrapper | INFO |     scVI Epoch  41/80: train=5115.687500, val=5131.536133
+2026-03-30 22:55:30 | src.models.scvi_wrapper | INFO |     scVI Epoch  42/80: train=5109.123047, val=5127.553223
+2026-03-30 22:55:30 | src.models.scvi_wrapper | INFO |     scVI Epoch  43/80: train=5102.431641, val=5111.615234
+2026-03-30 22:55:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  44/80: train=5096.353027, val=5104.409180
+2026-03-30 22:55:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=5089.582520, val=5101.493652
+2026-03-30 22:55:31 | src.models.scvi_wrapper | INFO |     scVI Epoch  46/80: train=5083.485352, val=5093.848145
+2026-03-30 22:55:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  47/80: train=5077.421875, val=5086.114258
+2026-03-30 22:55:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  48/80: train=5070.785645, val=5083.339355
+2026-03-30 22:55:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  49/80: train=5065.056152, val=5070.937988
+2026-03-30 22:55:33 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=5059.642578, val=5070.937988
+2026-03-30 22:55:33 | src.models.scvi_wrapper | INFO |     scVI Epoch  51/80: train=5053.355469, val=5063.652344
+2026-03-30 22:55:33 | src.models.scvi_wrapper | INFO |     scVI Epoch  52/80: train=5048.187988, val=5060.980957
+2026-03-30 22:55:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  53/80: train=5043.156738, val=5052.970215
+2026-03-30 22:55:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  54/80: train=5037.675781, val=5061.106934
+2026-03-30 22:55:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=5032.716309, val=5056.797852
+2026-03-30 22:55:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  56/80: train=5027.015137, val=5065.337891
+2026-03-30 22:55:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  57/80: train=5022.092773, val=5038.889160
+2026-03-30 22:55:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  58/80: train=5016.917480, val=5024.700684
+2026-03-30 22:55:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  59/80: train=5012.086914, val=5031.508301
+2026-03-30 22:55:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=5007.162598, val=5021.952637
+2026-03-30 22:55:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  61/80: train=5002.985352, val=5024.779785
+2026-03-30 22:55:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  62/80: train=4997.880371, val=5023.743652
+2026-03-30 22:55:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  63/80: train=4993.613281, val=5017.147949
+2026-03-30 22:55:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  64/80: train=4988.913086, val=5009.934570
+2026-03-30 22:55:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=4984.909668, val=5004.135254
+2026-03-30 22:55:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  66/80: train=4980.562988, val=5000.750488
+2026-03-30 22:55:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  67/80: train=4976.224121, val=4999.752441
+2026-03-30 22:55:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  68/80: train=4972.301270, val=4992.115723
+2026-03-30 22:55:40 | src.models.scvi_wrapper | INFO |     scVI Epoch  69/80: train=4968.305176, val=4998.983887
+2026-03-30 22:55:40 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=4964.066406, val=4984.297852
+2026-03-30 22:55:41 | src.models.scvi_wrapper | INFO |     scVI Epoch  71/80: train=4960.366699, val=4993.315918
+2026-03-30 22:55:41 | src.models.scvi_wrapper | INFO |     scVI Epoch  72/80: train=4956.791504, val=4995.238281
+2026-03-30 22:55:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  73/80: train=4952.740723, val=4977.880859
+2026-03-30 22:55:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  74/80: train=4948.715820, val=4976.235840
+2026-03-30 22:55:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=4945.363770, val=4963.958496
+2026-03-30 22:55:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  76/80: train=4942.280273, val=4969.077637
+2026-03-30 22:55:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  77/80: train=4938.613770, val=4953.967773
+2026-03-30 22:55:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  78/80: train=4934.858887, val=4968.974609
+2026-03-30 22:55:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  79/80: train=4931.909668, val=4977.667480
+2026-03-30 22:55:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=4928.430664, val=4960.622070
+2026-03-30 22:55:44 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-03-30 22:55:44 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 29.4s
+INFO     Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-03-30 22:55:44 | src.evaluation.metrics | INFO |   Metrics: ARI=1.0000, AMI=1.0000, Sil(kmeans)=0.5482, Sil(labels)=0.5482 [n_used=480/480]
+2026-03-30 22:55:44 | src.evaluation.metrics | WARNING | Centrality computation failed (mode=full, n_obs=480, n_neighbors=15): `eigenvector_centrality_numpy` does not give consistent results for disconnected graphs
+2026-03-30 22:55:44 | experiment | INFO |   -> ARI=1.0000, AMI=1.0000, Sil=0.5482, Recon=4970.770020, CentralityMode=failed, CPUmem=nanMB, Time=29.8s
+2026-03-30 22:55:44 | experiment | INFO |   Dataset results saved: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/datasets/splatter_k12/tables/experiment_results.csv (12 rows)
+2026-03-30 22:55:44 | experiment | INFO | Skipping fit for ae:nb (unique K=1 < min_k_for_fit=3)
+2026-03-30 22:55:44 | experiment | INFO | Skipping fit for scvi:nb (unique K=1 < min_k_for_fit=3)
+2026-03-30 22:55:44 | experiment | INFO | Skipping fit for vae:nb (unique K=1 < min_k_for_fit=3)
+2026-03-30 22:55:44 | experiment | INFO | Auto-d reports saved: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/datasets/splatter_k12/tables/recommended_d_by_K.csv, /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/datasets/splatter_k12/tables/formula_fit_summary.csv
+2026-03-30 22:55:44 | experiment | INFO | 
+======================================================================
+2026-03-30 22:55:44 | experiment | INFO | EXPERIMENT COMPLETE — run_20260330T205128Z_j1561803_p1249392
+2026-03-30 22:55:44 | experiment | INFO | ======================================================================
+2026-03-30 22:55:44 | experiment | INFO |   Total runs:    12
+2026-03-30 22:55:44 | experiment | INFO |   Successful:    12
+2026-03-30 22:55:44 | experiment | INFO |   Failed:        0
+2026-03-30 22:55:44 | experiment | INFO |   Completed:     2026-03-30T20:55:44.874841Z
+2026-03-30 22:55:44 | experiment | INFO | 
+2026-03-30 22:55:44 | experiment | INFO |   Output files:
+2026-03-30 22:55:44 | experiment | INFO |     Global CSV:  results/global/tables/phase3_splatter_k12_sanity.csv
+2026-03-30 22:55:44 | experiment | INFO |     Run dir:     /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/runs/run_20260330T205128Z_j1561803_p1249392/
+2026-03-30 22:55:44 | experiment | INFO |     TensorBoard: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard/run_20260330T205128Z_j1561803_p1249392/ (12 event files)
+2026-03-30 22:55:44 | experiment | INFO |     View TB:     tensorboard --logdir /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard
+2026-03-30 22:55:44 | experiment | INFO | ======================================================================
+2026-03-30 22:55:44 | experiment | INFO | Skipping fit for ae:nb (unique K=1 < min_k_for_fit=3)
+2026-03-30 22:55:44 | experiment | INFO | Skipping fit for scvi:nb (unique K=1 < min_k_for_fit=3)
+2026-03-30 22:55:44 | experiment | INFO | Skipping fit for vae:nb (unique K=1 < min_k_for_fit=3)
+2026-03-30 22:55:44 | experiment | INFO | Auto-d reports saved: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/global/tables/recommended_d_by_K.csv, /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/results/global/tables/formula_fit_summary.csv
+End: Mon Mar 30 22:55:48 CEST 2026
+=== PHASE3 K12 SANITY DONE ===
+=== JOB_STATISTICS ===
+=== current date     : Mon Mar 30 10:55:48 PM CEST 2026
+= Job-ID             : 1561803 on tinygpu
+= Job-Name           : phase3_k12_sanity
+= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/phase3_k12_sanity.sh
+= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+= Queue/Partition    : a100
+= Slurm account      : iwbn with QOS=normal
+= Requested resources:  for 02:30:00
+= Elapsed runtime    : 00:04:56
+= Total RAM usage    : 5.1 GiB of requested  GiB (%)   
+= Node list          : tg092
+= Subm/Elig/Start/End: 2026-03-30T22:32:45 / 2026-03-30T22:32:45 / 2026-03-30T22:50:52 / 2026-03-30T22:55:48
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              44.8G   104.9G   209.7G        N/A      96K     500K   1,000K        N/A    
+    /home/woody            12.7G  1000.0G  1500.0G        N/A      93K   5,000K   7,500K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+NVIDIA A100-SXM4-40GB, 00000000:C1:00.0, 1249392, 10 %, 0 %, 584 MiB, 259755 ms

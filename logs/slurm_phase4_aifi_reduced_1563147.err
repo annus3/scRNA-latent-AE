@@ -1,0 +1,3 @@
+/var/tmp/slurmd_spool/job1563147/slurm_script: line 88: 1818336 Killed                  python scripts/run_experiment.py --config "${SCAE_CONFIG}" --device auto --output "${SCAE_RESULTS_DIR}/phase4_aifi_scvi_nb_reduced.csv" 2>&1
+     1818337 Done                    | tee -a "${SCAE_LOG_DIR}/run_experiment.log"
+[2026-04-03T00:48:41.671] error: Detected 1 oom_kill event in StepId=1563147.batch. Some of the step tasks have been OOM Killed.

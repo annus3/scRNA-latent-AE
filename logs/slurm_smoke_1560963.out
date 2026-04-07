@@ -1,0 +1,76 @@
+### Starting TaskPrologue of job 1560963 on tg095 at Sun Mar 29 10:58:44 AM CEST 2026
+Running on cores 96-127 with governor ondemand
+Sun Mar 29 10:58:44 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   34C    P0             51W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+=== Smoke Test ===
+Node: tg095
+Start: Sun Mar 29 10:58:45 AM CEST 2026
+Sun Mar 29 10:58:45 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   35C    P0             70W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+---
+Training:   0%|          | 0/10 [00:00<?, ?it/s]Epoch 1/10:   0%|          | 0/10 [00:00<?, ?it/s]Epoch 1/10:  10%|█         | 1/10 [00:01<00:14,  1.58s/it]Epoch 1/10:  10%|█         | 1/10 [00:01<00:14,  1.58s/it, v_num=1, train_loss=1.42e+3]Epoch 2/10:  10%|█         | 1/10 [00:01<00:14,  1.58s/it, v_num=1, train_loss=1.42e+3]Epoch 2/10:  20%|██        | 2/10 [00:01<00:12,  1.58s/it, v_num=1, train_loss=1.4e+3] Epoch 3/10:  20%|██        | 2/10 [00:01<00:12,  1.58s/it, v_num=1, train_loss=1.4e+3]Epoch 3/10:  30%|███       | 3/10 [00:01<00:11,  1.58s/it, v_num=1, train_loss=1.39e+3]Epoch 4/10:  30%|███       | 3/10 [00:01<00:11,  1.58s/it, v_num=1, train_loss=1.39e+3]Epoch 4/10:  40%|████      | 4/10 [00:01<00:02,  2.98it/s, v_num=1, train_loss=1.39e+3]Epoch 4/10:  40%|████      | 4/10 [00:01<00:02,  2.98it/s, v_num=1, train_loss=1.38e+3]Epoch 5/10:  40%|████      | 4/10 [00:01<00:02,  2.98it/s, v_num=1, train_loss=1.38e+3]Epoch 5/10:  50%|█████     | 5/10 [00:01<00:01,  2.98it/s, v_num=1, train_loss=1.37e+3]Epoch 6/10:  50%|█████     | 5/10 [00:01<00:01,  2.98it/s, v_num=1, train_loss=1.37e+3]Epoch 6/10:  60%|██████    | 6/10 [00:01<00:01,  2.98it/s, v_num=1, train_loss=1.36e+3]Epoch 7/10:  60%|██████    | 6/10 [00:01<00:01,  2.98it/s, v_num=1, train_loss=1.36e+3]Epoch 7/10:  70%|███████   | 7/10 [00:01<00:01,  2.98it/s, v_num=1, train_loss=1.35e+3]Epoch 8/10:  70%|███████   | 7/10 [00:01<00:01,  2.98it/s, v_num=1, train_loss=1.35e+3]Epoch 8/10:  80%|████████  | 8/10 [00:01<00:00,  6.76it/s, v_num=1, train_loss=1.35e+3]Epoch 8/10:  80%|████████  | 8/10 [00:01<00:00,  6.76it/s, v_num=1, train_loss=1.34e+3]Epoch 9/10:  80%|████████  | 8/10 [00:01<00:00,  6.76it/s, v_num=1, train_loss=1.34e+3]Epoch 9/10:  90%|█████████ | 9/10 [00:01<00:00,  6.76it/s, v_num=1, train_loss=1.33e+3]Epoch 10/10:  90%|█████████ | 9/10 [00:01<00:00,  6.76it/s, v_num=1, train_loss=1.33e+3]Epoch 10/10: 100%|██████████| 10/10 [00:01<00:00,  6.76it/s, v_num=1, train_loss=1.32e+3]Epoch 10/10: 100%|██████████| 10/10 [00:01<00:00,  5.33it/s, v_num=1, train_loss=1.32e+3]
+[34mINFO    [0m Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+---
+End: Sun Mar 29 11:00:45 AM CEST 2026
+=== JOB_STATISTICS ===
+=== current date     : Sun Mar 29 11:00:45 AM CEST 2026
+= Job-ID             : 1560963 on tinygpu
+= Job-Name           : sc_smoke
+= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/smoke_test.sh
+= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+= Queue/Partition    : a100
+= Slurm account      : iwbn with QOS=normal
+= Requested resources:  for 00:10:00
+= Elapsed runtime    : 00:02:17
+= Total RAM usage    : 2.2 GiB of requested  GiB (%)   
+= Node list          : tg095
+= Subm/Elig/Start/End: 2026-03-29T10:58:27 / 2026-03-29T10:58:27 / 2026-03-29T10:58:28 / 2026-03-29T11:00:45
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              31.9G   104.9G   209.7G        N/A      57K     500K   1,000K        N/A    
+    /home/vault             0.0K  1048.6G  2097.2G        N/A       1      200K     400K        N/A    
+    /home/woody             9.6G  1000.0G  1500.0G        N/A      61K   5,000K   7,500K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+NVIDIA A100-SXM4-40GB, 00000000:C1:00.0, 1284664, 0 %, 0 %, 536 MiB, 65877 ms

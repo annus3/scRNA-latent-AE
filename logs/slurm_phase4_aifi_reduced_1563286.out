@@ -1,0 +1,64 @@
+### Starting TaskPrologue of job 1563286 on tg090 at Fri Apr  3 08:09:34 CEST 2026
+Running on cores 32-63 with governor ondemand
+Fri Apr  3 08:09:34 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:41:00.0 Off |                    0 |
+| N/A   46C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+WARN: conda env scvi_env not found, using user packages
+=== PHASE 4 AIFI REDUCED START ===
+Job ID:       1563286
+Node:         tg090
+WORK file:    /home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/aifi_immune_full.h5ad
+Stage file:   /tmp/1563286.tinygpu/iwbn129h/scae_phase4_aifi_1563286/data/processed/aifi_immune_full.h5ad
+Persist root: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/aifi_reduced/job_1563286
+Start:        Fri Apr  3 08:09:36 CEST 2026
+AIFI schema gate passed
+Using config: /tmp/phase4_aifi_scvi_nb_refine_d16_only.yaml
+Traceback (most recent call last):
+  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 1880, in <module>
+    main()
+  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 1484, in main
+    config = load_config(args.config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/config.py", line 314, in load_config
+    raise FileNotFoundError(f"Configuration file not found: {config_path}")
+FileNotFoundError: Configuration file not found: /tmp/phase4_aifi_scvi_nb_refine_d16_only.yaml
+=== JOB_STATISTICS ===
+=== current date     : Fri Apr  3 08:10:43 AM CEST 2026
+= Job-ID             : 1563286 on tinygpu
+= Job-Name           : phase4_aifi_reduced
+= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/phase4_aifi_scvi_nb_reduced.sh
+= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+= Queue/Partition    : a100
+= Slurm account      : iwbn with QOS=normal
+= Requested resources:  for 12:00:00
+= Elapsed runtime    : 00:01:19
+= Total RAM usage    : 11.3 GiB of requested  GiB (%)   
+= Node list          : tg090
+= Subm/Elig/Start/End: 2026-04-03T08:09:24 / 2026-04-03T08:09:24 / 2026-04-03T08:09:24 / 2026-04-03T08:10:43
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              47.2G   104.9G   209.7G        N/A      98K     500K   1,000K        N/A    
+    /home/woody            76.3G  1000.0G  1500.0G        N/A      94K   5,000K   7,500K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]

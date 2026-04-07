@@ -1,0 +1,264 @@
+### Starting TaskPrologue of job 1562226 on tg092 at Tue Mar 31 21:40:44 CEST 2026
+Running on cores 32-63 with governor ondemand
+Tue Mar 31 21:40:44 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:41:00.0 Off |                    0 |
+| N/A   38C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+### Finished TaskPrologue
+
+WARN: conda env scvi_env not found, using user packages
+=== PHASE 4 STAGE B START ===
+Job ID:       1562226
+Node:         tg092
+WORK file:    /home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/ts1_all_cells_phase4_ready.h5ad
+Stage file:   /tmp/1562226.tinygpu/iwbn129h/scae_phase4_stageB_1562226/data/processed/ts1_all_cells.h5ad
+Persist root: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226
+Start:        Tue Mar 31 21:40:46 CEST 2026
+Using config: config/phase4_ts1_scvi_nb_seed43_stability.yaml
+2026-03-31 21:41:39 | experiment | INFO |   TensorBoard: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/logs/tensorboard/run_20260331T194139Z_j1562226_p1388414
+2026-03-31 21:41:39 | experiment | INFO |   View live:   tensorboard --logdir /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/logs/tensorboard
+2026-03-31 21:41:39 | experiment | INFO | ======================================================================
+2026-03-31 21:41:39 | experiment | INFO | EXPERIMENT: Latent Dimension Sweep
+2026-03-31 21:41:39 | experiment | INFO |   Datasets:       ['ts1_all_cells']
+2026-03-31 21:41:39 | experiment | INFO |   Model/losses:   [('scvi', 'nb')]
+2026-03-31 21:41:39 | experiment | INFO |   Latent dims:    [8, 16, 24, 32]
+2026-03-31 21:41:39 | experiment | INFO |   Seeds:          1
+2026-03-31 21:41:39 | experiment | INFO |   Device:         cuda
+2026-03-31 21:41:39 | experiment | INFO |   Git commit:     10d3fdb
+2026-03-31 21:41:39 | experiment | INFO |   Run ID:         run_20260331T194139Z_j1562226_p1388414
+2026-03-31 21:41:39 | experiment | INFO |   Large run mode: True
+2026-03-31 21:41:39 | experiment | INFO | ======================================================================
+2026-03-31 21:41:41 | src.data.preprocessor | INFO |   Loaded processed data (backed): 483151 × 2000
+2026-03-31 21:41:41 | experiment | WARNING | Processed cache check for ts1_all_cells: missing fingerprint in cached file (expected=ff82c29c0dc16b5e). This likely came from an older preprocessing run.. Continuing with cached file /tmp/1562226.tinygpu/iwbn129h/scae_phase4_stageB_1562226/data/processed/ts1_all_cells.h5ad; rerun preprocess to refresh.
+2026-03-31 21:41:41 | experiment | INFO | Large-run mode on ts1_all_cells using in-memory path (keep_backed_until_split=False).
+2026-03-31 21:41:41 | experiment | INFO | 
+Dataset: ts1_all_cells (483151 cells, K=177, requested_mode=backed, effective_mode=in_memory_from_backed, label_source=provided:cell_ontology_class)
+2026-03-31 21:41:41 | experiment | INFO | 
+--- ts1_all_cells | scvi:nb | d=8 | seed=43 ---
+2026-03-31 21:41:41 | src.data.dataset | INFO |   Split: train=386520, val=48315, test=48316
+INFO: [rank: 0] Seed set to 43
+2026-03-31 21:42:10 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 43
+2026-03-31 21:42:11 | src.models.scvi_wrapper | INFO |   scVI setup: d=8, likelihood=nb, hidden=128, layers=2, batch_key=donor_id
+2026-03-31 21:42:13 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/logs/tensorboard/run_20260331T194139Z_j1562226_p1388414/ts1_all_cells/scvi/nb/d_8/seed_43
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/phase4_ts1 ...
+2026-03-31 21:42:13 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-31 21:42:13 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-31 21:42:13 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/phase4_ts1 ...
+INFO: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-31 21:42:15 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
+2026-03-31 21:42:47 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=492.045227, val=379.906647
+2026-03-31 21:44:45 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=296.760956, val=306.727753
+2026-03-31 21:47:14 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=280.007080, val=294.615967
+2026-03-31 21:49:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=275.875916, val=291.008118
+2026-03-31 21:52:10 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=273.618774, val=286.539154
+2026-03-31 21:54:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=272.531342, val=285.983978
+2026-03-31 21:57:01 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=271.959808, val=284.783203
+2026-03-31 21:59:28 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=271.523071, val=284.185211
+2026-03-31 22:01:54 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=271.346771, val=282.544952
+2026-03-31 22:04:20 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=271.215179, val=282.805115
+2026-03-31 22:06:47 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=271.297424, val=282.972626
+2026-03-31 22:09:13 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=271.168335, val=283.277557
+2026-03-31 22:11:40 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=271.249146, val=283.890656
+2026-03-31 22:14:08 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=271.289551, val=283.011292
+2026-03-31 22:16:34 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=271.422058, val=283.211090
+2026-03-31 22:18:58 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=271.511322, val=282.848358
+2026-03-31 22:21:23 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=271.559937, val=284.354675
+2026-03-31 22:21:23 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-03-31 22:21:23 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 2349.7s
+INFO     Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-03-31 22:21:25 | src.evaluation.metrics | INFO |   Latent evaluation sampled for scalability: n_used=15000 / n_total=48316 (seed=43)
+2026-03-31 22:21:33 | src.evaluation.metrics | INFO |   Metrics: ARI=0.2765, AMI=0.6603, Sil(kmeans)=0.2157, Sil(labels)=-0.0463 [n_used=15000/48316]
+2026-03-31 22:21:38 | src.evaluation.metrics | INFO |   Centrality sampled for scalability: n_used=5000 / n_total=48316 (seed=43)
+2026-03-31 22:21:50 | src.evaluation.metrics | INFO |   Centrality variance: 0.000199 [mode=sampled, n_used=5000/48316]
+2026-03-31 22:21:50 | experiment | INFO |   -> ARI=0.2765, AMI=0.6603, Sil=0.2157, Recon=278.034302, CentralityMode=sampled, CPUmem=nanMB, Time=2408.3s
+2026-03-31 22:21:50 | experiment | INFO | 
+--- ts1_all_cells | scvi:nb | d=16 | seed=43 ---
+2026-03-31 22:21:50 | src.data.dataset | INFO |   Split: train=386520, val=48315, test=48316
+INFO: [rank: 0] Seed set to 43
+2026-03-31 22:21:51 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 43
+2026-03-31 22:21:51 | src.models.scvi_wrapper | INFO |   scVI setup: d=16, likelihood=nb, hidden=128, layers=2, batch_key=donor_id
+2026-03-31 22:21:51 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/logs/tensorboard/run_20260331T194139Z_j1562226_p1388414/ts1_all_cells/scvi/nb/d_16/seed_43
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/phase4_ts1 ...
+2026-03-31 22:21:51 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-31 22:21:51 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-31 22:21:51 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/phase4_ts1 ...
+INFO: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-31 22:21:51 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
+2026-03-31 22:22:21 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=529.910767, val=385.966614
+2026-03-31 22:24:18 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=295.828796, val=307.149200
+2026-03-31 22:26:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=277.284546, val=291.026215
+2026-03-31 22:29:11 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=272.179077, val=285.721100
+2026-03-31 22:31:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=270.361298, val=283.740051
+2026-03-31 22:34:07 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=269.289764, val=282.031952
+2026-03-31 22:36:36 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=268.836395, val=281.954834
+2026-03-31 22:39:05 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=268.604126, val=280.598907
+2026-03-31 22:41:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=268.510803, val=280.730743
+2026-03-31 22:43:57 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=268.638306, val=280.863434
+2026-03-31 22:46:23 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=268.717163, val=280.000793
+2026-03-31 22:48:49 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=268.778534, val=280.817932
+2026-03-31 22:51:15 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=268.999695, val=280.932526
+2026-03-31 22:53:42 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=269.283966, val=279.509735
+2026-03-31 22:56:10 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=269.307343, val=280.416565
+2026-03-31 22:58:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=269.574677, val=281.282715
+2026-03-31 23:01:06 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=269.794312, val=281.423157
+2026-03-31 23:01:06 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-03-31 23:01:06 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 2355.1s
+INFO     Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-03-31 23:01:09 | src.evaluation.metrics | INFO |   Latent evaluation sampled for scalability: n_used=15000 / n_total=48316 (seed=43)
+2026-03-31 23:01:17 | src.evaluation.metrics | INFO |   Metrics: ARI=0.2686, AMI=0.6681, Sil(kmeans)=0.1645, Sil(labels)=-0.0122 [n_used=15000/48316]
+2026-03-31 23:01:17 | src.evaluation.metrics | INFO |   Centrality sampled for scalability: n_used=5000 / n_total=48316 (seed=43)
+2026-03-31 23:01:17 | src.evaluation.metrics | INFO |   Centrality variance: 0.000199 [mode=sampled, n_used=5000/48316]
+2026-03-31 23:01:17 | experiment | INFO |   -> ARI=0.2686, AMI=0.6681, Sil=0.1645, Recon=273.266174, CentralityMode=sampled, CPUmem=nanMB, Time=2367.0s
+2026-03-31 23:01:17 | experiment | INFO | 
+--- ts1_all_cells | scvi:nb | d=24 | seed=43 ---
+2026-03-31 23:01:17 | src.data.dataset | INFO |   Split: train=386520, val=48315, test=48316
+INFO: [rank: 0] Seed set to 43
+2026-03-31 23:01:18 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 43
+2026-03-31 23:01:18 | src.models.scvi_wrapper | INFO |   scVI setup: d=24, likelihood=nb, hidden=128, layers=2, batch_key=donor_id
+2026-03-31 23:01:18 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/logs/tensorboard/run_20260331T194139Z_j1562226_p1388414/ts1_all_cells/scvi/nb/d_24/seed_43
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/phase4_ts1 ...
+2026-03-31 23:01:19 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-31 23:01:19 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-31 23:01:19 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/phase4_ts1 ...
+INFO: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-31 23:01:19 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
+2026-03-31 23:01:48 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=512.058960, val=380.994202
+2026-03-31 23:03:47 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=294.840820, val=304.679657
+2026-03-31 23:06:12 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=277.061707, val=292.594482
+2026-03-31 23:08:37 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=272.463776, val=285.207428
+2026-03-31 23:11:03 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=270.287537, val=282.850494
+2026-03-31 23:13:30 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=269.046570, val=280.596191
+2026-03-31 23:15:57 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=268.661285, val=278.582520
+2026-03-31 23:18:25 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=268.421478, val=278.572632
+2026-03-31 23:20:53 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=268.360931, val=278.036438
+2026-03-31 23:23:22 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=268.560272, val=278.429169
+2026-03-31 23:25:51 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=268.579407, val=278.186920
+2026-03-31 23:28:18 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=268.704926, val=278.520325
+2026-03-31 23:30:43 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=268.985443, val=277.549713
+2026-03-31 23:33:09 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=269.158295, val=278.078827
+2026-03-31 23:35:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=269.416962, val=278.110535
+2026-03-31 23:38:02 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=269.665741, val=278.455658
+2026-03-31 23:40:29 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=269.953644, val=278.046814
+2026-03-31 23:40:29 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-03-31 23:40:29 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 2350.8s
+INFO     Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-03-31 23:40:32 | src.evaluation.metrics | INFO |   Latent evaluation sampled for scalability: n_used=15000 / n_total=48316 (seed=43)
+2026-03-31 23:40:40 | src.evaluation.metrics | INFO |   Metrics: ARI=0.2569, AMI=0.6539, Sil(kmeans)=0.1341, Sil(labels)=-0.0015 [n_used=15000/48316]
+2026-03-31 23:40:40 | src.evaluation.metrics | INFO |   Centrality sampled for scalability: n_used=5000 / n_total=48316 (seed=43)
+2026-03-31 23:40:40 | src.evaluation.metrics | INFO |   Centrality variance: 0.000198 [mode=sampled, n_used=5000/48316]
+2026-03-31 23:40:40 | experiment | INFO |   -> ARI=0.2569, AMI=0.6539, Sil=0.1341, Recon=271.472931, CentralityMode=sampled, CPUmem=nanMB, Time=2363.3s
+2026-03-31 23:40:40 | experiment | INFO | 
+--- ts1_all_cells | scvi:nb | d=32 | seed=43 ---
+2026-03-31 23:40:40 | src.data.dataset | INFO |   Split: train=386520, val=48315, test=48316
+INFO: [rank: 0] Seed set to 43
+2026-03-31 23:40:41 | lightning.fabric.utilities.seed | INFO | [rank: 0] Seed set to 43
+2026-03-31 23:40:42 | src.models.scvi_wrapper | INFO |   scVI setup: d=32, likelihood=nb, hidden=128, layers=2, batch_key=donor_id
+2026-03-31 23:40:42 | src.models.scvi_wrapper | INFO |   scVI TensorBoard logging to: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/logs/tensorboard/run_20260331T194139Z_j1562226_p1388414/ts1_all_cells/scvi/nb/d_32/seed_43
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/phase4_ts1 ...
+2026-03-31 23:40:42 | pytorch_lightning.utilities.rank_zero | INFO | GPU available: True (cuda), used: True
+2026-03-31 23:40:42 | pytorch_lightning.utilities.rank_zero | INFO | TPU available: False, using: 0 TPU cores
+2026-03-31 23:40:42 | pytorch_lightning.utilities.rank_zero | INFO | 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/phase4_ts1 ...
+INFO: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+2026-03-31 23:40:42 | lightning.pytorch.accelerators.cuda | INFO | LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
+/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
+2026-03-31 23:41:11 | src.models.scvi_wrapper | INFO |     scVI Epoch   1/80: train=491.729462, val=379.451996
+2026-03-31 23:43:10 | src.models.scvi_wrapper | INFO |     scVI Epoch   5/80: train=294.195435, val=306.759460
+2026-03-31 23:45:38 | src.models.scvi_wrapper | INFO |     scVI Epoch  10/80: train=277.164337, val=290.760803
+2026-03-31 23:48:06 | src.models.scvi_wrapper | INFO |     scVI Epoch  15/80: train=272.496063, val=284.173676
+2026-03-31 23:50:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  20/80: train=270.498596, val=283.105743
+2026-03-31 23:53:02 | src.models.scvi_wrapper | INFO |     scVI Epoch  25/80: train=269.282196, val=278.918060
+2026-03-31 23:55:27 | src.models.scvi_wrapper | INFO |     scVI Epoch  30/80: train=268.717468, val=279.268951
+2026-03-31 23:57:52 | src.models.scvi_wrapper | INFO |     scVI Epoch  35/80: train=268.551971, val=279.468018
+2026-04-01 00:00:18 | src.models.scvi_wrapper | INFO |     scVI Epoch  40/80: train=268.591156, val=280.181763
+2026-04-01 00:02:44 | src.models.scvi_wrapper | INFO |     scVI Epoch  45/80: train=268.547241, val=278.457184
+2026-04-01 00:05:11 | src.models.scvi_wrapper | INFO |     scVI Epoch  50/80: train=268.643494, val=278.577759
+2026-04-01 00:07:39 | src.models.scvi_wrapper | INFO |     scVI Epoch  55/80: train=268.846619, val=277.439453
+2026-04-01 00:10:07 | src.models.scvi_wrapper | INFO |     scVI Epoch  60/80: train=269.067169, val=278.449921
+2026-04-01 00:12:35 | src.models.scvi_wrapper | INFO |     scVI Epoch  65/80: train=269.171448, val=278.223816
+2026-04-01 00:15:04 | src.models.scvi_wrapper | INFO |     scVI Epoch  70/80: train=269.421722, val=277.899078
+2026-04-01 00:17:32 | src.models.scvi_wrapper | INFO |     scVI Epoch  75/80: train=269.700073, val=278.290192
+2026-04-01 00:19:57 | src.models.scvi_wrapper | INFO |     scVI Epoch  80/80: train=269.939758, val=277.859772
+2026-04-01 00:19:57 | pytorch_lightning.utilities.rank_zero | INFO | `Trainer.fit` stopped: `max_epochs=80` reached.
+2026-04-01 00:19:57 | src.models.scvi_wrapper | INFO |   scVI training complete: 80 epochs in 2355.5s
+INFO     Input AnnData not setup with scvi-tools. attempting to transfer AnnData
+         setup                                                                  
+2026-04-01 00:19:59 | src.evaluation.metrics | INFO |   Latent evaluation sampled for scalability: n_used=15000 / n_total=48316 (seed=43)
+2026-04-01 00:20:08 | src.evaluation.metrics | INFO |   Metrics: ARI=0.2725, AMI=0.6606, Sil(kmeans)=0.1335, Sil(labels)=-0.0081 [n_used=15000/48316]
+2026-04-01 00:20:08 | src.evaluation.metrics | INFO |   Centrality sampled for scalability: n_used=5000 / n_total=48316 (seed=43)
+2026-04-01 00:20:08 | src.evaluation.metrics | INFO |   Centrality variance: 0.000198 [mode=sampled, n_used=5000/48316]
+2026-04-01 00:20:08 | experiment | INFO |   -> ARI=0.2725, AMI=0.6606, Sil=0.1335, Recon=270.324646, CentralityMode=sampled, CPUmem=nanMB, Time=2368.1s
+2026-04-01 00:20:08 | experiment | INFO |   Dataset results saved: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/results/datasets/ts1_all_cells/tables/experiment_results.csv (4 rows)
+2026-04-01 00:20:08 | experiment | INFO | 
+======================================================================
+2026-04-01 00:20:08 | experiment | INFO | EXPERIMENT COMPLETE — run_20260331T194139Z_j1562226_p1388414
+2026-04-01 00:20:08 | experiment | INFO | ======================================================================
+2026-04-01 00:20:08 | experiment | INFO |   Total runs:    4
+2026-04-01 00:20:08 | experiment | INFO |   Successful:    4
+2026-04-01 00:20:08 | experiment | INFO |   Failed:        0
+2026-04-01 00:20:08 | experiment | INFO |   Completed:     2026-03-31T22:20:08.799319Z
+2026-04-01 00:20:08 | experiment | INFO | 
+2026-04-01 00:20:08 | experiment | INFO |   Output files:
+2026-04-01 00:20:08 | experiment | INFO |     Global CSV:  /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/results/phase4_ts1_stageB_reduced.csv
+2026-04-01 00:20:08 | experiment | INFO |     Run dir:     /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/results/runs/run_20260331T194139Z_j1562226_p1388414/
+2026-04-01 00:20:08 | experiment | INFO |     TensorBoard: /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/logs/tensorboard/run_20260331T194139Z_j1562226_p1388414/ (4 event files)
+2026-04-01 00:20:08 | experiment | INFO |     View TB:     tensorboard --logdir /home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1562226/logs/tensorboard
+2026-04-01 00:20:08 | experiment | INFO | ======================================================================
+End: Wed Apr  1 00:20:16 CEST 2026
+=== PHASE 4 STAGE B DONE ===
+=== JOB_STATISTICS ===
+=== current date     : Wed Apr  1 12:20:16 AM CEST 2026
+= Job-ID             : 1562226 on tinygpu
+= Job-Name           : phase4_ts1_reduced
+= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/phase4_ts1_stageB_reduced.sh
+= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+= Queue/Partition    : a100
+= Slurm account      : iwbn with QOS=normal
+= Requested resources:  for 12:00:00
+= Elapsed runtime    : 02:39:36
+= Total RAM usage    : 4.7 GiB of requested  GiB (%)   
+= Node list          : tg092
+= Subm/Elig/Start/End: 2026-03-31T21:07:37 / 2026-03-31T21:07:37 / 2026-03-31T21:40:40 / 2026-04-01T00:20:16
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc              46.4G   104.9G   209.7G        N/A      98K     500K   1,000K        N/A    
+    /home/woody            22.8G  1000.0G  1500.0G        N/A      93K   5,000K   7,500K        N/A    
+    /home/vault             0.0K  1048.6G  2097.2G        N/A       1      200K     400K        N/A    
+======================
+=== GPU utilization ==
+gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
+NVIDIA A100-SXM4-40GB, 00000000:41:00.0, 1388414, 14 %, 0 %, 568 MiB, 9517494 ms
