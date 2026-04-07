@@ -149,7 +149,7 @@ For large jobs on FAU TinyGPU/A100, use job scripts in `jobs/`.
 Example:
 
 ```bash
-cd /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
+cd /home/hpc/user/sc_autoencoder_project
 sbatch.tinygpu jobs/tinygpu_large.sh
 ```
 
@@ -166,8 +166,8 @@ If you run those phase configs directly (outside job scripts), set the required 
 On HPC, use script mode instead of interactive notebooks:
 
 ```bash
-cd /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
-bash notebooks/analysis.sh
+cd /home/hpc/user/sc_autoencoder_project
+bash code_analysis/analysis.sh
 ```
 
 Each analysis run creates a new timestamped folder:
