@@ -8,21 +8,73 @@ Here, `K` means the number of label classes used for evaluation in a dataset.
 
 The pipeline runs AE, VAE, and scVI experiments, records metrics, and builds candidate `d = f(K)` summaries.
 
-## What This Project Is
+## Project Description
 
-This is a **fixed-config benchmark study**.
+This is a fixed-config benchmark project for single-cell representation learning.
 
-It is not a full hyperparameter search per dataset.  
-So results should be read as controlled comparisons under one protocol.
+The work has two connected parts:
+
+- **Scientific part:** test whether latent size can be explained by label complexity (`K`) in a practical way.
+- **Engineering part:** build a stable HPC pipeline that can run from small datasets to atlas-scale datasets.
+
+What this project is designed to do:
+
+- compare AE, VAE, and scVI under one consistent protocol
+- keep PRIMARY evidence strict (trusted real labels only)
+- keep synthetic/inferred-label evidence separate as exploratory
+- produce reproducible output tables that can be re-audited in report-only mode
+
+What this project is not trying to do right now:
+
+- full per-dataset hyperparameter optimization
+- claiming one universal law that works perfectly for every dataset
+
+### Current Scope and Main Findings
+
+Using the current cleaned PRIMARY evidence for `scvi:nb`, the recommended latent dimensions are:
+
+| Dataset | `K` | `d` |
+|---|---|---|
+| `scvi_pbmc12k` | 09  | 04 |
+| `paul15` | 19 | 02 |
+| `aifi_immune_full` | 29 | 04 |
+| `ts2_lung` | 34 | 12 |
+| `ts1_all_cells` | 177| 10 |
+
+Formula-fit summary for PRIMARY `scvi:nb` is moderate (not perfect), and leave-one-dataset-out rows are available (`status=ok`).
+
+So the current picture is useful but still conservative: behavior looks dataset-dependent, with larger atlases often favoring a modest higher latent band.
+
+## Datasets Used in This Study
+
+The project uses a mix of small/medium benchmarks and large real atlases.
+
+### Trusted real datasets (PRIMARY candidates)
+
+| Dataset | Typical use | Label key | Batch key | Trust role | Notes |
+|---|---|---|---|---|---|
+| `scvi_pbmc12k` | core real benchmark | `labels` | `batch` | ground_truth | curated scvi benchmark PBMC set |
+| `paul15` | core real benchmark | `paul15_clusters` | none | ground_truth | myeloid progenitor benchmark |
+| `ts1_all_cells` | large atlas phase | `cell_type` | `donor_id` | ground_truth (via onboarding contract) | Tabula Sapiens all-cells processed contract |
+| `aifi_immune_full` | large atlas phase | `cell_type` | `batch_id` | ground_truth (via onboarding contract) | Allen Immune atlas, large-scale stress test |
+| `ts2_lung` | large non-blood atlas phase | `cell_type` | `donor_id` | strict provenance-gated | enters PRIMARY only with explicit ontology-backed provenance evidence |
+
+### Exploratory / non-primary datasets
+
+| Dataset group | Why used | PRIMARY role |
+|---|---|---|
+| `pbmc3k` | smoke and pipeline checks | exploratory / utility |
+| `pbmc68k_reduced` | quick small benchmark | untrusted labels |
+| `splatter_k*` synthetic sets | controlled scaling experiments | exploratory only |
 
 ## Scientific Policy (Current)
 
-We keep a strict split:
+I keep a strict split:
 
 - **PRIMARY evidence** = trusted real datasets with ground-truth label provenance
 - **EXPLORATORY evidence** = inferred-label or synthetic datasets
 
-Trust is enforced in code during experiment/report generation.  
+Trust is enforced in code during experiment/report generation.
 PRIMARY tables only include rows that pass the trust gate.
 
 ## Repository Layout
@@ -68,25 +120,25 @@ python scripts/preprocess.py --config config/default.yaml --dataset pbmc3k
 ### 3) Run a sweep
 
 ```bash
-python scripts/run_experiment.py \
-  --config config/default.yaml \
+python scripts/run_experiment.py 
+  --config config/default.yaml 
   --datasets pbmc3k,paul15
 ```
 
 ### 4) Generate reports from an existing CSV (report-only mode)
 
 ```bash
-python scripts/run_experiment.py \
-  --config config/default.yaml \
-  --report_only_csv results/global/tables/combined_curated_real_plus_phase4_enriched.csv \
+python scripts/run_experiment.py 
+  --config config/default.yaml 
+  --report_only_csv results/global/tables/combined_curated_real_plus_phase4_enriched.csv 
   --auto_d_report
 ```
 
 ### 5) Audit PRIMARY inclusion from a CSV
 
 ```bash
-python scripts/audit_primary_pool.py \
-  --config config/default.yaml \
+python scripts/audit_primary_pool.py 
+  --config config/default.yaml 
   --csv results/global/tables/combined_curated_real_plus_phase4_enriched.csv
 ```
 
@@ -122,7 +174,6 @@ Each analysis run creates a new timestamped folder:
 
 `results/analysis_runs/<YYYYmmddTHHMMSS>/`
 
-So old analysis outputs are preserved.
 
 ## Main Output Tables
 
@@ -143,7 +194,7 @@ Exploratory reports (if enabled):
 
 ## Notes on Loss Scale
 
-NB/ZINB loss values can look large (hundreds or thousands).  
+NB/ZINB loss values can look large (hundreds or thousands).
 That is normal because they are count-likelihood losses, not MSE.
 
 What to watch instead:
@@ -166,17 +217,17 @@ The analysis scripts also export per-gene normalized NB/ZINB loss summaries for 
 
 ## Quick Troubleshooting
 
-1. Schema checks:  
+1. Schema checks:
    `python scripts/inspect_dataset_schema.py --help`
-2. PRIMARY trust/status checks:  
+2. PRIMARY trust/status checks:
    `python scripts/audit_primary_pool.py --help`
-3. Run-level errors:  
+3. Run-level errors:
    `logs/slurm_*.out`, `logs/slurm_*.err`
-4. Run manifests:  
+4. Run manifests:
    `results/runs/run_*/manifest.json`
-5. Analysis inventories:  
+5. Analysis inventories:
    `results/analysis_runs/<timestamp>/00_inventory/`
 
 ---
 
-If you are new to the project: run smoke test first, then one small sweep, then `notebooks/analysis.sh`.
+If you are new to the project: run smoke test first, then one small sweep, then `code_analysis/analysis.sh`.
