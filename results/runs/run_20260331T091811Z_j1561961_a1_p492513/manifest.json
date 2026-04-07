@@ -1,0 +1,33 @@
+{
+  "run_id": "run_20260331T091811Z_j1561961_a1_p492513",
+  "git_commit": "10d3fdb",
+  "config_path": "config/tmp/phase3_recovery_base.yaml",
+  "datasets": [
+    "splatter_k12"
+  ],
+  "model_loss_combos": [
+    [
+      "ae",
+      "mse"
+    ]
+  ],
+  "latent_dims": [
+    2,
+    4,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "n_seeds": 2,
+  "device": "cuda",
+  "large_run_mode": false,
+  "requested_backed_mode": false,
+  "timestamp_utc": "2026-03-31T09:18:11.476746Z",
+  "status": "completed",
+  "completed_utc": "2026-03-31T09:19:06.331992Z",
+  "total_experiments": 14,
+  "successful": 14,
+  "failed": 0
+}

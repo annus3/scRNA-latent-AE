@@ -1,0 +1,15 @@
+model_type,loss_type,fit_formula_name,fit_score_r2,fit_rmse,report_scope
+ae,mse,insufficient_k_coverage,,,primary
+ae,nb,linear,0.7944753040084073,2.961258802543488,primary
+ae,nb,power,0.954753335508033,1.389433104419662,primary
+ae,nb,sqrt,0.8469666035299531,2.5552739414895096,primary
+ae,nb,logk,0.7802107772052608,3.0622987290447146,primary
+ae,zinb,insufficient_k_coverage,,,primary
+scvi,nb,linear,0.2920579891187063,3.263042727831595,primary
+scvi,nb,power,0.3201571631916531,3.197629788702491,primary
+scvi,nb,sqrt,0.34939645074382797,3.1281108325653726,primary
+scvi,nb,logk,0.2742918861716316,3.3037327422142764,primary
+scvi,zinb,insufficient_k_coverage,,,primary
+vae,mse,insufficient_k_coverage,,,primary
+vae,nb,insufficient_k_coverage,,,primary
+vae,zinb,insufficient_k_coverage,,,primary

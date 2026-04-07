@@ -1,0 +1,2 @@
+model_type,loss_type,fit_formula_name,fit_score_r2,fit_rmse
+scvi,nb,insufficient_k_coverage,,

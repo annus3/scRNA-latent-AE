@@ -1,0 +1,32 @@
+{
+  "run_id": "run_20260329T154638Z",
+  "git_commit": "unknown",
+  "config_path": "config/default.yaml",
+  "datasets": [
+    "pbmc3k"
+  ],
+  "model_loss_combos": [
+    [
+      "ae",
+      "mse"
+    ],
+    [
+      "ae",
+      "nb"
+    ],
+    [
+      "ae",
+      "zinb"
+    ]
+  ],
+  "latent_dims": [
+    2
+  ],
+  "n_seeds": 3,
+  "device": "cpu",
+  "timestamp_utc": "2026-03-29T15:46:38.377446Z",
+  "completed_utc": "2026-03-29T15:47:18.501472Z",
+  "total_experiments": 9,
+  "successful": 9,
+  "failed": 0
+}

@@ -1,0 +1,34 @@
+{
+  "run_id": "run_20260315T160131Z",
+  "git_commit": "unknown",
+  "config_path": "config/default.yaml",
+  "datasets": [
+    "pbmc3k"
+  ],
+  "model_loss_combos": [
+    [
+      "ae",
+      "mse"
+    ],
+    [
+      "vae",
+      "mse"
+    ],
+    [
+      "scvi",
+      "nb"
+    ]
+  ],
+  "latent_dims": [
+    2,
+    4,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "n_seeds": 3,
+  "device": "cuda",
+  "timestamp_utc": "2026-03-15T16:01:31.215614Z"
+}

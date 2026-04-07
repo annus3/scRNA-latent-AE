@@ -1,0 +1,32 @@
+{
+  "run_id": "run_20260330T114723Z_p2335889",
+  "git_commit": "10d3fdb",
+  "config_path": "config/phase1_pbmc3k_quick.yaml",
+  "datasets": [
+    "pbmc3k"
+  ],
+  "model_loss_combos": [
+    [
+      "ae",
+      "mse"
+    ],
+    [
+      "vae",
+      "mse"
+    ],
+    [
+      "scvi",
+      "nb"
+    ]
+  ],
+  "latent_dims": [
+    2,
+    8,
+    16
+  ],
+  "n_seeds": 1,
+  "device": "cpu",
+  "large_run_mode": false,
+  "requested_backed_mode": false,
+  "timestamp_utc": "2026-03-30T11:47:24.024941Z"
+}
