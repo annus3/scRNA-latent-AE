@@ -1,2 +1,0 @@
-dataset,model_type,loss_type,K,recommended_d,selection_metric,selection_score,mean_ari,mean_silhouette_kmeans
-splatter_k12,scvi,zinb,12,12,ari,1.0,1.0,0.573718249797821

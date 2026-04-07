@@ -1,2 +1,0 @@
-Killed
-[2026-04-01T16:33:04.254] error: Detected 1 oom_kill event in StepId=1562558.batch. Some of the step tasks have been OOM Killed.

@@ -1,2 +1,0 @@
-dataset,model_type,loss_type,K,recommended_d,selection_metric,selection_score,mean_ari,mean_silhouette_kmeans
-pbmc3k,scvi,nb,9,2,silhouette_kmeans,0.4460379282633464,,0.4460379282633464

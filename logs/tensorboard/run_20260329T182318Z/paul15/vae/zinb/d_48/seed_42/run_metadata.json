@@ -1,7 +1,0 @@
-{
-  "dataset": "paul15",
-  "latent_dim": 48,
-  "loss_type": "zinb",
-  "model_type": "vae",
-  "seed": 42
-}

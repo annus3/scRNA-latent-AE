@@ -1,7 +1,0 @@
-{
-  "dataset": "splatter_k08",
-  "latent_dim": 24,
-  "loss_type": "zinb",
-  "model_type": "ae",
-  "seed": 43
-}

@@ -1,305 +1,0 @@
-### Starting TaskPrologue of job 1560982 on tg095 at Sun Mar 29 11:34:14 AM CEST 2026
-Running on cores 96-127 with governor ondemand
-Sun Mar 29 11:34:14 2026       
-+-----------------------------------------------------------------------------------------+
-| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
-+-----------------------------------------+------------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
-|                                         |                        |               MIG M. |
-|=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
-| N/A   34C    P0             50W /  400W |       0MiB /  40960MiB |      0%      Default |
-|                                         |                        |             Disabled |
-+-----------------------------------------+------------------------+----------------------+
-
-+-----------------------------------------------------------------------------------------+
-| Processes:                                                                              |
-|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
-|        ID   ID                                                               Usage      |
-|=========================================================================================|
-|  No running processes found                                                             |
-+-----------------------------------------------------------------------------------------+
-### Finished TaskPrologue
-
-=== EXPERIMENT START ===
-Job ID:    1560982
-Node:      tg095
-Partition: a100
-Start:     Sun Mar 29 11:34:15 AM CEST 2026
----
-WARN: conda env 'scvi_env' not found, using pip user packages
-NVIDIA A100-SXM4-40GB, 40960 MiB, 8.0
----
-fatal: not a git repository (or any parent up to mount point /home)
-Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
-/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py:432: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  run_id = datetime.utcnow().strftime("run_%Y%m%dT%H%M%SZ")
-2026-03-29 11:34:33 | experiment | INFO |   TensorBoard: logs/tensorboard/run_20260329T093433Z
-2026-03-29 11:34:33 | experiment | INFO |   View live:   tensorboard --logdir logs/tensorboard
-2026-03-29 11:34:33 | experiment | INFO | ======================================================================
-2026-03-29 11:34:33 | experiment | INFO | EXPERIMENT: Latent Dimension Sweep
-2026-03-29 11:34:33 | experiment | INFO |   Datasets:       ['pbmc3k', 'paul15']
-2026-03-29 11:34:33 | experiment | INFO |   Model/losses:   [('ae', 'mse'), ('vae', 'mse'), ('scvi', 'nb')]
-2026-03-29 11:34:33 | experiment | INFO |   Latent dims:    [2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 48, 64]
-2026-03-29 11:34:33 | experiment | INFO |   Seeds:          3
-2026-03-29 11:34:33 | experiment | INFO |   Device:         cuda
-2026-03-29 11:34:33 | experiment | INFO |   Git commit:     unknown
-2026-03-29 11:34:33 | experiment | INFO |   Run ID:         run_20260329T093433Z
-2026-03-29 11:34:33 | experiment | INFO | ======================================================================
-/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py:464: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  "timestamp_utc": datetime.utcnow().isoformat() + "Z",
-2026-03-29 11:34:34 | experiment | INFO | 
-Dataset: pbmc3k (2700 cells, K=9, mode=in_memory)
-2026-03-29 11:34:34 | experiment | INFO | 
---- pbmc3k | ae:mse | d=2 | seed=42 ---
-2026-03-29 11:34:57 | experiment | INFO |   -> ARI=0.0009, AMI=-0.0009, Sil=-0.0810, Recon=0.217228, CPUmem=3.3MB, Time=23.2s
-2026-03-29 11:34:57 | experiment | INFO | 
---- pbmc3k | ae:mse | d=2 | seed=43 ---
-2026-03-29 11:35:04 | experiment | INFO |   -> ARI=0.0008, AMI=-0.0002, Sil=-0.0437, Recon=0.216303, CPUmem=4.2MB, Time=7.5s
-2026-03-29 11:35:04 | experiment | INFO | 
---- pbmc3k | ae:mse | d=2 | seed=44 ---
-2026-03-29 11:35:12 | experiment | INFO |   -> ARI=-0.0024, AMI=-0.0013, Sil=-0.1713, Recon=0.217822, CPUmem=3.3MB, Time=7.5s
-2026-03-29 11:35:12 | experiment | INFO | 
---- pbmc3k | ae:mse | d=4 | seed=42 ---
-2026-03-29 11:35:20 | experiment | INFO |   -> ARI=-0.0016, AMI=-0.0002, Sil=-0.0874, Recon=0.214495, CPUmem=4.2MB, Time=7.6s
-2026-03-29 11:35:20 | experiment | INFO | 
---- pbmc3k | ae:mse | d=4 | seed=43 ---
-2026-03-29 11:35:27 | experiment | INFO |   -> ARI=-0.0010, AMI=0.0018, Sil=-0.0863, Recon=0.213047, CPUmem=4.1MB, Time=7.8s
-2026-03-29 11:35:27 | experiment | INFO | 
---- pbmc3k | ae:mse | d=4 | seed=44 ---
-2026-03-29 11:35:35 | experiment | INFO |   -> ARI=-0.0015, AMI=-0.0009, Sil=-0.0477, Recon=0.213236, CPUmem=4.2MB, Time=7.5s
-2026-03-29 11:35:35 | experiment | INFO | 
---- pbmc3k | ae:mse | d=6 | seed=42 ---
-2026-03-29 11:35:42 | experiment | INFO |   -> ARI=-0.0012, AMI=-0.0018, Sil=-0.0827, Recon=0.212914, CPUmem=4.2MB, Time=7.4s
-2026-03-29 11:35:42 | experiment | INFO | 
---- pbmc3k | ae:mse | d=6 | seed=43 ---
-2026-03-29 11:35:49 | experiment | INFO |   -> ARI=0.0022, AMI=-0.0003, Sil=-0.0406, Recon=0.213641, CPUmem=4.2MB, Time=6.6s
-2026-03-29 11:35:49 | experiment | INFO | 
---- pbmc3k | ae:mse | d=6 | seed=44 ---
-2026-03-29 11:35:56 | experiment | INFO |   -> ARI=0.0001, AMI=0.0011, Sil=-0.0366, Recon=0.212142, CPUmem=4.2MB, Time=7.5s
-2026-03-29 11:35:56 | experiment | INFO | 
---- pbmc3k | ae:mse | d=8 | seed=42 ---
-2026-03-29 11:36:04 | experiment | INFO |   -> ARI=-0.0023, AMI=-0.0005, Sil=-0.1088, Recon=0.212583, CPUmem=4.1MB, Time=7.6s
-2026-03-29 11:36:04 | experiment | INFO | 
---- pbmc3k | ae:mse | d=8 | seed=43 ---
-2026-03-29 11:36:10 | experiment | INFO |   -> ARI=-0.0028, AMI=-0.0010, Sil=-0.1163, Recon=0.213817, CPUmem=4.2MB, Time=6.2s
-2026-03-29 11:36:10 | experiment | INFO | 
---- pbmc3k | ae:mse | d=8 | seed=44 ---
-2026-03-29 11:36:17 | experiment | INFO |   -> ARI=-0.0026, AMI=0.0006, Sil=-0.1528, Recon=0.213261, CPUmem=4.2MB, Time=6.5s
-2026-03-29 11:36:17 | experiment | INFO | 
---- pbmc3k | ae:mse | d=10 | seed=42 ---
-2026-03-29 11:36:24 | experiment | INFO |   -> ARI=-0.0002, AMI=0.0008, Sil=-0.2557, Recon=0.211311, CPUmem=4.1MB, Time=7.7s
-2026-03-29 11:36:24 | experiment | INFO | 
---- pbmc3k | ae:mse | d=10 | seed=43 ---
-2026-03-29 11:36:32 | experiment | INFO |   -> ARI=0.0006, AMI=0.0004, Sil=-0.1076, Recon=0.214002, CPUmem=4.2MB, Time=7.8s
-2026-03-29 11:36:32 | experiment | INFO | 
---- pbmc3k | ae:mse | d=10 | seed=44 ---
-2026-03-29 11:36:40 | experiment | INFO |   -> ARI=0.0006, AMI=-0.0001, Sil=-0.0952, Recon=0.213475, CPUmem=4.1MB, Time=8.2s
-2026-03-29 11:36:40 | experiment | INFO | 
---- pbmc3k | ae:mse | d=12 | seed=42 ---
-2026-03-29 11:36:48 | experiment | INFO |   -> ARI=-0.0022, AMI=-0.0013, Sil=-0.0941, Recon=0.212274, CPUmem=4.2MB, Time=7.5s
-2026-03-29 11:36:48 | experiment | INFO | 
---- pbmc3k | ae:mse | d=12 | seed=43 ---
-2026-03-29 11:36:55 | experiment | INFO |   -> ARI=0.0001, AMI=0.0009, Sil=-0.1128, Recon=0.212405, CPUmem=4.2MB, Time=6.8s
-2026-03-29 11:36:55 | experiment | INFO | 
---- pbmc3k | ae:mse | d=12 | seed=44 ---
-2026-03-29 11:37:02 | experiment | INFO |   -> ARI=-0.0007, AMI=-0.0011, Sil=-0.0550, Recon=0.212238, CPUmem=4.2MB, Time=7.6s
-2026-03-29 11:37:02 | experiment | INFO | 
---- pbmc3k | ae:mse | d=16 | seed=42 ---
-2026-03-29 11:37:09 | experiment | INFO |   -> ARI=0.0011, AMI=-0.0006, Sil=-0.0535, Recon=0.213540, CPUmem=4.2MB, Time=6.8s
-2026-03-29 11:37:09 | experiment | INFO | 
---- pbmc3k | ae:mse | d=16 | seed=43 ---
-2026-03-29 11:37:17 | experiment | INFO |   -> ARI=-0.0000, AMI=-0.0012, Sil=-0.0750, Recon=0.212213, CPUmem=3.3MB, Time=7.7s
-2026-03-29 11:37:17 | experiment | INFO | 
---- pbmc3k | ae:mse | d=16 | seed=44 ---
-2026-03-29 11:37:25 | experiment | INFO |   -> ARI=-0.0001, AMI=-0.0012, Sil=-0.0755, Recon=0.211114, CPUmem=4.1MB, Time=7.9s
-2026-03-29 11:37:25 | experiment | INFO | 
---- pbmc3k | ae:mse | d=20 | seed=42 ---
-2026-03-29 11:37:32 | experiment | INFO |   -> ARI=0.0015, AMI=-0.0006, Sil=-0.0364, Recon=0.213258, CPUmem=4.2MB, Time=7.7s
-2026-03-29 11:37:32 | experiment | INFO | 
---- pbmc3k | ae:mse | d=20 | seed=43 ---
-2026-03-29 11:37:40 | experiment | INFO |   -> ARI=-0.0014, AMI=0.0003, Sil=-0.0625, Recon=0.213293, CPUmem=4.2MB, Time=7.5s
-2026-03-29 11:37:40 | experiment | INFO | 
---- pbmc3k | ae:mse | d=20 | seed=44 ---
-2026-03-29 11:37:46 | experiment | INFO |   -> ARI=-0.0009, AMI=0.0000, Sil=-0.1112, Recon=0.212577, CPUmem=4.2MB, Time=6.6s
-2026-03-29 11:37:46 | experiment | INFO | 
---- pbmc3k | ae:mse | d=24 | seed=42 ---
-2026-03-29 11:37:54 | experiment | INFO |   -> ARI=0.0022, AMI=0.0020, Sil=-0.0730, Recon=0.212011, CPUmem=4.2MB, Time=7.4s
-2026-03-29 11:37:54 | experiment | INFO | 
---- pbmc3k | ae:mse | d=24 | seed=43 ---
-2026-03-29 11:38:01 | experiment | INFO |   -> ARI=-0.0011, AMI=-0.0008, Sil=-0.0710, Recon=0.212632, CPUmem=4.2MB, Time=7.1s
-2026-03-29 11:38:01 | experiment | INFO | 
---- pbmc3k | ae:mse | d=24 | seed=44 ---
-2026-03-29 11:38:07 | experiment | INFO |   -> ARI=0.0000, AMI=-0.0001, Sil=-0.0612, Recon=0.213587, CPUmem=4.2MB, Time=6.2s
-2026-03-29 11:38:07 | experiment | INFO | 
---- pbmc3k | ae:mse | d=32 | seed=42 ---
-2026-03-29 11:38:14 | experiment | INFO |   -> ARI=0.0002, AMI=-0.0008, Sil=-0.0704, Recon=0.213007, CPUmem=4.2MB, Time=7.3s
-2026-03-29 11:38:14 | experiment | INFO | 
---- pbmc3k | ae:mse | d=32 | seed=43 ---
-2026-03-29 11:38:22 | experiment | INFO |   -> ARI=0.0011, AMI=-0.0012, Sil=-0.0471, Recon=0.213043, CPUmem=3.3MB, Time=7.3s
-2026-03-29 11:38:22 | experiment | INFO | 
---- pbmc3k | ae:mse | d=32 | seed=44 ---
-2026-03-29 11:38:30 | experiment | INFO |   -> ARI=-0.0011, AMI=-0.0010, Sil=-0.1354, Recon=0.212159, CPUmem=4.1MB, Time=8.0s
-2026-03-29 11:38:30 | experiment | INFO | 
---- pbmc3k | ae:mse | d=48 | seed=42 ---
-2026-03-29 11:38:37 | experiment | INFO |   -> ARI=0.0005, AMI=-0.0010, Sil=-0.0361, Recon=0.212192, CPUmem=4.2MB, Time=7.7s
-2026-03-29 11:38:37 | experiment | INFO | 
---- pbmc3k | ae:mse | d=48 | seed=43 ---
-2026-03-29 11:38:44 | experiment | INFO |   -> ARI=0.0023, AMI=-0.0004, Sil=-0.2246, Recon=0.213033, CPUmem=4.2MB, Time=6.6s
-2026-03-29 11:38:44 | experiment | INFO | 
---- pbmc3k | ae:mse | d=48 | seed=44 ---
-2026-03-29 11:38:51 | experiment | INFO |   -> ARI=-0.0013, AMI=0.0018, Sil=-0.0613, Recon=0.213408, CPUmem=4.2MB, Time=6.7s
-2026-03-29 11:38:51 | experiment | INFO | 
---- pbmc3k | ae:mse | d=64 | seed=42 ---
-2026-03-29 11:38:58 | experiment | INFO |   -> ARI=-0.0011, AMI=0.0009, Sil=-0.0811, Recon=0.212684, CPUmem=3.3MB, Time=7.5s
-2026-03-29 11:38:58 | experiment | INFO | 
---- pbmc3k | ae:mse | d=64 | seed=43 ---
-2026-03-29 11:39:05 | experiment | INFO |   -> ARI=-0.0019, AMI=0.0004, Sil=-0.1171, Recon=0.213812, CPUmem=3.3MB, Time=6.3s
-2026-03-29 11:39:05 | experiment | INFO | 
---- pbmc3k | ae:mse | d=64 | seed=44 ---
-2026-03-29 11:39:12 | experiment | INFO |   -> ARI=-0.0000, AMI=0.0009, Sil=-0.0722, Recon=0.211950, CPUmem=4.2MB, Time=7.7s
-2026-03-29 11:39:12 | experiment | INFO | 
---- pbmc3k | vae:mse | d=2 | seed=42 ---
-2026-03-29 11:39:18 | experiment | INFO |   -> ARI=0.0006, AMI=-0.0012, Sil=-0.1224, Recon=0.262381, CPUmem=7.3MB, Time=5.2s
-2026-03-29 11:39:18 | experiment | INFO | 
---- pbmc3k | vae:mse | d=2 | seed=43 ---
-2026-03-29 11:39:21 | experiment | INFO |   -> ARI=0.0002, AMI=0.0007, Sil=-0.0935, Recon=0.262405, CPUmem=7.2MB, Time=3.6s
-2026-03-29 11:39:21 | experiment | INFO | 
---- pbmc3k | vae:mse | d=2 | seed=44 ---
-2026-03-29 11:39:24 | experiment | INFO |   -> ARI=-0.0006, AMI=0.0002, Sil=-0.0975, Recon=0.262508, CPUmem=8.1MB, Time=3.4s
-2026-03-29 11:39:24 | experiment | INFO | 
---- pbmc3k | vae:mse | d=4 | seed=42 ---
-2026-03-29 11:39:28 | experiment | INFO |   -> ARI=0.0010, AMI=-0.0008, Sil=-0.0360, Recon=0.262513, CPUmem=8.1MB, Time=3.4s
-2026-03-29 11:39:28 | experiment | INFO | 
---- pbmc3k | vae:mse | d=4 | seed=43 ---
-2026-03-29 11:39:32 | experiment | INFO |   -> ARI=0.0009, AMI=0.0009, Sil=-0.0709, Recon=0.262581, CPUmem=7.3MB, Time=4.1s
-2026-03-29 11:39:32 | experiment | INFO | 
---- pbmc3k | vae:mse | d=4 | seed=44 ---
-2026-03-29 11:39:37 | experiment | INFO |   -> ARI=-0.0023, AMI=-0.0005, Sil=-0.1152, Recon=0.262470, CPUmem=7.3MB, Time=4.8s
-2026-03-29 11:39:37 | experiment | INFO | 
---- pbmc3k | vae:mse | d=6 | seed=42 ---
-2026-03-29 11:39:40 | experiment | INFO |   -> ARI=0.0021, AMI=0.0017, Sil=-0.0781, Recon=0.262787, CPUmem=8.1MB, Time=3.3s
-2026-03-29 11:39:40 | experiment | INFO | 
---- pbmc3k | vae:mse | d=6 | seed=43 ---
-2026-03-29 11:39:45 | experiment | INFO |   -> ARI=-0.0018, AMI=0.0004, Sil=-0.1016, Recon=0.262423, CPUmem=8.2MB, Time=4.4s
-2026-03-29 11:39:45 | experiment | INFO | 
---- pbmc3k | vae:mse | d=6 | seed=44 ---
-2026-03-29 11:39:49 | experiment | INFO |   -> ARI=-0.0021, AMI=-0.0006, Sil=-0.1142, Recon=0.262483, CPUmem=7.2MB, Time=4.4s
-2026-03-29 11:39:49 | experiment | INFO | 
---- pbmc3k | vae:mse | d=8 | seed=42 ---
-2026-03-29 11:39:54 | experiment | INFO |   -> ARI=-0.0003, AMI=0.0002, Sil=-0.1268, Recon=0.262400, CPUmem=8.2MB, Time=5.0s
-2026-03-29 11:39:54 | experiment | INFO | 
---- pbmc3k | vae:mse | d=8 | seed=43 ---
-2026-03-29 11:39:59 | experiment | INFO |   -> ARI=-0.0004, AMI=-0.0006, Sil=-0.0571, Recon=0.262528, CPUmem=8.2MB, Time=4.8s
-2026-03-29 11:39:59 | experiment | INFO | 
---- pbmc3k | vae:mse | d=8 | seed=44 ---
-2026-03-29 11:40:02 | experiment | INFO |   -> ARI=0.0003, AMI=-0.0020, Sil=-0.0522, Recon=0.262780, CPUmem=8.1MB, Time=3.5s
-2026-03-29 11:40:02 | experiment | INFO | 
---- pbmc3k | vae:mse | d=10 | seed=42 ---
-2026-03-29 11:40:07 | experiment | INFO |   -> ARI=-0.0005, AMI=-0.0011, Sil=-0.0962, Recon=0.262679, CPUmem=8.2MB, Time=4.3s
-2026-03-29 11:40:07 | experiment | INFO | 
---- pbmc3k | vae:mse | d=10 | seed=43 ---
-2026-03-29 11:40:10 | experiment | INFO |   -> ARI=0.0003, AMI=-0.0014, Sil=-0.1820, Recon=0.262747, CPUmem=8.1MB, Time=3.9s
-2026-03-29 11:40:10 | experiment | INFO | 
---- pbmc3k | vae:mse | d=10 | seed=44 ---
-2026-03-29 11:40:15 | experiment | INFO |   -> ARI=-0.0017, AMI=0.0006, Sil=-0.1641, Recon=0.262592, CPUmem=8.2MB, Time=4.8s
-2026-03-29 11:40:15 | experiment | INFO | 
---- pbmc3k | vae:mse | d=12 | seed=42 ---
-2026-03-29 11:40:20 | experiment | INFO |   -> ARI=-0.0011, AMI=-0.0025, Sil=-0.1608, Recon=0.262692, CPUmem=8.1MB, Time=4.4s
-2026-03-29 11:40:20 | experiment | INFO | 
---- pbmc3k | vae:mse | d=12 | seed=43 ---
-2026-03-29 11:40:25 | experiment | INFO |   -> ARI=0.0008, AMI=0.0001, Sil=-0.1300, Recon=0.262498, CPUmem=7.3MB, Time=5.5s
-2026-03-29 11:40:25 | experiment | INFO | 
---- pbmc3k | vae:mse | d=12 | seed=44 ---
-2026-03-29 11:40:29 | experiment | INFO |   -> ARI=-0.0006, AMI=0.0026, Sil=-0.1223, Recon=0.262734, CPUmem=8.2MB, Time=4.3s
-2026-03-29 11:40:29 | experiment | INFO | 
---- pbmc3k | vae:mse | d=16 | seed=42 ---
-2026-03-29 11:40:36 | experiment | INFO |   -> ARI=-0.0010, AMI=-0.0003, Sil=-0.0849, Recon=0.262365, CPUmem=8.2MB, Time=6.7s
-2026-03-29 11:40:36 | experiment | INFO | 
---- pbmc3k | vae:mse | d=16 | seed=43 ---
-2026-03-29 11:40:41 | experiment | INFO |   -> ARI=-0.0009, AMI=0.0001, Sil=-0.1843, Recon=0.262734, CPUmem=8.1MB, Time=4.7s
-2026-03-29 11:40:41 | experiment | INFO | 
---- pbmc3k | vae:mse | d=16 | seed=44 ---
-2026-03-29 11:40:47 | experiment | INFO |   -> ARI=-0.0021, AMI=0.0013, Sil=-0.1237, Recon=0.262533, CPUmem=7.3MB, Time=6.2s
-2026-03-29 11:40:47 | experiment | INFO | 
---- pbmc3k | vae:mse | d=20 | seed=42 ---
-2026-03-29 11:40:52 | experiment | INFO |   -> ARI=0.0015, AMI=0.0001, Sil=-0.0228, Recon=0.262721, CPUmem=7.3MB, Time=5.2s
-2026-03-29 11:40:52 | experiment | INFO | 
---- pbmc3k | vae:mse | d=20 | seed=43 ---
-2026-03-29 11:40:58 | experiment | INFO |   -> ARI=-0.0006, AMI=0.0010, Sil=-0.1138, Recon=0.262621, CPUmem=8.2MB, Time=5.5s
-2026-03-29 11:40:58 | experiment | INFO | 
---- pbmc3k | vae:mse | d=20 | seed=44 ---
-2026-03-29 11:41:01 | experiment | INFO |   -> ARI=-0.0007, AMI=0.0007, Sil=-0.0268, Recon=0.263199, CPUmem=8.1MB, Time=3.8s
-2026-03-29 11:41:01 | experiment | INFO | 
---- pbmc3k | vae:mse | d=24 | seed=42 ---
-2026-03-29 11:41:08 | experiment | INFO |   -> ARI=0.0015, AMI=0.0016, Sil=-0.2900, Recon=0.262535, CPUmem=8.2MB, Time=6.2s
-2026-03-29 11:41:08 | experiment | INFO | 
---- pbmc3k | vae:mse | d=24 | seed=43 ---
-2026-03-29 11:41:14 | experiment | INFO |   -> ARI=0.0016, AMI=-0.0003, Sil=-0.2147, Recon=0.262709, CPUmem=8.2MB, Time=5.9s
-2026-03-29 11:41:14 | experiment | INFO | 
---- pbmc3k | vae:mse | d=24 | seed=44 ---
-2026-03-29 11:41:18 | experiment | INFO |   -> ARI=0.0008, AMI=0.0015, Sil=-0.0686, Recon=0.262821, CPUmem=8.1MB, Time=4.6s
-2026-03-29 11:41:18 | experiment | INFO | 
---- pbmc3k | vae:mse | d=32 | seed=42 ---
-2026-03-29 11:41:23 | experiment | INFO |   -> ARI=-0.0002, AMI=-0.0001, Sil=-0.0670, Recon=0.263326, CPUmem=8.2MB, Time=4.5s
-2026-03-29 11:41:23 | experiment | INFO | 
---- pbmc3k | vae:mse | d=32 | seed=43 ---
-2026-03-29 11:41:30 | experiment | INFO |   -> ARI=-0.0007, AMI=-0.0003, Sil=-0.1873, Recon=0.262589, CPUmem=8.2MB, Time=6.9s
-2026-03-29 11:41:30 | experiment | INFO | 
---- pbmc3k | vae:mse | d=32 | seed=44 ---
-2026-03-29 11:41:33 | experiment | INFO |   -> ARI=0.0009, AMI=-0.0013, Sil=-0.1555, Recon=0.264151, CPUmem=8.1MB, Time=3.2s
-2026-03-29 11:41:33 | experiment | INFO | 
---- pbmc3k | vae:mse | d=48 | seed=42 ---
-2026-03-29 11:41:40 | experiment | INFO |   -> ARI=0.0033, AMI=0.0018, Sil=-0.2445, Recon=0.262764, CPUmem=8.2MB, Time=7.1s
-2026-03-29 11:41:40 | experiment | INFO | 
---- pbmc3k | vae:mse | d=48 | seed=43 ---
-2026-03-29 11:41:45 | experiment | INFO |   -> ARI=0.0030, AMI=-0.0009, Sil=-0.1194, Recon=0.263036, CPUmem=8.2MB, Time=4.9s
-2026-03-29 11:41:45 | experiment | INFO | 
---- pbmc3k | vae:mse | d=48 | seed=44 ---
-2026-03-29 11:41:51 | experiment | INFO |   -> ARI=-0.0010, AMI=-0.0008, Sil=-0.2297, Recon=0.262722, CPUmem=8.2MB, Time=6.6s
-2026-03-29 11:41:51 | experiment | INFO | 
---- pbmc3k | vae:mse | d=64 | seed=42 ---
-2026-03-29 11:41:56 | experiment | INFO |   -> ARI=-0.0002, AMI=-0.0006, Sil=-0.0724, Recon=0.263074, CPUmem=8.2MB, Time=4.6s
-2026-03-29 11:41:56 | experiment | INFO | 
---- pbmc3k | vae:mse | d=64 | seed=43 ---
-2026-03-29 11:42:01 | experiment | INFO |   -> ARI=0.0002, AMI=-0.0007, Sil=-0.1219, Recon=0.262891, CPUmem=8.2MB, Time=5.4s
-2026-03-29 11:42:01 | experiment | INFO | 
---- pbmc3k | vae:mse | d=64 | seed=44 ---
-2026-03-29 11:42:06 | experiment | INFO |   -> ARI=0.0006, AMI=0.0001, Sil=-0.0370, Recon=0.263086, CPUmem=7.2MB, Time=4.8s
-2026-03-29 11:42:06 | experiment | INFO | 
---- pbmc3k | scvi:nb | d=2 | seed=42 ---
-[rank: 0] Seed set to 42
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/default.ya ...
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/default.ya ...
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
-Training:   0%|          | 0/100 [00:00<?, ?it/s]Epoch 1/100:   0%|          | 0/100 [00:00<?, ?it/s]Epoch 1/100:   1%|          | 1/100 [00:00<00:35,  2.76it/s]Epoch 1/100:   1%|          | 1/100 [00:00<00:35,  2.76it/s, v_num=0, train_loss=1.17e+3]Epoch 2/100:   1%|          | 1/100 [00:00<00:35,  2.76it/s, v_num=0, train_loss=1.17e+3]Epoch 2/100:   2%|▏         | 2/100 [00:00<00:29,  3.30it/s, v_num=0, train_loss=1.17e+3]Epoch 2/100:   2%|▏         | 2/100 [00:00<00:29,  3.30it/s, v_num=0, train_loss=866]    Epoch 3/100:   2%|▏         | 2/100 [00:00<00:29,  3.30it/s, v_num=0, train_loss=866]Epoch 3/100:   3%|▎         | 3/100 [00:00<00:26,  3.69it/s, v_num=0, train_loss=866]Epoch 3/100:   3%|▎         | 3/100 [00:00<00:26,  3.69it/s, v_num=0, train_loss=752]Epoch 4/100:   3%|▎         | 3/100 [00:00<00:26,  3.69it/s, v_num=0, train_loss=752]Epoch 4/100:   4%|▍         | 4/100 [00:01<00:24,  3.93it/s, v_num=0, train_loss=752]Epoch 4/100:   4%|▍         | 4/100 [00:01<00:24,  3.93it/s, v_num=0, train_loss=706]Epoch 5/100:   4%|▍         | 4/100 [00:01<00:24,  3.93it/s, v_num=0, train_loss=706]Epoch 5/100:   5%|▌         | 5/100 [00:01<00:23,  4.09it/s, v_num=0, train_loss=706]Epoch 5/100:   5%|▌         | 5/100 [00:01<00:23,  4.09it/s, v_num=0, train_loss=687]Epoch 6/100:   5%|▌         | 5/100 [00:01<00:23,  4.09it/s, v_num=0, train_loss=687]Epoch 6/100:   6%|▌         | 6/100 [00:01<00:23,  3.99it/s, v_num=0, train_loss=687]Epoch 6/100:   6%|▌         | 6/100 [00:01<00:23,  3.99it/s, v_num=0, train_loss=680]Epoch 7/100:   6%|▌         | 6/100 [00:01<00:23,  3.99it/s, v_num=0, train_loss=680]Epoch 7/100:   7%|▋         | 7/100 [00:01<00:23,  4.02it/s, v_num=0, train_loss=680]Epoch 7/100:   7%|▋         | 7/100 [00:01<00:23,  4.02it/s, v_num=0, train_loss=674]Epoch 8/100:   7%|▋         | 7/100 [00:01<00:23,  4.02it/s, v_num=0, train_loss=674]Epoch 8/100:   8%|▊         | 8/100 [00:02<00:23,  3.96it/s, v_num=0, train_loss=674]Epoch 8/100:   8%|▊         | 8/100 [00:02<00:23,  3.96it/s, v_num=0, train_loss=671]Epoch 9/100:   8%|▊         | 8/100 [00:02<00:23,  3.96it/s, v_num=0, train_loss=671]Epoch 9/100:   9%|▉         | 9/100 [00:02<00:22,  3.96it/s, v_num=0, train_loss=671]Epoch 9/100:   9%|▉         | 9/100 [00:02<00:22,  3.96it/s, v_num=0, train_loss=668]Epoch 10/100:   9%|▉         | 9/100 [00:02<00:22,  3.96it/s, v_num=0, train_loss=668]Epoch 10/100:  10%|█         | 10/100 [00:02<00:22,  4.04it/s, v_num=0, train_loss=668]Epoch 10/100:  10%|█         | 10/100 [00:02<00:22,  4.04it/s, v_num=0, train_loss=666]Epoch 11/100:  10%|█         | 10/100 [00:02<00:22,  4.04it/s, v_num=0, train_loss=666]Epoch 11/100:  11%|█         | 11/100 [00:02<00:21,  4.09it/s, v_num=0, train_loss=666]Epoch 11/100:  11%|█         | 11/100 [00:02<00:21,  4.09it/s, v_num=0, train_loss=665]Epoch 12/100:  11%|█         | 11/100 [00:02<00:21,  4.09it/s, v_num=0, train_loss=665]Epoch 12/100:  12%|█▏        | 12/100 [00:03<00:21,  4.07it/s, v_num=0, train_loss=665]Epoch 12/100:  12%|█▏        | 12/100 [00:03<00:21,  4.07it/s, v_num=0, train_loss=663]Epoch 13/100:  12%|█▏        | 12/100 [00:03<00:21,  4.07it/s, v_num=0, train_loss=663]Epoch 13/100:  13%|█▎        | 13/100 [00:03<00:21,  4.05it/s, v_num=0, train_loss=663]Epoch 13/100:  13%|█▎        | 13/100 [00:03<00:21,  4.05it/s, v_num=0, train_loss=662]Epoch 14/100:  13%|█▎        | 13/100 [00:03<00:21,  4.05it/s, v_num=0, train_loss=662]Epoch 14/100:  14%|█▍        | 14/100 [00:03<00:21,  4.08it/s, v_num=0, train_loss=662]Epoch 14/100:  14%|█▍        | 14/100 [00:03<00:21,  4.08it/s, v_num=0, train_loss=660]Epoch 15/100:  14%|█▍        | 14/100 [00:03<00:21,  4.08it/s, v_num=0, train_loss=660]Epoch 15/100:  15%|█▌        | 15/100 [00:03<00:21,  4.04it/s, v_num=0, train_loss=660]Epoch 15/100:  15%|█▌        | 15/100 [00:03<00:21,  4.04it/s, v_num=0, train_loss=659]Epoch 16/100:  15%|█▌        | 15/100 [00:03<00:21,  4.04it/s, v_num=0, train_loss=659]Epoch 16/100:  16%|█▌        | 16/100 [00:04<00:21,  3.98it/s, v_num=0, train_loss=659]Epoch 16/100:  16%|█▌        | 16/100 [00:04<00:21,  3.98it/s, v_num=0, train_loss=659]Epoch 17/100:  16%|█▌        | 16/100 [00:04<00:21,  3.98it/s, v_num=0, train_loss=659]Epoch 17/100:  17%|█▋        | 17/100 [00:04<00:21,  3.94it/s, v_num=0, train_loss=659]Epoch 17/100:  17%|█▋        | 17/100 [00:04<00:21,  3.94it/s, v_num=0, train_loss=658]Epoch 18/100:  17%|█▋        | 17/100 [00:04<00:21,  3.94it/s, v_num=0, train_loss=658]Epoch 18/100:  18%|█▊        | 18/100 [00:04<00:20,  3.99it/s, v_num=0, train_loss=658]Epoch 18/100:  18%|█▊        | 18/100 [00:04<00:20,  3.99it/s, v_num=0, train_loss=657]Epoch 19/100:  18%|█▊        | 18/100 [00:04<00:20,  3.99it/s, v_num=0, train_loss=657]Epoch 19/100:  19%|█▉        | 19/100 [00:04<00:20,  3.99it/s, v_num=0, train_loss=657]Epoch 19/100:  19%|█▉        | 19/100 [00:04<00:20,  3.99it/s, v_num=0, train_loss=656]Epoch 20/100:  19%|█▉        | 19/100 [00:04<00:20,  3.99it/s, v_num=0, train_loss=656]Epoch 20/100:  20%|██        | 20/100 [00:05<00:20,  3.96it/s, v_num=0, train_loss=656]Epoch 20/100:  20%|██        | 20/100 [00:05<00:20,  3.96it/s, v_num=0, train_loss=656]Epoch 21/100:  20%|██        | 20/100 [00:05<00:20,  3.96it/s, v_num=0, train_loss=656]Epoch 21/100:  21%|██        | 21/100 [00:05<00:19,  3.96it/s, v_num=0, train_loss=656]Epoch 21/100:  21%|██        | 21/100 [00:05<00:19,  3.96it/s, v_num=0, train_loss=655]Epoch 22/100:  21%|██        | 21/100 [00:05<00:19,  3.96it/s, v_num=0, train_loss=655]Epoch 22/100:  22%|██▏       | 22/100 [00:05<00:19,  3.98it/s, v_num=0, train_loss=655]Epoch 22/100:  22%|██▏       | 22/100 [00:05<00:19,  3.98it/s, v_num=0, train_loss=654]Epoch 23/100:  22%|██▏       | 22/100 [00:05<00:19,  3.98it/s, v_num=0, train_loss=654]Epoch 23/100:  23%|██▎       | 23/100 [00:05<00:19,  3.97it/s, v_num=0, train_loss=654]Epoch 23/100:  23%|██▎       | 23/100 [00:05<00:19,  3.97it/s, v_num=0, train_loss=654]Epoch 24/100:  23%|██▎       | 23/100 [00:05<00:19,  3.97it/s, v_num=0, train_loss=654]Epoch 24/100:  24%|██▍       | 24/100 [00:06<00:19,  3.99it/s, v_num=0, train_loss=654]Epoch 24/100:  24%|██▍       | 24/100 [00:06<00:19,  3.99it/s, v_num=0, train_loss=653]Epoch 25/100:  24%|██▍       | 24/100 [00:06<00:19,  3.99it/s, v_num=0, train_loss=653]Epoch 25/100:  25%|██▌       | 25/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=653]Epoch 25/100:  25%|██▌       | 25/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=653]Epoch 26/100:  25%|██▌       | 25/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=653]Epoch 26/100:  26%|██▌       | 26/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=653]Epoch 26/100:  26%|██▌       | 26/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=651]Epoch 27/100:  26%|██▌       | 26/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=651]Epoch 27/100:  27%|██▋       | 27/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=651]Epoch 27/100:  27%|██▋       | 27/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=651]Epoch 28/100:  27%|██▋       | 27/100 [00:06<00:18,  3.95it/s, v_num=0, train_loss=651]Epoch 28/100:  28%|██▊       | 28/100 [00:07<00:18,  3.98it/s, v_num=0, train_loss=651]Epoch 28/100:  28%|██▊       | 28/100 [00:07<00:18,  3.98it/s, v_num=0, train_loss=651]Epoch 29/100:  28%|██▊       | 28/100 [00:07<00:18,  3.98it/s, v_num=0, train_loss=651]Epoch 29/100:  29%|██▉       | 29/100 [00:07<00:18,  3.93it/s, v_num=0, train_loss=651]Epoch 29/100:  29%|██▉       | 29/100 [00:07<00:18,  3.93it/s, v_num=0, train_loss=651]Epoch 30/100:  29%|██▉       | 29/100 [00:07<00:18,  3.93it/s, v_num=0, train_loss=651]Epoch 30/100:  30%|███       | 30/100 [00:07<00:18,  3.84it/s, v_num=0, train_loss=651]Epoch 30/100:  30%|███       | 30/100 [00:07<00:18,  3.84it/s, v_num=0, train_loss=650]Epoch 31/100:  30%|███       | 30/100 [00:07<00:18,  3.84it/s, v_num=0, train_loss=650]Epoch 31/100:  31%|███       | 31/100 [00:07<00:17,  3.92it/s, v_num=0, train_loss=650]Epoch 31/100:  31%|███       | 31/100 [00:07<00:17,  3.92it/s, v_num=0, train_loss=649]Epoch 32/100:  31%|███       | 31/100 [00:07<00:17,  3.92it/s, v_num=0, train_loss=649]Epoch 32/100:  32%|███▏      | 32/100 [00:08<00:17,  3.93it/s, v_num=0, train_loss=649]Epoch 32/100:  32%|███▏      | 32/100 [00:08<00:17,  3.93it/s, v_num=0, train_loss=649]Epoch 33/100:  32%|███▏      | 32/100 [00:08<00:17,  3.93it/s, v_num=0, train_loss=649]Epoch 33/100:  33%|███▎      | 33/100 [00:08<00:16,  3.94it/s, v_num=0, train_loss=649]Epoch 33/100:  33%|███▎      | 33/100 [00:08<00:16,  3.94it/s, v_num=0, train_loss=648]Epoch 34/100:  33%|███▎      | 33/100 [00:08<00:16,  3.94it/s, v_num=0, train_loss=648]Epoch 34/100:  34%|███▍      | 34/100 [00:08<00:16,  3.95it/s, v_num=0, train_loss=648]Epoch 34/100:  34%|███▍      | 34/100 [00:08<00:16,  3.95it/s, v_num=0, train_loss=648]Epoch 35/100:  34%|███▍      | 34/100 [00:08<00:16,  3.95it/s, v_num=0, train_loss=648]Epoch 35/100:  35%|███▌      | 35/100 [00:08<00:16,  3.98it/s, v_num=0, train_loss=648]Epoch 35/100:  35%|███▌      | 35/100 [00:08<00:16,  3.98it/s, v_num=0, train_loss=647]Epoch 36/100:  35%|███▌      | 35/100 [00:08<00:16,  3.98it/s, v_num=0, train_loss=647]Epoch 36/100:  36%|███▌      | 36/100 [00:09<00:16,  3.97it/s, v_num=0, train_loss=647]Epoch 36/100:  36%|███▌      | 36/100 [00:09<00:16,  3.97it/s, v_num=0, train_loss=647]Epoch 37/100:  36%|███▌      | 36/100 [00:09<00:16,  3.97it/s, v_num=0, train_loss=647]Epoch 37/100:  37%|███▋      | 37/100 [00:09<00:15,  3.99it/s, v_num=0, train_loss=647]Epoch 37/100:  37%|███▋      | 37/100 [00:09<00:15,  3.99it/s, v_num=0, train_loss=646]Epoch 38/100:  37%|███▋      | 37/100 [00:09<00:15,  3.99it/s, v_num=0, train_loss=646]Epoch 38/100:  38%|███▊      | 38/100 [00:09<00:15,  4.05it/s, v_num=0, train_loss=646]Epoch 38/100:  38%|███▊      | 38/100 [00:09<00:15,  4.05it/s, v_num=0, train_loss=646]Epoch 39/100:  38%|███▊      | 38/100 [00:09<00:15,  4.05it/s, v_num=0, train_loss=646]Epoch 39/100:  39%|███▉      | 39/100 [00:09<00:15,  4.02it/s, v_num=0, train_loss=646]Epoch 39/100:  39%|███▉      | 39/100 [00:09<00:15,  4.02it/s, v_num=0, train_loss=646]Epoch 40/100:  39%|███▉      | 39/100 [00:09<00:15,  4.02it/s, v_num=0, train_loss=646]Epoch 40/100:  40%|████      | 40/100 [00:10<00:15,  3.95it/s, v_num=0, train_loss=646]Epoch 40/100:  40%|████      | 40/100 [00:10<00:15,  3.95it/s, v_num=0, train_loss=645]Epoch 41/100:  40%|████      | 40/100 [00:10<00:15,  3.95it/s, v_num=0, train_loss=645]Epoch 41/100:  41%|████      | 41/100 [00:10<00:14,  3.96it/s, v_num=0, train_loss=645]Epoch 41/100:  41%|████      | 41/100 [00:10<00:14,  3.96it/s, v_num=0, train_loss=645]Epoch 42/100:  41%|████      | 41/100 [00:10<00:14,  3.96it/s, v_num=0, train_loss=645]Epoch 42/100:  42%|████▏     | 42/100 [00:10<00:14,  4.01it/s, v_num=0, train_loss=645]Epoch 42/100:  42%|████▏     | 42/100 [00:10<00:14,  4.01it/s, v_num=0, train_loss=645]Epoch 43/100:  42%|████▏     | 42/100 [00:10<00:14,  4.01it/s, v_num=0, train_loss=645]Epoch 43/100:  43%|████▎     | 43/100 [00:10<00:14,  3.98it/s, v_num=0, train_loss=645]Epoch 43/100:  43%|████▎     | 43/100 [00:10<00:14,  3.98it/s, v_num=0, train_loss=644]Epoch 44/100:  43%|████▎     | 43/100 [00:10<00:14,  3.98it/s, v_num=0, train_loss=644]Epoch 44/100:  44%|████▍     | 44/100 [00:11<00:13,  4.01it/s, v_num=0, train_loss=644]Epoch 44/100:  44%|████▍     | 44/100 [00:11<00:13,  4.01it/s, v_num=0, train_loss=645]Epoch 45/100:  44%|████▍     | 44/100 [00:11<00:13,  4.01it/s, v_num=0, train_loss=645]Epoch 45/100:  45%|████▌     | 45/100 [00:11<00:13,  3.95it/s, v_num=0, train_loss=645]Epoch 45/100:  45%|████▌     | 45/100 [00:11<00:13,  3.95it/s, v_num=0, train_loss=644]Epoch 46/100:  45%|████▌     | 45/100 [00:11<00:13,  3.95it/s, v_num=0, train_loss=644]Epoch 46/100:  46%|████▌     | 46/100 [00:11<00:13,  3.97it/s, v_num=0, train_loss=644]Epoch 46/100:  46%|████▌     | 46/100 [00:11<00:13,  3.97it/s, v_num=0, train_loss=643]Epoch 47/100:  46%|████▌     | 46/100 [00:11<00:13,  3.97it/s, v_num=0, train_loss=643]Epoch 47/100:  47%|████▋     | 47/100 [00:11<00:13,  3.97it/s, v_num=0, train_loss=643]Epoch 47/100:  47%|████▋     | 47/100 [00:11<00:13,  3.97it/s, v_num=0, train_loss=643]Epoch 48/100:  47%|████▋     | 47/100 [00:11<00:13,  3.97it/s, v_num=0, train_loss=643]Epoch 48/100:  48%|████▊     | 48/100 [00:12<00:13,  3.99it/s, v_num=0, train_loss=643]Epoch 48/100:  48%|████▊     | 48/100 [00:12<00:13,  3.99it/s, v_num=0, train_loss=642]Epoch 49/100:  48%|████▊     | 48/100 [00:12<00:13,  3.99it/s, v_num=0, train_loss=642]Epoch 49/100:  49%|████▉     | 49/100 [00:12<00:13,  3.91it/s, v_num=0, train_loss=642]Epoch 49/100:  49%|████▉     | 49/100 [00:12<00:13,  3.91it/s, v_num=0, train_loss=642]Epoch 50/100:  49%|████▉     | 49/100 [00:12<00:13,  3.91it/s, v_num=0, train_loss=642]Epoch 50/100:  50%|█████     | 50/100 [00:12<00:12,  3.93it/s, v_num=0, train_loss=642]Epoch 50/100:  50%|█████     | 50/100 [00:12<00:12,  3.93it/s, v_num=0, train_loss=643]Epoch 51/100:  50%|█████     | 50/100 [00:12<00:12,  3.93it/s, v_num=0, train_loss=643]Epoch 51/100:  51%|█████     | 51/100 [00:12<00:12,  4.00it/s, v_num=0, train_loss=643]Epoch 51/100:  51%|█████     | 51/100 [00:12<00:12,  4.00it/s, v_num=0, train_loss=642]Epoch 52/100:  51%|█████     | 51/100 [00:12<00:12,  4.00it/s, v_num=0, train_loss=642]Epoch 52/100:  52%|█████▏    | 52/100 [00:13<00:11,  4.05it/s, v_num=0, train_loss=642]Epoch 52/100:  52%|█████▏    | 52/100 [00:13<00:11,  4.05it/s, v_num=0, train_loss=641]Epoch 53/100:  52%|█████▏    | 52/100 [00:13<00:11,  4.05it/s, v_num=0, train_loss=641]Epoch 53/100:  53%|█████▎    | 53/100 [00:13<00:11,  4.02it/s, v_num=0, train_loss=641]Epoch 53/100:  53%|█████▎    | 53/100 [00:13<00:11,  4.02it/s, v_num=0, train_loss=642]Epoch 54/100:  53%|█████▎    | 53/100 [00:13<00:11,  4.02it/s, v_num=0, train_loss=642]Epoch 54/100:  54%|█████▍    | 54/100 [00:13<00:11,  4.01it/s, v_num=0, train_loss=642]Epoch 54/100:  54%|█████▍    | 54/100 [00:13<00:11,  4.01it/s, v_num=0, train_loss=640]Epoch 55/100:  54%|█████▍    | 54/100 [00:13<00:11,  4.01it/s, v_num=0, train_loss=640]Epoch 55/100:  55%|█████▌    | 55/100 [00:13<00:11,  3.97it/s, v_num=0, train_loss=640]Epoch 55/100:  55%|█████▌    | 55/100 [00:13<00:11,  3.97it/s, v_num=0, train_loss=640]Epoch 56/100:  55%|█████▌    | 55/100 [00:13<00:11,  3.97it/s, v_num=0, train_loss=640]Epoch 56/100:  56%|█████▌    | 56/100 [00:14<00:11,  3.99it/s, v_num=0, train_loss=640]Epoch 56/100:  56%|█████▌    | 56/100 [00:14<00:11,  3.99it/s, v_num=0, train_loss=640]Epoch 57/100:  56%|█████▌    | 56/100 [00:14<00:11,  3.99it/s, v_num=0, train_loss=640]Epoch 57/100:  57%|█████▋    | 57/100 [00:14<00:10,  4.03it/s, v_num=0, train_loss=640]Epoch 57/100:  57%|█████▋    | 57/100 [00:14<00:10,  4.03it/s, v_num=0, train_loss=639]Epoch 58/100:  57%|█████▋    | 57/100 [00:14<00:10,  4.03it/s, v_num=0, train_loss=639]Epoch 58/100:  58%|█████▊    | 58/100 [00:14<00:10,  4.04it/s, v_num=0, train_loss=639]Epoch 58/100:  58%|█████▊    | 58/100 [00:14<00:10,  4.04it/s, v_num=0, train_loss=639]Epoch 59/100:  58%|█████▊    | 58/100 [00:14<00:10,  4.04it/s, v_num=0, train_loss=639]Epoch 59/100:  59%|█████▉    | 59/100 [00:14<00:10,  4.04it/s, v_num=0, train_loss=639]Epoch 59/100:  59%|█████▉    | 59/100 [00:14<00:10,  4.04it/s, v_num=0, train_loss=638]Epoch 60/100:  59%|█████▉    | 59/100 [00:14<00:10,  4.04it/s, v_num=0, train_loss=638]Epoch 60/100:  60%|██████    | 60/100 [00:15<00:10,  3.97it/s, v_num=0, train_loss=638]Epoch 60/100:  60%|██████    | 60/100 [00:15<00:10,  3.97it/s, v_num=0, train_loss=638]Epoch 61/100:  60%|██████    | 60/100 [00:15<00:10,  3.97it/s, v_num=0, train_loss=638]Epoch 61/100:  61%|██████    | 61/100 [00:15<00:09,  4.00it/s, v_num=0, train_loss=638]Epoch 61/100:  61%|██████    | 61/100 [00:15<00:09,  4.00it/s, v_num=0, train_loss=639]Epoch 62/100:  61%|██████    | 61/100 [00:15<00:09,  4.00it/s, v_num=0, train_loss=639]Epoch 62/100:  62%|██████▏   | 62/100 [00:15<00:09,  4.03it/s, v_num=0, train_loss=639]Epoch 62/100:  62%|██████▏   | 62/100 [00:15<00:09,  4.03it/s, v_num=0, train_loss=639]Epoch 63/100:  62%|██████▏   | 62/100 [00:15<00:09,  4.03it/s, v_num=0, train_loss=639]Epoch 63/100:  63%|██████▎   | 63/100 [00:15<00:09,  4.05it/s, v_num=0, train_loss=639]Epoch 63/100:  63%|██████▎   | 63/100 [00:15<00:09,  4.05it/s, v_num=0, train_loss=638]Epoch 64/100:  63%|██████▎   | 63/100 [00:15<00:09,  4.05it/s, v_num=0, train_loss=638]Epoch 64/100:  64%|██████▍   | 64/100 [00:16<00:08,  4.07it/s, v_num=0, train_loss=638]Epoch 64/100:  64%|██████▍   | 64/100 [00:16<00:08,  4.07it/s, v_num=0, train_loss=637]Epoch 65/100:  64%|██████▍   | 64/100 [00:16<00:08,  4.07it/s, v_num=0, train_loss=637]Epoch 65/100:  65%|██████▌   | 65/100 [00:16<00:08,  4.03it/s, v_num=0, train_loss=637]Epoch 65/100:  65%|██████▌   | 65/100 [00:16<00:08,  4.03it/s, v_num=0, train_loss=638]Epoch 66/100:  65%|██████▌   | 65/100 [00:16<00:08,  4.03it/s, v_num=0, train_loss=638]Epoch 66/100:  66%|██████▌   | 66/100 [00:16<00:08,  4.03it/s, v_num=0, train_loss=638]Epoch 66/100:  66%|██████▌   | 66/100 [00:16<00:08,  4.03it/s, v_num=0, train_loss=637]Epoch 67/100:  66%|██████▌   | 66/100 [00:16<00:08,  4.03it/s, v_num=0, train_loss=637]Epoch 67/100:  67%|██████▋   | 67/100 [00:16<00:08,  3.95it/s, v_num=0, train_loss=637]Epoch 67/100:  67%|██████▋   | 67/100 [00:16<00:08,  3.95it/s, v_num=0, train_loss=637]Epoch 68/100:  67%|██████▋   | 67/100 [00:16<00:08,  3.95it/s, v_num=0, train_loss=637]Epoch 68/100:  68%|██████▊   | 68/100 [00:17<00:08,  3.98it/s, v_num=0, train_loss=637]Epoch 68/100:  68%|██████▊   | 68/100 [00:17<00:08,  3.98it/s, v_num=0, train_loss=637]Epoch 69/100:  68%|██████▊   | 68/100 [00:17<00:08,  3.98it/s, v_num=0, train_loss=637]Epoch 69/100:  69%|██████▉   | 69/100 [00:17<00:07,  4.02it/s, v_num=0, train_loss=637]Epoch 69/100:  69%|██████▉   | 69/100 [00:17<00:07,  4.02it/s, v_num=0, train_loss=637]Epoch 70/100:  69%|██████▉   | 69/100 [00:17<00:07,  4.02it/s, v_num=0, train_loss=637]Epoch 70/100:  70%|███████   | 70/100 [00:17<00:07,  4.02it/s, v_num=0, train_loss=637]Epoch 70/100:  70%|███████   | 70/100 [00:17<00:07,  4.02it/s, v_num=0, train_loss=637]Epoch 71/100:  70%|███████   | 70/100 [00:17<00:07,  4.02it/s, v_num=0, train_loss=637]Epoch 71/100:  71%|███████   | 71/100 [00:17<00:07,  4.06it/s, v_num=0, train_loss=637]Epoch 71/100:  71%|███████   | 71/100 [00:17<00:07,  4.06it/s, v_num=0, train_loss=636]Epoch 72/100:  71%|███████   | 71/100 [00:17<00:07,  4.06it/s, v_num=0, train_loss=636]Epoch 72/100:  72%|███████▏  | 72/100 [00:18<00:07,  3.98it/s, v_num=0, train_loss=636]Epoch 72/100:  72%|███████▏  | 72/100 [00:18<00:07,  3.98it/s, v_num=0, train_loss=636]Epoch 73/100:  72%|███████▏  | 72/100 [00:18<00:07,  3.98it/s, v_num=0, train_loss=636]Epoch 73/100:  73%|███████▎  | 73/100 [00:18<00:06,  4.01it/s, v_num=0, train_loss=636]Epoch 73/100:  73%|███████▎  | 73/100 [00:18<00:06,  4.01it/s, v_num=0, train_loss=636]Epoch 74/100:  73%|███████▎  | 73/100 [00:18<00:06,  4.01it/s, v_num=0, train_loss=636]Epoch 74/100:  74%|███████▍  | 74/100 [00:18<00:06,  4.04it/s, v_num=0, train_loss=636]Epoch 74/100:  74%|███████▍  | 74/100 [00:18<00:06,  4.04it/s, v_num=0, train_loss=635]Epoch 75/100:  74%|███████▍  | 74/100 [00:18<00:06,  4.04it/s, v_num=0, train_loss=635]Epoch 75/100:  75%|███████▌  | 75/100 [00:18<00:06,  4.03it/s, v_num=0, train_loss=635]Epoch 75/100:  75%|███████▌  | 75/100 [00:18<00:06,  4.03it/s, v_num=0, train_loss=635]Epoch 76/100:  75%|███████▌  | 75/100 [00:18<00:06,  4.03it/s, v_num=0, train_loss=635]Epoch 76/100:  76%|███████▌  | 76/100 [00:19<00:05,  4.00it/s, v_num=0, train_loss=635]Epoch 76/100:  76%|███████▌  | 76/100 [00:19<00:05,  4.00it/s, v_num=0, train_loss=635]Epoch 77/100:  76%|███████▌  | 76/100 [00:19<00:05,  4.00it/s, v_num=0, train_loss=635]Epoch 77/100:  77%|███████▋  | 77/100 [00:19<00:05,  4.04it/s, v_num=0, train_loss=635]Epoch 77/100:  77%|███████▋  | 77/100 [00:19<00:05,  4.04it/s, v_num=0, train_loss=634]Epoch 78/100:  77%|███████▋  | 77/100 [00:19<00:05,  4.04it/s, v_num=0, train_loss=634]Epoch 78/100:  78%|███████▊  | 78/100 [00:19<00:05,  4.03it/s, v_num=0, train_loss=634]Epoch 78/100:  78%|███████▊  | 78/100 [00:19<00:05,  4.03it/s, v_num=0, train_loss=635]Epoch 79/100:  78%|███████▊  | 78/100 [00:19<00:05,  4.03it/s, v_num=0, train_loss=635]Epoch 79/100:  79%|███████▉  | 79/100 [00:19<00:05,  4.01it/s, v_num=0, train_loss=635]Epoch 79/100:  79%|███████▉  | 79/100 [00:19<00:05,  4.01it/s, v_num=0, train_loss=634]Epoch 80/100:  79%|███████▉  | 79/100 [00:19<00:05,  4.01it/s, v_num=0, train_loss=634]Epoch 80/100:  80%|████████  | 80/100 [00:20<00:05,  3.99it/s, v_num=0, train_loss=634]Epoch 80/100:  80%|████████  | 80/100 [00:20<00:05,  3.99it/s, v_num=0, train_loss=634]Epoch 81/100:  80%|████████  | 80/100 [00:20<00:05,  3.99it/s, v_num=0, train_loss=634]Epoch 81/100:  81%|████████  | 81/100 [00:20<00:04,  4.06it/s, v_num=0, train_loss=634]Epoch 81/100:  81%|████████  | 81/100 [00:20<00:04,  4.06it/s, v_num=0, train_loss=634]Epoch 82/100:  81%|████████  | 81/100 [00:20<00:04,  4.06it/s, v_num=0, train_loss=634]Epoch 82/100:  82%|████████▏ | 82/100 [00:20<00:04,  4.07it/s, v_num=0, train_loss=634]Epoch 82/100:  82%|████████▏ | 82/100 [00:20<00:04,  4.07it/s, v_num=0, train_loss=633]Epoch 83/100:  82%|████████▏ | 82/100 [00:20<00:04,  4.07it/s, v_num=0, train_loss=633]Epoch 83/100:  83%|████████▎ | 83/100 [00:20<00:04,  4.11it/s, v_num=0, train_loss=633]Epoch 83/100:  83%|████████▎ | 83/100 [00:20<00:04,  4.11it/s, v_num=0, train_loss=633]Epoch 84/100:  83%|████████▎ | 83/100 [00:20<00:04,  4.11it/s, v_num=0, train_loss=633]Epoch 84/100:  84%|████████▍ | 84/100 [00:21<00:03,  4.12it/s, v_num=0, train_loss=633]Epoch 84/100:  84%|████████▍ | 84/100 [00:21<00:03,  4.12it/s, v_num=0, train_loss=633]Epoch 85/100:  84%|████████▍ | 84/100 [00:21<00:03,  4.12it/s, v_num=0, train_loss=633]Epoch 85/100:  85%|████████▌ | 85/100 [00:21<00:03,  4.12it/s, v_num=0, train_loss=633]Epoch 85/100:  85%|████████▌ | 85/100 [00:21<00:03,  4.12it/s, v_num=0, train_loss=633]Epoch 86/100:  85%|████████▌ | 85/100 [00:21<00:03,  4.12it/s, v_num=0, train_loss=633]Epoch 86/100:  86%|████████▌ | 86/100 [00:21<00:03,  4.07it/s, v_num=0, train_loss=633]Epoch 86/100:  86%|████████▌ | 86/100 [00:21<00:03,  4.07it/s, v_num=0, train_loss=632]Epoch 87/100:  86%|████████▌ | 86/100 [00:21<00:03,  4.07it/s, v_num=0, train_loss=632]Epoch 87/100:  87%|████████▋ | 87/100 [00:21<00:03,  4.06it/s, v_num=0, train_loss=632]Epoch 87/100:  87%|████████▋ | 87/100 [00:21<00:03,  4.06it/s, v_num=0, train_loss=632]Epoch 88/100:  87%|████████▋ | 87/100 [00:21<00:03,  4.06it/s, v_num=0, train_loss=632]Epoch 88/100:  88%|████████▊ | 88/100 [00:22<00:02,  4.02it/s, v_num=0, train_loss=632]Epoch 88/100:  88%|████████▊ | 88/100 [00:22<00:02,  4.02it/s, v_num=0, train_loss=632]Epoch 89/100:  88%|████████▊ | 88/100 [00:22<00:02,  4.02it/s, v_num=0, train_loss=632]Epoch 89/100:  89%|████████▉ | 89/100 [00:22<00:02,  4.05it/s, v_num=0, train_loss=632]Epoch 89/100:  89%|████████▉ | 89/100 [00:22<00:02,  4.05it/s, v_num=0, train_loss=632]Epoch 90/100:  89%|████████▉ | 89/100 [00:22<00:02,  4.05it/s, v_num=0, train_loss=632][2026-03-29T11:42:31.976] error: *** JOB 1560982 ON tg095 CANCELLED AT 2026-03-29T11:42:31 DUE to SIGNAL Terminated ***
-=== JOB_STATISTICS ===
-=== current date     : Sun Mar 29 11:42:34 AM CEST 2026
-= Job-ID             : 1560982 on tinygpu
-= Job-Name           : sc_ae_exp
-= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/tinygpu_single.sh
-= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
-= Queue/Partition    : a100
-= Slurm account      : iwbn with QOS=normal
-= Requested resources:  for 06:00:00
-= Elapsed runtime    : 00:08:23
-= Total RAM usage    : 2.5 GiB of requested  GiB (%)   
-= Node list          : tg095
-= Subm/Elig/Start/End: 2026-03-29T11:34:07 / 2026-03-29T11:34:07 / 2026-03-29T11:34:08 / 2026-03-29T11:42:31
-======================
-=== Quota infos ======
-    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
-    /home/hpc              32.4G   104.9G   209.7G        N/A      58K     500K   1,000K        N/A    
-    /home/vault             0.0K  1048.6G  2097.2G        N/A       1      200K     400K        N/A    
-    /home/woody             9.6G  1000.0G  1500.0G        N/A      61K   5,000K   7,500K        N/A    
-======================
-=== GPU utilization ==
-gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
-NVIDIA A100-SXM4-40GB, 00000000:C1:00.0, 1292546, 9 %, 0 %, 568 MiB, 478756 ms

@@ -1,201 +1,0 @@
-### Starting TaskPrologue of job 1560997 on tg095 at Sun Mar 29 11:43:50 AM CEST 2026
-Running on cores 64-95 with governor ondemand
-Sun Mar 29 11:43:50 2026       
-+-----------------------------------------------------------------------------------------+
-| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
-+-----------------------------------------+------------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
-|                                         |                        |               MIG M. |
-|=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:81:00.0 Off |                    0 |
-| N/A   34C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
-|                                         |                        |             Disabled |
-+-----------------------------------------+------------------------+----------------------+
-
-+-----------------------------------------------------------------------------------------+
-| Processes:                                                                              |
-|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
-|        ID   ID                                                               Usage      |
-|=========================================================================================|
-|  No running processes found                                                             |
-+-----------------------------------------------------------------------------------------+
-### Finished TaskPrologue
-
-
-EnvironmentNameNotFound: Could not find conda environment: scvi_env
-You can list all discoverable environments with `conda info --envs`.
-
-
-=== Smoke Test ===
-Node: tg095
-GPU:
-NVIDIA A100-SXM4-40GB, 40960 MiB
-Start: Sun Mar 29 11:43:52 AM CEST 2026
----
-2026-03-29 11:44:07,057 [INFO] Device: cuda
-2026-03-29 11:44:07,080 [INFO]   Synthetic data: 200 cells, 500 genes, 4 clusters
-2026-03-29 11:44:07,080 [INFO] ============================================================
-2026-03-29 11:44:07,080 [INFO] TEST: Architecture symmetry check
-2026-03-29 11:44:07,080 [INFO] ============================================================
-2026-03-29 11:44:07,110 [INFO]   hidden_dims=[128, 64]: encoder_linears=3, decoder_trunk_linears=2, + recon_head=1 → total_decoder=3
-2026-03-29 11:44:07,116 [INFO]   hidden_dims=[256, 128, 64]: encoder_linears=4, decoder_trunk_linears=3, + recon_head=1 → total_decoder=4
-2026-03-29 11:44:07,117 [INFO]   hidden_dims=[64]: encoder_linears=2, decoder_trunk_linears=1, + recon_head=1 → total_decoder=2
-2026-03-29 11:44:07,117 [INFO]   ✅ All architectures are symmetric
-2026-03-29 11:44:07,118 [INFO] ============================================================
-2026-03-29 11:44:07,118 [INFO] TEST: Autoencoder (AE) with MSE loss
-2026-03-29 11:44:07,118 [INFO] ============================================================
-2026-03-29 11:44:07,119 [INFO]   Split: train=160, val=20, test=20
-2026-03-29 11:44:07,129 [INFO]   DataLoaders: train=160, val=20, test=20, batch_size=64, layer=X, num_workers=0, pin_memory=False
-2026-03-29 11:44:07,130 [INFO]   Model params: 102,308
-2026-03-29 11:44:07,130 [INFO]   Architecture:
-Autoencoder(
-  (encoder): Sequential(
-    (0): Linear(in_features=500, out_features=64, bias=True)
-    (1): ReLU()
-    (2): Linear(in_features=64, out_features=32, bias=True)
-    (3): ReLU()
-    (4): Linear(in_features=32, out_features=8, bias=True)
-  )
-  (decoder_hidden): Sequential(
-    (0): Linear(in_features=8, out_features=32, bias=True)
-    (1): ReLU()
-    (2): Linear(in_features=32, out_features=64, bias=True)
-    (3): ReLU()
-  )
-  (recon_head): Linear(in_features=64, out_features=500, bias=True)
-  (pi_head): Linear(in_features=64, out_features=500, bias=True)
-)
-2026-03-29 11:44:11,343 [INFO]   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard_smoke/smoke_ae_mse_d8
-2026-03-29 11:44:11,343 [INFO]   Training AE (d=8, loss=mse) on cuda for up to 20 epochs
-2026-03-29 11:44:12,323 [INFO]     Epoch   1: train=7.496907, val=7.365154
-2026-03-29 11:44:12,577 [INFO]     Epoch  10: train=1.946733, val=1.759495
-2026-03-29 11:44:12,867 [INFO]     Epoch  20: train=1.367731, val=1.403943
-2026-03-29 11:44:12,882 [INFO]   Training complete in 1.5s. Best val loss: 1.403943 (epoch 20)
-2026-03-29 11:44:12,894 [INFO]   DataLoaders: train=200, val=0, test=0, batch_size=64, layer=X, num_workers=0, pin_memory=False
-2026-03-29 11:44:13,007 [INFO]   Metrics: ARI=-0.0016, AMI=-0.0022, Silhouette=-0.0356
-2026-03-29 11:44:23,076 [INFO]   Centrality variance: 0.001794
-2026-03-29 11:44:23,077 [INFO]   ✅ AE Results:
-2026-03-29 11:44:23,077 [INFO]      Best val loss: 1.403943 (epoch 20)
-2026-03-29 11:44:23,077 [INFO]      Total epochs:  20
-2026-03-29 11:44:23,077 [INFO]      ARI: -0.0016, AMI: -0.0022
-2026-03-29 11:44:23,077 [INFO]      Silhouette: -0.0356
-2026-03-29 11:44:23,077 [INFO]      Centrality variance: 0.0018
-2026-03-29 11:44:23,077 [INFO]      Peak CPU mem: 2.2 MB
-2026-03-29 11:44:23,077 [INFO]      Latent shape: (200, 8)
-2026-03-29 11:44:23,077 [INFO] ============================================================
-2026-03-29 11:44:23,077 [INFO] TEST: Variational Autoencoder (VAE) with MSE loss
-2026-03-29 11:44:23,077 [INFO] ============================================================
-2026-03-29 11:44:23,077 [INFO]   Split: train=160, val=20, test=20
-2026-03-29 11:44:23,083 [INFO]   DataLoaders: train=160, val=20, test=20, batch_size=64, layer=X, num_workers=0, pin_memory=False
-2026-03-29 11:44:23,084 [INFO]   Model params: 102,572
-2026-03-29 11:44:23,090 [INFO]   TensorBoard logging to: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard_smoke/smoke_vae_mse_d8
-2026-03-29 11:44:23,090 [INFO]   Training VAE (d=8, loss=mse) on cuda for up to 20 epochs
-2026-03-29 11:44:23,224 [INFO]     Epoch   1: train=7.722147, val=7.509728 (recon=7.5643, kl=0.1579)
-2026-03-29 11:44:23,530 [INFO]     Epoch  10: train=4.922771, val=4.596207 (recon=4.8355, kl=0.0873)
-2026-03-29 11:44:23,849 [INFO]     Epoch  20: train=1.875559, val=1.694139 (recon=1.8416, kl=0.0339)
-2026-03-29 11:44:23,859 [INFO]   Training complete in 0.8s. Best val loss: 1.640383 (epoch 19)
-2026-03-29 11:44:23,878 [INFO]   DataLoaders: train=200, val=0, test=0, batch_size=64, layer=X, num_workers=0, pin_memory=False
-2026-03-29 11:44:23,932 [INFO]   Metrics: ARI=0.0156, AMI=0.0179, Silhouette=-0.0316
-2026-03-29 11:44:23,932 [INFO]   ✅ VAE Results:
-2026-03-29 11:44:23,932 [INFO]      Best val loss: 1.640383 (epoch 19)
-2026-03-29 11:44:23,932 [INFO]      Total epochs:  20
-2026-03-29 11:44:23,932 [INFO]      ARI: 0.0156, AMI: 0.0179
-2026-03-29 11:44:23,932 [INFO]      Silhouette: -0.0316
-2026-03-29 11:44:23,932 [INFO]      Peak CPU mem: 2.1 MB
-2026-03-29 11:44:23,933 [INFO] ============================================================
-2026-03-29 11:44:23,933 [INFO] TEST: AE with Negative Binomial (NB) loss
-2026-03-29 11:44:23,933 [INFO] ============================================================
-2026-03-29 11:44:23,933 [INFO]   Split: train=160, val=20, test=20
-2026-03-29 11:44:23,937 [INFO]   DataLoaders: train=160, val=20, test=20, batch_size=64, layer=counts, num_workers=0, pin_memory=False
-2026-03-29 11:44:23,939 [INFO]   Training AE (d=8, loss=nb) on cuda for up to 10 epochs
-2026-03-29 11:44:24,001 [INFO]     Epoch   1: train=2098.227051, val=2076.259033
-2026-03-29 11:44:24,199 [INFO]     Epoch  10: train=1354.839941, val=1345.201660
-2026-03-29 11:44:24,205 [INFO]   Training complete in 0.3s. Best val loss: 1345.201660 (epoch 10)
-2026-03-29 11:44:24,205 [INFO]   ✅ NB Loss Results:
-2026-03-29 11:44:24,205 [INFO]      Best val loss: 1345.201660
-2026-03-29 11:44:24,205 [INFO]      Gradients stable: yes
-2026-03-29 11:44:24,205 [INFO] ============================================================
-2026-03-29 11:44:24,205 [INFO] TEST: scVI (via scvi-tools)
-2026-03-29 11:44:24,205 [INFO] ============================================================
-INFO: [rank: 0] Seed set to 42
-2026-03-29 11:44:26,361 [INFO] [rank: 0] Seed set to 42
-2026-03-29 11:44:26,376 [INFO]   scVI setup: d=8, likelihood=nb, hidden=64, layers=1, batch_key=None
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/smoke_test.py --with_scvi --tensorboard ...
-INFO: GPU available: True (cuda), used: True
-2026-03-29 11:44:26,414 [INFO] GPU available: True (cuda), used: True
-INFO: TPU available: False, using: 0 TPU cores
-2026-03-29 11:44:26,414 [INFO] TPU available: False, using: 0 TPU cores
-INFO: 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
-2026-03-29 11:44:26,415 [INFO] 💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/smoke_test.py --with_scvi --tensorboard ...
-INFO: You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-2026-03-29 11:44:26,418 [INFO] You are using a CUDA device ('NVIDIA A100-SXM4-40GB') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-INFO: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-2026-03-29 11:44:26,418 [INFO] LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/loops/fit_loop.py:317: The number of training batches (2) is smaller than the logging interval Trainer(log_every_n_steps=10). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
-Training:   0%|          | 0/10 [00:00<?, ?it/s]Epoch 1/10:   0%|          | 0/10 [00:00<?, ?it/s]Epoch 1/10:  10%|█         | 1/10 [00:00<00:01,  8.23it/s]Epoch 1/10:  10%|█         | 1/10 [00:00<00:01,  8.23it/s, v_num=1, train_loss=1.42e+3]Epoch 2/10:  10%|█         | 1/10 [00:00<00:01,  8.23it/s, v_num=1, train_loss=1.42e+3]Epoch 2/10:  20%|██        | 2/10 [00:00<00:00,  8.23it/s, v_num=1, train_loss=1.4e+3] Epoch 3/10:  20%|██        | 2/10 [00:00<00:00,  8.23it/s, v_num=1, train_loss=1.4e+3]Epoch 3/10:  30%|███       | 3/10 [00:00<00:00,  8.23it/s, v_num=1, train_loss=1.39e+3]Epoch 4/10:  30%|███       | 3/10 [00:00<00:00,  8.23it/s, v_num=1, train_loss=1.39e+3]Epoch 4/10:  40%|████      | 4/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.39e+3]Epoch 4/10:  40%|████      | 4/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.38e+3]Epoch 5/10:  40%|████      | 4/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.38e+3]Epoch 5/10:  50%|█████     | 5/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.37e+3]Epoch 6/10:  50%|█████     | 5/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.37e+3]Epoch 6/10:  60%|██████    | 6/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.36e+3]Epoch 7/10:  60%|██████    | 6/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.36e+3]Epoch 7/10:  70%|███████   | 7/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.35e+3]Epoch 8/10:  70%|███████   | 7/10 [00:00<00:00, 19.87it/s, v_num=1, train_loss=1.35e+3]Epoch 8/10:  80%|████████  | 8/10 [00:00<00:00, 27.41it/s, v_num=1, train_loss=1.35e+3]Epoch 8/10:  80%|████████  | 8/10 [00:00<00:00, 27.41it/s, v_num=1, train_loss=1.34e+3]Epoch 9/10:  80%|████████  | 8/10 [00:00<00:00, 27.41it/s, v_num=1, train_loss=1.34e+3]Epoch 9/10:  90%|█████████ | 9/10 [00:00<00:00, 27.41it/s, v_num=1, train_loss=1.33e+3]Epoch 10/10:  90%|█████████ | 9/10 [00:00<00:00, 27.41it/s, v_num=1, train_loss=1.33e+3]Epoch 10/10: 100%|██████████| 10/10 [00:00<00:00, 27.41it/s, v_num=1, train_loss=1.32e+3]INFO: `Trainer.fit` stopped: `max_epochs=10` reached.
-2026-03-29 11:44:26,840 [INFO] `Trainer.fit` stopped: `max_epochs=10` reached.
-Epoch 10/10: 100%|██████████| 10/10 [00:00<00:00, 25.42it/s, v_num=1, train_loss=1.32e+3]2026-03-29 11:44:26,850 [INFO]   scVI training complete: 10 epochs in 0.5s
-
-[34mINFO    [0m Input AnnData not setup with scvi-tools. attempting to transfer AnnData
-         setup                                                                  
-2026-03-29 11:44:26,881 [INFO]   Metrics: ARI=1.0000, AMI=1.0000, Silhouette=0.9155
-2026-03-29 11:44:26,881 [INFO]   ✅ scVI Results:
-2026-03-29 11:44:26,881 [INFO]      Actual epochs: 10
-2026-03-29 11:44:26,881 [INFO]      Training time: 0.5s
-2026-03-29 11:44:26,881 [INFO]      Recon loss (neg ELBO): 1314.8134
-2026-03-29 11:44:26,881 [INFO]      ARI: 1.0000, AMI: 1.0000
-2026-03-29 11:44:26,881 [INFO]      Latent shape: (200, 8)
-2026-03-29 11:44:26,881 [INFO] 
-============================================================
-2026-03-29 11:44:26,881 [INFO] SMOKE TEST SUMMARY
-2026-03-29 11:44:26,881 [INFO] ============================================================
-2026-03-29 11:44:26,881 [INFO]   ✅ symmetry: PASS
-2026-03-29 11:44:26,881 [INFO]   ✅ ae_mse: PASS
-2026-03-29 11:44:26,881 [INFO]   ✅ vae_mse: PASS
-2026-03-29 11:44:26,881 [INFO]   ✅ ae_nb: PASS
-2026-03-29 11:44:26,881 [INFO]   ✅ scvi: PASS
-2026-03-29 11:44:26,881 [INFO] 
-  TensorBoard logs at: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard_smoke
-2026-03-29 11:44:26,881 [INFO]   View with: tensorboard --logdir /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard_smoke
-2026-03-29 11:44:26,882 [INFO]   📊 TB event: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard_smoke/smoke_ae_mse_d8/events.out.tfevents.1774777451.tg095.1326863.0 (6.9 KB)
-2026-03-29 11:44:26,883 [INFO]   📊 TB event: /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/tensorboard_smoke/smoke_vae_mse_d8/events.out.tfevents.1774777463.tg095.1326863.1 (10.9 KB)
-2026-03-29 11:44:26,883 [INFO] 
-🎉 All tests passed! Pipeline is ready.
----
-TensorBoard files:
--rw-r--r-- 1 iwbn129h iwbn 6.9K Mar 29 11:44 logs/tensorboard_smoke/smoke_ae_mse_d8/events.out.tfevents.1774777451.tg095.1326863.0
--rw-r--r-- 1 iwbn129h iwbn 11K Mar 29 11:44 logs/tensorboard_smoke/smoke_vae_mse_d8/events.out.tfevents.1774777463.tg095.1326863.1
-Checkpoint files:
--rw-r--r-- 1 iwbn129h iwbn 406K Mar 29 11:44 checkpoints/smoke_test/smoke_ae_nb.pt
--rw-r--r-- 1 iwbn129h iwbn 406K Mar 29 11:44 checkpoints/smoke_test/smoke_ae.pt
--rw-r--r-- 1 iwbn129h iwbn 407K Mar 29 11:44 checkpoints/smoke_test/smoke_vae.pt
----
-End: Sun Mar 29 11:44:29 AM CEST 2026
-=== JOB_STATISTICS ===
-=== current date     : Sun Mar 29 11:44:29 AM CEST 2026
-= Job-ID             : 1560997 on tinygpu
-= Job-Name           : sc_smoke
-= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/smoke_test.sh
-= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
-= Queue/Partition    : a100
-= Slurm account      : iwbn with QOS=normal
-= Requested resources:  for 00:10:00
-= Elapsed runtime    : 00:00:41
-= Total RAM usage    : 1.6 GiB of requested  GiB (%)   
-= Node list          : tg095
-= Subm/Elig/Start/End: 2026-03-29T11:43:47 / 2026-03-29T11:43:47 / 2026-03-29T11:43:48 / 2026-03-29T11:44:29
-======================
-=== Quota infos ======
-    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
-    /home/hpc              32.3G   104.9G   209.7G        N/A      57K     500K   1,000K        N/A    
-    /home/vault             0.0K  1048.6G  2097.2G        N/A       1      200K     400K        N/A    
-    /home/woody             9.6G  1000.0G  1500.0G        N/A      61K   5,000K   7,500K        N/A    
-======================
-=== GPU utilization ==
-gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
-NVIDIA A100-SXM4-40GB, 00000000:81:00.0, 1326863, 0 %, 0 %, 536 MiB, 22503 ms

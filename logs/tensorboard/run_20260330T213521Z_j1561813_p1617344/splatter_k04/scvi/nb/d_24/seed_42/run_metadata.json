@@ -1,7 +1,0 @@
-{
-  "dataset": "splatter_k04",
-  "latent_dim": 24,
-  "loss_type": "nb",
-  "model_type": "scvi",
-  "seed": 42
-}

@@ -1,7 +1,0 @@
-{
-  "dataset": "paul15",
-  "latent_dim": 2,
-  "loss_type": "nb",
-  "model_type": "scvi",
-  "seed": 42
-}

@@ -1,1831 +1,0 @@
-### Starting TaskPrologue of job 1560975 on tg095 at Sun Mar 29 11:21:13 AM CEST 2026
-Running on cores 96-127 with governor ondemand
-Sun Mar 29 11:21:13 2026       
-+-----------------------------------------------------------------------------------------+
-| NVIDIA-SMI 580.126.20             Driver Version: 580.126.20     CUDA Version: 13.0     |
-+-----------------------------------------+------------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
-|                                         |                        |               MIG M. |
-|=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
-| N/A   34C    P0             50W /  400W |       0MiB /  40960MiB |      0%      Default |
-|                                         |                        |             Disabled |
-+-----------------------------------------+------------------------+----------------------+
-
-+-----------------------------------------------------------------------------------------+
-| Processes:                                                                              |
-|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
-|        ID   ID                                                               Usage      |
-|=========================================================================================|
-|  No running processes found                                                             |
-+-----------------------------------------------------------------------------------------+
-### Finished TaskPrologue
-
-=== EXPERIMENT START ===
-Job ID:    1560975
-Node:      tg095
-Partition: a100
-Start:     Sun Mar 29 11:21:14 AM CEST 2026
----
-WARN: conda env 'scvi_env' not found, using pip user packages
-NVIDIA A100-SXM4-40GB, 40960 MiB, 8.0
----
-fatal: not a git repository (or any parent up to mount point /home)
-Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
-/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py:432: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  run_id = datetime.utcnow().strftime("run_%Y%m%dT%H%M%SZ")
-2026-03-29 11:21:36 | experiment | INFO |   TensorBoard: logs/tensorboard/run_20260329T092135Z
-2026-03-29 11:21:36 | experiment | INFO |   View live:   tensorboard --logdir logs/tensorboard
-2026-03-29 11:21:36 | experiment | INFO | ======================================================================
-2026-03-29 11:21:36 | experiment | INFO | EXPERIMENT: Latent Dimension Sweep
-2026-03-29 11:21:36 | experiment | INFO |   Datasets:       ['pbmc3k', 'paul15']
-2026-03-29 11:21:36 | experiment | INFO |   Model/losses:   [('ae', 'mse'), ('vae', 'mse'), ('scvi', 'nb')]
-2026-03-29 11:21:36 | experiment | INFO |   Latent dims:    [2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 48, 64]
-2026-03-29 11:21:36 | experiment | INFO |   Seeds:          3
-2026-03-29 11:21:36 | experiment | INFO |   Device:         cuda
-2026-03-29 11:21:36 | experiment | INFO |   Git commit:     unknown
-2026-03-29 11:21:36 | experiment | INFO |   Run ID:         run_20260329T092135Z
-2026-03-29 11:21:36 | experiment | INFO | ======================================================================
-/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py:464: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  "timestamp_utc": datetime.utcnow().isoformat() + "Z",
-2026-03-29 11:21:36 | experiment | INFO | 
-Dataset: pbmc3k (2700 cells, K=9, mode=in_memory)
-2026-03-29 11:21:36 | experiment | INFO | 
---- pbmc3k | ae:mse | d=2 | seed=42 ---
-2026-03-29 11:22:04 | experiment | INFO |   -> ARI=-0.0021, AMI=0.0007, Sil=-0.1095, Recon=0.217397, CPUmem=4.4MB, Time=27.8s
-2026-03-29 11:22:04 | experiment | INFO | 
---- pbmc3k | ae:mse | d=2 | seed=43 ---
-2026-03-29 11:22:14 | experiment | INFO |   -> ARI=-0.0000, AMI=-0.0014, Sil=-0.0664, Recon=0.217534, CPUmem=4.3MB, Time=10.0s
-2026-03-29 11:22:14 | experiment | INFO | 
---- pbmc3k | ae:mse | d=2 | seed=44 ---
-2026-03-29 11:22:25 | experiment | INFO |   -> ARI=0.0006, AMI=-0.0010, Sil=-0.0909, Recon=0.217782, CPUmem=4.3MB, Time=11.0s
-2026-03-29 11:22:25 | experiment | INFO | 
---- pbmc3k | ae:mse | d=4 | seed=42 ---
-2026-03-29 11:22:36 | experiment | INFO |   -> ARI=0.0016, AMI=-0.0005, Sil=-0.0522, Recon=0.214826, CPUmem=4.4MB, Time=10.5s
-2026-03-29 11:22:36 | experiment | INFO | 
---- pbmc3k | ae:mse | d=4 | seed=43 ---
-2026-03-29 11:22:47 | experiment | INFO |   -> ARI=0.0005, AMI=-0.0016, Sil=-0.0655, Recon=0.213358, CPUmem=3.5MB, Time=11.5s
-2026-03-29 11:22:47 | experiment | INFO | 
---- pbmc3k | ae:mse | d=4 | seed=44 ---
-2026-03-29 11:22:59 | experiment | INFO |   -> ARI=0.0008, AMI=0.0003, Sil=-0.0514, Recon=0.213190, CPUmem=4.2MB, Time=11.5s
-2026-03-29 11:22:59 | experiment | INFO | 
---- pbmc3k | ae:mse | d=6 | seed=42 ---
-2026-03-29 11:23:11 | experiment | INFO |   -> ARI=0.0000, AMI=0.0006, Sil=-0.0646, Recon=0.212944, CPUmem=4.4MB, Time=11.4s
-2026-03-29 11:23:11 | experiment | INFO | 
---- pbmc3k | ae:mse | d=6 | seed=43 ---
-2026-03-29 11:23:21 | experiment | INFO |   -> ARI=-0.0005, AMI=-0.0013, Sil=-0.0669, Recon=0.213573, CPUmem=4.3MB, Time=9.9s
-2026-03-29 11:23:21 | experiment | INFO | 
---- pbmc3k | ae:mse | d=6 | seed=44 ---
-2026-03-29 11:23:32 | experiment | INFO |   -> ARI=0.0005, AMI=-0.0008, Sil=-0.1067, Recon=0.212476, CPUmem=4.2MB, Time=11.5s
-2026-03-29 11:23:32 | experiment | INFO | 
---- pbmc3k | ae:mse | d=8 | seed=42 ---
-2026-03-29 11:23:44 | experiment | INFO |   -> ARI=-0.0006, AMI=0.0001, Sil=-0.0757, Recon=0.212868, CPUmem=4.2MB, Time=11.5s
-2026-03-29 11:23:44 | experiment | INFO | 
---- pbmc3k | ae:mse | d=8 | seed=43 ---
-2026-03-29 11:23:54 | experiment | INFO |   -> ARI=0.0008, AMI=0.0004, Sil=-0.0556, Recon=0.213101, CPUmem=4.3MB, Time=10.4s
-2026-03-29 11:23:54 | experiment | INFO | 
---- pbmc3k | ae:mse | d=8 | seed=44 ---
-2026-03-29 11:24:05 | experiment | INFO |   -> ARI=-0.0006, AMI=-0.0000, Sil=-0.0729, Recon=0.213260, CPUmem=4.3MB, Time=10.6s
-2026-03-29 11:24:05 | experiment | INFO | 
---- pbmc3k | ae:mse | d=10 | seed=42 ---
-2026-03-29 11:24:17 | experiment | INFO |   -> ARI=0.0014, AMI=-0.0002, Sil=-0.0957, Recon=0.211464, CPUmem=4.3MB, Time=11.2s
-2026-03-29 11:24:17 | experiment | INFO | 
---- pbmc3k | ae:mse | d=10 | seed=43 ---
-2026-03-29 11:24:28 | experiment | INFO |   -> ARI=-0.0001, AMI=-0.0007, Sil=-0.0852, Recon=0.213333, CPUmem=4.2MB, Time=11.4s
-2026-03-29 11:24:28 | experiment | INFO | 
---- pbmc3k | ae:mse | d=10 | seed=44 ---
-2026-03-29 11:24:40 | experiment | INFO |   -> ARI=-0.0013, AMI=0.0011, Sil=-0.0825, Recon=0.213645, CPUmem=4.4MB, Time=11.4s
-2026-03-29 11:24:40 | experiment | INFO | 
---- pbmc3k | ae:mse | d=12 | seed=42 ---
-2026-03-29 11:24:51 | experiment | INFO |   -> ARI=-0.0006, AMI=0.0012, Sil=-0.1317, Recon=0.213116, CPUmem=4.3MB, Time=10.9s
-2026-03-29 11:24:51 | experiment | INFO | 
---- pbmc3k | ae:mse | d=12 | seed=43 ---
-2026-03-29 11:25:00 | experiment | INFO |   -> ARI=-0.0014, AMI=0.0001, Sil=-0.1225, Recon=0.213056, CPUmem=4.3MB, Time=8.9s
-2026-03-29 11:25:00 | experiment | INFO | 
---- pbmc3k | ae:mse | d=12 | seed=44 ---
-2026-03-29 11:25:12 | experiment | INFO |   -> ARI=-0.0006, AMI=-0.0024, Sil=-0.0518, Recon=0.211994, CPUmem=4.3MB, Time=11.6s
-2026-03-29 11:25:12 | experiment | INFO | 
---- pbmc3k | ae:mse | d=16 | seed=42 ---
-2026-03-29 11:25:23 | experiment | INFO |   -> ARI=-0.0012, AMI=-0.0015, Sil=-0.0647, Recon=0.213083, CPUmem=4.3MB, Time=11.2s
-2026-03-29 11:25:23 | experiment | INFO | 
---- pbmc3k | ae:mse | d=16 | seed=43 ---
-2026-03-29 11:25:35 | experiment | INFO |   -> ARI=-0.0004, AMI=-0.0010, Sil=-0.0495, Recon=0.212381, CPUmem=3.4MB, Time=11.8s
-2026-03-29 11:25:35 | experiment | INFO | 
---- pbmc3k | ae:mse | d=16 | seed=44 ---
-2026-03-29 11:25:47 | experiment | INFO |   -> ARI=-0.0005, AMI=0.0015, Sil=-0.0749, Recon=0.211120, CPUmem=3.4MB, Time=11.6s
-2026-03-29 11:25:47 | experiment | INFO | 
---- pbmc3k | ae:mse | d=20 | seed=42 ---
-2026-03-29 11:25:58 | experiment | INFO |   -> ARI=0.0004, AMI=-0.0003, Sil=-0.1204, Recon=0.213058, CPUmem=4.4MB, Time=11.3s
-2026-03-29 11:25:58 | experiment | INFO | 
---- pbmc3k | ae:mse | d=20 | seed=43 ---
-2026-03-29 11:26:08 | experiment | INFO |   -> ARI=0.0008, AMI=0.0004, Sil=-0.0717, Recon=0.213815, CPUmem=4.3MB, Time=10.1s
-2026-03-29 11:26:08 | experiment | INFO | 
---- pbmc3k | ae:mse | d=20 | seed=44 ---
-2026-03-29 11:26:20 | experiment | INFO |   -> ARI=0.0012, AMI=0.0022, Sil=-0.1111, Recon=0.211450, CPUmem=4.3MB, Time=11.1s
-2026-03-29 11:26:20 | experiment | INFO | 
---- pbmc3k | ae:mse | d=24 | seed=42 ---
-2026-03-29 11:26:31 | experiment | INFO |   -> ARI=-0.0006, AMI=-0.0010, Sil=-0.0498, Recon=0.212270, CPUmem=4.4MB, Time=11.0s
-2026-03-29 11:26:31 | experiment | INFO | 
---- pbmc3k | ae:mse | d=24 | seed=43 ---
-2026-03-29 11:26:40 | experiment | INFO |   -> ARI=0.0013, AMI=-0.0005, Sil=-0.0508, Recon=0.212974, CPUmem=4.4MB, Time=9.0s
-2026-03-29 11:26:40 | experiment | INFO | 
---- pbmc3k | ae:mse | d=24 | seed=44 ---
-2026-03-29 11:26:48 | experiment | INFO |   -> ARI=0.0000, AMI=0.0043, Sil=-0.0498, Recon=0.214503, CPUmem=4.3MB, Time=7.5s
-2026-03-29 11:26:48 | experiment | INFO | 
---- pbmc3k | ae:mse | d=32 | seed=42 ---
-2026-03-29 11:26:59 | experiment | INFO |   -> ARI=-0.0013, AMI=-0.0013, Sil=-0.1919, Recon=0.213266, CPUmem=4.3MB, Time=10.7s
-2026-03-29 11:26:59 | experiment | INFO | 
---- pbmc3k | ae:mse | d=32 | seed=43 ---
-2026-03-29 11:27:09 | experiment | INFO |   -> ARI=0.0012, AMI=-0.0005, Sil=-0.0494, Recon=0.212449, CPUmem=4.3MB, Time=10.6s
-2026-03-29 11:27:09 | experiment | INFO | 
---- pbmc3k | ae:mse | d=32 | seed=44 ---
-2026-03-29 11:27:21 | experiment | INFO |   -> ARI=-0.0009, AMI=-0.0002, Sil=-0.0470, Recon=0.212027, CPUmem=3.4MB, Time=11.5s
-2026-03-29 11:27:21 | experiment | INFO | 
---- pbmc3k | ae:mse | d=48 | seed=42 ---
-2026-03-29 11:27:32 | experiment | INFO |   -> ARI=0.0030, AMI=0.0010, Sil=-0.0687, Recon=0.212571, CPUmem=4.3MB, Time=10.8s
-2026-03-29 11:27:32 | experiment | INFO | 
---- pbmc3k | ae:mse | d=48 | seed=43 ---
-2026-03-29 11:27:42 | experiment | INFO |   -> ARI=0.0001, AMI=0.0002, Sil=-0.0766, Recon=0.213075, CPUmem=4.3MB, Time=10.1s
-2026-03-29 11:27:42 | experiment | INFO | 
---- pbmc3k | ae:mse | d=48 | seed=44 ---
-2026-03-29 11:27:54 | experiment | INFO |   -> ARI=-0.0001, AMI=-0.0003, Sil=-0.0600, Recon=0.213043, CPUmem=4.3MB, Time=11.1s
-2026-03-29 11:27:54 | experiment | INFO | 
---- pbmc3k | ae:mse | d=64 | seed=42 ---
-2026-03-29 11:28:05 | experiment | INFO |   -> ARI=-0.0007, AMI=-0.0002, Sil=-0.1149, Recon=0.213027, CPUmem=4.4MB, Time=11.4s
-2026-03-29 11:28:05 | experiment | INFO | 
---- pbmc3k | ae:mse | d=64 | seed=43 ---
-2026-03-29 11:28:14 | experiment | INFO |   -> ARI=-0.0004, AMI=-0.0014, Sil=-0.1352, Recon=0.214162, CPUmem=4.3MB, Time=9.1s
-2026-03-29 11:28:14 | experiment | INFO | 
---- pbmc3k | ae:mse | d=64 | seed=44 ---
-2026-03-29 11:28:26 | experiment | INFO |   -> ARI=-0.0002, AMI=0.0007, Sil=-0.1126, Recon=0.211848, CPUmem=4.4MB, Time=11.3s
-2026-03-29 11:28:26 | experiment | INFO | 
---- pbmc3k | vae:mse | d=2 | seed=42 ---
-2026-03-29 11:28:32 | experiment | INFO |   -> ARI=0.0018, AMI=0.0010, Sil=-0.0615, Recon=0.262485, CPUmem=8.3MB, Time=6.5s
-2026-03-29 11:28:32 | experiment | INFO | 
---- pbmc3k | vae:mse | d=2 | seed=43 ---
-2026-03-29 11:28:38 | experiment | INFO |   -> ARI=0.0004, AMI=0.0008, Sil=-0.1385, Recon=0.262464, CPUmem=8.3MB, Time=5.0s
-2026-03-29 11:28:38 | experiment | INFO | 
---- pbmc3k | vae:mse | d=2 | seed=44 ---
-2026-03-29 11:28:45 | experiment | INFO |   -> ARI=-0.0006, AMI=-0.0003, Sil=-0.0680, Recon=0.262425, CPUmem=8.3MB, Time=7.2s
-2026-03-29 11:28:45 | experiment | INFO | 
---- pbmc3k | vae:mse | d=4 | seed=42 ---
-Exception in thread Thread-292:
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
-Exception in thread Thread-286:
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 775, in write
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
-OSError: [Errno 24] Too many open files: b'logs/tensorboard/run_20260329T092135Z/pbmc3k_vae_mse_d4_s42/Loss_reconstruction_val/events.out.tfevents.1774776526.tg095.1286429.172'
-Exception in thread Thread-290:
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 775, in write
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
-OSError: [Errno 24] Too many open files: b'logs/tensorboard/run_20260329T092135Z/pbmc3k_vae_mse_d4_s42/Loss_total_val/events.out.tfevents.1774776525.tg095.1286429.170'
-Exception in thread Thread-293:
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 775, in write
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
-OSError: [Errno 24] Too many open files: b'logs/tensorboard/run_20260329T092135Z/pbmc3k_vae_mse_d4_s42/Loss_kl_divergence_train/events.out.tfevents.1774776526.tg095.1286429.173'
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 775, in write
-Exception in thread Thread-289:
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
-    self._write(filename, file_content, "ab" if binary_mode else "a")
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
-    with io.open(filename, mode, encoding=encoding) as f:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files: b'logs/tensorboard/run_20260329T092135Z/pbmc3k_vae_mse_d4_s42/events.out.tfevents.1774776525.tg095.1286429.168'
-    self.run()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 244, in run
-    self._run()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/event_file_writer.py", line 275, in _run
-Exception in thread Thread-287 (_pin_memory_loop):
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
-    self._record_writer.write(data)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/summary/writer/record_writer.py", line 40, in write
-    self.run()
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1012, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/_utils/pin_memory.py", line 52, in _pin_memory_loop
-    self._writer.write(header + header_crc + data + footer_crc)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 775, in write
-    do_one_step()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/_utils/pin_memory.py", line 28, in do_one_step
-    self.fs.append(self.filename, file_content, self.binary_mode)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 167, in append
-    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 122, in get
-    self._write(filename, file_content, "ab" if binary_mode else "a")
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/tensorboard/compat/tensorflow_stub/io/gfile.py", line 171, in _write
-    return _ForkingPickler.loads(res)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/multiprocessing/reductions.py", line 540, in rebuild_storage_fd
-    with io.open(filename, mode, encoding=encoding) as f:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files: b'logs/tensorboard/run_20260329T092135Z/pbmc3k_vae_mse_d4_s42/Loss_total_train/events.out.tfevents.1774776525.tg095.1286429.169'
-    fd = df.detach()
-         ^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/resource_sharer.py", line 58, in detach
-    return reduction.recv_handle(conn)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/reduction.py", line 189, in recv_handle
-    return recvfds(s, 1)[0]
-           ^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/reduction.py", line 164, in recvfds
-    raise RuntimeError('received %d items of ancdata' %
-RuntimeError: received 0 items of ancdata
-2026-03-29 11:28:51 | experiment | ERROR |   FAILED: Pin memory thread exited unexpectedly
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 741, in __next__
-    data = self._next_data()
-           ^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1524, in _next_data
-    idx, data = self._get_data()
-                ^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1478, in _get_data
-    raise RuntimeError("Pin memory thread exited unexpectedly")
-RuntimeError: Pin memory thread exited unexpectedly
-2026-03-29 11:28:51 | experiment | INFO | 
---- pbmc3k | vae:mse | d=4 | seed=43 ---
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/resource_sharer.py", line 138, in _serve
-    with self._listener.accept() as conn:
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/connection.py", line 480, in accept
-    c = self._listener.accept()
-        ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/connection.py", line 626, in accept
-    s, self._last_accepted = self._socket.accept()
-                             ^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/socket.py", line 295, in accept
-    fd, addr = self._accept()
-               ^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/resource_sharer.py", line 145, in _serve
-Exception in thread Thread-296 (_pin_memory_loop):
-Traceback (most recent call last):
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
-    send(conn, destination_pid)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/resource_sharer.py", line 50, in send
-    reduction.send_handle(conn, new_fd, pid)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/reduction.py", line 183, in send_handle
-    self.run()
-    with socket.fromfd(conn.fileno(), socket.AF_UNIX, socket.SOCK_STREAM) as s:
-  File "/apps/python/3.12-conda/lib/python3.12/threading.py", line 1012, in run
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/socket.py", line 548, in fromfd
-    self._target(*self._args, **self._kwargs)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/_utils/pin_memory.py", line 52, in _pin_memory_loop
-    nfd = dup(fd)
-          ^^^^^^^
-OSError: [Errno 24] Too many open files
-    do_one_step()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/_utils/pin_memory.py", line 28, in do_one_step
-    r = in_queue.get(timeout=MP_STATUS_CHECK_INTERVAL)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 122, in get
-    return _ForkingPickler.loads(res)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/multiprocessing/reductions.py", line 540, in rebuild_storage_fd
-    fd = df.detach()
-         ^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/resource_sharer.py", line 58, in detach
-    return reduction.recv_handle(conn)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/reduction.py", line 189, in recv_handle
-    return recvfds(s, 1)[0]
-           ^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/reduction.py", line 159, in recvfds
-    raise EOFError
-EOFError
-2026-03-29 11:28:51 | experiment | ERROR |   FAILED: Pin memory thread exited unexpectedly
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 741, in __next__
-    data = self._next_data()
-           ^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1524, in _next_data
-    idx, data = self._get_data()
-                ^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1478, in _get_data
-    raise RuntimeError("Pin memory thread exited unexpectedly")
-RuntimeError: Pin memory thread exited unexpectedly
-2026-03-29 11:28:51 | experiment | INFO | 
---- pbmc3k | vae:mse | d=4 | seed=44 ---
-2026-03-29 11:28:51 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 65, in _launch
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:51 | experiment | INFO | 
---- pbmc3k | vae:mse | d=6 | seed=42 ---
-2026-03-29 11:28:51 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:51 | experiment | INFO | 
---- pbmc3k | vae:mse | d=6 | seed=43 ---
-2026-03-29 11:28:52 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:52 | experiment | INFO | 
---- pbmc3k | vae:mse | d=6 | seed=44 ---
-2026-03-29 11:28:52 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:52 | experiment | INFO | 
---- pbmc3k | vae:mse | d=8 | seed=42 ---
-2026-03-29 11:28:52 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:52 | experiment | INFO | 
---- pbmc3k | vae:mse | d=8 | seed=43 ---
-2026-03-29 11:28:52 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:52 | experiment | INFO | 
---- pbmc3k | vae:mse | d=8 | seed=44 ---
-2026-03-29 11:28:52 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:52 | experiment | INFO | 
---- pbmc3k | vae:mse | d=10 | seed=42 ---
-2026-03-29 11:28:52 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:52 | experiment | INFO | 
---- pbmc3k | vae:mse | d=10 | seed=43 ---
-2026-03-29 11:28:53 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:53 | experiment | INFO | 
---- pbmc3k | vae:mse | d=10 | seed=44 ---
-2026-03-29 11:28:53 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:53 | experiment | INFO | 
---- pbmc3k | vae:mse | d=12 | seed=42 ---
-2026-03-29 11:28:53 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:53 | experiment | INFO | 
---- pbmc3k | vae:mse | d=12 | seed=43 ---
-2026-03-29 11:28:53 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:53 | experiment | INFO | 
---- pbmc3k | vae:mse | d=12 | seed=44 ---
-2026-03-29 11:28:53 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:53 | experiment | INFO | 
---- pbmc3k | vae:mse | d=16 | seed=42 ---
-2026-03-29 11:28:53 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:53 | experiment | INFO | 
---- pbmc3k | vae:mse | d=16 | seed=43 ---
-2026-03-29 11:28:54 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:54 | experiment | INFO | 
---- pbmc3k | vae:mse | d=16 | seed=44 ---
-2026-03-29 11:28:54 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:54 | experiment | INFO | 
---- pbmc3k | vae:mse | d=20 | seed=42 ---
-2026-03-29 11:28:54 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:54 | experiment | INFO | 
---- pbmc3k | vae:mse | d=20 | seed=43 ---
-2026-03-29 11:28:54 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:54 | experiment | INFO | 
---- pbmc3k | vae:mse | d=20 | seed=44 ---
-2026-03-29 11:28:54 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:54 | experiment | INFO | 
---- pbmc3k | vae:mse | d=24 | seed=42 ---
-2026-03-29 11:28:54 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:54 | experiment | INFO | 
---- pbmc3k | vae:mse | d=24 | seed=43 ---
-2026-03-29 11:28:55 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:55 | experiment | INFO | 
---- pbmc3k | vae:mse | d=24 | seed=44 ---
-2026-03-29 11:28:55 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:55 | experiment | INFO | 
---- pbmc3k | vae:mse | d=32 | seed=42 ---
-2026-03-29 11:28:55 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:55 | experiment | INFO | 
---- pbmc3k | vae:mse | d=32 | seed=43 ---
-2026-03-29 11:28:55 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:55 | experiment | INFO | 
---- pbmc3k | vae:mse | d=32 | seed=44 ---
-2026-03-29 11:28:55 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:55 | experiment | INFO | 
---- pbmc3k | vae:mse | d=48 | seed=42 ---
-2026-03-29 11:28:55 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:56 | experiment | INFO | 
---- pbmc3k | vae:mse | d=48 | seed=43 ---
-2026-03-29 11:28:56 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:56 | experiment | INFO | 
---- pbmc3k | vae:mse | d=48 | seed=44 ---
-2026-03-29 11:28:56 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:56 | experiment | INFO | 
---- pbmc3k | vae:mse | d=64 | seed=42 ---
-2026-03-29 11:28:56 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1192, in __init__
-    w.start()
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/process.py", line 121, in start
-    self._popen = self._Popen(self)
-                  ^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 224, in _Popen
-    return _default_context.get_context().Process._Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 282, in _Popen
-    return Popen(process_obj)
-           ^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 19, in __init__
-    self._launch(process_obj)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/popen_fork.py", line 64, in _launch
-    parent_r, child_w = os.pipe()
-                        ^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:56 | experiment | INFO | 
---- pbmc3k | vae:mse | d=64 | seed=43 ---
-2026-03-29 11:28:56 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:56 | experiment | INFO | 
---- pbmc3k | vae:mse | d=64 | seed=44 ---
-2026-03-29 11:28:56 | experiment | ERROR |   FAILED: [Errno 24] Too many open files
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/scripts/run_experiment.py", line 288, in run_single_experiment
-    history = trainer.train(
-              ^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 267, in train
-    train_metrics = self._train_epoch(train_loader, epoch)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/src/training/trainer.py", line 101, in _train_epoch
-    for batch in dataloader:
-                 ^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 495, in __iter__
-    self._iterator = self._get_iterator()
-                     ^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 433, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1159, in __init__
-    index_queue = multiprocessing_context.Queue()  # type: ignore[var-annotated]
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 103, in Queue
-    return Queue(maxsize, ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/queues.py", line 43, in __init__
-    self._rlock = ctx.Lock()
-                  ^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/context.py", line 68, in Lock
-    return Lock(ctx=self.get_context())
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 169, in __init__
-    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
-  File "/apps/python/3.12-conda/lib/python3.12/multiprocessing/synchronize.py", line 57, in __init__
-    sl = self._semlock = _multiprocessing.SemLock(
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^
-OSError: [Errno 24] Too many open files
-Exception ignored in: <function _MultiProcessingDataLoaderIter.__del__ at 0x74fcedad44a0>
-Traceback (most recent call last):
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1707, in __del__
-    self._shutdown_workers()
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1666, in _shutdown_workers
-    self._mark_worker_as_unavailable(worker_id, shutdown=True)
-  File "/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1595, in _mark_worker_as_unavailable
-    not self._workers_status[worker_id]
-        ^^^^^^^^^^^^^^^^^^^^
-AttributeError: '_MultiProcessingDataLoaderIter' object has no attribute '_workers_status'
-2026-03-29 11:28:56 | experiment | INFO | 
---- pbmc3k | scvi:nb | d=2 | seed=42 ---
-[rank: 0] Seed set to 42
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/default.ya ...
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/default.ya ...
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
-Training:   0%|          | 0/100 [00:00<?, ?it/s]Epoch 1/100:   0%|          | 0/100 [00:00<?, ?it/s]Epoch 1/100:   1%|          | 1/100 [00:01<02:44,  1.66s/it]Epoch 1/100:   1%|          | 1/100 [00:01<02:44,  1.66s/it, v_num=0, train_loss=1.17e+3]Epoch 2/100:   1%|          | 1/100 [00:01<02:44,  1.66s/it, v_num=0, train_loss=1.17e+3]Epoch 2/100:   2%|▏         | 2/100 [00:02<01:47,  1.10s/it, v_num=0, train_loss=1.17e+3]Epoch 2/100:   2%|▏         | 2/100 [00:02<01:47,  1.10s/it, v_num=0, train_loss=866]    Epoch 3/100:   2%|▏         | 2/100 [00:02<01:47,  1.10s/it, v_num=0, train_loss=866]Epoch 3/100:   3%|▎         | 3/100 [00:02<01:24,  1.15it/s, v_num=0, train_loss=866]Epoch 3/100:   3%|▎         | 3/100 [00:02<01:24,  1.15it/s, v_num=0, train_loss=752]Epoch 4/100:   3%|▎         | 3/100 [00:02<01:24,  1.15it/s, v_num=0, train_loss=752]Epoch 4/100:   4%|▍         | 4/100 [00:03<01:13,  1.30it/s, v_num=0, train_loss=752]Epoch 4/100:   4%|▍         | 4/100 [00:03<01:13,  1.30it/s, v_num=0, train_loss=706]Epoch 5/100:   4%|▍         | 4/100 [00:03<01:13,  1.30it/s, v_num=0, train_loss=706]Epoch 5/100:   5%|▌         | 5/100 [00:04<01:07,  1.41it/s, v_num=0, train_loss=706]Epoch 5/100:   5%|▌         | 5/100 [00:04<01:07,  1.41it/s, v_num=0, train_loss=687]Epoch 6/100:   5%|▌         | 5/100 [00:04<01:07,  1.41it/s, v_num=0, train_loss=687]Epoch 6/100:   6%|▌         | 6/100 [00:04<01:03,  1.48it/s, v_num=0, train_loss=687]Epoch 6/100:   6%|▌         | 6/100 [00:04<01:03,  1.48it/s, v_num=0, train_loss=680]Epoch 7/100:   6%|▌         | 6/100 [00:04<01:03,  1.48it/s, v_num=0, train_loss=680]Epoch 7/100:   7%|▋         | 7/100 [00:05<01:02,  1.50it/s, v_num=0, train_loss=680]Epoch 7/100:   7%|▋         | 7/100 [00:05<01:02,  1.50it/s, v_num=0, train_loss=674]Epoch 8/100:   7%|▋         | 7/100 [00:05<01:02,  1.50it/s, v_num=0, train_loss=674]Epoch 8/100:   8%|▊         | 8/100 [00:06<01:00,  1.53it/s, v_num=0, train_loss=674]Epoch 8/100:   8%|▊         | 8/100 [00:06<01:00,  1.53it/s, v_num=0, train_loss=671]Epoch 9/100:   8%|▊         | 8/100 [00:06<01:00,  1.53it/s, v_num=0, train_loss=671]Epoch 9/100:   9%|▉         | 9/100 [00:06<00:58,  1.55it/s, v_num=0, train_loss=671]Epoch 9/100:   9%|▉         | 9/100 [00:06<00:58,  1.55it/s, v_num=0, train_loss=668]Epoch 10/100:   9%|▉         | 9/100 [00:06<00:58,  1.55it/s, v_num=0, train_loss=668]Epoch 10/100:  10%|█         | 10/100 [00:07<00:58,  1.55it/s, v_num=0, train_loss=668]Epoch 10/100:  10%|█         | 10/100 [00:07<00:58,  1.55it/s, v_num=0, train_loss=666]Epoch 11/100:  10%|█         | 10/100 [00:07<00:58,  1.55it/s, v_num=0, train_loss=666]Epoch 11/100:  11%|█         | 11/100 [00:07<00:56,  1.58it/s, v_num=0, train_loss=666]Epoch 11/100:  11%|█         | 11/100 [00:07<00:56,  1.58it/s, v_num=0, train_loss=665]Epoch 12/100:  11%|█         | 11/100 [00:07<00:56,  1.58it/s, v_num=0, train_loss=665]Epoch 12/100:  12%|█▏        | 12/100 [00:08<00:55,  1.60it/s, v_num=0, train_loss=665]Epoch 12/100:  12%|█▏        | 12/100 [00:08<00:55,  1.60it/s, v_num=0, train_loss=663]Epoch 13/100:  12%|█▏        | 12/100 [00:08<00:55,  1.60it/s, v_num=0, train_loss=663]Epoch 13/100:  13%|█▎        | 13/100 [00:09<00:54,  1.61it/s, v_num=0, train_loss=663]Epoch 13/100:  13%|█▎        | 13/100 [00:09<00:54,  1.61it/s, v_num=0, train_loss=662]Epoch 14/100:  13%|█▎        | 13/100 [00:09<00:54,  1.61it/s, v_num=0, train_loss=662]Epoch 14/100:  14%|█▍        | 14/100 [00:09<00:53,  1.62it/s, v_num=0, train_loss=662]Epoch 14/100:  14%|█▍        | 14/100 [00:09<00:53,  1.62it/s, v_num=0, train_loss=660]Epoch 15/100:  14%|█▍        | 14/100 [00:09<00:53,  1.62it/s, v_num=0, train_loss=660]Epoch 15/100:  15%|█▌        | 15/100 [00:10<00:52,  1.62it/s, v_num=0, train_loss=660]Epoch 15/100:  15%|█▌        | 15/100 [00:10<00:52,  1.62it/s, v_num=0, train_loss=659]Epoch 16/100:  15%|█▌        | 15/100 [00:10<00:52,  1.62it/s, v_num=0, train_loss=659]Epoch 16/100:  16%|█▌        | 16/100 [00:11<00:51,  1.62it/s, v_num=0, train_loss=659]Epoch 16/100:  16%|█▌        | 16/100 [00:11<00:51,  1.62it/s, v_num=0, train_loss=659]Epoch 17/100:  16%|█▌        | 16/100 [00:11<00:51,  1.62it/s, v_num=0, train_loss=659]Epoch 17/100:  17%|█▋        | 17/100 [00:11<00:51,  1.62it/s, v_num=0, train_loss=659]Epoch 17/100:  17%|█▋        | 17/100 [00:11<00:51,  1.62it/s, v_num=0, train_loss=658]Epoch 18/100:  17%|█▋        | 17/100 [00:11<00:51,  1.62it/s, v_num=0, train_loss=658]Epoch 18/100:  18%|█▊        | 18/100 [00:12<00:50,  1.62it/s, v_num=0, train_loss=658]Epoch 18/100:  18%|█▊        | 18/100 [00:12<00:50,  1.62it/s, v_num=0, train_loss=657]Epoch 19/100:  18%|█▊        | 18/100 [00:12<00:50,  1.62it/s, v_num=0, train_loss=657]Epoch 19/100:  19%|█▉        | 19/100 [00:12<00:50,  1.62it/s, v_num=0, train_loss=657]Epoch 19/100:  19%|█▉        | 19/100 [00:12<00:50,  1.62it/s, v_num=0, train_loss=656]Epoch 20/100:  19%|█▉        | 19/100 [00:12<00:50,  1.62it/s, v_num=0, train_loss=656]Epoch 20/100:  20%|██        | 20/100 [00:13<00:49,  1.61it/s, v_num=0, train_loss=656]Epoch 20/100:  20%|██        | 20/100 [00:13<00:49,  1.61it/s, v_num=0, train_loss=656]Epoch 21/100:  20%|██        | 20/100 [00:13<00:49,  1.61it/s, v_num=0, train_loss=656]Epoch 21/100:  21%|██        | 21/100 [00:14<00:48,  1.62it/s, v_num=0, train_loss=656]Epoch 21/100:  21%|██        | 21/100 [00:14<00:48,  1.62it/s, v_num=0, train_loss=655]Epoch 22/100:  21%|██        | 21/100 [00:14<00:48,  1.62it/s, v_num=0, train_loss=655]Epoch 22/100:  22%|██▏       | 22/100 [00:14<00:48,  1.62it/s, v_num=0, train_loss=655]Epoch 22/100:  22%|██▏       | 22/100 [00:14<00:48,  1.62it/s, v_num=0, train_loss=654]Epoch 23/100:  22%|██▏       | 22/100 [00:14<00:48,  1.62it/s, v_num=0, train_loss=654]Epoch 23/100:  23%|██▎       | 23/100 [00:15<00:47,  1.62it/s, v_num=0, train_loss=654]Epoch 23/100:  23%|██▎       | 23/100 [00:15<00:47,  1.62it/s, v_num=0, train_loss=654]Epoch 24/100:  23%|██▎       | 23/100 [00:15<00:47,  1.62it/s, v_num=0, train_loss=654]Epoch 24/100:  24%|██▍       | 24/100 [00:15<00:46,  1.62it/s, v_num=0, train_loss=654]Epoch 24/100:  24%|██▍       | 24/100 [00:15<00:46,  1.62it/s, v_num=0, train_loss=653]Epoch 25/100:  24%|██▍       | 24/100 [00:15<00:46,  1.62it/s, v_num=0, train_loss=653]Epoch 25/100:  25%|██▌       | 25/100 [00:16<00:46,  1.62it/s, v_num=0, train_loss=653]Epoch 25/100:  25%|██▌       | 25/100 [00:16<00:46,  1.62it/s, v_num=0, train_loss=653]Epoch 26/100:  25%|██▌       | 25/100 [00:16<00:46,  1.62it/s, v_num=0, train_loss=653]Epoch 26/100:  26%|██▌       | 26/100 [00:17<00:46,  1.60it/s, v_num=0, train_loss=653]Epoch 26/100:  26%|██▌       | 26/100 [00:17<00:46,  1.60it/s, v_num=0, train_loss=651]Epoch 27/100:  26%|██▌       | 26/100 [00:17<00:46,  1.60it/s, v_num=0, train_loss=651]Epoch 27/100:  27%|██▋       | 27/100 [00:17<00:45,  1.60it/s, v_num=0, train_loss=651]Epoch 27/100:  27%|██▋       | 27/100 [00:17<00:45,  1.60it/s, v_num=0, train_loss=651]Epoch 28/100:  27%|██▋       | 27/100 [00:17<00:45,  1.60it/s, v_num=0, train_loss=651]Epoch 28/100:  28%|██▊       | 28/100 [00:18<00:45,  1.60it/s, v_num=0, train_loss=651]Epoch 28/100:  28%|██▊       | 28/100 [00:18<00:45,  1.60it/s, v_num=0, train_loss=651]Epoch 29/100:  28%|██▊       | 28/100 [00:18<00:45,  1.60it/s, v_num=0, train_loss=651]Epoch 29/100:  29%|██▉       | 29/100 [00:19<00:44,  1.60it/s, v_num=0, train_loss=651]Epoch 29/100:  29%|██▉       | 29/100 [00:19<00:44,  1.60it/s, v_num=0, train_loss=651]Epoch 30/100:  29%|██▉       | 29/100 [00:19<00:44,  1.60it/s, v_num=0, train_loss=651]Epoch 30/100:  30%|███       | 30/100 [00:19<00:43,  1.59it/s, v_num=0, train_loss=651]Epoch 30/100:  30%|███       | 30/100 [00:19<00:43,  1.59it/s, v_num=0, train_loss=650]Epoch 31/100:  30%|███       | 30/100 [00:19<00:43,  1.59it/s, v_num=0, train_loss=650]Epoch 31/100:  31%|███       | 31/100 [00:20<00:43,  1.60it/s, v_num=0, train_loss=650]Epoch 31/100:  31%|███       | 31/100 [00:20<00:43,  1.60it/s, v_num=0, train_loss=649]Epoch 32/100:  31%|███       | 31/100 [00:20<00:43,  1.60it/s, v_num=0, train_loss=649]Epoch 32/100:  32%|███▏      | 32/100 [00:20<00:42,  1.61it/s, v_num=0, train_loss=649]Epoch 32/100:  32%|███▏      | 32/100 [00:20<00:42,  1.61it/s, v_num=0, train_loss=649]Epoch 33/100:  32%|███▏      | 32/100 [00:20<00:42,  1.61it/s, v_num=0, train_loss=649]Epoch 33/100:  33%|███▎      | 33/100 [00:21<00:41,  1.61it/s, v_num=0, train_loss=649]Epoch 33/100:  33%|███▎      | 33/100 [00:21<00:41,  1.61it/s, v_num=0, train_loss=648]Epoch 34/100:  33%|███▎      | 33/100 [00:21<00:41,  1.61it/s, v_num=0, train_loss=648]Epoch 34/100:  34%|███▍      | 34/100 [00:22<00:41,  1.61it/s, v_num=0, train_loss=648]Epoch 34/100:  34%|███▍      | 34/100 [00:22<00:41,  1.61it/s, v_num=0, train_loss=648]Epoch 35/100:  34%|███▍      | 34/100 [00:22<00:41,  1.61it/s, v_num=0, train_loss=648]Epoch 35/100:  35%|███▌      | 35/100 [00:22<00:40,  1.61it/s, v_num=0, train_loss=648]Epoch 35/100:  35%|███▌      | 35/100 [00:22<00:40,  1.61it/s, v_num=0, train_loss=647]Epoch 36/100:  35%|███▌      | 35/100 [00:22<00:40,  1.61it/s, v_num=0, train_loss=647]Epoch 36/100:  36%|███▌      | 36/100 [00:23<00:39,  1.61it/s, v_num=0, train_loss=647]Epoch 36/100:  36%|███▌      | 36/100 [00:23<00:39,  1.61it/s, v_num=0, train_loss=647]Epoch 37/100:  36%|███▌      | 36/100 [00:23<00:39,  1.61it/s, v_num=0, train_loss=647]Epoch 37/100:  37%|███▋      | 37/100 [00:24<00:38,  1.62it/s, v_num=0, train_loss=647]Epoch 37/100:  37%|███▋      | 37/100 [00:24<00:38,  1.62it/s, v_num=0, train_loss=646]Epoch 38/100:  37%|███▋      | 37/100 [00:24<00:38,  1.62it/s, v_num=0, train_loss=646]Epoch 38/100:  38%|███▊      | 38/100 [00:24<00:38,  1.62it/s, v_num=0, train_loss=646]Epoch 38/100:  38%|███▊      | 38/100 [00:24<00:38,  1.62it/s, v_num=0, train_loss=646]Epoch 39/100:  38%|███▊      | 38/100 [00:24<00:38,  1.62it/s, v_num=0, train_loss=646]Epoch 39/100:  39%|███▉      | 39/100 [00:25<00:37,  1.62it/s, v_num=0, train_loss=646]Epoch 39/100:  39%|███▉      | 39/100 [00:25<00:37,  1.62it/s, v_num=0, train_loss=646]Epoch 40/100:  39%|███▉      | 39/100 [00:25<00:37,  1.62it/s, v_num=0, train_loss=646]Epoch 40/100:  40%|████      | 40/100 [00:25<00:37,  1.62it/s, v_num=0, train_loss=646]Epoch 40/100:  40%|████      | 40/100 [00:25<00:37,  1.62it/s, v_num=0, train_loss=645]Epoch 41/100:  40%|████      | 40/100 [00:25<00:37,  1.62it/s, v_num=0, train_loss=645]Epoch 41/100:  41%|████      | 41/100 [00:26<00:36,  1.62it/s, v_num=0, train_loss=645]Epoch 41/100:  41%|████      | 41/100 [00:26<00:36,  1.62it/s, v_num=0, train_loss=645]Epoch 42/100:  41%|████      | 41/100 [00:26<00:36,  1.62it/s, v_num=0, train_loss=645]Epoch 42/100:  42%|████▏     | 42/100 [00:27<00:35,  1.63it/s, v_num=0, train_loss=645]Epoch 42/100:  42%|████▏     | 42/100 [00:27<00:35,  1.63it/s, v_num=0, train_loss=645]Epoch 43/100:  42%|████▏     | 42/100 [00:27<00:35,  1.63it/s, v_num=0, train_loss=645]Epoch 43/100:  43%|████▎     | 43/100 [00:27<00:35,  1.62it/s, v_num=0, train_loss=645]Epoch 43/100:  43%|████▎     | 43/100 [00:27<00:35,  1.62it/s, v_num=0, train_loss=644]Epoch 44/100:  43%|████▎     | 43/100 [00:27<00:35,  1.62it/s, v_num=0, train_loss=644]Epoch 44/100:  44%|████▍     | 44/100 [00:28<00:34,  1.62it/s, v_num=0, train_loss=644]Epoch 44/100:  44%|████▍     | 44/100 [00:28<00:34,  1.62it/s, v_num=0, train_loss=645]Epoch 45/100:  44%|████▍     | 44/100 [00:28<00:34,  1.62it/s, v_num=0, train_loss=645]Epoch 45/100:  45%|████▌     | 45/100 [00:28<00:34,  1.61it/s, v_num=0, train_loss=645]Epoch 45/100:  45%|████▌     | 45/100 [00:28<00:34,  1.61it/s, v_num=0, train_loss=644]Epoch 46/100:  45%|████▌     | 45/100 [00:29<00:34,  1.61it/s, v_num=0, train_loss=644]Epoch 46/100:  46%|████▌     | 46/100 [00:29<00:33,  1.61it/s, v_num=0, train_loss=644]Epoch 46/100:  46%|████▌     | 46/100 [00:29<00:33,  1.61it/s, v_num=0, train_loss=643]Epoch 47/100:  46%|████▌     | 46/100 [00:29<00:33,  1.61it/s, v_num=0, train_loss=643]Epoch 47/100:  47%|████▋     | 47/100 [00:30<00:32,  1.62it/s, v_num=0, train_loss=643]Epoch 47/100:  47%|████▋     | 47/100 [00:30<00:32,  1.62it/s, v_num=0, train_loss=643]Epoch 48/100:  47%|████▋     | 47/100 [00:30<00:32,  1.62it/s, v_num=0, train_loss=643]Epoch 48/100:  48%|████▊     | 48/100 [00:30<00:31,  1.63it/s, v_num=0, train_loss=643]Epoch 48/100:  48%|████▊     | 48/100 [00:30<00:31,  1.63it/s, v_num=0, train_loss=642]Epoch 49/100:  48%|████▊     | 48/100 [00:30<00:31,  1.63it/s, v_num=0, train_loss=642]Epoch 49/100:  49%|████▉     | 49/100 [00:31<00:31,  1.63it/s, v_num=0, train_loss=642]Epoch 49/100:  49%|████▉     | 49/100 [00:31<00:31,  1.63it/s, v_num=0, train_loss=642]Epoch 50/100:  49%|████▉     | 49/100 [00:31<00:31,  1.63it/s, v_num=0, train_loss=642]Epoch 50/100:  50%|█████     | 50/100 [00:32<00:30,  1.62it/s, v_num=0, train_loss=642]Epoch 50/100:  50%|█████     | 50/100 [00:32<00:30,  1.62it/s, v_num=0, train_loss=643]Epoch 51/100:  50%|█████     | 50/100 [00:32<00:30,  1.62it/s, v_num=0, train_loss=643]Epoch 51/100:  51%|█████     | 51/100 [00:32<00:29,  1.63it/s, v_num=0, train_loss=643]Epoch 51/100:  51%|█████     | 51/100 [00:32<00:29,  1.63it/s, v_num=0, train_loss=642]Epoch 52/100:  51%|█████     | 51/100 [00:32<00:29,  1.63it/s, v_num=0, train_loss=642]Epoch 52/100:  52%|█████▏    | 52/100 [00:33<00:29,  1.63it/s, v_num=0, train_loss=642]Epoch 52/100:  52%|█████▏    | 52/100 [00:33<00:29,  1.63it/s, v_num=0, train_loss=641]Epoch 53/100:  52%|█████▏    | 52/100 [00:33<00:29,  1.63it/s, v_num=0, train_loss=641]Epoch 53/100:  53%|█████▎    | 53/100 [00:33<00:28,  1.64it/s, v_num=0, train_loss=641]Epoch 53/100:  53%|█████▎    | 53/100 [00:33<00:28,  1.64it/s, v_num=0, train_loss=642]Epoch 54/100:  53%|█████▎    | 53/100 [00:33<00:28,  1.64it/s, v_num=0, train_loss=642]Epoch 54/100:  54%|█████▍    | 54/100 [00:34<00:28,  1.63it/s, v_num=0, train_loss=642]Epoch 54/100:  54%|█████▍    | 54/100 [00:34<00:28,  1.63it/s, v_num=0, train_loss=640]Epoch 55/100:  54%|█████▍    | 54/100 [00:34<00:28,  1.63it/s, v_num=0, train_loss=640]Epoch 55/100:  55%|█████▌    | 55/100 [00:35<00:27,  1.64it/s, v_num=0, train_loss=640]Epoch 55/100:  55%|█████▌    | 55/100 [00:35<00:27,  1.64it/s, v_num=0, train_loss=640]Epoch 56/100:  55%|█████▌    | 55/100 [00:35<00:27,  1.64it/s, v_num=0, train_loss=640]Epoch 56/100:  56%|█████▌    | 56/100 [00:35<00:26,  1.63it/s, v_num=0, train_loss=640]Epoch 56/100:  56%|█████▌    | 56/100 [00:35<00:26,  1.63it/s, v_num=0, train_loss=640]Epoch 57/100:  56%|█████▌    | 56/100 [00:35<00:26,  1.63it/s, v_num=0, train_loss=640]Epoch 57/100:  57%|█████▋    | 57/100 [00:36<00:26,  1.62it/s, v_num=0, train_loss=640]Epoch 57/100:  57%|█████▋    | 57/100 [00:36<00:26,  1.62it/s, v_num=0, train_loss=639]Epoch 58/100:  57%|█████▋    | 57/100 [00:36<00:26,  1.62it/s, v_num=0, train_loss=639]Epoch 58/100:  58%|█████▊    | 58/100 [00:36<00:26,  1.61it/s, v_num=0, train_loss=639]Epoch 58/100:  58%|█████▊    | 58/100 [00:36<00:26,  1.61it/s, v_num=0, train_loss=639]Epoch 59/100:  58%|█████▊    | 58/100 [00:36<00:26,  1.61it/s, v_num=0, train_loss=639]Epoch 59/100:  59%|█████▉    | 59/100 [00:37<00:25,  1.61it/s, v_num=0, train_loss=639]Epoch 59/100:  59%|█████▉    | 59/100 [00:37<00:25,  1.61it/s, v_num=0, train_loss=638]Epoch 60/100:  59%|█████▉    | 59/100 [00:37<00:25,  1.61it/s, v_num=0, train_loss=638]Epoch 60/100:  60%|██████    | 60/100 [00:38<00:24,  1.60it/s, v_num=0, train_loss=638]Epoch 60/100:  60%|██████    | 60/100 [00:38<00:24,  1.60it/s, v_num=0, train_loss=638]Epoch 61/100:  60%|██████    | 60/100 [00:38<00:24,  1.60it/s, v_num=0, train_loss=638]Epoch 61/100:  61%|██████    | 61/100 [00:38<00:24,  1.61it/s, v_num=0, train_loss=638]Epoch 61/100:  61%|██████    | 61/100 [00:38<00:24,  1.61it/s, v_num=0, train_loss=639]Epoch 62/100:  61%|██████    | 61/100 [00:38<00:24,  1.61it/s, v_num=0, train_loss=639]Epoch 62/100:  62%|██████▏   | 62/100 [00:39<00:23,  1.61it/s, v_num=0, train_loss=639]Epoch 62/100:  62%|██████▏   | 62/100 [00:39<00:23,  1.61it/s, v_num=0, train_loss=639]Epoch 63/100:  62%|██████▏   | 62/100 [00:39<00:23,  1.61it/s, v_num=0, train_loss=639]Epoch 63/100:  63%|██████▎   | 63/100 [00:40<00:23,  1.60it/s, v_num=0, train_loss=639]Epoch 63/100:  63%|██████▎   | 63/100 [00:40<00:23,  1.60it/s, v_num=0, train_loss=638]Epoch 64/100:  63%|██████▎   | 63/100 [00:40<00:23,  1.60it/s, v_num=0, train_loss=638]Epoch 64/100:  64%|██████▍   | 64/100 [00:40<00:22,  1.61it/s, v_num=0, train_loss=638]Epoch 64/100:  64%|██████▍   | 64/100 [00:40<00:22,  1.61it/s, v_num=0, train_loss=637]Epoch 65/100:  64%|██████▍   | 64/100 [00:40<00:22,  1.61it/s, v_num=0, train_loss=637]Epoch 65/100:  65%|██████▌   | 65/100 [00:41<00:21,  1.61it/s, v_num=0, train_loss=637]Epoch 65/100:  65%|██████▌   | 65/100 [00:41<00:21,  1.61it/s, v_num=0, train_loss=638]Epoch 66/100:  65%|██████▌   | 65/100 [00:41<00:21,  1.61it/s, v_num=0, train_loss=638]Epoch 66/100:  66%|██████▌   | 66/100 [00:41<00:21,  1.61it/s, v_num=0, train_loss=638]Epoch 66/100:  66%|██████▌   | 66/100 [00:41<00:21,  1.61it/s, v_num=0, train_loss=637]Epoch 67/100:  66%|██████▌   | 66/100 [00:41<00:21,  1.61it/s, v_num=0, train_loss=637]Epoch 67/100:  67%|██████▋   | 67/100 [00:42<00:20,  1.61it/s, v_num=0, train_loss=637]Epoch 67/100:  67%|██████▋   | 67/100 [00:42<00:20,  1.61it/s, v_num=0, train_loss=637]Epoch 68/100:  67%|██████▋   | 67/100 [00:42<00:20,  1.61it/s, v_num=0, train_loss=637]Epoch 68/100:  68%|██████▊   | 68/100 [00:43<00:19,  1.61it/s, v_num=0, train_loss=637]Epoch 68/100:  68%|██████▊   | 68/100 [00:43<00:19,  1.61it/s, v_num=0, train_loss=637]Epoch 69/100:  68%|██████▊   | 68/100 [00:43<00:19,  1.61it/s, v_num=0, train_loss=637]Epoch 69/100:  69%|██████▉   | 69/100 [00:43<00:19,  1.61it/s, v_num=0, train_loss=637]Epoch 69/100:  69%|██████▉   | 69/100 [00:43<00:19,  1.61it/s, v_num=0, train_loss=637]Epoch 70/100:  69%|██████▉   | 69/100 [00:43<00:19,  1.61it/s, v_num=0, train_loss=637]Epoch 70/100:  70%|███████   | 70/100 [00:44<00:18,  1.60it/s, v_num=0, train_loss=637]Epoch 70/100:  70%|███████   | 70/100 [00:44<00:18,  1.60it/s, v_num=0, train_loss=637]Epoch 71/100:  70%|███████   | 70/100 [00:44<00:18,  1.60it/s, v_num=0, train_loss=637]Epoch 71/100:  71%|███████   | 71/100 [00:45<00:18,  1.60it/s, v_num=0, train_loss=637]Epoch 71/100:  71%|███████   | 71/100 [00:45<00:18,  1.60it/s, v_num=0, train_loss=636]Epoch 72/100:  71%|███████   | 71/100 [00:45<00:18,  1.60it/s, v_num=0, train_loss=636]Epoch 72/100:  72%|███████▏  | 72/100 [00:45<00:17,  1.60it/s, v_num=0, train_loss=636]Epoch 72/100:  72%|███████▏  | 72/100 [00:45<00:17,  1.60it/s, v_num=0, train_loss=636]Epoch 73/100:  72%|███████▏  | 72/100 [00:45<00:17,  1.60it/s, v_num=0, train_loss=636]Epoch 73/100:  73%|███████▎  | 73/100 [00:46<00:16,  1.61it/s, v_num=0, train_loss=636]Epoch 73/100:  73%|███████▎  | 73/100 [00:46<00:16,  1.61it/s, v_num=0, train_loss=636]Epoch 74/100:  73%|███████▎  | 73/100 [00:46<00:16,  1.61it/s, v_num=0, train_loss=636]Epoch 74/100:  74%|███████▍  | 74/100 [00:46<00:16,  1.61it/s, v_num=0, train_loss=636]Epoch 74/100:  74%|███████▍  | 74/100 [00:46<00:16,  1.61it/s, v_num=0, train_loss=635]Epoch 75/100:  74%|███████▍  | 74/100 [00:46<00:16,  1.61it/s, v_num=0, train_loss=635]Epoch 75/100:  75%|███████▌  | 75/100 [00:47<00:15,  1.62it/s, v_num=0, train_loss=635]Epoch 75/100:  75%|███████▌  | 75/100 [00:47<00:15,  1.62it/s, v_num=0, train_loss=635]Epoch 76/100:  75%|███████▌  | 75/100 [00:47<00:15,  1.62it/s, v_num=0, train_loss=635]Epoch 76/100:  76%|███████▌  | 76/100 [00:48<00:14,  1.63it/s, v_num=0, train_loss=635]Epoch 76/100:  76%|███████▌  | 76/100 [00:48<00:14,  1.63it/s, v_num=0, train_loss=635]Epoch 77/100:  76%|███████▌  | 76/100 [00:48<00:14,  1.63it/s, v_num=0, train_loss=635]Epoch 77/100:  77%|███████▋  | 77/100 [00:48<00:14,  1.63it/s, v_num=0, train_loss=635]Epoch 77/100:  77%|███████▋  | 77/100 [00:48<00:14,  1.63it/s, v_num=0, train_loss=634]Epoch 78/100:  77%|███████▋  | 77/100 [00:48<00:14,  1.63it/s, v_num=0, train_loss=634]Epoch 78/100:  78%|███████▊  | 78/100 [00:49<00:13,  1.62it/s, v_num=0, train_loss=634]Epoch 78/100:  78%|███████▊  | 78/100 [00:49<00:13,  1.62it/s, v_num=0, train_loss=635]Epoch 79/100:  78%|███████▊  | 78/100 [00:49<00:13,  1.62it/s, v_num=0, train_loss=635]Epoch 79/100:  79%|███████▉  | 79/100 [00:50<00:12,  1.62it/s, v_num=0, train_loss=635]Epoch 79/100:  79%|███████▉  | 79/100 [00:50<00:12,  1.62it/s, v_num=0, train_loss=634]Epoch 80/100:  79%|███████▉  | 79/100 [00:50<00:12,  1.62it/s, v_num=0, train_loss=634]Epoch 80/100:  80%|████████  | 80/100 [00:50<00:12,  1.61it/s, v_num=0, train_loss=634]Epoch 80/100:  80%|████████  | 80/100 [00:50<00:12,  1.61it/s, v_num=0, train_loss=634]Epoch 81/100:  80%|████████  | 80/100 [00:50<00:12,  1.61it/s, v_num=0, train_loss=634]Epoch 81/100:  81%|████████  | 81/100 [00:51<00:11,  1.63it/s, v_num=0, train_loss=634]Epoch 81/100:  81%|████████  | 81/100 [00:51<00:11,  1.63it/s, v_num=0, train_loss=634]Epoch 82/100:  81%|████████  | 81/100 [00:51<00:11,  1.63it/s, v_num=0, train_loss=634]Epoch 82/100:  82%|████████▏ | 82/100 [00:51<00:11,  1.62it/s, v_num=0, train_loss=634]Epoch 82/100:  82%|████████▏ | 82/100 [00:51<00:11,  1.62it/s, v_num=0, train_loss=633]Epoch 83/100:  82%|████████▏ | 82/100 [00:51<00:11,  1.62it/s, v_num=0, train_loss=633]Epoch 83/100:  83%|████████▎ | 83/100 [00:52<00:10,  1.62it/s, v_num=0, train_loss=633]Epoch 83/100:  83%|████████▎ | 83/100 [00:52<00:10,  1.62it/s, v_num=0, train_loss=633]Epoch 84/100:  83%|████████▎ | 83/100 [00:52<00:10,  1.62it/s, v_num=0, train_loss=633]Epoch 84/100:  84%|████████▍ | 84/100 [00:53<00:09,  1.62it/s, v_num=0, train_loss=633]Epoch 84/100:  84%|████████▍ | 84/100 [00:53<00:09,  1.62it/s, v_num=0, train_loss=633]Epoch 85/100:  84%|████████▍ | 84/100 [00:53<00:09,  1.62it/s, v_num=0, train_loss=633]Epoch 85/100:  85%|████████▌ | 85/100 [00:53<00:09,  1.62it/s, v_num=0, train_loss=633]Epoch 85/100:  85%|████████▌ | 85/100 [00:53<00:09,  1.62it/s, v_num=0, train_loss=633]Epoch 86/100:  85%|████████▌ | 85/100 [00:53<00:09,  1.62it/s, v_num=0, train_loss=633]Epoch 86/100:  86%|████████▌ | 86/100 [00:54<00:08,  1.61it/s, v_num=0, train_loss=633]Epoch 86/100:  86%|████████▌ | 86/100 [00:54<00:08,  1.61it/s, v_num=0, train_loss=632]Epoch 87/100:  86%|████████▌ | 86/100 [00:54<00:08,  1.61it/s, v_num=0, train_loss=632]Epoch 87/100:  87%|████████▋ | 87/100 [00:54<00:08,  1.60it/s, v_num=0, train_loss=632]Epoch 87/100:  87%|████████▋ | 87/100 [00:54<00:08,  1.60it/s, v_num=0, train_loss=632]Epoch 88/100:  87%|████████▋ | 87/100 [00:55<00:08,  1.60it/s, v_num=0, train_loss=632]Epoch 88/100:  88%|████████▊ | 88/100 [00:55<00:07,  1.60it/s, v_num=0, train_loss=632]Epoch 88/100:  88%|████████▊ | 88/100 [00:55<00:07,  1.60it/s, v_num=0, train_loss=632]Epoch 89/100:  88%|████████▊ | 88/100 [00:55<00:07,  1.60it/s, v_num=0, train_loss=632]Epoch 89/100:  89%|████████▉ | 89/100 [00:56<00:06,  1.60it/s, v_num=0, train_loss=632]Epoch 89/100:  89%|████████▉ | 89/100 [00:56<00:06,  1.60it/s, v_num=0, train_loss=632]Epoch 90/100:  89%|████████▉ | 89/100 [00:56<00:06,  1.60it/s, v_num=0, train_loss=632]Epoch 90/100:  90%|█████████ | 90/100 [00:57<00:08,  1.16it/s, v_num=0, train_loss=632]Epoch 90/100:  90%|█████████ | 90/100 [00:57<00:08,  1.16it/s, v_num=0, train_loss=632]Epoch 91/100:  90%|█████████ | 90/100 [00:57<00:08,  1.16it/s, v_num=0, train_loss=632]Epoch 91/100:  91%|█████████ | 91/100 [00:58<00:07,  1.27it/s, v_num=0, train_loss=632]Epoch 91/100:  91%|█████████ | 91/100 [00:58<00:07,  1.27it/s, v_num=0, train_loss=632]Epoch 92/100:  91%|█████████ | 91/100 [00:58<00:07,  1.27it/s, v_num=0, train_loss=632]Epoch 92/100:  92%|█████████▏| 92/100 [01:00<00:09,  1.14s/it, v_num=0, train_loss=632]Epoch 92/100:  92%|█████████▏| 92/100 [01:00<00:09,  1.14s/it, v_num=0, train_loss=631]Epoch 93/100:  92%|█████████▏| 92/100 [01:00<00:09,  1.14s/it, v_num=0, train_loss=631]Epoch 93/100:  93%|█████████▎| 93/100 [01:00<00:06,  1.01it/s, v_num=0, train_loss=631]Epoch 93/100:  93%|█████████▎| 93/100 [01:00<00:06,  1.01it/s, v_num=0, train_loss=632]Epoch 94/100:  93%|█████████▎| 93/100 [01:00<00:06,  1.01it/s, v_num=0, train_loss=632]Epoch 94/100:  94%|█████████▍| 94/100 [01:01<00:05,  1.15it/s, v_num=0, train_loss=632]Epoch 94/100:  94%|█████████▍| 94/100 [01:01<00:05,  1.15it/s, v_num=0, train_loss=631]Epoch 95/100:  94%|█████████▍| 94/100 [01:01<00:05,  1.15it/s, v_num=0, train_loss=631]Epoch 95/100:  95%|█████████▌| 95/100 [01:02<00:03,  1.26it/s, v_num=0, train_loss=631]Epoch 95/100:  95%|█████████▌| 95/100 [01:02<00:03,  1.26it/s, v_num=0, train_loss=631]Epoch 96/100:  95%|█████████▌| 95/100 [01:02<00:03,  1.26it/s, v_num=0, train_loss=631]Epoch 96/100:  96%|█████████▌| 96/100 [01:02<00:02,  1.36it/s, v_num=0, train_loss=631]Epoch 96/100:  96%|█████████▌| 96/100 [01:02<00:02,  1.36it/s, v_num=0, train_loss=631]Epoch 97/100:  96%|█████████▌| 96/100 [01:02<00:02,  1.36it/s, v_num=0, train_loss=631]Epoch 97/100:  97%|█████████▋| 97/100 [01:03<00:02,  1.44it/s, v_num=0, train_loss=631]Epoch 97/100:  97%|█████████▋| 97/100 [01:03<00:02,  1.44it/s, v_num=0, train_loss=631]Epoch 98/100:  97%|█████████▋| 97/100 [01:03<00:02,  1.44it/s, v_num=0, train_loss=631]Epoch 98/100:  98%|█████████▊| 98/100 [01:03<00:01,  1.50it/s, v_num=0, train_loss=631]Epoch 98/100:  98%|█████████▊| 98/100 [01:03<00:01,  1.50it/s, v_num=0, train_loss=631]Epoch 99/100:  98%|█████████▊| 98/100 [01:03<00:01,  1.50it/s, v_num=0, train_loss=631]Epoch 99/100:  99%|█████████▉| 99/100 [01:04<00:00,  1.53it/s, v_num=0, train_loss=631]Epoch 99/100:  99%|█████████▉| 99/100 [01:04<00:00,  1.53it/s, v_num=0, train_loss=631]Epoch 100/100:  99%|█████████▉| 99/100 [01:04<00:00,  1.53it/s, v_num=0, train_loss=631]Epoch 100/100: 100%|██████████| 100/100 [01:05<00:00,  1.56it/s, v_num=0, train_loss=631]Epoch 100/100: 100%|██████████| 100/100 [01:05<00:00,  1.56it/s, v_num=0, train_loss=631]`Trainer.fit` stopped: `max_epochs=100` reached.
-Epoch 100/100: 100%|██████████| 100/100 [01:05<00:00,  1.54it/s, v_num=0, train_loss=631]
-[34mINFO    [0m Input AnnData not setup with scvi-tools. attempting to transfer AnnData
-         setup                                                                  
-2026-03-29 11:30:11 | experiment | INFO |   -> ARI=0.5345, AMI=0.6939, Sil=0.2682, Recon=635.757141, CPUmem=nanMB, Time=74.3s
-2026-03-29 11:30:11 | experiment | INFO | 
---- pbmc3k | scvi:nb | d=2 | seed=43 ---
-[rank: 0] Seed set to 43
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/default.ya ...
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/fabric/plugins/environments/slurm.py:204: The `srun` command is available on your system but is not used. HINT: If your intention is to run Lightning on SLURM, prepend your python command with `srun` like so: srun python scripts/run_experiment.py --config config/default.ya ...
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
-/home/hpc/iwbn/iwbn129h/.local/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:434: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=31` in the `DataLoader` to improve performance.
-Training:   0%|          | 0/100 [00:00<?, ?it/s]Epoch 1/100:   0%|          | 0/100 [00:00<?, ?it/s]Epoch 1/100:   1%|          | 1/100 [00:00<00:59,  1.67it/s]Epoch 1/100:   1%|          | 1/100 [00:00<00:59,  1.67it/s, v_num=0, train_loss=1.08e+3]Epoch 2/100:   1%|          | 1/100 [00:00<00:59,  1.67it/s, v_num=0, train_loss=1.08e+3]Epoch 2/100:   2%|▏         | 2/100 [00:01<00:57,  1.69it/s, v_num=0, train_loss=1.08e+3]Epoch 2/100:   2%|▏         | 2/100 [00:01<00:57,  1.69it/s, v_num=0, train_loss=835]    Epoch 3/100:   2%|▏         | 2/100 [00:01<00:57,  1.69it/s, v_num=0, train_loss=835]Epoch 3/100:   3%|▎         | 3/100 [00:01<00:57,  1.70it/s, v_num=0, train_loss=835]Epoch 3/100:   3%|▎         | 3/100 [00:01<00:57,  1.70it/s, v_num=0, train_loss=746]Epoch 4/100:   3%|▎         | 3/100 [00:01<00:57,  1.70it/s, v_num=0, train_loss=746]Epoch 4/100:   4%|▍         | 4/100 [00:02<00:56,  1.69it/s, v_num=0, train_loss=746]Epoch 4/100:   4%|▍         | 4/100 [00:02<00:56,  1.69it/s, v_num=0, train_loss=709]Epoch 5/100:   4%|▍         | 4/100 [00:02<00:56,  1.69it/s, v_num=0, train_loss=709]Epoch 5/100:   5%|▌         | 5/100 [00:02<00:55,  1.70it/s, v_num=0, train_loss=709]Epoch 5/100:   5%|▌         | 5/100 [00:02<00:55,  1.70it/s, v_num=0, train_loss=692]Epoch 6/100:   5%|▌         | 5/100 [00:02<00:55,  1.70it/s, v_num=0, train_loss=692]Epoch 6/100:   6%|▌         | 6/100 [00:03<00:56,  1.67it/s, v_num=0, train_loss=692]Epoch 6/100:   6%|▌         | 6/100 [00:03<00:56,  1.67it/s, v_num=0, train_loss=684]Epoch 7/100:   6%|▌         | 6/100 [00:03<00:56,  1.67it/s, v_num=0, train_loss=684]Epoch 7/100:   7%|▋         | 7/100 [00:04<00:55,  1.66it/s, v_num=0, train_loss=684]Epoch 7/100:   7%|▋         | 7/100 [00:04<00:55,  1.66it/s, v_num=0, train_loss=679]Epoch 8/100:   7%|▋         | 7/100 [00:04<00:55,  1.66it/s, v_num=0, train_loss=679]Epoch 8/100:   8%|▊         | 8/100 [00:04<00:55,  1.66it/s, v_num=0, train_loss=679]Epoch 8/100:   8%|▊         | 8/100 [00:04<00:55,  1.66it/s, v_num=0, train_loss=675]Epoch 9/100:   8%|▊         | 8/100 [00:04<00:55,  1.66it/s, v_num=0, train_loss=675]Epoch 9/100:   9%|▉         | 9/100 [00:05<00:55,  1.65it/s, v_num=0, train_loss=675]Epoch 9/100:   9%|▉         | 9/100 [00:05<00:55,  1.65it/s, v_num=0, train_loss=671]Epoch 10/100:   9%|▉         | 9/100 [00:05<00:55,  1.65it/s, v_num=0, train_loss=671]Epoch 10/100:  10%|█         | 10/100 [00:06<00:54,  1.65it/s, v_num=0, train_loss=671]Epoch 10/100:  10%|█         | 10/100 [00:06<00:54,  1.65it/s, v_num=0, train_loss=669]Epoch 11/100:  10%|█         | 10/100 [00:06<00:54,  1.65it/s, v_num=0, train_loss=669]Epoch 11/100:  11%|█         | 11/100 [00:06<00:53,  1.67it/s, v_num=0, train_loss=669]Epoch 11/100:  11%|█         | 11/100 [00:06<00:53,  1.67it/s, v_num=0, train_loss=668]Epoch 12/100:  11%|█         | 11/100 [00:06<00:53,  1.67it/s, v_num=0, train_loss=668]Epoch 12/100:  12%|█▏        | 12/100 [00:07<00:52,  1.67it/s, v_num=0, train_loss=668]Epoch 12/100:  12%|█▏        | 12/100 [00:07<00:52,  1.67it/s, v_num=0, train_loss=667]Epoch 13/100:  12%|█▏        | 12/100 [00:07<00:52,  1.67it/s, v_num=0, train_loss=667]Epoch 13/100:  13%|█▎        | 13/100 [00:07<00:52,  1.66it/s, v_num=0, train_loss=667]Epoch 13/100:  13%|█▎        | 13/100 [00:07<00:52,  1.66it/s, v_num=0, train_loss=665]Epoch 14/100:  13%|█▎        | 13/100 [00:07<00:52,  1.66it/s, v_num=0, train_loss=665]Epoch 14/100:  14%|█▍        | 14/100 [00:08<00:51,  1.66it/s, v_num=0, train_loss=665]Epoch 14/100:  14%|█▍        | 14/100 [00:08<00:51,  1.66it/s, v_num=0, train_loss=664]Epoch 15/100:  14%|█▍        | 14/100 [00:08<00:51,  1.66it/s, v_num=0, train_loss=664]Epoch 15/100:  15%|█▌        | 15/100 [00:09<00:51,  1.66it/s, v_num=0, train_loss=664]Epoch 15/100:  15%|█▌        | 15/100 [00:09<00:51,  1.66it/s, v_num=0, train_loss=662]Epoch 16/100:  15%|█▌        | 15/100 [00:09<00:51,  1.66it/s, v_num=0, train_loss=662]Epoch 16/100:  16%|█▌        | 16/100 [00:09<00:50,  1.65it/s, v_num=0, train_loss=662]Epoch 16/100:  16%|█▌        | 16/100 [00:09<00:50,  1.65it/s, v_num=0, train_loss=662]Epoch 17/100:  16%|█▌        | 16/100 [00:09<00:50,  1.65it/s, v_num=0, train_loss=662]Epoch 17/100:  17%|█▋        | 17/100 [00:10<00:50,  1.65it/s, v_num=0, train_loss=662]Epoch 17/100:  17%|█▋        | 17/100 [00:10<00:50,  1.65it/s, v_num=0, train_loss=660]Epoch 18/100:  17%|█▋        | 17/100 [00:10<00:50,  1.65it/s, v_num=0, train_loss=660]Epoch 18/100:  18%|█▊        | 18/100 [00:10<00:49,  1.66it/s, v_num=0, train_loss=660]Epoch 18/100:  18%|█▊        | 18/100 [00:10<00:49,  1.66it/s, v_num=0, train_loss=659]Epoch 19/100:  18%|█▊        | 18/100 [00:10<00:49,  1.66it/s, v_num=0, train_loss=659]Epoch 19/100:  19%|█▉        | 19/100 [00:11<00:49,  1.65it/s, v_num=0, train_loss=659]Epoch 19/100:  19%|█▉        | 19/100 [00:11<00:49,  1.65it/s, v_num=0, train_loss=658]Epoch 20/100:  19%|█▉        | 19/100 [00:11<00:49,  1.65it/s, v_num=0, train_loss=658]Epoch 20/100:  20%|██        | 20/100 [00:12<00:48,  1.65it/s, v_num=0, train_loss=658]Epoch 20/100:  20%|██        | 20/100 [00:12<00:48,  1.65it/s, v_num=0, train_loss=658]Epoch 21/100:  20%|██        | 20/100 [00:12<00:48,  1.65it/s, v_num=0, train_loss=658]Epoch 21/100:  21%|██        | 21/100 [00:12<00:47,  1.65it/s, v_num=0, train_loss=658]Epoch 21/100:  21%|██        | 21/100 [00:12<00:47,  1.65it/s, v_num=0, train_loss=657]Epoch 22/100:  21%|██        | 21/100 [00:12<00:47,  1.65it/s, v_num=0, train_loss=657]Epoch 22/100:  22%|██▏       | 22/100 [00:13<00:47,  1.65it/s, v_num=0, train_loss=657]Epoch 22/100:  22%|██▏       | 22/100 [00:13<00:47,  1.65it/s, v_num=0, train_loss=657]Epoch 23/100:  22%|██▏       | 22/100 [00:13<00:47,  1.65it/s, v_num=0, train_loss=657]Epoch 23/100:  23%|██▎       | 23/100 [00:13<00:46,  1.64it/s, v_num=0, train_loss=657]Epoch 23/100:  23%|██▎       | 23/100 [00:13<00:46,  1.64it/s, v_num=0, train_loss=655]Epoch 24/100:  23%|██▎       | 23/100 [00:13<00:46,  1.64it/s, v_num=0, train_loss=655]Epoch 24/100:  24%|██▍       | 24/100 [00:14<00:46,  1.65it/s, v_num=0, train_loss=655]Epoch 24/100:  24%|██▍       | 24/100 [00:14<00:46,  1.65it/s, v_num=0, train_loss=655]Epoch 25/100:  24%|██▍       | 24/100 [00:14<00:46,  1.65it/s, v_num=0, train_loss=655]Epoch 25/100:  25%|██▌       | 25/100 [00:15<00:45,  1.65it/s, v_num=0, train_loss=655]Epoch 25/100:  25%|██▌       | 25/100 [00:15<00:45,  1.65it/s, v_num=0, train_loss=654]Epoch 26/100:  25%|██▌       | 25/100 [00:15<00:45,  1.65it/s, v_num=0, train_loss=654]Epoch 26/100:  26%|██▌       | 26/100 [00:15<00:44,  1.66it/s, v_num=0, train_loss=654]Epoch 26/100:  26%|██▌       | 26/100 [00:15<00:44,  1.66it/s, v_num=0, train_loss=653]Epoch 27/100:  26%|██▌       | 26/100 [00:15<00:44,  1.66it/s, v_num=0, train_loss=653]Epoch 27/100:  27%|██▋       | 27/100 [00:16<00:43,  1.66it/s, v_num=0, train_loss=653]Epoch 27/100:  27%|██▋       | 27/100 [00:16<00:43,  1.66it/s, v_num=0, train_loss=654]Epoch 28/100:  27%|██▋       | 27/100 [00:16<00:43,  1.66it/s, v_num=0, train_loss=654]Epoch 28/100:  28%|██▊       | 28/100 [00:16<00:43,  1.66it/s, v_num=0, train_loss=654]Epoch 28/100:  28%|██▊       | 28/100 [00:16<00:43,  1.66it/s, v_num=0, train_loss=652]Epoch 29/100:  28%|██▊       | 28/100 [00:16<00:43,  1.66it/s, v_num=0, train_loss=652]Epoch 29/100:  29%|██▉       | 29/100 [00:17<00:42,  1.66it/s, v_num=0, train_loss=652]Epoch 29/100:  29%|██▉       | 29/100 [00:17<00:42,  1.66it/s, v_num=0, train_loss=652]Epoch 30/100:  29%|██▉       | 29/100 [00:17<00:42,  1.66it/s, v_num=0, train_loss=652]Epoch 30/100:  30%|███       | 30/100 [00:18<00:42,  1.66it/s, v_num=0, train_loss=652]Epoch 30/100:  30%|███       | 30/100 [00:18<00:42,  1.66it/s, v_num=0, train_loss=651]Epoch 31/100:  30%|███       | 30/100 [00:18<00:42,  1.66it/s, v_num=0, train_loss=651]Epoch 31/100:  31%|███       | 31/100 [00:18<00:41,  1.66it/s, v_num=0, train_loss=651]Epoch 31/100:  31%|███       | 31/100 [00:18<00:41,  1.66it/s, v_num=0, train_loss=651]Epoch 32/100:  31%|███       | 31/100 [00:18<00:41,  1.66it/s, v_num=0, train_loss=651]Epoch 32/100:  32%|███▏      | 32/100 [00:19<00:40,  1.66it/s, v_num=0, train_loss=651]Epoch 32/100:  32%|███▏      | 32/100 [00:19<00:40,  1.66it/s, v_num=0, train_loss=650]Epoch 33/100:  32%|███▏      | 32/100 [00:19<00:40,  1.66it/s, v_num=0, train_loss=650]Epoch 33/100:  33%|███▎      | 33/100 [00:19<00:40,  1.66it/s, v_num=0, train_loss=650]Epoch 33/100:  33%|███▎      | 33/100 [00:19<00:40,  1.66it/s, v_num=0, train_loss=650]Epoch 34/100:  33%|███▎      | 33/100 [00:19<00:40,  1.66it/s, v_num=0, train_loss=650]Epoch 34/100:  34%|███▍      | 34/100 [00:20<00:39,  1.65it/s, v_num=0, train_loss=650]Epoch 34/100:  34%|███▍      | 34/100 [00:20<00:39,  1.65it/s, v_num=0, train_loss=650]Epoch 35/100:  34%|███▍      | 34/100 [00:20<00:39,  1.65it/s, v_num=0, train_loss=650]Epoch 35/100:  35%|███▌      | 35/100 [00:21<00:39,  1.65it/s, v_num=0, train_loss=650]Epoch 35/100:  35%|███▌      | 35/100 [00:21<00:39,  1.65it/s, v_num=0, train_loss=648]Epoch 36/100:  35%|███▌      | 35/100 [00:21<00:39,  1.65it/s, v_num=0, train_loss=648]Epoch 36/100:  36%|███▌      | 36/100 [00:21<00:39,  1.64it/s, v_num=0, train_loss=648]Epoch 36/100:  36%|███▌      | 36/100 [00:21<00:39,  1.64it/s, v_num=0, train_loss=649]Epoch 37/100:  36%|███▌      | 36/100 [00:21<00:39,  1.64it/s, v_num=0, train_loss=649]Epoch 37/100:  37%|███▋      | 37/100 [00:22<00:38,  1.63it/s, v_num=0, train_loss=649]Epoch 37/100:  37%|███▋      | 37/100 [00:22<00:38,  1.63it/s, v_num=0, train_loss=648]Epoch 38/100:  37%|███▋      | 37/100 [00:22<00:38,  1.63it/s, v_num=0, train_loss=648]Epoch 38/100:  38%|███▊      | 38/100 [00:22<00:37,  1.64it/s, v_num=0, train_loss=648]Epoch 38/100:  38%|███▊      | 38/100 [00:22<00:37,  1.64it/s, v_num=0, train_loss=647]Epoch 39/100:  38%|███▊      | 38/100 [00:22<00:37,  1.64it/s, v_num=0, train_loss=647]Epoch 39/100:  39%|███▉      | 39/100 [00:23<00:36,  1.65it/s, v_num=0, train_loss=647]Epoch 39/100:  39%|███▉      | 39/100 [00:23<00:36,  1.65it/s, v_num=0, train_loss=647]Epoch 40/100:  39%|███▉      | 39/100 [00:23<00:36,  1.65it/s, v_num=0, train_loss=647]Epoch 40/100:  40%|████      | 40/100 [00:24<00:36,  1.65it/s, v_num=0, train_loss=647]Epoch 40/100:  40%|████      | 40/100 [00:24<00:36,  1.65it/s, v_num=0, train_loss=647]Epoch 41/100:  40%|████      | 40/100 [00:24<00:36,  1.65it/s, v_num=0, train_loss=647]Epoch 41/100:  41%|████      | 41/100 [00:24<00:35,  1.64it/s, v_num=0, train_loss=647]Epoch 41/100:  41%|████      | 41/100 [00:24<00:35,  1.64it/s, v_num=0, train_loss=646]Epoch 42/100:  41%|████      | 41/100 [00:24<00:35,  1.64it/s, v_num=0, train_loss=646]Epoch 42/100:  42%|████▏     | 42/100 [00:25<00:35,  1.64it/s, v_num=0, train_loss=646]Epoch 42/100:  42%|████▏     | 42/100 [00:25<00:35,  1.64it/s, v_num=0, train_loss=646]Epoch 43/100:  42%|████▏     | 42/100 [00:25<00:35,  1.64it/s, v_num=0, train_loss=646]Epoch 43/100:  43%|████▎     | 43/100 [00:25<00:34,  1.65it/s, v_num=0, train_loss=646]Epoch 43/100:  43%|████▎     | 43/100 [00:25<00:34,  1.65it/s, v_num=0, train_loss=646]Epoch 44/100:  43%|████▎     | 43/100 [00:25<00:34,  1.65it/s, v_num=0, train_loss=646]Epoch 44/100:  44%|████▍     | 44/100 [00:26<00:33,  1.65it/s, v_num=0, train_loss=646]Epoch 44/100:  44%|████▍     | 44/100 [00:26<00:33,  1.65it/s, v_num=0, train_loss=644]Epoch 45/100:  44%|████▍     | 44/100 [00:26<00:33,  1.65it/s, v_num=0, train_loss=644]Epoch 45/100:  45%|████▌     | 45/100 [00:27<00:33,  1.65it/s, v_num=0, train_loss=644]Epoch 45/100:  45%|████▌     | 45/100 [00:27<00:33,  1.65it/s, v_num=0, train_loss=644]Epoch 46/100:  45%|████▌     | 45/100 [00:27<00:33,  1.65it/s, v_num=0, train_loss=644]Epoch 46/100:  46%|████▌     | 46/100 [00:27<00:32,  1.66it/s, v_num=0, train_loss=644]Epoch 46/100:  46%|████▌     | 46/100 [00:27<00:32,  1.66it/s, v_num=0, train_loss=643]Epoch 47/100:  46%|████▌     | 46/100 [00:27<00:32,  1.66it/s, v_num=0, train_loss=643]Epoch 47/100:  47%|████▋     | 47/100 [00:28<00:32,  1.65it/s, v_num=0, train_loss=643]Epoch 47/100:  47%|████▋     | 47/100 [00:28<00:32,  1.65it/s, v_num=0, train_loss=643]Epoch 48/100:  47%|████▋     | 47/100 [00:28<00:32,  1.65it/s, v_num=0, train_loss=643]Epoch 48/100:  48%|████▊     | 48/100 [00:29<00:31,  1.65it/s, v_num=0, train_loss=643]Epoch 48/100:  48%|████▊     | 48/100 [00:29<00:31,  1.65it/s, v_num=0, train_loss=643]Epoch 49/100:  48%|████▊     | 48/100 [00:29<00:31,  1.65it/s, v_num=0, train_loss=643]Epoch 49/100:  49%|████▉     | 49/100 [00:29<00:30,  1.66it/s, v_num=0, train_loss=643]Epoch 49/100:  49%|████▉     | 49/100 [00:29<00:30,  1.66it/s, v_num=0, train_loss=643]Epoch 50/100:  49%|████▉     | 49/100 [00:29<00:30,  1.66it/s, v_num=0, train_loss=643]Epoch 50/100:  50%|█████     | 50/100 [00:30<00:30,  1.66it/s, v_num=0, train_loss=643]Epoch 50/100:  50%|█████     | 50/100 [00:30<00:30,  1.66it/s, v_num=0, train_loss=643]Epoch 51/100:  50%|█████     | 50/100 [00:30<00:30,  1.66it/s, v_num=0, train_loss=643]Epoch 51/100:  51%|█████     | 51/100 [00:30<00:29,  1.65it/s, v_num=0, train_loss=643]Epoch 51/100:  51%|█████     | 51/100 [00:30<00:29,  1.65it/s, v_num=0, train_loss=642]Epoch 52/100:  51%|█████     | 51/100 [00:30<00:29,  1.65it/s, v_num=0, train_loss=642]Epoch 52/100:  52%|█████▏    | 52/100 [00:31<00:29,  1.65it/s, v_num=0, train_loss=642]Epoch 52/100:  52%|█████▏    | 52/100 [00:31<00:29,  1.65it/s, v_num=0, train_loss=642]Epoch 53/100:  52%|█████▏    | 52/100 [00:31<00:29,  1.65it/s, v_num=0, train_loss=642]Epoch 53/100:  53%|█████▎    | 53/100 [00:32<00:28,  1.65it/s, v_num=0, train_loss=642]Epoch 53/100:  53%|█████▎    | 53/100 [00:32<00:28,  1.65it/s, v_num=0, train_loss=641]Epoch 54/100:  53%|█████▎    | 53/100 [00:32<00:28,  1.65it/s, v_num=0, train_loss=641]Epoch 54/100:  54%|█████▍    | 54/100 [00:32<00:27,  1.64it/s, v_num=0, train_loss=641]Epoch 54/100:  54%|█████▍    | 54/100 [00:32<00:27,  1.64it/s, v_num=0, train_loss=641]Epoch 55/100:  54%|█████▍    | 54/100 [00:32<00:27,  1.64it/s, v_num=0, train_loss=641]Epoch 55/100:  55%|█████▌    | 55/100 [00:33<00:27,  1.64it/s, v_num=0, train_loss=641]Epoch 55/100:  55%|█████▌    | 55/100 [00:33<00:27,  1.64it/s, v_num=0, train_loss=641]Epoch 56/100:  55%|█████▌    | 55/100 [00:33<00:27,  1.64it/s, v_num=0, train_loss=641]Epoch 56/100:  56%|█████▌    | 56/100 [00:33<00:26,  1.64it/s, v_num=0, train_loss=641]Epoch 56/100:  56%|█████▌    | 56/100 [00:33<00:26,  1.64it/s, v_num=0, train_loss=641]Epoch 57/100:  56%|█████▌    | 56/100 [00:33<00:26,  1.64it/s, v_num=0, train_loss=641]Epoch 57/100:  57%|█████▋    | 57/100 [00:34<00:26,  1.64it/s, v_num=0, train_loss=641]Epoch 57/100:  57%|█████▋    | 57/100 [00:34<00:26,  1.64it/s, v_num=0, train_loss=640]Epoch 58/100:  57%|█████▋    | 57/100 [00:34<00:26,  1.64it/s, v_num=0, train_loss=640]Epoch 58/100:  58%|█████▊    | 58/100 [00:35<00:25,  1.64it/s, v_num=0, train_loss=640]Epoch 58/100:  58%|█████▊    | 58/100 [00:35<00:25,  1.64it/s, v_num=0, train_loss=640]Epoch 59/100:  58%|█████▊    | 58/100 [00:35<00:25,  1.64it/s, v_num=0, train_loss=640]Epoch 59/100:  59%|█████▉    | 59/100 [00:35<00:25,  1.64it/s, v_num=0, train_loss=640]Epoch 59/100:  59%|█████▉    | 59/100 [00:35<00:25,  1.64it/s, v_num=0, train_loss=639]Epoch 60/100:  59%|█████▉    | 59/100 [00:35<00:25,  1.64it/s, v_num=0, train_loss=639]Epoch 60/100:  60%|██████    | 60/100 [00:36<00:24,  1.64it/s, v_num=0, train_loss=639]Epoch 60/100:  60%|██████    | 60/100 [00:36<00:24,  1.64it/s, v_num=0, train_loss=639]Epoch 61/100:  60%|██████    | 60/100 [00:36<00:24,  1.64it/s, v_num=0, train_loss=639]Epoch 61/100:  61%|██████    | 61/100 [00:36<00:23,  1.65it/s, v_num=0, train_loss=639]Epoch 61/100:  61%|██████    | 61/100 [00:36<00:23,  1.65it/s, v_num=0, train_loss=639]Epoch 62/100:  61%|██████    | 61/100 [00:36<00:23,  1.65it/s, v_num=0, train_loss=639]Epoch 62/100:  62%|██████▏   | 62/100 [00:37<00:23,  1.65it/s, v_num=0, train_loss=639]Epoch 62/100:  62%|██████▏   | 62/100 [00:37<00:23,  1.65it/s, v_num=0, train_loss=639]Epoch 63/100:  62%|██████▏   | 62/100 [00:37<00:23,  1.65it/s, v_num=0, train_loss=639]Epoch 63/100:  63%|██████▎   | 63/100 [00:38<00:22,  1.65it/s, v_num=0, train_loss=639]Epoch 63/100:  63%|██████▎   | 63/100 [00:38<00:22,  1.65it/s, v_num=0, train_loss=639]Epoch 64/100:  63%|██████▎   | 63/100 [00:38<00:22,  1.65it/s, v_num=0, train_loss=639]Epoch 64/100:  64%|██████▍   | 64/100 [00:38<00:21,  1.65it/s, v_num=0, train_loss=639]Epoch 64/100:  64%|██████▍   | 64/100 [00:38<00:21,  1.65it/s, v_num=0, train_loss=638]Epoch 65/100:  64%|██████▍   | 64/100 [00:38<00:21,  1.65it/s, v_num=0, train_loss=638]Epoch 65/100:  65%|██████▌   | 65/100 [00:39<00:21,  1.65it/s, v_num=0, train_loss=638]Epoch 65/100:  65%|██████▌   | 65/100 [00:39<00:21,  1.65it/s, v_num=0, train_loss=638]Epoch 66/100:  65%|██████▌   | 65/100 [00:39<00:21,  1.65it/s, v_num=0, train_loss=638]Epoch 66/100:  66%|██████▌   | 66/100 [00:39<00:20,  1.65it/s, v_num=0, train_loss=638]Epoch 66/100:  66%|██████▌   | 66/100 [00:39<00:20,  1.65it/s, v_num=0, train_loss=638]Epoch 67/100:  66%|██████▌   | 66/100 [00:39<00:20,  1.65it/s, v_num=0, train_loss=638]Epoch 67/100:  67%|██████▋   | 67/100 [00:40<00:20,  1.64it/s, v_num=0, train_loss=638]Epoch 67/100:  67%|██████▋   | 67/100 [00:40<00:20,  1.64it/s, v_num=0, train_loss=637]Epoch 68/100:  67%|██████▋   | 67/100 [00:40<00:20,  1.64it/s, v_num=0, train_loss=637]Epoch 68/100:  68%|██████▊   | 68/100 [00:41<00:19,  1.65it/s, v_num=0, train_loss=637]Epoch 68/100:  68%|██████▊   | 68/100 [00:41<00:19,  1.65it/s, v_num=0, train_loss=637]Epoch 69/100:  68%|██████▊   | 68/100 [00:41<00:19,  1.65it/s, v_num=0, train_loss=637]Epoch 69/100:  69%|██████▉   | 69/100 [00:41<00:18,  1.66it/s, v_num=0, train_loss=637]Epoch 69/100:  69%|██████▉   | 69/100 [00:41<00:18,  1.66it/s, v_num=0, train_loss=637]Epoch 70/100:  69%|██████▉   | 69/100 [00:41<00:18,  1.66it/s, v_num=0, train_loss=637]Epoch 70/100:  70%|███████   | 70/100 [00:42<00:18,  1.66it/s, v_num=0, train_loss=637]Epoch 70/100:  70%|███████   | 70/100 [00:42<00:18,  1.66it/s, v_num=0, train_loss=637]Epoch 71/100:  70%|███████   | 70/100 [00:42<00:18,  1.66it/s, v_num=0, train_loss=637]Epoch 71/100:  71%|███████   | 71/100 [00:42<00:17,  1.66it/s, v_num=0, train_loss=637]Epoch 71/100:  71%|███████   | 71/100 [00:42<00:17,  1.66it/s, v_num=0, train_loss=637]Epoch 72/100:  71%|███████   | 71/100 [00:42<00:17,  1.66it/s, v_num=0, train_loss=637]Epoch 72/100:  72%|███████▏  | 72/100 [00:43<00:16,  1.66it/s, v_num=0, train_loss=637]Epoch 72/100:  72%|███████▏  | 72/100 [00:43<00:16,  1.66it/s, v_num=0, train_loss=636]Epoch 73/100:  72%|███████▏  | 72/100 [00:43<00:16,  1.66it/s, v_num=0, train_loss=636]Epoch 73/100:  73%|███████▎  | 73/100 [00:44<00:16,  1.65it/s, v_num=0, train_loss=636]Epoch 73/100:  73%|███████▎  | 73/100 [00:44<00:16,  1.65it/s, v_num=0, train_loss=636]Epoch 74/100:  73%|███████▎  | 73/100 [00:44<00:16,  1.65it/s, v_num=0, train_loss=636]Epoch 74/100:  74%|███████▍  | 74/100 [00:44<00:15,  1.65it/s, v_num=0, train_loss=636]Epoch 74/100:  74%|███████▍  | 74/100 [00:44<00:15,  1.65it/s, v_num=0, train_loss=636]Epoch 75/100:  74%|███████▍  | 74/100 [00:44<00:15,  1.65it/s, v_num=0, train_loss=636]Epoch 75/100:  75%|███████▌  | 75/100 [00:45<00:15,  1.65it/s, v_num=0, train_loss=636]Epoch 75/100:  75%|███████▌  | 75/100 [00:45<00:15,  1.65it/s, v_num=0, train_loss=635]Epoch 76/100:  75%|███████▌  | 75/100 [00:45<00:15,  1.65it/s, v_num=0, train_loss=635]Epoch 76/100:  76%|███████▌  | 76/100 [00:45<00:14,  1.65it/s, v_num=0, train_loss=635]Epoch 76/100:  76%|███████▌  | 76/100 [00:45<00:14,  1.65it/s, v_num=0, train_loss=635]Epoch 77/100:  76%|███████▌  | 76/100 [00:45<00:14,  1.65it/s, v_num=0, train_loss=635][2026-03-29T11:30:57.524] error: *** JOB 1560975 ON tg095 CANCELLED AT 2026-03-29T11:30:57 DUE to SIGNAL Terminated ***
-=== JOB_STATISTICS ===
-=== current date     : Sun Mar 29 11:31:00 AM CEST 2026
-= Job-ID             : 1560975 on tinygpu
-= Job-Name           : sc_ae_exp
-= Job-Command        : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project/jobs/tinygpu_single.sh
-= Initial workdir    : /home/hpc/iwbn/iwbn129h/sc_autoencoder_project
-= Queue/Partition    : a100
-= Slurm account      : iwbn with QOS=normal
-= Requested resources:  for 06:00:00
-= Elapsed runtime    : 00:09:56
-= Total RAM usage    : 2.5 GiB of requested  GiB (%)   
-= Node list          : tg095
-= Subm/Elig/Start/End: 2026-03-29T11:20:45 / 2026-03-29T11:20:45 / 2026-03-29T11:21:01 / 2026-03-29T11:30:57
-======================
-=== Quota infos ======
-    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
-    /home/hpc              32.2G   104.9G   209.7G        N/A      58K     500K   1,000K        N/A    
-    /home/vault             0.0K  1048.6G  2097.2G        N/A       1      200K     400K        N/A    
-    /home/woody             9.6G  1000.0G  1500.0G        N/A      61K   5,000K   7,500K        N/A    
-======================
-=== GPU utilization ==
-gpu_name, gpu_bus_id, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]
-NVIDIA A100-SXM4-40GB, 00000000:C1:00.0, 1286429, 5 %, 0 %, 568 MiB, 562347 ms
