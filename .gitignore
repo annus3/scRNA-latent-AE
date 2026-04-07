@@ -5,13 +5,13 @@ data/*
 !data/.gitkeep
 
 # Experiment Outputs
-#results/*
+results/*
 !results/.gitkeep
-checkpoints/* 
+checkpoints/*
 !checkpoints/.gitkeep
 
 # Jobs, Logs & TensorBoard
-#logs/*
+logs/*
 !logs/.gitkeep
 *.log
 *.out
