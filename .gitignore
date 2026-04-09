@@ -1,63 +1,63 @@
-# .gitignore
-
-# Datasets & Processed Data
+# Datasets & processed data (large files)
 data/*
 !data/.gitkeep
 
-# Experiment Outputs
+# Experiment outputs & model weights
 results/*
 !results/.gitkeep
+!results/global/
+!results/datasets/
+!results/analysis/
+!results/analysis_runs/
+results/analysis_runs/*
+!results/analysis_runs/20260407T131359/
+!results/code_analysis_runs/
+results/code_analysis_runs/*
+!results/code_analysis_runs/20260408T065806/
+# Exclude large regeneratable tensorboard CSVs
+results/**/tensorboard_scalar*.csv
+results/**/tensorboard_loss_per_gene*.csv
 checkpoints/*
 !checkpoints/.gitkeep
 
-# Jobs, Logs & TensorBoard
+# Logs & TensorBoard events
 logs/*
 !logs/.gitkeep
-*.log
-*.out
-*.err
+
+# SLURM output files
 slurm-*.out
 slurm-*.err
-logs/
-jobs/*
-!jobs/slurm_sweep_generic.sh 
-checkpoints/
-docs/
+*.out
+*.err
+*.log
 
-# Python Cache/Build Files
+# Internal docs & notebooks (not for public repo)
+docs/
+notebooks/
+config/tmp/
+
+# Python cache & build artifacts
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
 *.egg-info/
-.installed.cfg
 *.egg
+.installed.cfg
 
-# Environments
+# Virtual environments
 .env
 .venv
 env/
 venv/
-ENV/
-env.bak/
-venv.bak/
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
 
-# IDEs & OS Files
+# IDE & OS files
 .vscode/
 .idea/
 *.swp
@@ -65,9 +65,8 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# Type Hinting & Testing
+# Testing & type checking
 .mypy_cache/
 .pytest_cache/
 .coverage
 htmlcov/
-
