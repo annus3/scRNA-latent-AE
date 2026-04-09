@@ -1,0 +1,6 @@
+phase,dataset,n_runs,K,n_cells,model_types
+Phase 2,scvi_pbmc12k,60,9,11989,5
+Phase 4,paul15,288,19,2730,8
+Phase 4+,aifi_immune_full,12,29,1821725,1
+Phase 4+,ts1_all_cells,16,177,483151,2
+Phase 4+,ts2_lung,12,34,65847,1

@@ -1,0 +1,5 @@
+file,n_cells_used,n_genes_used,silhouette_cell_type_umap,silhouette_batch_umap,batch_column_used,note
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/ts1_all_cells_phase4_ready.h5ad,3000.0,1500.0,-0.2632201313972473,-0.42363241314888,batch,proxy_embedding_from_X_due_to_missing_exported_latents
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/aifi_immune_full.h5ad,,,,,,skipped_proxy_umap_for_scale_file_gt_2GB
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/ts2_lung.h5ad,,,,,,skipped_proxy_umap_for_scale_file_gt_2GB
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/splatter_k12.h5ad,3000.0,1500.0,0.8962996602058411,0.00022418911976274103,batch,proxy_embedding_from_X_due_to_missing_exported_latents

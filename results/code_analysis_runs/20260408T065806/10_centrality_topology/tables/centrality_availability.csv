@@ -1,0 +1,6 @@
+dataset,total,non_null,pct_available
+aifi_immune_full,7,7,100.0
+paul15,288,288,100.0
+scvi_pbmc12k,59,59,100.0
+ts1_all_cells,16,16,100.0
+ts2_lung,12,12,100.0

@@ -1,0 +1,6 @@
+dataset,external_metrics_enabled,count
+aifi_immune_full,True,12
+paul15,True,288
+scvi_pbmc12k,True,60
+ts1_all_cells,True,16
+ts2_lung,True,12

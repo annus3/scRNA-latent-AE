@@ -1,0 +1,2 @@
+model_loss,mean_ari,mean_sil,mean_recon
+scvi:nb,0.3078882036933481,0.10912569767485057,399.2348276774089

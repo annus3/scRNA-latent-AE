@@ -1,0 +1,2 @@
+model_loss,best_d,best_score,metric_used
+scvi:nb,12,0.4302,ari

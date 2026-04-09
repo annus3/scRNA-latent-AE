@@ -1,0 +1,6 @@
+dataset,K,n_cells,n_genes,n_runs,n_seeds,label_trust,label_source,n_batches,zero_fraction_mean,external_metrics,latent_dims_tested,model_loss_combos,display_name
+scvi_pbmc12k,9,11989,2000,60,2,ground_truth,provided:labels,,,True,6,5,PBMC12k
+paul15,19,2730,2000,288,3,ground_truth,provided:paul15_clusters,,,True,12,8,Paul15
+aifi_immune_full,29,1821725,1236,12,2,ground_truth,provided:AIFI_L2,36.0,0.9034745449917917,True,8,1,AIFI Immune
+ts2_lung,34,65847,60606,12,2,ground_truth,provided:cell_type,4.0,0.9372446031519682,True,8,1,TS2 Lung
+ts1_all_cells,177,483151,2000,16,2,ground_truth,provided:cell_ontology_class,15.0,0.9672528975908602,True,8,2,TS1 (Tabula Sapiens)

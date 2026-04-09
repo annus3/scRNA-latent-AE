@@ -1,0 +1,5 @@
+artifact,count,latest
+ts1_stageA,2,/home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageA/job_1562092/results/phase4_ts1_stageA_pilot.csv
+ts1_stageB,3,/home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/stageB/job_1563149/results/phase4_ts1_stageB_reduced.csv
+aifi_reduced,4,/home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/aifi_reduced/job_1563287/results/phase4_aifi_scvi_nb_reduced.csv
+ts2_reduced,5,/home/woody/iwbn/iwbn129h/sc_autoencoder_project/phase4/ts2_reduced/job_1565386/results/phase4_ts2_lung_scvi_nb_reduced.csv

@@ -1,0 +1,23 @@
+\begin{tabular}{llrrrrrrr}
+\toprule
+dataset & model\_loss & mean\_ari & mean\_sil & mean\_recon & mean\_val & bio\_score & is\_vae & collapsed \\
+\midrule
+aifi\_immune\_full & scvi:nb & 0.3079 & 0.1091 & 399.2348 & NaN & 0.3079 & False & False \\
+paul15 & ae:mse & 0.3205 & 0.2120 & 0.5314 & 0.5217 & 0.3205 & False & False \\
+paul15 & ae:nb & 0.2400 & 0.2641 & 0.6557 & 1335.8262 & 0.2400 & False & False \\
+paul15 & ae:zinb & 0.2342 & 0.2777 & 0.6531 & 1331.6829 & 0.2342 & False & False \\
+paul15 & scvi:nb & 0.3291 & 0.1987 & 1253.3951 & NaN & 0.3291 & False & False \\
+paul15 & scvi:zinb & 0.3275 & 0.1968 & 1253.3000 & NaN & 0.3275 & False & False \\
+paul15 & vae:mse & 0.0136 & 0.1631 & 0.6665 & 0.6518 & 0.0136 & True & True \\
+paul15 & vae:nb & 0.2966 & 0.2303 & 0.6503 & 1334.0842 & 0.2966 & True & False \\
+paul15 & vae:zinb & 0.3046 & 0.2355 & 0.6485 & 1331.5000 & 0.3046 & True & False \\
+scvi\_pbmc12k & ae:mse & 0.6603 & 0.4119 & 0.3349 & 0.3347 & 0.6603 & False & False \\
+scvi\_pbmc12k & ae:nb & 0.6184 & 0.3707 & 0.3383 & 671.6238 & 0.6184 & False & False \\
+scvi\_pbmc12k & scvi:nb & 0.5948 & 0.2868 & 664.5167 & NaN & 0.5948 & False & False \\
+scvi\_pbmc12k & vae:mse & 0.0226 & 0.2234 & 0.4037 & 0.4048 & 0.0226 & True & True \\
+scvi\_pbmc12k & vae:nb & 0.5958 & 0.3722 & 0.3389 & 678.7425 & 0.5958 & True & False \\
+ts1\_all\_cells & ae:nb & 0.0070 & 0.6878 & 0.2098 & 391.6193 & 0.0070 & False & False \\
+ts1\_all\_cells & scvi:nb & 0.2616 & 0.1838 & 276.4322 & NaN & 0.2616 & False & False \\
+ts2\_lung & scvi:nb & 0.3949 & 0.2255 & 5842.9657 & NaN & 0.3949 & False & False \\
+\bottomrule
+\end{tabular}

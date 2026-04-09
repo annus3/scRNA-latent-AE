@@ -1,0 +1,1 @@
+No exported latent embedding files were discovered in current results. This analysis therefore uses proxy embedding diagnostics from sampled X matrices. For strict latent-space model visualization, add a latent-export step during experiments.

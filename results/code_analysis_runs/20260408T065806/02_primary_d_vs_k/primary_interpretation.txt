@@ -1,0 +1,7 @@
+Best in-sample formula (RMSE): logk (R²=0.402, RMSE=3.00)
+Best LOO formula: power
+  PBMC12k: K=9, argmax_d=4, min_suff_d=2
+  Paul15: K=19, argmax_d=2, min_suff_d=2
+  AIFI Immune: K=29, argmax_d=4, min_suff_d=4
+  TS2 Lung: K=34, argmax_d=12, min_suff_d=8
+  TS1 (Tabula Sapiens): K=177, argmax_d=10, min_suff_d=6

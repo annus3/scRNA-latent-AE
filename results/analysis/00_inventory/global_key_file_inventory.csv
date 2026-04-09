@@ -1,0 +1,8 @@
+file,exists,rows,columns,status_counts
+results/global/tables/phase1_pbmc3k_quick_results.csv,True,9,45,"{""success"": 9}"
+results/global/tables/phase2_scvi_pbmc12k_results.csv,True,60,45,"{""success"": 60}"
+results/global/tables/phase3_splatter_full_completed.csv,True,336,45,"{""success"": 336}"
+results/global/tables/combined_curated_real_plus_phase4_enriched.csv,True,388,69,"{""success"": 388}"
+results/global/tables/recommended_d_by_K_primary.csv,True,17,10,
+results/global/tables/formula_fit_summary_primary.csv,True,14,6,
+results/global/tables/formula_fit_loo_primary.csv,True,56,17,"{""insufficient_train_k_coverage"": 36, ""ok"": 20}"

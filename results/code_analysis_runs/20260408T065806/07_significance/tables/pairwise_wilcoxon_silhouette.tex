@@ -1,0 +1,44 @@
+\begin{tabular}{lllrrrrr}
+\toprule
+dataset & model\_a & model\_b & n\_pairs & mean\_diff & cohens\_d & p\_value & significant\_005 \\
+\midrule
+paul15 & ae:mse & ae:nb & 36 & -0.0521 & -1.0920 & 0.0000 & True \\
+paul15 & ae:mse & ae:zinb & 36 & -0.0657 & -1.3530 & 0.0000 & True \\
+paul15 & ae:mse & vae:mse & 36 & 0.0489 & 0.8090 & 0.0000 & True \\
+paul15 & ae:nb & scvi:nb & 36 & 0.0654 & 1.1860 & 0.0000 & True \\
+paul15 & ae:nb & scvi:zinb & 36 & 0.0673 & 1.1890 & 0.0000 & True \\
+paul15 & ae:nb & vae:mse & 36 & 0.1010 & 1.7690 & 0.0000 & True \\
+paul15 & ae:nb & vae:nb & 36 & 0.0338 & 0.7700 & 0.0000 & True \\
+paul15 & ae:zinb & scvi:nb & 36 & 0.0790 & 1.4140 & 0.0000 & True \\
+paul15 & ae:zinb & scvi:zinb & 36 & 0.0809 & 1.4110 & 0.0000 & True \\
+paul15 & ae:zinb & vae:mse & 36 & 0.1146 & 1.9820 & 0.0000 & True \\
+paul15 & ae:zinb & vae:nb & 36 & 0.0474 & 1.0570 & 0.0000 & True \\
+paul15 & ae:zinb & vae:zinb & 36 & 0.0422 & 0.9390 & 0.0000 & True \\
+paul15 & vae:mse & vae:nb & 36 & -0.0672 & -1.1670 & 0.0000 & True \\
+paul15 & vae:mse & vae:zinb & 36 & -0.0724 & -1.2550 & 0.0000 & True \\
+paul15 & ae:nb & vae:zinb & 36 & 0.0286 & 0.6500 & 0.0000 & True \\
+paul15 & scvi:nb & vae:mse & 36 & 0.0356 & 0.5350 & 0.0000 & True \\
+paul15 & scvi:nb & vae:zinb & 36 & -0.0368 & -0.6600 & 0.0000 & True \\
+paul15 & scvi:zinb & vae:zinb & 36 & -0.0387 & -0.6760 & 0.0000 & True \\
+paul15 & scvi:nb & vae:nb & 36 & -0.0316 & -0.5680 & 0.0000 & True \\
+paul15 & scvi:zinb & vae:nb & 36 & -0.0335 & -0.5870 & 0.0000 & True \\
+paul15 & scvi:zinb & vae:mse & 36 & 0.0337 & 0.4980 & 0.0000 & True \\
+paul15 & ae:mse & vae:zinb & 36 & -0.0234 & -0.4850 & 0.0000 & True \\
+paul15 & ae:mse & vae:nb & 36 & -0.0182 & -0.3780 & 0.0000 & True \\
+paul15 & ae:mse & scvi:zinb & 36 & 0.0152 & 0.2540 & 0.0011 & True \\
+paul15 & ae:nb & ae:zinb & 36 & -0.0136 & -0.3080 & 0.0028 & True \\
+paul15 & ae:mse & scvi:nb & 36 & 0.0134 & 0.2280 & 0.0037 & True \\
+paul15 & vae:nb & vae:zinb & 36 & -0.0052 & -0.1160 & 0.0363 & True \\
+paul15 & scvi:nb & scvi:zinb & 36 & 0.0019 & 0.0280 & 0.1920 & False \\
+scvi\_pbmc12k & ae:mse & vae:mse & 12 & 0.1885 & 3.1410 & 0.0005 & True \\
+scvi\_pbmc12k & ae:mse & vae:nb & 12 & 0.0397 & 0.6950 & 0.0005 & True \\
+scvi\_pbmc12k & ae:nb & vae:mse & 12 & 0.1473 & 2.6960 & 0.0005 & True \\
+scvi\_pbmc12k & vae:mse & vae:nb & 12 & -0.1488 & -2.5860 & 0.0005 & True \\
+scvi\_pbmc12k & ae:mse & scvi:nb & 12 & 0.1252 & 1.1210 & 0.0034 & True \\
+scvi\_pbmc12k & ae:mse & ae:nb & 12 & 0.0412 & 0.7580 & 0.0161 & True \\
+scvi\_pbmc12k & ae:nb & scvi:nb & 12 & 0.0840 & 0.7710 & 0.0210 & True \\
+scvi\_pbmc12k & scvi:nb & vae:nb & 12 & -0.0854 & -0.7740 & 0.0342 & True \\
+scvi\_pbmc12k & scvi:nb & vae:mse & 12 & 0.0633 & 0.5660 & 0.1763 & False \\
+scvi\_pbmc12k & ae:nb & vae:nb & 12 & -0.0014 & -0.0280 & 0.9697 & False \\
+\bottomrule
+\end{tabular}

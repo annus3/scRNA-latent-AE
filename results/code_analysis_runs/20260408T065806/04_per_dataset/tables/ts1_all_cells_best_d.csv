@@ -1,0 +1,3 @@
+model_loss,best_d,best_score,metric_used
+ae:nb,16,0.0078,ari
+scvi:nb,10,0.2704,ari

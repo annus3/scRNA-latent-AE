@@ -1,0 +1,14 @@
+\begin{tabular}{lrrrrrr}
+\toprule
+model\_loss & mean\_ari & mean\_silhouette\_kmeans & n & rank\_ari & rank\_silhouette\_kmeans & mean\_rank \\
+\midrule
+ae:mse & 0.4055 & 0.2620 & 48 & 1.0000 & 4.0000 & 2.5000 \\
+vae:nb & 0.3714 & 0.2657 & 48 & 2.0000 & 3.0000 & 2.5000 \\
+ae:nb & 0.3094 & 0.3213 & 52 & 5.0000 & 1.0000 & 3.0000 \\
+ae:zinb & 0.2342 & 0.2777 & 36 & 7.0000 & 2.0000 & 4.5000 \\
+scvi:nb & 0.3638 & 0.2002 & 84 & 3.0000 & 6.0000 & 4.5000 \\
+scvi:zinb & 0.3275 & 0.1968 & 36 & 4.0000 & 7.0000 & 5.5000 \\
+vae:zinb & 0.3046 & 0.2355 & 36 & 6.0000 & 5.0000 & 5.5000 \\
+vae:mse & 0.0158 & 0.1782 & 48 & 8.0000 & 8.0000 & 8.0000 \\
+\bottomrule
+\end{tabular}

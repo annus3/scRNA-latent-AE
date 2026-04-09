@@ -1,0 +1,12 @@
+file,exists,rows,columns,size_kb,status_counts
+combined_curated_real_plus_phase4_enriched.csv,True,388,69,212.8,"{""success"": 388}"
+phase1_pbmc3k_quick_results.csv,True,9,45,3.6,"{""success"": 9}"
+phase2_scvi_pbmc12k_results.csv,True,60,45,24.2,"{""success"": 60}"
+phase3_splatter_full_completed.csv,True,336,45,125.1,"{""success"": 336}"
+recommended_d_by_K_primary.csv,True,17,10,1.7,
+formula_fit_summary_primary.csv,True,14,6,0.8,
+formula_fit_loo_primary.csv,True,56,17,6.0,"{""insufficient_train_k_coverage"": 36, ""ok"": 20}"
+recommended_d_by_K.csv,True,17,10,1.7,
+formula_fit_summary.csv,True,14,6,0.8,
+recommended_d_by_K_exploratory.csv,True,17,10,1.7,
+formula_fit_summary_exploratory.csv,True,14,6,0.8,

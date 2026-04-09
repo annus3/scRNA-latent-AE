@@ -1,0 +1,6 @@
+dataset,label_trust,count
+aifi_immune_full,ground_truth,12
+paul15,ground_truth,288
+scvi_pbmc12k,ground_truth,60
+ts1_all_cells,ground_truth,16
+ts2_lung,ground_truth,12

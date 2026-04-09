@@ -1,0 +1,8 @@
+file,file_size_gb,n_cells,n_genes,has_counts_layer,has_cell_type,has_batch,has_donor_id,sample_zero_fraction,skipped_sampling_for_scale,schema_probe_deferred_for_scale
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/aifi_immune_full.h5ad,2.926,,,,,,,,True,True
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/splatter_k04.h5ad,0.466,4800.0,2000.0,True,True,True,False,0.213531494140625,False,False
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/splatter_k08.h5ad,0.466,4800.0,2000.0,True,True,True,False,0.215087890625,False,False
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/splatter_k12.h5ad,0.466,4800.0,2000.0,True,True,True,False,0.2144775390625,False,False
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/ts1_all_cells.h5ad,9.338,,,,,,,,True,True
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/ts1_all_cells_phase4_ready.h5ad,0.269,483151.0,2000.0,True,True,True,True,0.9516143798828125,False,False
+/home/woody/iwbn/iwbn129h/sc_autoencoder_project/data/processed/ts2_lung.h5ad,2.449,,,,,,,,True,True

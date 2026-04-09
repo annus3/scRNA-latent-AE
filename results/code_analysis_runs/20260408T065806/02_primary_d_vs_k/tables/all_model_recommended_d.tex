@@ -1,0 +1,23 @@
+\begin{tabular}{lllrrlrrrlll}
+\toprule
+dataset & model\_type & loss\_type & K & recommended\_d & selection\_metric & selection\_score & mean\_ari & mean\_silhouette\_kmeans & report\_scope & display\_ds & model\_loss \\
+\midrule
+scvi\_pbmc12k & ae & mse & 9 & 16 & ari & 0.6807 & 0.6807 & 0.3907 & primary & PBMC12k & ae:mse \\
+scvi\_pbmc12k & ae & nb & 9 & 32 & ari & 0.6784 & 0.6784 & 0.3194 & primary & PBMC12k & ae:nb \\
+scvi\_pbmc12k & scvi & nb & 9 & 4 & ari & 0.6662 & 0.6662 & 0.4072 & primary & PBMC12k & scvi:nb \\
+scvi\_pbmc12k & vae & mse & 9 & 4 & ari & 0.0309 & 0.0309 & 0.1954 & primary & PBMC12k & vae:mse \\
+scvi\_pbmc12k & vae & nb & 9 & 32 & ari & 0.6815 & 0.6815 & 0.3802 & primary & PBMC12k & vae:nb \\
+paul15 & ae & mse & 19 & 48 & ari & 0.3425 & 0.3425 & 0.1870 & primary & Paul15 & ae:mse \\
+paul15 & ae & nb & 19 & 24 & ari & 0.2575 & 0.2575 & 0.2609 & primary & Paul15 & ae:nb \\
+paul15 & ae & zinb & 19 & 16 & ari & 0.2492 & 0.2492 & 0.2728 & primary & Paul15 & ae:zinb \\
+paul15 & scvi & nb & 19 & 2 & ari & 0.4040 & 0.4040 & 0.3885 & primary & Paul15 & scvi:nb \\
+paul15 & scvi & zinb & 19 & 2 & ari & 0.4021 & 0.4021 & 0.3920 & primary & Paul15 & scvi:zinb \\
+paul15 & vae & mse & 19 & 32 & ari & 0.0205 & 0.0205 & 0.1230 & primary & Paul15 & vae:mse \\
+paul15 & vae & nb & 19 & 24 & ari & 0.3252 & 0.3252 & 0.2132 & primary & Paul15 & vae:nb \\
+paul15 & vae & zinb & 19 & 64 & ari & 0.3308 & 0.3308 & 0.2395 & primary & Paul15 & vae:zinb \\
+aifi\_immune\_full & scvi & nb & 29 & 4 & ari & 0.3415 & 0.3415 & 0.2349 & primary & AIFI Immune & scvi:nb \\
+ts2\_lung & scvi & nb & 34 & 12 & ari & 0.4302 & 0.4302 & 0.2400 & primary & TS2 Lung & scvi:nb \\
+ts1\_all\_cells & ae & nb & 177 & 16 & ari & 0.0078 & 0.0078 & 0.7007 & primary & TS1 (Tabula Sapiens) & ae:nb \\
+ts1\_all\_cells & scvi & nb & 177 & 10 & ari & 0.2704 & 0.2704 & 0.2041 & primary & TS1 (Tabula Sapiens) & scvi:nb \\
+\bottomrule
+\end{tabular}

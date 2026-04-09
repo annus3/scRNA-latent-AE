@@ -1,0 +1,5 @@
+model_type,loss_type,fit_formula_name,fit_score_r2,fit_rmse,report_scope
+scvi,nb,sqrt,0.3493964507438279,3.1281108325653726,primary
+scvi,nb,power,0.3201571631916531,3.197629788702491,primary
+scvi,nb,linear,0.2920579891187063,3.263042727831595,primary
+scvi,nb,logk,0.2742918861716316,3.3037327422142764,primary

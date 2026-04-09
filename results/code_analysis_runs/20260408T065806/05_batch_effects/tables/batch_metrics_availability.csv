@@ -1,0 +1,7 @@
+dataset,batch_metrics_mode,count
+aifi_immune_full,sampled_shared,12
+paul15,,288
+scvi_pbmc12k,,60
+ts1_all_cells,,10
+ts1_all_cells,sampled_shared,6
+ts2_lung,full,12

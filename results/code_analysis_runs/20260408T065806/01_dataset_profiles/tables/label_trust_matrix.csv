@@ -1,0 +1,6 @@
+dataset,ground_truth
+aifi_immune_full,12
+paul15,288
+scvi_pbmc12k,60
+ts1_all_cells,16
+ts2_lung,12

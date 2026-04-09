@@ -1,0 +1,9 @@
+dataset,model_type,loss_type,K,recommended_d,selection_metric,selection_score,mean_ari,mean_silhouette_kmeans
+splatter_k04,ae,mse,4,8,ari,0.5025505812963478,0.5025505812963478,0.631099060177803
+splatter_k04,ae,nb,4,24,ari,1.0,1.0,0.47513721883296967
+splatter_k04,ae,zinb,4,32,ari,1.0,1.0,0.4700733423233032
+splatter_k04,scvi,nb,4,2,ari,1.0,1.0,0.8165308237075806
+splatter_k04,scvi,zinb,4,8,ari,1.0,1.0,0.5288316607475281
+splatter_k04,vae,mse,4,4,ari,0.008012049125684683,0.008012049125684683,0.18692853301763535
+splatter_k04,vae,nb,4,8,ari,1.0,1.0,0.6840944886207581
+splatter_k04,vae,zinb,4,4,ari,0.8431947241290101,0.8431947241290101,0.5606077164411545

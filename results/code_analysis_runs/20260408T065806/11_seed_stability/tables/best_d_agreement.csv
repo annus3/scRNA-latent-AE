@@ -1,0 +1,17 @@
+dataset,model_loss,n_seeds,unique_best_d,best_d_values,agreement_rate
+paul15,ae:nb,3,3,"8,10,24",0.333
+paul15,ae:zinb,3,3,"6,48,64",0.333
+paul15,vae:nb,3,3,"4,20,24",0.333
+paul15,vae:zinb,3,3,"6,16,24",0.333
+aifi_immune_full,scvi:nb,2,2,"4,32",0.5
+scvi_pbmc12k,ae:mse,2,2,"16,32",0.5
+scvi_pbmc12k,vae:mse,2,2,"4,24",0.5
+scvi_pbmc12k,vae:nb,2,2,"24,32",0.5
+ts1_all_cells,scvi:nb,2,2,"8,10",0.5
+ts2_lung,scvi:nb,2,2,"12,16",0.5
+paul15,ae:mse,3,2,"12,48",0.667
+paul15,vae:mse,3,2,"12,32",0.667
+paul15,scvi:nb,3,1,2,1.0
+paul15,scvi:zinb,3,1,2,1.0
+scvi_pbmc12k,ae:nb,2,1,32,1.0
+scvi_pbmc12k,scvi:nb,2,1,4,1.0

@@ -1,0 +1,20 @@
+KEY FINDINGS (scvi:nb model):
+  Datasets analyzed: 5
+  Total successful experiments: 388
+  K range: 9 to 177
+
+RECOMMENDED LATENT DIMENSIONS:
+  PBMC12k: K=9, d*=4
+  Paul15: K=19, d*=2
+  AIFI Immune: K=29, d*=4
+  TS2 Lung: K=34, d*=12
+  TS1 (Tabula Sapiens): K=177, d*=10
+
+FORMULA FIT QUALITY:
+  power: R²=0.3704, RMSE=3.077
+  sqrt: R²=0.3494, RMSE=3.128
+  linear: R²=0.2921, RMSE=3.263
+
+CONCLUSION:
+  No universal d=f(K) law — dataset-dependent narrow bands observed.
+  Low-to-moderate K: d in [2,4]; atlas-scale K: d in [10,12].

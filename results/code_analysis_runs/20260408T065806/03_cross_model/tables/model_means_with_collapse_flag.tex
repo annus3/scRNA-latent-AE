@@ -1,0 +1,23 @@
+\begin{tabular}{llrrr}
+\toprule
+dataset & model\_loss & mean\_ari & mean\_sil & posterior\_collapse\_flag \\
+\midrule
+aifi\_immune\_full & scvi:nb & 0.3079 & 0.1091 & False \\
+paul15 & ae:mse & 0.3205 & 0.2120 & False \\
+paul15 & ae:nb & 0.2400 & 0.2641 & False \\
+paul15 & ae:zinb & 0.2342 & 0.2777 & False \\
+paul15 & scvi:nb & 0.3291 & 0.1987 & False \\
+paul15 & scvi:zinb & 0.3275 & 0.1968 & False \\
+paul15 & vae:mse & 0.0136 & 0.1631 & True \\
+paul15 & vae:nb & 0.2966 & 0.2303 & False \\
+paul15 & vae:zinb & 0.3046 & 0.2355 & False \\
+scvi\_pbmc12k & ae:mse & 0.6603 & 0.4119 & False \\
+scvi\_pbmc12k & ae:nb & 0.6184 & 0.3707 & False \\
+scvi\_pbmc12k & scvi:nb & 0.5948 & 0.2868 & False \\
+scvi\_pbmc12k & vae:mse & 0.0226 & 0.2234 & True \\
+scvi\_pbmc12k & vae:nb & 0.5958 & 0.3722 & False \\
+ts1\_all\_cells & ae:nb & 0.0070 & 0.6878 & True \\
+ts1\_all\_cells & scvi:nb & 0.2616 & 0.1838 & False \\
+ts2\_lung & scvi:nb & 0.3949 & 0.2255 & False \\
+\bottomrule
+\end{tabular}

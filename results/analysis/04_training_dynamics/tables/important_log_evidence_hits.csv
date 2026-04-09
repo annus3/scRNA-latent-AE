@@ -1,0 +1,5 @@
+log_file,line,match,exists
+/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/slurm_phase4_aifi_reduced_1563147.err,1,"/var/tmp/slurmd_spool/job1563147/slurm_script: line 88: 1818336 Killed                  python scripts/run_experiment.py --config ""${SCAE_CONFIG}"" --device auto --output ""${SCAE_RESULTS_DIR}/phase4_aifi_scvi_nb_reduced.csv"" 2>&1",True
+/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/slurm_phase4_aifi_reduced_1563147.err,3,[2026-04-03T00:48:41.671] error: Detected 1 oom_kill event in StepId=1563147.batch. Some of the step tasks have been OOM Killed.,True
+/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/slurm_phase3_full_sweep_1561813.err,464,[2026-03-31T00:53:35.272] error: Detected 1 oom_kill event in StepId=1561813.0. Some of the step tasks have been OOM Killed.,True
+/home/hpc/iwbn/iwbn129h/sc_autoencoder_project/logs/slurm_phase3_full_sweep_1561813.err,465,srun: error: tg097: task 0: Out Of Memory,True

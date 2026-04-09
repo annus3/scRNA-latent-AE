@@ -1,0 +1,9 @@
+dataset,model_type,loss_type,K,recommended_d,selection_metric,selection_score,mean_ari,mean_silhouette_kmeans,report_scope
+pbmc3k,ae,mse,9,2,silhouette_kmeans,0.4558665653069814,,0.4558665653069814,exploratory
+pbmc3k,ae,nb,9,2,silhouette_kmeans,0.363611380259196,,0.363611380259196,exploratory
+pbmc3k,ae,zinb,9,2,silhouette_kmeans,0.4029196302096049,,0.4029196302096049,exploratory
+pbmc3k,scvi,nb,9,2,silhouette_kmeans,0.4704117774963379,,0.4704117774963379,exploratory
+pbmc3k,scvi,zinb,9,2,silhouette_kmeans,0.4864726662635803,,0.4864726662635803,exploratory
+pbmc3k,vae,mse,9,2,silhouette_kmeans,0.33997491002082825,,0.33997491002082825,exploratory
+pbmc3k,vae,nb,9,2,silhouette_kmeans,0.38089991609255475,,0.38089991609255475,exploratory
+pbmc3k,vae,zinb,9,2,silhouette_kmeans,0.3633112907409668,,0.3633112907409668,exploratory

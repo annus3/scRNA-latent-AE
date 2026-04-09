@@ -1,0 +1,9 @@
+model_loss,best_d,best_score,metric_used
+ae:mse,48,0.3425,ari
+ae:nb,24,0.2575,ari
+ae:zinb,16,0.2492,ari
+scvi:nb,2,0.404,ari
+scvi:zinb,2,0.4021,ari
+vae:mse,32,0.0205,ari
+vae:nb,24,0.3252,ari
+vae:zinb,64,0.3308,ari

@@ -1,0 +1,9 @@
+model_type,loss_type,fit_formula_name,fit_score_r2,fit_rmse,report_scope
+ae,mse,insufficient_k_coverage,,,exploratory
+ae,nb,insufficient_k_coverage,,,exploratory
+ae,zinb,insufficient_k_coverage,,,exploratory
+scvi,nb,insufficient_k_coverage,,,exploratory
+scvi,zinb,insufficient_k_coverage,,,exploratory
+vae,mse,insufficient_k_coverage,,,exploratory
+vae,nb,insufficient_k_coverage,,,exploratory
+vae,zinb,insufficient_k_coverage,,,exploratory

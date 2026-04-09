@@ -1,0 +1,6 @@
+dataset,spearman_r,p_value,n
+aifi_immune_full,0.3497,0.265239,12
+paul15,-0.0451,0.445866,288
+scvi_pbmc12k,0.6133,0.0,60
+ts1_all_cells,-0.5588,0.024437,16
+ts2_lung,0.2378,0.456801,12
