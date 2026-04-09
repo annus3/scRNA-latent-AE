@@ -1,233 +1,240 @@
 # scRNA Autoencoder Latent-Dimension Study
 
-This project asks one main question:
-
 **How should latent size (`d`) change as class complexity (`K`) changes in single-cell RNA-seq?**
 
-Here, `K` means the number of label classes used for evaluation in a dataset.
+This project benchmarks AE, VAE, and scVI models on curated scRNA-seq datasets to study whether the optimal latent dimension can be predicted from the number of cell types. It uses a trust-aware evaluation framework that strictly separates ground-truth evidence from exploratory results.
 
-The pipeline runs AE, VAE, and scVI experiments, records metrics, and builds candidate `d = f(K)` summaries.
+## Main Findings
 
-## Project Description
+Using curated evidence from scVI with negative binomial likelihood:
 
-This is a fixed-config benchmark project for single-cell representation learning.
+| Dataset | K | Recommended d | ARI |
+|---|---|---|---|
+| scvi_pbmc12k | 9 | 4 | 0.666 |
+| paul15 | 19 | 2 | 0.404 |
+| aifi_immune_full | 29 | 4 | 0.342 |
+| ts2_lung | 34 | 12 | 0.430 |
+| ts1_all_cells | 177 | 10 | 0.270 |
 
-The work has two connected parts:
-
-- **Scientific part:** test whether latent size can be explained by label complexity (`K`) in a practical way.
-- **Engineering part:** build a stable HPC pipeline that can run from small datasets to atlas-scale datasets.
-
-What this project is designed to do:
-
-- compare AE, VAE, and scVI under one consistent protocol
-- keep PRIMARY evidence strict (trusted real labels only)
-- keep synthetic/inferred-label evidence separate as exploratory
-- produce reproducible output tables that can be re-audited in report-only mode
-
-What this project is not trying to do right now:
-
-- full per-dataset hyperparameter optimization
-- claiming one universal law that works perfectly for every dataset
-
-### Current Scope and Main Findings
-
-Using the current cleaned PRIMARY evidence for `scvi:nb`, the recommended latent dimensions are:
-
-| Dataset | `K` | `d` |
-|---|---|---|
-| `scvi_pbmc12k` | 09  | 04 |
-| `paul15` | 19 | 02 |
-| `aifi_immune_full` | 29 | 04 |
-| `ts2_lung` | 34 | 12 |
-| `ts1_all_cells` | 177| 10 |
-
-Formula-fit summary for PRIMARY `scvi:nb` is moderate (not perfect), and leave-one-dataset-out rows are available (`status=ok`).
-
-So the current picture is useful but still conservative: behavior looks dataset-dependent, with larger atlases often favoring a modest higher latent band.
-
-## Datasets Used in This Study
-
-The project uses a mix of small/medium benchmarks and large real atlases.
-
-### Trusted real datasets (PRIMARY candidates)
-
-| Dataset | Typical use | Label key | Batch key | Trust role | Notes |
-|---|---|---|---|---|---|
-| `scvi_pbmc12k` | core real benchmark | `labels` | `batch` | ground_truth | curated scvi benchmark PBMC set |
-| `paul15` | core real benchmark | `paul15_clusters` | none | ground_truth | myeloid progenitor benchmark |
-| `ts1_all_cells` | large atlas phase | `cell_type` | `donor_id` | ground_truth (via onboarding contract) | Tabula Sapiens all-cells processed contract |
-| `aifi_immune_full` | large atlas phase | `cell_type` | `batch_id` | ground_truth (via onboarding contract) | Allen Immune atlas, large-scale stress test |
-| `ts2_lung` | large non-blood atlas phase | `cell_type` | `donor_id` | strict provenance-gated | enters PRIMARY only with explicit ontology-backed provenance evidence |
-
-### Exploratory / non-primary datasets
-
-| Dataset group | Why used | PRIMARY role |
-|---|---|---|
-| `pbmc3k` | smoke and pipeline checks | exploratory / utility |
-| `pbmc68k_reduced` | quick small benchmark | untrusted labels |
-| `splatter_k*` synthetic sets | controlled scaling experiments | exploratory only |
-
-## Scientific Policy (Current)
-
-I keep a strict split:
-
-- **PRIMARY evidence** = trusted real datasets with ground-truth label provenance
-- **EXPLORATORY evidence** = inferred-label or synthetic datasets
-
-Trust is enforced in code during experiment/report generation.
-PRIMARY tables only include rows that pass the trust gate.
+No universal **d = f(K)** scaling law was found. Instead, the data suggest dataset-dependent narrow bands: compact latent spaces (d=2-4) work for moderate-complexity datasets, while atlas-scale data favors d=10-12.
 
 ## Repository Layout
 
 ```text
 sc_autoencoder_project/
-├── config/        # YAML configs (default + phase configs)
-├── data/          # raw + processed datasets
-├── docs/          # plans, audits, status reports
-├── jobs/          # SLURM scripts for HPC
-├── logs/          # runtime logs + TensorBoard events
-├── code_analysis/ # additional script-based analysis modules
-├── results/       # experiment tables, reports, analysis outputs
-├── scripts/       # CLI entry points
-└── src/           # package code (data, models, training, evaluation)
+├── src/                   # Core package (models, training, evaluation, data)
+│   ├── data/              #   Dataset loading, preprocessing, splitting
+│   ├── models/            #   AE, VAE, scVI wrapper, loss functions
+│   ├── training/          #   Training loop with early stopping, TensorBoard
+│   ├── evaluation/        #   Clustering, reconstruction, batch metrics
+│   └── utils/             #   Logging and tensor conversion helpers
+├── scripts/               # CLI entry points
+│   ├── run_experiment.py      # Main experiment orchestrator
+│   ├── train.py               # Single model training
+│   ├── smoke_test.py          # Pipeline validation
+│   ├── preprocess.py          # Dataset preprocessing
+│   ├── validate_pipeline.py   # End-to-end pipeline checks
+│   ├── onboard_contract_h5ad.py  # Large-atlas onboarding
+│   └── ...                    # Audit, inspection, re-evaluation tools
+├── code_analysis/         # Post-hoc analysis pipeline (15 modules)
+│   ├── common.py              # Shared plotting/loading utilities
+│   ├── a00_inventory.py       # Data readiness audit
+│   ├── a02_primary_d_vs_k.py  # Core d=f(K) analysis
+│   ├── a14_publication_figures.py  # Publication-quality figures
+│   └── ...                    # Cross-model, batch, stability, ELBO analyses
+├── config/                # YAML experiment configurations
+├── jobs/                  # SLURM job scripts for HPC execution
+├── data/                  # Datasets (not tracked, downloaded on demand)
+├── results/               # Experiment outputs (selectively tracked)
+│   ├── global/tables/         # Core evidence & formula-fit CSVs
+│   ├── datasets/              # Per-dataset figures, latents, tables
+│   ├── analysis/              # Early analysis pipeline output
+│   ├── analysis_runs/         # Timestamped analysis snapshots
+│   └── code_analysis_runs/    # 15-module analysis pipeline output
+├── checkpoints/           # Model weights (not tracked)
+└── logs/                  # Training logs (not tracked)
 ```
 
-## Quick Setup
+## Setup
 
 ```bash
+# Clone and enter the repository
+git clone https://github.com/annus3/scRNA-latent-AE.git
+cd scRNA-latent-AE
+
+# Create and activate environment
 python -m venv ~/envs/scae
 source ~/envs/scae/bin/activate
 
-cd /home/hpc/user/sc_autoencoder_project
+# Install package and all dependencies
 pip install -e .
-pip install -r requirements.txt
 ```
 
-## Core Commands
+**Requirements:** Python >= 3.10, PyTorch >= 2.0, scvi-tools >= 1.0, Scanpy >= 1.9
 
-### 1) Smoke test
+## Usage
+
+### 1. Smoke test
 
 ```bash
 python scripts/smoke_test.py --with_scvi
 ```
 
-### 2) Preprocess one dataset
+### 2. Preprocess a dataset
 
 ```bash
 python scripts/preprocess.py --config config/default.yaml --dataset pbmc3k
 ```
 
-### 3) Run a sweep
+### 3. Run an experiment sweep
 
 ```bash
-python scripts/run_experiment.py 
-  --config config/default.yaml 
+python scripts/run_experiment.py \
+  --config config/default.yaml \
   --datasets pbmc3k,paul15
 ```
 
-### 4) Generate reports from an existing CSV (report-only mode)
+### 4. Generate reports from existing results
 
 ```bash
-python scripts/run_experiment.py 
-  --config config/default.yaml 
-  --report_only_csv results/global/tables/combined_curated_real_plus_phase4_enriched.csv 
+python scripts/run_experiment.py \
+  --config config/default.yaml \
+  --report_only_csv results/global/tables/combined_curated_real_plus_phase4_enriched.csv \
   --auto_d_report
 ```
 
-### 5) Audit PRIMARY inclusion from a CSV
+### 5. Run the analysis pipeline
 
 ```bash
-python scripts/audit_primary_pool.py 
-  --config config/default.yaml 
-  --csv results/global/tables/combined_curated_real_plus_phase4_enriched.csv
-```
-
-## HPC Run Pattern
-
-For large jobs on FAU TinyGPU/A100, use job scripts in `jobs/`.
-
-Example:
-
-```bash
-cd /home/hpc/user/sc_autoencoder_project
-sbatch.tinygpu jobs/tinygpu_large.sh
-```
-
-`jobs/tinygpu_large.sh` handles path staging with:
-
-- `$WORK` for persistent run outputs
-- `$TMPDIR` for local staged data
-- `SCAE_*` environment variables for phase configs that use `${SCAE_DATA_DIR}` style paths
-
-If you run those phase configs directly (outside job scripts), set the required `SCAE_*` env vars first.
-
-## Analysis Workflow (Script-First on HPC)
-
-On HPC, use script mode instead of interactive notebooks:
-
-```bash
-cd /home/hpc/user/sc_autoencoder_project
 bash code_analysis/analysis.sh
 ```
 
-Each analysis run creates a new timestamped folder:
+Each analysis run creates a timestamped output folder under `results/code_analysis_runs/`.
 
-`results/analysis_runs/<YYYYmmddTHHMMSS>/`
+## Experimental Phases
 
+The project was developed in **four sequential phases**, each building on the previous:
 
-## Main Output Tables
+| Phase | Dataset(s) | Purpose | Config | Job | Est. Time |
+|---|---|---|---|---|---|
+| 1 | pbmc3k | Pipeline baseline validation | `phase1_pbmc3k_quick.yaml` | `phase1_pbmc3k_quick.sbatch` | ~1h |
+| 2 | scvi_pbmc12k | Medium real-data benchmark (batch effects) | `phase2_scvi_pbmc12k.yaml` | `phase2_scvi_pbmc12k.sbatch` | ~2h |
+| 3 | splatter_k04/k08/k12 | Controlled simulation with known K | `phase3_splatter_k_sweep.yaml` | `phase3_full_sweep.sh` | ~12h |
+| 4 | AIFI, TS1, TS2-Lung | Atlas-scale validation on large curated datasets | `phase4_*.yaml` | `phase4_*_onboard_light.sh` → `phase4_*_reduced.sh` | ~12h each |
 
-Global merged evidence:
+**Phase 4 prerequisites:** Large-atlas datasets must be downloaded and placed under `$WORK/sc_autoencoder_project/data/raw/` before running. Run the onboarding script first to prepare each dataset, then the sweep:
 
-- `results/global/tables/combined_curated_real_plus_phase4_enriched.csv`
+```bash
+# Example for AIFI atlas
+sbatch jobs/phase4_aifi_onboard_light.sh
+sbatch jobs/phase4_aifi_scvi_nb_reduced.sh
+```
 
-PRIMARY reports:
+## HPC Execution
 
-- `results/global/tables/recommended_d_by_K_primary.csv`
-- `results/global/tables/formula_fit_summary_primary.csv`
-- `results/global/tables/formula_fit_loo_primary.csv`
+For large-scale runs on SLURM clusters, use the job scripts in `jobs/`:
 
-Exploratory reports (if enabled):
+```bash
+# Validate the pipeline first (GPU, ~10 min)
+sbatch jobs/smoke_test.sh
 
-- `results/global/tables/recommended_d_by_K_exploratory.csv`
-- `results/global/tables/formula_fit_summary_exploratory.csv`
+# Generic latent-dimension sweep (adapt partition/modules for your cluster)
+sbatch jobs/slurm_sweep_generic.sh
 
-## Notes on Loss Scale
+# Parallel array sweep (12 tasks, one per latent dim)
+sbatch jobs/sweep_array.sh
 
-NB/ZINB loss values can look large (hundreds or thousands).
-That is normal because they are count-likelihood losses, not MSE.
+# Phase-specific runs (run in order)
+sbatch jobs/phase1_pbmc3k_quick.sbatch
+sbatch jobs/phase2_scvi_pbmc12k.sbatch
+sbatch jobs/phase3_full_sweep.sh
+sbatch jobs/phase4_aifi_scvi_nb_reduced.sh
+```
 
-What to watch instead:
+Job scripts handle data staging via `$WORK` and `$TMPDIR` environment variables. Phase 4 configs reference `${SCAE_DATA_DIR}` and `${SCAE_RESULTS_DIR}` — these are exported automatically by the job scripts. If running outside SLURM, set them manually before invoking the phase configs.
 
-- stable train/val trend
-- no NaN/inf
-- downstream metrics and report outputs
+## Datasets
 
-The analysis scripts also export per-gene normalized NB/ZINB loss summaries for fairer comparison across datasets.
+### Curated (ground-truth labels)
 
-## Useful Phase Configs
+| Dataset | Cells | K | Phase | Source |
+|---|---|---|---|---|
+| scvi_pbmc12k | 12,039 | 9 | 2 | scvi-tools built-in |
+| paul15 | 2,730 | 19 | 2 | Scanpy built-in |
+| aifi_immune_full | ~1.8M | 29 | 4 | Allen Institute for Immunology |
+| ts2_lung | ~100K | 34 | 4 | Tabula Sapiens |
+| ts1_all_cells | ~483K | 177 | 4 | Tabula Sapiens |
 
-- `config/phase1_pbmc3k_quick.yaml`
-- `config/phase2_scvi_pbmc12k.yaml`
-- `config/phase3_splatter_k_sweep.yaml`
-- `config/phase4_ts1_stageA_tiny.yaml`
-- `config/phase4_ts1_stageB_reduced.yaml`
-- `config/phase4_aifi_scvi_nb_reduced.yaml`
-- `config/phase4_ts2_lung_scvi_nb_reduced.yaml`
+### Exploratory
 
-## Quick Troubleshooting
+| Dataset | Cells | K | Phase | Source |
+|---|---|---|---|---|
+| pbmc3k | 2,700 | — | 1 | Scanpy built-in |
+| splatter_k04/k08/k12 | ~5K each | 4/8/12 | 3 | Splatter (synthetic) |
 
-1. Schema checks:
-   `python scripts/inspect_dataset_schema.py --help`
-2. PRIMARY trust/status checks:
-   `python scripts/audit_primary_pool.py --help`
-3. Run-level errors:
-   `logs/slurm_*.out`, `logs/slurm_*.err`
-4. Run manifests:
-   `results/runs/run_*/manifest.json`
-5. Analysis inventories:
-   `results/analysis_runs/<timestamp>/00_inventory/`
+## Models & Losses
 
----
+| Model | Loss Functions | Batch Modeling |
+|---|---|---|
+| AE (autoencoder) | MSE, NB, ZINB | No |
+| VAE (variational AE) | MSE, NB, ZINB | No |
+| scVI | NB, ZINB | Yes (conditional) |
 
-If you are new to the project: run smoke test first, then one small sweep, then `code_analysis/analysis.sh`.
+## Trust & Evidence Policy
+
+The project enforces a strict split between trusted and exploratory evidence:
+
+- **Curated**: datasets with verified ground-truth cell-type labels. All quantitative claims use only curated evidence.
+- **Exploratory**: synthetic data or datasets with inferred labels. Used for pipeline validation only.
+
+Trust is enforced programmatically — external metrics (ARI, AMI) are only computed when labels pass the trust gate.
+
+## Results
+
+The `results/` directory is selectively tracked — only final outputs are included; raw tensorboard exports and intermediate runs are gitignored.
+
+### Key Output Tables
+
+All tables are written to `results/global/tables/`:
+
+| File | Description |
+|---|---|
+| `combined_curated_real_plus_phase4_enriched.csv` | Full evidence table with trust metadata |
+| `recommended_d_by_K_primary.csv` | Recommended d per dataset (curated only) |
+| `formula_fit_summary_primary.csv` | d=f(K) curve fitting results |
+| `formula_fit_loo_primary.csv` | Leave-one-out cross-validation |
+| `phase1_pbmc3k_quick_results.csv` | Phase 1 baseline results |
+| `phase2_scvi_pbmc12k_results.csv` | Phase 2 benchmark results |
+| `phase3_splatter_full_completed.csv` | Phase 3 simulation sweep results |
+
+### Analysis Pipeline Output
+
+The `code_analysis/` pipeline produces a timestamped run under `results/code_analysis_runs/` with 15 analysis modules:
+
+| Module | Content |
+|---|---|
+| `00_inventory` | Data readiness audit |
+| `01_dataset_profiles` | Dataset scale comparison figures |
+| `02_primary_d_vs_k` | Core d=f(K) analysis with formula fits |
+| `03_cross_model` | AE vs VAE vs scVI comparison |
+| `04_per_dataset` | Per-dataset ARI curves |
+| `05_batch_effects` | Batch correction analysis |
+| `06_splatter_validation` | Synthetic data validation |
+| `07_significance` | Statistical significance tests |
+| `08_training_dynamics` | Training convergence analysis |
+| `09_elbo_analysis` | ELBO decomposition (VAE/scVI) |
+| `10_centrality_topology` | Latent space topology |
+| `11_seed_stability` | Cross-seed reproducibility |
+| `12_metric_correlation` | Metric agreement analysis |
+| `13_phase_comparison` | Cross-phase consistency |
+| `14_publication_figures` | Publication-quality figures (fig1–fig4, figS1–figS4) |
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for details.
+
+## Citation
+
+If you use this code, please cite:
+
+> Mohammad Annus, "Trust-Aware Latent Dimension Selection for Single-Cell RNA-seq Autoencoders," Biomedical Network Science Lab (BioNets), FAU Erlangen-Nürnberg, 2026.
