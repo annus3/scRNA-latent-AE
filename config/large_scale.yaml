@@ -1,0 +1,93 @@
+# =============================================================================
+# Large-Scale Configuration Profile (HPC / WORK + TMPDIR staging)
+#
+# Storage policy:
+# - Code/scripts/configs live in HOME-like backed-up storage.
+# - Active datasets/results/checkpoints/logs live in WORK (not backed up).
+# - Job-time staging (especially data IO) uses TMPDIR.
+#
+# NOTE: This profile expects SCAE_* env vars to be exported by the job script.
+#       src/config.py now expands env vars and fails fast on unresolved paths.
+# =============================================================================
+
+paths:
+  data_dir: "${SCAE_DATA_DIR}"
+  results_dir: "${SCAE_RESULTS_DIR}"
+  log_dir: "${SCAE_LOG_DIR}"
+  checkpoint_dir: "${SCAE_CHECKPOINT_DIR}"
+
+data:
+  batch_key: null
+  label_key: null
+  use_backed_mode: true
+  backed_threshold_cells: 50000
+  dense_conversion_policy: "never"  # preserve sparse and avoid eager densification
+  large_run_mode: true
+  keep_backed_until_split: true
+  backed_probe_cells: 512
+
+preprocessing:
+  n_top_genes: 2000
+  min_genes_per_cell: 200
+  min_cells_per_gene: 3
+  target_sum: 10000
+  hvg_flavor: "seurat_v3"
+  leiden_resolution: 1.0
+  n_pcs: 50
+  n_neighbors: 10
+  scale_policy: "pca_only"
+  run_pca: true
+  integration_mode: "none"
+
+training:
+  batch_size: 256
+  max_epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  train_frac: 0.8
+  val_frac: 0.1
+  device: "auto"
+  loss_type: "mse"
+  profile_memory: false     # reduce overhead in production-scale runs
+  num_workers: 8
+  pin_memory: true
+  max_grad_norm: 5.0
+  tensorboard: true
+  log_every_n_epochs: 5
+
+model:
+  hidden_dims: [128, 64]
+  activation: "relu"
+  dropout: 0.0
+  vae_beta: 1.0
+
+experiment:
+  latent_dims: [2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 48, 64]
+  model_types: ["ae", "vae", "scvi"]
+  datasets: ["pbmc3k", "paul15"]
+  dataset_tiers: ["tier_b"]
+  n_seeds: 3
+  scvi_max_epochs: 100
+  scvi_gene_likelihood: "nb"
+  loss_matrix:
+    - "ae:mse"
+    - "ae:nb"
+    - "ae:zinb"
+    - "vae:mse"
+    - "vae:nb"
+    - "vae:zinb"
+    - "scvi:nb"
+    - "scvi:zinb"
+  kmeans_n_init: 10
+  auto_d_report: true
+  formula_candidates: ["linear", "power", "sqrt", "logk"]
+  min_k_for_fit: 3
+  require_ground_truth_for_external_metrics: true
+  silhouette_max_cells: 15000
+  centrality_policy: "sample"   # full|sample|skip
+  centrality_threshold_cells: 20000
+  centrality_sample_size: 5000
+  centrality_n_neighbors: 15
+
+seed: 42

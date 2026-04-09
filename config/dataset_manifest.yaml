@@ -1,0 +1,112 @@
+# Finalized execution manifest for staged project rollout.
+# This file is planning/operations metadata and does not trigger downloads by itself.
+
+manifest_version: 2026-03-30
+project_flow: "pbmc3k -> scvi_pbmc12k -> splatter -> ts1_all_cells -> correlation_report"
+
+rows:
+  - role: small_real
+    dataset_name: pbmc3k
+    source_platform: scanpy.datasets.pbmc3k
+    artifact: "built-in Scanpy loader"
+    species: human
+    tissue_context: "peripheral blood mononuclear cells"
+    approx_cells: 2700
+    label_key:
+      confirmed: []
+      likely: ["cell_type (inferred via preprocessing)"]
+    batch_key:
+      confirmed: []
+      likely: []
+    counts_location:
+      confirmed: ["X at load time"]
+      likely: ["layers['counts'] after preprocessing"]
+    recommended_losses: ["mse", "nb", "zinb"]
+    phase: 1
+    use_timing: now
+    onboarding_difficulty: low
+    confidence:
+      dataset_choice: high
+      metadata_keys: high
+      immediate_pipeline_compatibility: high
+
+  - role: medium_real
+    dataset_name: scvi_pbmc12k
+    source_platform: scvi.data.pbmc_dataset
+    artifact: "scvi-tools built-in PBMC benchmark"
+    species: human
+    tissue_context: "PBMC benchmark with known labels and batches"
+    approx_cells: 12039
+    label_key:
+      confirmed: ["labels"]
+      likely: ["cell_type (derived copy for consistency)"]
+    batch_key:
+      confirmed: ["batch"]
+      likely: []
+    counts_location:
+      confirmed: []
+      likely: ["X (count-like)", "layers['counts'] after preprocessing"]
+    recommended_losses: ["nb", "mse"]
+    phase: 2
+    use_timing: now
+    onboarding_difficulty: medium
+    confidence:
+      dataset_choice: high
+      metadata_keys: high
+      immediate_pipeline_compatibility: medium_high
+
+  - role: large_real
+    dataset_name: ts1_all_cells
+    source_platform: cellxgene
+    collection_id: e5f58829-1a66-40b5-a624-9046778e74f5
+    artifact: "Tabula Sapiens TS1 all-cells h5ad artifact"
+    species: human
+    tissue_context: "multi-organ atlas"
+    approx_cells: 483152
+    label_key:
+      confirmed: []
+      likely: ["cell_type", "cell_ontology_class"]
+    batch_key:
+      confirmed: []
+      likely: ["donor_id"]
+    counts_location:
+      confirmed: []
+      likely: ["X", "raw.X", "layers['counts']"]
+    recommended_losses: ["nb", "zinb"]
+    phase: 4
+    use_timing: later
+    onboarding_difficulty: high
+    confidence:
+      dataset_choice: high
+      metadata_keys: medium
+      immediate_pipeline_compatibility: medium
+
+  - role: simulated_path
+    dataset_name: "splatter_kXX"
+    source_platform: splatter
+    artifact: "Splatter-generated h5ad scenarios"
+    species: simulated
+    tissue_context: "controlled K and optional synthetic batch effects"
+    approx_cells: "configurable (5k-100k per scenario)"
+    label_key:
+      confirmed: ["cell_type (generated)"]
+      likely: []
+    batch_key:
+      confirmed: ["batch (when generated)"]
+      likely: []
+    counts_location:
+      confirmed: ["generated counts matrix"]
+      likely: ["layers['counts']"]
+    recommended_losses: ["nb", "zinb", "mse"]
+    phase: 3
+    use_timing: later
+    onboarding_difficulty: medium
+    confidence:
+      dataset_choice: high
+      metadata_keys: high
+      immediate_pipeline_compatibility: medium_high
+
+best_paths:
+  practical_first_dataset: scvi_pbmc12k
+  large_scale_dataset_later: ts1_all_cells
+  first_simulation_path: splatter

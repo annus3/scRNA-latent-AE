@@ -1,0 +1,79 @@
+# Phase 1: quick baseline validation on pbmc3k
+# Self-contained config: does not rely on dataclass fallback defaults.
+
+paths:
+  data_dir: "data"
+  results_dir: "results"
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+
+data:
+  batch_key: null
+  label_key: null
+  use_backed_mode: false
+  backed_threshold_cells: 100000
+  dense_conversion_policy: "auto"
+  large_run_mode: false
+  keep_backed_until_split: false
+  backed_probe_cells: 512
+
+preprocessing:
+  n_top_genes: 2000
+  min_genes_per_cell: 200
+  min_cells_per_gene: 3
+  target_sum: 10000
+  hvg_flavor: "seurat_v3"
+  leiden_resolution: 1.0
+  n_pcs: 50
+  n_neighbors: 10
+  scale_policy: "pca_only"
+  run_pca: true
+  integration_mode: "none"
+
+training:
+  batch_size: 256
+  max_epochs: 20
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 5
+  train_frac: 0.8
+  val_frac: 0.1
+  device: "auto"
+  loss_type: "mse"
+  profile_memory: true
+  num_workers: 0
+  pin_memory: true
+  max_grad_norm: 5.0
+  tensorboard: true
+  log_every_n_epochs: 1
+
+model:
+  hidden_dims: [128, 64]
+  activation: "relu"
+  dropout: 0.0
+  vae_beta: 1.0
+
+experiment:
+  latent_dims: [2, 8, 16]
+  model_types: ["ae", "vae", "scvi"]
+  datasets: ["pbmc3k"]
+  dataset_tiers: ["tier_b"]
+  n_seeds: 1
+  scvi_max_epochs: 20
+  scvi_gene_likelihood: "nb"
+  loss_matrix:
+    - "ae:mse"
+    - "vae:mse"
+    - "scvi:nb"
+  kmeans_n_init: 10
+  auto_d_report: false
+  formula_candidates: ["linear", "power", "sqrt", "logk"]
+  min_k_for_fit: 3
+  require_ground_truth_for_external_metrics: true
+  silhouette_max_cells: 0
+  centrality_policy: "full"
+  centrality_threshold_cells: 0
+  centrality_sample_size: 0
+  centrality_n_neighbors: 15
+
+seed: 42

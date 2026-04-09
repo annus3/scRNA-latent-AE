@@ -1,0 +1,76 @@
+# Phase 4 large non-blood first pass: TS2 Lung, scvi:nb only.
+
+paths:
+  data_dir: "${SCAE_DATA_DIR}"
+  results_dir: "${SCAE_RESULTS_DIR}"
+  log_dir: "${SCAE_LOG_DIR}"
+  checkpoint_dir: "${SCAE_CHECKPOINT_DIR}"
+
+data:
+  batch_key: "donor_id"
+  label_key: "cell_type"
+  use_backed_mode: true
+  backed_threshold_cells: 50000
+  dense_conversion_policy: "never"
+  large_run_mode: true
+  keep_backed_until_split: false
+  backed_probe_cells: 512
+
+preprocessing:
+  n_top_genes: 2000
+  min_genes_per_cell: 200
+  min_cells_per_gene: 3
+  target_sum: 10000
+  hvg_flavor: "seurat_v3"
+  leiden_resolution: 1.0
+  n_pcs: 50
+  n_neighbors: 10
+  scale_policy: "pca_only"
+  run_pca: true
+  integration_mode: "none"
+
+training:
+  batch_size: 256
+  max_epochs: 30
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 8
+  train_frac: 0.8
+  val_frac: 0.1
+  device: "auto"
+  loss_type: "mse"
+  profile_memory: false
+  num_workers: 8
+  pin_memory: true
+  max_grad_norm: 5.0
+  tensorboard: true
+  log_every_n_epochs: 5
+
+model:
+  hidden_dims: [128, 64]
+  activation: "relu"
+  dropout: 0.0
+  vae_beta: 1.0
+
+experiment:
+  latent_dims: [8, 16, 24, 32]
+  model_types: ["scvi"]
+  datasets: ["ts2_lung"]
+  dataset_tiers: ["tier_a"]
+  n_seeds: 1
+  scvi_max_epochs: 30
+  scvi_gene_likelihood: "nb"
+  loss_matrix:
+    - "scvi:nb"
+  kmeans_n_init: 10
+  auto_d_report: false
+  formula_candidates: ["linear", "power", "sqrt", "logk"]
+  min_k_for_fit: 3
+  require_ground_truth_for_external_metrics: true
+  silhouette_max_cells: 15000
+  centrality_policy: "sample"
+  centrality_threshold_cells: 20000
+  centrality_sample_size: 5000
+  centrality_n_neighbors: 15
+
+seed: 42

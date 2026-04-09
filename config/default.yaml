@@ -1,0 +1,85 @@
+# Default Configuration for scRNA-seq Autoencoder Latent Dimension Evaluation
+
+paths:
+  data_dir: "data"
+  results_dir: "results"
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+
+data:
+  batch_key: null
+  label_key: null
+  use_backed_mode: false
+  backed_threshold_cells: 100000
+  dense_conversion_policy: "auto"  # auto|never|always
+
+preprocessing:
+  n_top_genes: 2000
+  min_genes_per_cell: 200
+  min_cells_per_gene: 3
+  target_sum: 10000
+  hvg_flavor: "seurat_v3"
+  leiden_resolution: 1.0
+  n_pcs: 50
+  n_neighbors: 10
+  scale_policy: "pca_only"   # none|pca_only|full
+  run_pca: true
+  integration_mode: "none"   # none|harmony|bbknn
+
+training:
+  batch_size: 256
+  max_epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  train_frac: 0.8
+  val_frac: 0.1
+  device: "auto"             # auto|cpu|cuda
+  loss_type: "mse"           # fallback for single-loss runs when experiment.loss_matrix is empty
+  profile_memory: true
+  num_workers: 0              # 0 = in-process loading; >0 risks 'too many open files' with TB
+  pin_memory: true            # pin_memory for GPU transfer
+  max_grad_norm: 5.0          # gradient clipping; 0 to disable
+  tensorboard: true           # enable TensorBoard logging
+  log_every_n_epochs: 1       # epoch log cadence for tail-friendly monitoring
+
+model:
+  hidden_dims: [128, 64]
+  activation: "relu"         # relu|sigmoid|tanh|leaky_relu
+  dropout: 0.0
+  vae_beta: 1.0
+
+experiment:
+  latent_dims: [2, 4, 6, 8, 10, 12, 16, 20, 24, 32, 48, 64]
+  model_types: ["ae", "vae", "scvi"]
+  datasets: ["pbmc3k", "paul15"]
+  dataset_tiers: ["tier_b"]
+  n_seeds: 3
+  scvi_max_epochs: 100
+  scvi_gene_likelihood: "nb"  # fallback when experiment.loss_matrix is empty
+  loss_matrix:
+    - "ae:mse"
+    - "ae:nb"
+    - "ae:zinb"
+    - "vae:mse"
+    - "vae:nb"
+    - "vae:zinb"
+    - "scvi:nb"
+    - "scvi:zinb"
+  kmeans_n_init: 10
+  auto_d_report: true
+  formula_candidates: ["linear", "power", "sqrt", "logk"]
+  min_k_for_fit: 3            # keep >=3 to avoid overfitting with only two K values
+  require_ground_truth_for_external_metrics: true
+  batch_metrics_enabled: true
+  batch_metrics_max_cells: 0
+  batch_metrics_knn_k: 15
+  auto_d_primary_metric: "ari"
+  auto_d_primary_require_curated_labels: true
+  auto_d_primary_include_label_sources: ["provided:*"]
+  auto_d_primary_exclude_dataset_patterns: []
+  auto_d_generate_exploratory_report: true
+  auto_d_loo_validation: true
+  auto_d_secondary_metric_mode: "current_fallback"
+
+seed: 42
