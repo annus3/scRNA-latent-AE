@@ -227,7 +227,7 @@ The `code_analysis/` pipeline produces a timestamped run under `results/code_ana
 | `11_seed_stability` | Cross-seed reproducibility |
 | `12_metric_correlation` | Metric agreement analysis |
 | `13_phase_comparison` | Cross-phase consistency |
-| `14_publication_figures` | Publication-quality figures (fig1–fig4, figS1–figS4) |
+| `14_publication_figures` | Publication-quality figures |
 
 ## License
 
