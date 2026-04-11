@@ -2,13 +2,16 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
+import h5py
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import numpy as np
 import pandas as pd
+import scanpy as sc
 import seaborn as sns
 from scipy.optimize import curve_fit
 
@@ -34,6 +37,135 @@ def _save_pub(fig, fig_dir, name):
     fig.savefig(fig_dir / f"{name}.pdf", dpi=300, bbox_inches="tight")
     plt.close(fig)
     print(f"  [fig] {name}.png/pdf")
+
+
+# Metadata for UMAP generation: (dataset_name, label_key, display_name, h5ad_candidates)
+_UMAP_DATASETS = [
+    ("scvi_pbmc12k",      "cell_type",        "PBMC12k",   ["scvi_pbmc12k.h5ad"]),
+    ("paul15",            "paul15_clusters",   "Paul15",    ["paul15.h5ad"]),
+    ("aifi_immune_full",  "cell_type",         "AIFI",      ["aifi_immune_full.h5ad"]),
+    ("ts2_lung",          "cell_type",         "TS2-Lung",  ["ts2_lung.h5ad"]),
+    ("ts1_all_cells",     "cell_type",         "TS1",       ["ts1_all_cells_phase4_ready.h5ad",
+                                                              "ts1_all_cells.h5ad"]),
+]
+
+_UMAP_MAX_CELLS = 50000  # subsample large datasets for tractability
+
+
+def _load_for_umap(repo: Path, ds_name: str, label_key: str, candidates: list):
+    """Load a dataset h5ad and return (adata_with_umap, labels).
+
+    Searches processed/ directories on both $HOME and $WORK.
+    Large datasets are subsampled to _UMAP_MAX_CELLS.
+    Returns None if no h5ad is found.
+    """
+    search_dirs = [
+        repo / "data" / "processed",
+        Path(os.environ.get("WORK", "/dev/null")) / "sc_autoencoder_project" / "data" / "processed",
+    ]
+    for cand in candidates:
+        for d in search_dirs:
+            path = d / cand
+            if not path.exists():
+                continue
+            print(f"    Found: {path}")
+            try:
+                # Peek at size via backed mode
+                adata_peek = sc.read_h5ad(str(path), backed="r")
+                n_obs = adata_peek.n_obs
+                adata_peek.file.close()
+
+                if n_obs > _UMAP_MAX_CELLS and ds_name == "aifi_immune_full":
+                    # AIFI is too large for full read — use h5py direct indexing
+                    rng = np.random.default_rng(42)
+                    idx = np.sort(rng.choice(n_obs, _UMAP_MAX_CELLS, replace=False))
+                    with h5py.File(str(path), "r") as f:
+                        ct_grp = f["obs"][label_key]
+                        if isinstance(ct_grp, h5py.Group):
+                            cats = [x.decode() if isinstance(x, bytes) else x
+                                    for x in ct_grp["categories"][:]]
+                            codes = ct_grp["codes"][:]
+                            labels = np.array([cats[c] for c in codes[idx]])
+                        else:
+                            labels = np.array([x.decode() if isinstance(x, bytes) else x
+                                               for x in ct_grp[idx]])
+                        X = f["X"][idx, :].astype(np.float32)
+                    import anndata as ad
+                    adata = ad.AnnData(X=X)
+                    adata.obs[label_key] = pd.Categorical(labels)
+                else:
+                    adata = sc.read_h5ad(str(path))
+                    if adata.n_obs > _UMAP_MAX_CELLS:
+                        rng = np.random.default_rng(42)
+                        idx = np.sort(rng.choice(adata.n_obs, _UMAP_MAX_CELLS, replace=False))
+                        adata = adata[idx].copy()
+
+                # Compute UMAP if missing
+                if "X_umap" not in adata.obsm:
+                    if "X_pca" not in adata.obsm:
+                        sc.pp.pca(adata, n_comps=50)
+                    sc.pp.neighbors(adata, n_neighbors=15,
+                                    n_pcs=min(50, adata.obsm["X_pca"].shape[1]))
+                    sc.tl.umap(adata)
+                return adata
+            except Exception as e:
+                print(f"    WARNING: failed to load {path}: {e}")
+    return None
+
+
+def _generate_umap_strip(repo: Path, rec: pd.DataFrame, fig_dir: Path):
+    """Create a 1x5 UMAP strip figure — clean visualization, no legends."""
+    n_ds = len(_UMAP_DATASETS)
+    fig, axes = plt.subplots(1, n_ds, figsize=(20, 4))
+    fig.subplots_adjust(wspace=0.15, left=0.03, right=0.98, top=0.88, bottom=0.08)
+
+    for i, (ds_name, label_key, display_name, candidates) in enumerate(_UMAP_DATASETS):
+        ax = axes[i]
+
+        # Get K from recommendations or hardcode fallback
+        K_row = rec[rec["dataset"] == ds_name]
+        K = int(K_row["K"].iloc[0]) if len(K_row) > 0 else "?"
+
+        print(f"    [{i+1}/{n_ds}] {display_name} (K={K})...")
+        adata = _load_for_umap(repo, ds_name, label_key, candidates)
+
+        if adata is None:
+            ax.text(0.5, 0.5, f"{display_name}\n(data not available)",
+                    ha="center", va="center", transform=ax.transAxes, fontsize=10)
+            ax.set_title(f"{display_name}  (K={K})", fontsize=12, fontweight="bold")
+            ax.set_xticks([]); ax.set_yticks([])
+            continue
+
+        labels = adata.obs[label_key].astype(str).values
+        unique = sorted(set(labels))
+        n_types = len(unique)
+
+        # Generate distinct colors
+        if n_types <= 20:
+            colors = plt.cm.tab20(np.linspace(0, 1, 20))[:n_types]
+        elif n_types <= 40:
+            colors = np.vstack([plt.cm.tab20(np.linspace(0, 1, 20)),
+                                plt.cm.tab20b(np.linspace(0, 1, 20))])[:n_types]
+        else:
+            colors = plt.cm.gist_ncar(np.linspace(0.05, 0.95, n_types))
+
+        label_to_color = {l: colors[j] for j, l in enumerate(unique)}
+        umap = adata.obsm["X_umap"]
+
+        for label in unique:
+            mask = labels == label
+            ax.scatter(umap[mask, 0], umap[mask, 1],
+                       c=[label_to_color[label]], s=1.5, alpha=0.5, rasterized=True)
+
+        ax.set_title(f"{display_name}  (K={K})", fontsize=12, fontweight="bold", pad=8)
+        ax.set_xticks([]); ax.set_yticks([])
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        if i == 0:
+            ax.set_ylabel("UMAP 2", fontsize=11, fontweight="bold")
+        ax.set_xlabel("UMAP 1", fontsize=11, fontweight="bold")
+
+    _save_pub(fig, fig_dir, "fig5_umap_strip")
 
 
 def main() -> None:
@@ -340,6 +472,12 @@ def main() -> None:
     if elbow_rows:
         elbow_df = pd.DataFrame(elbow_rows)
         save_table(elbow_df, tab_dir / "reconstruction_elbow_points.csv")
+
+    # ====================================================================
+    # FIGURE 5: UMAP strip (1x5) — cell-type structure across datasets
+    # ====================================================================
+    section_header("Figure 5: UMAP Strip — Cell-Type Structure")
+    _generate_umap_strip(repo, rec, fig_dir)
 
     # ---- Summary interpretation ----
     section_header("Publication Summary")
