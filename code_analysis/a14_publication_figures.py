@@ -97,7 +97,7 @@ def main() -> None:
     ax.set_xlabel("K (Number of Cell Types)", fontsize=12, fontweight="bold")
     ax.set_ylabel("Optimal Latent Dimension (d)", fontsize=12, fontweight="bold")
     ax.set_title("Optimal Latent Dimensionality vs Biological Complexity\n(scVI with NB likelihood)", fontsize=13)
-    ax.legend(loc="upper left", fontsize=9, framealpha=0.95)
+    ax.legend(loc="lower right", fontsize=9, framealpha=0.95)
     ax.set_ylim(bottom=0)
     ax.grid(True, alpha=0.3)
     _save_pub(fig, fig_dir, "fig1_d_vs_K")
