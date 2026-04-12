@@ -4,6 +4,7 @@ data/*
 
 # Experiment outputs & model weights
 results/*
+!results/image_ae.png
 !results/.gitkeep
 !results/global/
 !results/datasets/
