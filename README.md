@@ -1,7 +1,7 @@
 # scRNA Autoencoder Latent-Dimension Study
 
 <p align="center">
-  <img src="results/image.png" alt="Autoencoder Architecture Diagram" width="800">
+  <img src="results/image_ae.png" alt="Autoencoder Architecture Diagram" width="800">
 </p>
 
 **How should latent size (`d`) change as class complexity (`K`) changes in single-cell RNA-seq?**
