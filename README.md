@@ -1,5 +1,9 @@
 # scRNA Autoencoder Latent-Dimension Study
 
+<p align="center">
+  <img src="results/image.png" alt="Autoencoder Architecture Diagram" width="800">
+</p>
+
 **How should latent size (`d`) change as class complexity (`K`) changes in single-cell RNA-seq?**
 
 This project benchmarks AE, VAE, and scVI models on curated scRNA-seq datasets to study whether the optimal latent dimension can be predicted from the number of cell types. It uses a trust-aware evaluation framework that strictly separates ground-truth evidence from exploratory results.
